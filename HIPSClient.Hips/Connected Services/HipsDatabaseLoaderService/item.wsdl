@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://schemas.HIPS/Services/2012/01" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.HIPS/Services/2012/01" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://schemas.HIPS/Services/2012/01/Imports">
+      <xsd:import schemaLocation="http://localhost:52500/DatabaseLoaderService/?xsd=xsd0" namespace="http://schemas.HIPS/Services/2012/01" />
+      <xsd:import schemaLocation="http://localhost:52500/DatabaseLoaderService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52500/DatabaseLoaderService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DatabaseLoaderService_NotifyPasEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPasEvent" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseLoaderService_NotifyPasEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPasEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseLoaderService_NotifyPathEvent_InputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPathEvent" />
+  </wsdl:message>
+  <wsdl:message name="DatabaseLoaderService_NotifyPathEvent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:NotifyPathEventResponse" />
+  </wsdl:message>
+  <wsdl:portType name="DatabaseLoaderService">
+    <wsdl:documentation>&lt;summary&gt;
+            Web service interface for the Database Loader service.
+            &lt;/summary&gt;</wsdl:documentation>
+    <wsdl:operation name="NotifyPasEvent">
+      <wsdl:documentation>&lt;summary&gt;
+            Notifies HIPS of an event in the Patient Administration System.
+            This method stores the patient and episode information into the HIPS Data Store, and triggers the automatic IHI lookup and check for advertised digital health record.
+            A failure to store the message, patient or episode will result in a negative acknowledgement being returned. 
+            A failure to obtain an IHI or check the digital health record status will not result in a negative acknowledgement. 
+            The IHI is not returned in the acknowledgement, but stored into the HIPS Data Store."
+            &lt;/summary&gt;
+            &lt;param name="messageForm"&gt;An HL7 message.&lt;/param&gt;
+            &lt;param name="user"&gt;Details of the responsible user.&lt;/param&gt;
+            &lt;returns&gt;An HL7 acknowledgement message.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/DatabaseLoaderService/NotifyPasEvent" message="tns:DatabaseLoaderService_NotifyPasEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/DatabaseLoaderService/NotifyPasEventResponse" message="tns:DatabaseLoaderService_NotifyPasEvent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyPathEvent">
+      <wsdl:documentation>&lt;summary&gt;
+            Notifies HIPS of a pathology result. (Not implemented)
+            &lt;/summary&gt;
+            &lt;param name="messageForm"&gt;An HL7 message.&lt;/param&gt;
+            &lt;param name="user"&gt;Details of the responsible user.&lt;/param&gt;
+            &lt;returns&gt;An HL7 acknowledgement message.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/DatabaseLoaderService/NotifyPathEvent" message="tns:DatabaseLoaderService_NotifyPathEvent_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/DatabaseLoaderService/NotifyPathEventResponse" message="tns:DatabaseLoaderService_NotifyPathEvent_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

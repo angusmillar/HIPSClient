@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://nehta.hips/2014/03/pcehr" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nehta.hips/2014/03/pcehr" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nehta.hips/2014/03/pcehr/Imports">
+      <xsd:import schemaLocation="http://localhost:52500/PathologyImagingService/?xsd=xsd0" namespace="http://nehta.hips/2014/03/pcehr" />
+      <xsd:import schemaLocation="http://localhost:52500/PathologyImagingService/?xsd=xsd2" namespace="http://nehta.hips/2014/03" />
+      <xsd:import schemaLocation="http://localhost:52500/PathologyImagingService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="UploadOrRemovePathologyRequest">
+    <wsdl:part name="parameters" element="tns:UploadOrRemovePathologyRequest" />
+  </wsdl:message>
+  <wsdl:message name="UploadOrRemovePathologyResponse">
+    <wsdl:part name="parameters" element="tns:UploadOrRemovePathologyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemovePathology_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://nehta.hips/2014/03" name="detail" element="q1:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemovePathology_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://nehta.hips/2014/03" name="detail" element="q2:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemovePathology_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://nehta.hips/2014/03" name="detail" element="q3:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemovePathology_HiServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://nehta.hips/2014/03" name="detail" element="q4:HiServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemovePathology_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://nehta.hips/2014/03" name="detail" element="q5:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemovePathology_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://nehta.hips/2014/03" name="detail" element="q6:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="UploadOrRemoveImagingRequest">
+    <wsdl:part name="parameters" element="tns:UploadOrRemoveImagingRequest" />
+  </wsdl:message>
+  <wsdl:message name="UploadOrRemoveImagingResponse">
+    <wsdl:part name="parameters" element="tns:UploadOrRemoveImagingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemoveImaging_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://nehta.hips/2014/03" name="detail" element="q7:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemoveImaging_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://nehta.hips/2014/03" name="detail" element="q8:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemoveImaging_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://nehta.hips/2014/03" name="detail" element="q9:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemoveImaging_HiServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://nehta.hips/2014/03" name="detail" element="q10:HiServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemoveImaging_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://nehta.hips/2014/03" name="detail" element="q11:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPathologyImagingService_UploadOrRemoveImaging_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://nehta.hips/2014/03" name="detail" element="q12:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:portType name="IPathologyImagingService">
+    <wsdl:documentation>&lt;summary&gt;
+            Web service interface for the PCEHR service version 2.
+            Contains methods which interact with the National PCEHR Service to refresh the patient's participation status, upload or supersede a discharge summary,
+            upload or supersede a Pathology Result Report, upload or supersede a Diagnostic Imaging Exam Report.
+            &lt;/summary&gt;</wsdl:documentation>
+    <wsdl:operation name="UploadOrRemovePathology">
+      <wsdl:documentation>&lt;summary&gt;
+            Adds a pathology document onto the queue so that HIPS can upload it to the My Health Record.
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;UploadOrRemovePathologyRequest request.&lt;/param&gt;
+            &lt;returns&gt;Response indicating if the upload or remove pathology is successful&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathology" name="UploadOrRemovePathologyRequest" message="tns:UploadOrRemovePathologyRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyResponse" name="UploadOrRemovePathologyResponse" message="tns:UploadOrRemovePathologyResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPathologyImagingService_UploadOrRemovePathology_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPathologyImagingService_UploadOrRemovePathology_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPathologyImagingService_UploadOrRemovePathology_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyHiServiceFaultFault" name="HiServiceFaultFault" message="tns:IPathologyImagingService_UploadOrRemovePathology_HiServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPathologyImagingService_UploadOrRemovePathology_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemovePathologyItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPathologyImagingService_UploadOrRemovePathology_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadOrRemoveImaging">
+      <wsdl:documentation>&lt;summary&gt;
+            Adds a diagnostic imaging report onto the queue so that HIPS can upload it to the My Health Record.
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;UploadOrRemoveImagingRequest request.&lt;/param&gt;
+            &lt;returns&gt;Response indicating if the upload or remove imaging is successful&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImaging" name="UploadOrRemoveImagingRequest" message="tns:UploadOrRemoveImagingRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingResponse" name="UploadOrRemoveImagingResponse" message="tns:UploadOrRemoveImagingResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPathologyImagingService_UploadOrRemoveImaging_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPathologyImagingService_UploadOrRemoveImaging_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPathologyImagingService_UploadOrRemoveImaging_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingHiServiceFaultFault" name="HiServiceFaultFault" message="tns:IPathologyImagingService_UploadOrRemoveImaging_HiServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPathologyImagingService_UploadOrRemoveImaging_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPathologyImagingService/UploadOrRemoveImagingItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPathologyImagingService_UploadOrRemoveImaging_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

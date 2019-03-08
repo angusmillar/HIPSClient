@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://nehta.hips/2014/03/pcehr" elementFormDefault="qualified" targetNamespace="http://nehta.hips/2014/03/pcehr" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PathologyImagingService/?xsd=xsd2" namespace="http://nehta.hips/2014/03" />
+  <xs:element name="UploadOrRemovePathologyRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HL7Message" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q1:UserBase" />
+        <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="ReportLocation" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ReportID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadOrRemovePathologyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q2:ResponseStatus" />
+        <xs:element xmlns:q3="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q3:ArrayOfMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadOrRemoveImagingRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="HL7Message" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q4:UserBase" />
+        <xs:element minOccurs="0" name="Report" nillable="true" type="xs:base64Binary" />
+        <xs:element minOccurs="0" name="ReportLocation" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadOrRemoveImagingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q5:ResponseStatus" />
+        <xs:element xmlns:q6="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q6:ArrayOfMessage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

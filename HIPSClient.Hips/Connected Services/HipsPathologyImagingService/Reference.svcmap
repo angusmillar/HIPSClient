@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="909ef4da-8769-4d9a-ba56-dc4fd1411389" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52500/PathologyImagingService/?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="0656b4b8-97e3-420f-91a3-c7cfe8113445" SourceId="1" SourceUrl="http://localhost:52500/PathologyImagingService/?wsdl=wsdl0" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="53817ae6-628f-4d7b-8129-d0a5452b5e64" SourceId="1" SourceUrl="http://localhost:52500/PathologyImagingService/?xsd=xsd0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="810b7dd1-b2b6-45ba-900b-1d6d806ae162" SourceId="1" SourceUrl="http://localhost:52500/PathologyImagingService/?xsd=xsd2" />
+    <MetadataFile FileName="PathologyImagingService.wsdl" MetadataType="Wsdl" ID="1aa88d08-7980-4721-a0bb-2f89a853e75f" SourceId="1" SourceUrl="http://localhost:52500/PathologyImagingService/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="2fb6302e-c656-4dc6-9802-b808ac8f962b" SourceId="1" SourceUrl="http://localhost:52500/PathologyImagingService/?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
