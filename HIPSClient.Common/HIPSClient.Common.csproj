@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82BB560F-9A66-41FA-9ACC-F9A0D0CD57FE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>HIPSClient.Runner</RootNamespace>
-    <AssemblyName>HIPSClient.Runner</AssemblyName>
+    <ProjectGuid>{AA61F796-A939-4562-98F7-F2277A240239}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HIPSClient.Common</RootNamespace>
+    <AssemblyName>HIPSClient.Common</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,21 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="HL7Message\ADT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\HIPSClient.Common\HIPSClient.Common.csproj">
-      <Project>{aa61f796-a939-4562-98f7-f2277a240239}</Project>
-      <Name>HIPSClient.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HIPSClient.Hips\HIPSClient.Hips.csproj">
-      <Project>{3e40815b-f8b3-4d40-a872-e897518c2939}</Project>
-      <Name>HIPSClient.Hips</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
