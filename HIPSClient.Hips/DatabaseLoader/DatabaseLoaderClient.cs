@@ -8,14 +8,16 @@ namespace HIPSClient.Hips.DatabaseLoader
   {
     public DatabaseLoaderResponse ADT(DatabaseLoaderRequest Request)
     {
+      string MethodAddress = "DatabaseLoaderService/HIPS.Service.DatabaseLoaderService";
       var Response = new DatabaseLoaderResponse();
-      using (var client = new HipsDatabaseLoaderService.DatabaseLoaderServiceClient("WSHttpBinding_DatabaseLoaderService"))
-      {              
+      WSHttpBinding Binding = new WSHttpBinding(SecurityMode.None);
+      EndpointAddress EndpointAddress = new EndpointAddress(System.IO.Path.Combine(Common.HIPS.HipsConfig.CoreApplicationBaseEndpoint, MethodAddress));
+      using (var client = new HipsDatabaseLoaderService.DatabaseLoaderServiceClient(Binding, EndpointAddress))      
+      {
         var UserDetails = new HipsDatabaseLoaderService.UserDetails()
         {
           Role = HipsDatabaseLoaderService.UserRole.AuthorisedEmployee
         };
-
         try
         {
           var ClientResponse = client.NotifyPasEvent(Request.HL7ADTMessage, UserDetails);
@@ -29,16 +31,16 @@ namespace HIPSClient.Hips.DatabaseLoader
             Response.IsSuccess = false;
             Response.Message = HL7Ack.Segment("MSA").Field(6).Component(2).AsString;
           }
-            
+
           return Response;
-          
+
         }
-        catch(System.Exception Exec)
+        catch (Exception Exec)
         {
           Response.IsSuccess = false;
           Response.Message = Exec.Message;
           return Response;
-        }       
+        }
       }      
     }
   }

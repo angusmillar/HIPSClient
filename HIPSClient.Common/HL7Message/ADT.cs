@@ -16,7 +16,7 @@ namespace HIPSClient.Common.HL7Message
       oHL7.Segment("MSH").Field(4).AsString = "ANGPATH";
       oHL7.Segment("MSH").Field(5).AsString = "HIB";
       oHL7.Segment("MSH").Field(6).AsString = "HIB";
-      oHL7.Segment("MSH").Field(6).Convert.DateTime.SetDateTimeOffset(DateTimeOffset.Now, false);
+      oHL7.Segment("MSH").Field(7).Convert.DateTime.SetDateTimeOffset(DateTimeOffset.Now, false);
       oHL7.Segment("MSH").Field(15).AsString = "AL";
       oHL7.Segment("MSH").Field(16).AsString = "NE";
       oHL7.Segment("MSH").Field(17).AsString = "AU";

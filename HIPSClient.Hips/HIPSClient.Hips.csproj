@@ -135,5 +135,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HIPSClient.Common\HIPSClient.Common.csproj">
+      <Project>{aa61f796-a939-4562-98f7-f2277a240239}</Project>
+      <Name>HIPSClient.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

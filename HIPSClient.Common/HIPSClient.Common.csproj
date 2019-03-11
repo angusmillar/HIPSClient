@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HIPS\HipsConfig.cs" />
     <Compile Include="HL7Message\ADT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
