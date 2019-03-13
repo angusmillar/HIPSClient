@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://schemas.HIPS/Services/2012/01" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.HIPS/Services/2012/01" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://schemas.HIPS/Services/2012/01/Imports">
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd0" namespace="http://schemas.HIPS/Services/2012/01" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPCEHRService_GainAccessEmergency_InputMessage">
+    <wsdl:part name="parameters" element="tns:GainAccessEmergency" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GainAccessEmergency_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GainAccessEmergencyResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GainAccessWithCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GainAccessWithCode" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GainAccessWithCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GainAccessWithCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GainAccessWithOutCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GainAccessWithOutCode" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GainAccessWithOutCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GainAccessWithOutCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetChangeHistoryView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetChangeHistoryView" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetChangeHistoryView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetChangeHistoryViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentList" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListFilterDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListFilterDates" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListFilterDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListFilterDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListFilterStatusAndDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListFilterStatusAndDates" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListFilterStatusAndDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListFilterStatusAndDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListWithQuery_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListWithQuery" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListWithQuery_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListWithQueryResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListActive_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListActive" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListActive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListActiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListActiveFilterDates_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListActiveFilterDates" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetDocumentListActiveFilterDates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDocumentListActiveFilterDatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetIndividualOperationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndividualOperationStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetIndividualOperationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetIndividualOperationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetLocalUploadedDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalUploadedDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetLocalUploadedDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLocalUploadedDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetOperationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOperationStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetOperationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOperationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetQueuedOperationList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueuedOperationList" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetQueuedOperationList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetQueuedOperationListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetView_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetView" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_GetView_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_IsPcehrAdvertised_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsPcehrAdvertised" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_IsPcehrAdvertised_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsPcehrAdvertisedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_ListUploadedDocuments_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListUploadedDocuments" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_ListUploadedDocuments_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListUploadedDocumentsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_RefreshPatientParticipationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshPatientParticipationStatus" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_RefreshPatientParticipationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefreshPatientParticipationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_Remove_InputMessage">
+    <wsdl:part name="parameters" element="tns:Remove" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_Remove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_RetrieveDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_RetrieveDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RetrieveDocumentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_UploadOrSupersedeDocument_InputMessage">
+    <wsdl:part name="parameters" element="tns:UploadOrSupersedeDocument" />
+  </wsdl:message>
+  <wsdl:message name="IPCEHRService_UploadOrSupersedeDocument_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UploadOrSupersedeDocumentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPCEHRService">
+    <wsdl:documentation>&lt;summary&gt;
+            Web service interface for the PCEHR service version 1.
+            Contains methods which interact with the National PCEHR Service to gain Digital Health Record access for an Individual, check if the patient has
+            a advertised Digital Health Record, refresh the patient's participation status, retrieve a list of documents for a patient from the PCEHR Repository, 
+            download a document from the PCEHR, view a patients PCEHR, upload or supersede a document in the PCEHR or remove a document from the PCEHR.
+            &lt;/summary&gt;</wsdl:documentation>
+    <wsdl:operation name="GainAccessEmergency">
+      <wsdl:documentation>&lt;summary&gt;
+            Requests emergency access to the patient's records on the PCEHR
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;Gain PCEHR Access response.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GainAccessEmergency" message="tns:IPCEHRService_GainAccessEmergency_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GainAccessEmergencyResponse" message="tns:IPCEHRService_GainAccessEmergency_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GainAccessWithCode">
+      <wsdl:documentation>&lt;summary&gt;
+            Request access with the access code being sent to the PCEHR
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="AccessCode"&gt;The code to be used to gain access.&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;Gain PCEHR Access response.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GainAccessWithCode" message="tns:IPCEHRService_GainAccessWithCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GainAccessWithCodeResponse" message="tns:IPCEHRService_GainAccessWithCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GainAccessWithOutCode">
+      <wsdl:documentation>&lt;summary&gt;
+            Request for access without a code being required by PCEHR
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;Gain PCEHR Access response.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GainAccessWithOutCode" message="tns:IPCEHRService_GainAccessWithOutCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GainAccessWithOutCodeResponse" message="tns:IPCEHRService_GainAccessWithOutCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetChangeHistoryView">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the list of uploaded and changed documents from a single document set
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="documentUniqueId"&gt;The document entry UUID (NOC requirements disallow using the document ID).&lt;/param&gt;
+            &lt;returns&gt;List of versions of the document.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetChangeHistoryView" message="tns:IPCEHRService_GetChangeHistoryView_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetChangeHistoryViewResponse" message="tns:IPCEHRService_GetChangeHistoryView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentList">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the list of all avalible documents.
+            This function is given the WS name of GetDocumentList.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;List of documents with response details.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentList" message="tns:IPCEHRService_GetDocumentList_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListResponse" message="tns:IPCEHRService_GetDocumentList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentListFilterDates">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the list of documents with the ability to filter by start and end date times for document creation and healthcare service
+            This function is given the WS name of GetDocumentListFilterDates.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="creationTimeStart"&gt;Include documents created after this time.&lt;/param&gt;
+            &lt;param name="creationTimeEnd"&gt;Include documents created before this time.&lt;/param&gt;
+            &lt;param name="serviceTimeStart"&gt;Include documents for healthcare services after this time.&lt;/param&gt;
+            &lt;param name="serviceTimeEnd"&gt;Include documents for healthcare services before this time.&lt;/param&gt;
+            &lt;returns&gt;List of documents with response details.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListFilterDates" message="tns:IPCEHRService_GetDocumentListFilterDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListFilterDatesResponse" message="tns:IPCEHRService_GetDocumentListFilterDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentListFilterStatusAndDates">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the list of documents with the ability to filter by multiple statuses, start and end dates and times for document creation and the healthcare service.
+            This function is given the WS name of GetDocumentListFilterStatusAndDates.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="documentStatus"&gt;Include documents with this status.&lt;/param&gt;
+            &lt;param name="creationTimeStart"&gt;Include documents created after this time.&lt;/param&gt;
+            &lt;param name="creationTimeEnd"&gt;Include documents created before this time.&lt;/param&gt;
+            &lt;param name="serviceTimeStart"&gt;Include documents for healthcare services after this time.&lt;/param&gt;
+            &lt;param name="serviceTimeEnd"&gt;Include documents for healthcare services before this time.&lt;/param&gt;
+            &lt;returns&gt;List of documents with response details.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListFilterStatusAndDates" message="tns:IPCEHRService_GetDocumentListFilterStatusAndDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListFilterStatusAndDatesResponse" message="tns:IPCEHRService_GetDocumentListFilterStatusAndDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentListWithQuery">
+      <wsdl:documentation>&lt;summary&gt;
+            Get the list of documents corresponding to the specified document query.
+            This function is given the WS name of GetDocumentListWithQuery.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="docQuery"&gt;The query parameters to be sent to the document registry for retrieval.&lt;/param&gt;
+            &lt;returns&gt;List of documents with response details.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListWithQuery" message="tns:IPCEHRService_GetDocumentListWithQuery_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListWithQueryResponse" message="tns:IPCEHRService_GetDocumentListWithQuery_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentListActive">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the list of documents that have the 'Approved' status.
+            This function is given the WS name of GetDocumentListActive.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;List of documents with response details.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListActive" message="tns:IPCEHRService_GetDocumentListActive_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListActiveResponse" message="tns:IPCEHRService_GetDocumentListActive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDocumentListActiveFilterDates">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the list of documents that have the 'Approved' status with the ability to filter by start and end date for document creation and the healthcare service.
+            This function is given the WS name of GetDocumentListActiveFilterDates.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="creationTimeStart"&gt;Include documents created after this time.&lt;/param&gt;
+            &lt;param name="creationTimeEnd"&gt;Include documents created before this time.&lt;/param&gt;
+            &lt;param name="serviceTimeStart"&gt;Include documents for services after this time.&lt;/param&gt;
+            &lt;param name="serviceTimeEnd"&gt;Include documents for services before this time.&lt;/param&gt;
+            &lt;returns&gt;List of documents with response details.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListActiveFilterDates" message="tns:IPCEHRService_GetDocumentListActiveFilterDates_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListActiveFilterDatesResponse" message="tns:IPCEHRService_GetDocumentListActiveFilterDates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIndividualOperationStatus">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the status of a single pcehr queue operation for the specified PcehrMessageQueueId.
+            &lt;/summary&gt;
+            &lt;param name="pcehrMessageQueueId"&gt;Identifier of an item in the PCEHR Message Queue.&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;List of queued operations and indicator of success or failure.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatus" message="tns:IPCEHRService_GetIndividualOperationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatusResponse" message="tns:IPCEHRService_GetIndividualOperationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLocalUploadedDocument">
+      <wsdl:documentation>&lt;summary&gt;
+            Get a document uploaded for a specific patient in a defined hospital
+            &lt;/summary&gt;
+            &lt;param name="user"&gt;Information to identify the person responsible for this action&lt;/param&gt;
+            &lt;param name="sourceSystemSetId"&gt;The source system set identifier.&lt;/param&gt;
+            &lt;param name="sourceSystemDocumentId"&gt;The source system document identifier.&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;returns&gt;
+            Response containing a clinical document uploaded for a specific patient in a defined hospital
+            &lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocument" message="tns:IPCEHRService_GetLocalUploadedDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocumentResponse" message="tns:IPCEHRService_GetLocalUploadedDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOperationStatus">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the status of all operations for the specified patient and episode.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="admissionDate"&gt;The episode admission date and time.&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;List of queued operations and indicator of success or failure.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatus" message="tns:IPCEHRService_GetOperationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatusResponse" message="tns:IPCEHRService_GetOperationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetQueuedOperationList">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets a List of queued Operations
+            &lt;/summary&gt;
+            &lt;param name="dateTimeFrom"&gt;The date time from.&lt;/param&gt;
+            &lt;param name="dateTimeTo"&gt;The date time to.&lt;/param&gt;
+            &lt;param name="queueOperation"&gt;The queue operation.&lt;/param&gt;
+            &lt;param name="queueStatus"&gt;The queue status.&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;List of queued operations and indicator of success or failure.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationList" message="tns:IPCEHRService_GetQueuedOperationList_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationListResponse" message="tns:IPCEHRService_GetQueuedOperationList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetView">
+      <wsdl:documentation>&lt;summary&gt;
+            Returns the Document and Attachments required to display the requested view.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;Details of the person responsible for the action.&lt;/param&gt;
+            &lt;param name="request"&gt;The view request, which must be one of the concrete view types under the declared base type.&lt;/param&gt;
+            &lt;returns&gt;DocumentResponse will also pass back success and error messages&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetView" message="tns:IPCEHRService_GetView_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetViewResponse" message="tns:IPCEHRService_GetView_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPcehrAdvertised">
+      <wsdl:documentation>&lt;summary&gt;
+            For a given MRN, State Patient Identifier, PCEHR Data Store PatientMasterId or a validated IHI,
+            checks whether the patient has advertised the existence of his/her PCEHR,
+            whether access has been gained, and whether access can be gained without a code.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="dateOfBirth"&gt;The patient's date of birth.&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;returns&gt;Response containing operation success indicator, whether advertised, and access status&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/IsPcehrAdvertised" message="tns:IPCEHRService_IsPcehrAdvertised_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/IsPcehrAdvertisedResponse" message="tns:IPCEHRService_IsPcehrAdvertised_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListUploadedDocuments">
+      <wsdl:documentation>&lt;summary&gt;
+            Lists the documents uploaded for a specific patient in a defined hospital
+            &lt;/summary&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="sourceSystemSetId"&gt;The source system set identifier.&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;returns&gt;Response containing the a list of the admitted or discharged episodes for the patient with in the specified number of days.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/ListUploadedDocuments" message="tns:IPCEHRService_ListUploadedDocuments_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/ListUploadedDocumentsResponse" message="tns:IPCEHRService_ListUploadedDocuments_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefreshPatientParticipationStatus">
+      <wsdl:documentation>&lt;summary&gt;
+            This operation looks up a patient record in the current facility (for
+            advertised status) and disclosure facility (for disclosed status),
+            gets a validated IHI for the patient, and optionally refreshes the
+            advertised status from the PCEHR system.
+            &lt;/summary&gt;
+            &lt;param name="user"&gt;Information to identify the person responsible for this action&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;An identifier of the patient and the
+            current facility.&lt;/param&gt;
+            &lt;param name="disclosureFacility"&gt;The Hospital Code and Hospital Code
+            System of the facility whose healthcare provider organisation records
+            the PCEHR disclosure status for the patient.&lt;/param&gt;
+            &lt;param name="forceRefresh"&gt;The option of always refreshing the
+            participation status, only if not advertised, or never refreshing the
+            participation status.&lt;/param&gt;
+            &lt;returns&gt;Participation status for the requested patient.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/RefreshPatientParticipationStatus" message="tns:IPCEHRService_RefreshPatientParticipationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/RefreshPatientParticipationStatusResponse" message="tns:IPCEHRService_RefreshPatientParticipationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Remove">
+      <wsdl:documentation>&lt;summary&gt;
+            Removes the specified discharge summary from the PCEHR system.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="admissionDate"&gt;The episode admission date and time.&lt;/param&gt;
+            &lt;param name="documentSetId"&gt;The clinical document set id.&lt;/param&gt;
+            &lt;param name="reason"&gt;Reason for removal.&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="auditInformation"&gt;Additional audit information to store.&lt;/param&gt;
+            &lt;returns&gt;Response indicating that the request was queued or the reason why not.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/Remove" message="tns:IPCEHRService_Remove_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/RemoveResponse" message="tns:IPCEHRService_Remove_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveDocument">
+      <wsdl:documentation>&lt;summary&gt;
+            Returns the Document and Attachments required to display the requested document.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="request"&gt;The request sent to get the document from the PCEHR repository.&lt;/param&gt;
+            &lt;returns&gt;DocumentResponse will also pass back success and error messages&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/RetrieveDocument" message="tns:IPCEHRService_RetrieveDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/RetrieveDocumentResponse" message="tns:IPCEHRService_RetrieveDocument_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadOrSupersedeDocument">
+      <wsdl:documentation>&lt;summary&gt;
+            Uploads a CDA document to the PCEHR National Repository, optionally superseding a previously-uploaded document.
+            This takes in the XML document and any attachments and does the packaging itself.
+            &lt;/summary&gt;
+            &lt;param name="cdaDocument"&gt;The CDA root XML document.&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
+            &lt;param name="attachments"&gt;The attachments.&lt;/param&gt;
+            &lt;param name="admissionDate"&gt;The episode admission date and time.&lt;/param&gt;
+            &lt;param name="documentFormatCode"&gt;The document format code (template ID).&lt;/param&gt;
+            &lt;returns&gt;Response indicating that the request was queued or the reason why not.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/UploadOrSupersedeDocument" message="tns:IPCEHRService_UploadOrSupersedeDocument_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/UploadOrSupersedeDocumentResponse" message="tns:IPCEHRService_UploadOrSupersedeDocument_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

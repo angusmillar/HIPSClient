@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd12" namespace="http://nehta.hips/2014/03" />
+  <xs:complexType name="PatientParticipationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Patient Participation Status DTO.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HospitalCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a code in the in the hospital code system that was specified in the service request,
+            which identifies the hospital that allocated the MRN.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Mrn" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a patient identifier unique within the hospital, typically allocated by the hospital’s PAS or PMI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" minOccurs="0" name="ParticipationStatus" type="q1:ParticipationStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the participation status.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StatePatientId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a patient identifier unique within the state or territory and
+            typically allocated by the enterprise master patient index.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://nehta.hips/2014/03" minOccurs="0" name="ValidatedIhi" nillable="true" type="q2:ValidatedIhi">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets an Individual Healthcare Identifier (IHI) allocated by the national
+            healthcare identifier service, and the information required to
+            check the validity of the IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientParticipationStatus" nillable="true" type="tns:PatientParticipationStatus" />
+  <xs:complexType name="IsPcehrAdvertisedLocal">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Is PCEHR Advertised Local DTO.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q3="http://nehta.hips/2014/03" minOccurs="0" name="AccessCodeRequired" type="q3:AccessCodeRequired">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the access code requirments for the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PcehrExists" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the participation status.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IsPcehrAdvertisedLocal" nillable="true" type="tns:IsPcehrAdvertisedLocal" />
+</xs:schema>

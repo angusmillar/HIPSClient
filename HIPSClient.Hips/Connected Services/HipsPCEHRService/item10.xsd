@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="UserDetails">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            The user is included as a parameter on all calls to HIPS in order to assert
+            the authorisation role under which any calls to the HI Service or PCEHR System
+            should take place.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorisedEmployeeUserId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Authorised Employee user ID.
+            This is used for B2B requests authorised in name of the Authorised Employee for the hospital.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorised employee.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Domain" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the type of the locally-issued user ID, such as the Active Directory domain.
+            This is part of the qualified for the HI User role.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The domain.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HpiI" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HPI-I of the person logged in. This is the primary identifier for the Provider Individual role.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The HPI-I.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IsContractedServiceProvider" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a flag indicating whether the caller is a contracted service provider.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Whether the caller is a contracted service provider.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the locally-issued user ID, such as the Active Directory account.
+            This is the primary identifier for the HI User role.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The login.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the name of the person logged in, or the name of the Responsible Officer. This is not sent to Medicare but will be audited.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The name.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Role" type="tns:UserRole">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the authorisation role for the B2B web service invocation.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The role.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserDetails" nillable="true" type="tns:UserDetails" />
+  <xs:simpleType name="UserRole">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            The role of the user
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ProviderIndividual">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Individual Healthcare Provider identified by an HPI-I
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InteractiveUser">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Interactive access by clinician or patient administration clerk etc.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AuthorisedEmployee">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Authorised employee responsible for non-interactive access by batch or background processes
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="UserRole" nillable="true" type="tns:UserRole" />
+  <xs:complexType name="HipsResponse">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Standardised HIPS Response Message
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HipsErrorMessage" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HIPS error message.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponseCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the response code.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponseCodeDescription" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the response code description.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponseCodeDetails" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the response code details.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Status" type="tns:HipsResponseIndicator">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the status indicator.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HipsResponse" nillable="true" type="tns:HipsResponse" />
+  <xs:simpleType name="HipsResponseIndicator">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+             This enumeration indicates the success or category of failure.
+            
+             *******************************************************************************
+             Use CAUTION when modifying the values in this enumeration as it will affect the
+             calling systems that are integrated with HIPS.
+            
+             *******************************************************************************
+            
+             &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SystemError">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The application failed. Details recorded within the application database.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OK">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The request executed correctly
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidPatient">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The patient was not found with the specified search data
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidHospital">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The hospital was not found with the specified search data
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidEpisode">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The episode was not found with the specified search data
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidDocument">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document was not found with the specified search data
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidUser">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The user was not correctly specified
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HiServiceError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">8</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The HI service returned an error
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrServiceError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The PCEHR service returned an error
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidIhi">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient's IHI could not be found or validated
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ConsentWithdrawn">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">11</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The document could not be uploaded because consent was withdrawn
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CouldNotAddToQueue">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">12</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            HIPS could not add the operation (upload or remove) to the MSMQ queue.
+            This can happen if the queue is full. The calling system should retry
+            the operation.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidAccessCode">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">13</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The Access Code is invalid.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DemographicMismatchWarning">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">14</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Demographics in the downloaded document did not match those in the local system.
+            This will occur when the Date of Birth, Sex or Family Name are different.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnresolvedIhiAlert">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">15</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI for this patient has an unresolved alert. This patient's PCEHR cannot be
+            accessed until the alert has been resolved.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DatabaseError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">16</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The operation could not be completed because the local SQL Server database is
+            unavailable. The calling system should retry the operation.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="InvalidDateOfBirth">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">17</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The date of birth stored for the patient does not match
+            the date of birth that was specified in the request.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrServiceWarning">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">18</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The action was successful but returned one or more warnings that should be
+            investigated as available resources permit.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrServiceUnavailable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">19</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The PCEHR Service is temporarily unavailable. The action should be tried again later.
+            In the case of an upload or remove operation, the queue transaction will be rolled
+            back so that the MSMQ will handle retrying.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PatientUnderAge">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The document was not uploaded because the patient was under the configured minimum
+            age at the time of admission. This is a patient safety initiative.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CouldNotFindQueueItem">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">21</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            This queue item could not be found - it may have been removed from the list or the ID is invalid
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ValidationError">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">22</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            There was a validation error. Check the HIPS error message and the response code,
+            description and detail for more information.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IncorrectStatePatientId">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">23</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The state patient id is incorrect
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IncorrectMrn">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">24</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The supplied MRN is incorrect
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UnresolvedHpiiAlert">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">25</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The HPI-I for this health provider has an unresolved alert. This health provider cannot be used to access the PCEHR
+            until the alert has been resolved.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HpiiWarningRaised">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">26</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The HPI-I for this health provider has a warning raised against it. This health provider can be used to access the PCEHR
+            but the warning must be logged for this HPI_I.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="HipsResponseIndicator" nillable="true" type="tns:HipsResponseIndicator" />
+  <xs:complexType name="HospitalIdentifier">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This schema is used to identify a hospital / facility.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HospitalCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            A code identifying the hospital in which this patient received health care.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HospitalCodeSystem" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            A code identifying the system under which the hospital code was allocated.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="HospitalIdentifier" nillable="true" type="tns:HospitalIdentifier" />
+  <xs:simpleType name="ForceRefreshOption">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This is used to specify the conditions when the PCEHR
+            advertised status should be refreshed.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that a value has not been specified
+            providing this value will cause a validation error.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Never">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that there is no need to refresh the PCEHR
+            advertised status and the previously stored information will be returned.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WhenNotAdvertised">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that the PCEHR advertised status should be refreshed
+            if there is no previously stored information that indicates the patient has a PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Always">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that the PCEHR advertised status should always be refreshed.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ForceRefreshOption" nillable="true" type="tns:ForceRefreshOption" />
+</xs:schema>

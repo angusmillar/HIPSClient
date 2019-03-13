@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://nehta.hips/2014/03/pcehr" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://nehta.hips/2014/03/pcehr" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://nehta.hips/2014/03/pcehr/Imports">
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd11" namespace="http://nehta.hips/2014/03/pcehr" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd12" namespace="http://nehta.hips/2014/03" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd0" namespace="http://schemas.HIPS/Services/2012/01" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="RefreshPatientParticipationStatusRequest">
+    <wsdl:part name="parameters" element="tns:RefreshPatientParticipationStatusRequest" />
+  </wsdl:message>
+  <wsdl:message name="RefreshPatientParticipationStatusResponse">
+    <wsdl:part name="parameters" element="tns:RefreshPatientParticipationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_RefreshPatientParticipationStatus_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://nehta.hips/2014/03" name="detail" element="q1:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_RefreshPatientParticipationStatus_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://nehta.hips/2014/03" name="detail" element="q2:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_RefreshPatientParticipationStatus_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://nehta.hips/2014/03" name="detail" element="q3:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_RefreshPatientParticipationStatus_HiServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://nehta.hips/2014/03" name="detail" element="q4:HiServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_RefreshPatientParticipationStatus_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://nehta.hips/2014/03" name="detail" element="q5:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_RefreshPatientParticipationStatus_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://nehta.hips/2014/03" name="detail" element="q6:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="UploadDischargeSummaryLevel1ARequest">
+    <wsdl:part name="parameters" element="tns:UploadDischargeSummaryLevel1ARequest" />
+  </wsdl:message>
+  <wsdl:message name="UploadDischargeSummaryLevel1AResponse">
+    <wsdl:part name="parameters" element="tns:UploadDischargeSummaryLevel1AResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://nehta.hips/2014/03" name="detail" element="q7:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://nehta.hips/2014/03" name="detail" element="q8:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://nehta.hips/2014/03" name="detail" element="q9:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_HiServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://nehta.hips/2014/03" name="detail" element="q10:HiServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://nehta.hips/2014/03" name="detail" element="q11:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://nehta.hips/2014/03" name="detail" element="q12:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="IsPcehrAdvertisedLocalRequest">
+    <wsdl:part name="parameters" element="tns:IsPcehrAdvertisedLocalRequest" />
+  </wsdl:message>
+  <wsdl:message name="IsPcehrAdvertisedLocalResponse">
+    <wsdl:part name="parameters" element="tns:IsPcehrAdvertisedLocalResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_IsPcehrAdvertisedLocal_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://nehta.hips/2014/03" name="detail" element="q13:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_IsPcehrAdvertisedLocal_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://nehta.hips/2014/03" name="detail" element="q14:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_IsPcehrAdvertisedLocal_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://nehta.hips/2014/03" name="detail" element="q15:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_IsPcehrAdvertisedLocal_HiServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://nehta.hips/2014/03" name="detail" element="q16:HiServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_IsPcehrAdvertisedLocal_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://nehta.hips/2014/03" name="detail" element="q17:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_IsPcehrAdvertisedLocal_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://nehta.hips/2014/03" name="detail" element="q18:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="GetPathologyReportViewRequest">
+    <wsdl:part name="parameters" element="tns:GetPathologyReportViewRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetPathologyReportViewResponse">
+    <wsdl:part name="parameters" element="tns:GetPathologyReportViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetPathologyReportView_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://nehta.hips/2014/03" name="detail" element="q19:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetPathologyReportView_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://nehta.hips/2014/03" name="detail" element="q20:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetPathologyReportView_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://nehta.hips/2014/03" name="detail" element="q21:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetPathologyReportView_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://nehta.hips/2014/03" name="detail" element="q22:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetPathologyReportView_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://nehta.hips/2014/03" name="detail" element="q23:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="GetDiagnosticImagingReportViewRequest">
+    <wsdl:part name="parameters" element="tns:GetDiagnosticImagingReportViewRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetDiagnosticImagingReportViewResponse">
+    <wsdl:part name="parameters" element="tns:GetDiagnosticImagingReportViewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetDiagnosticImagingReportView_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://nehta.hips/2014/03" name="detail" element="q24:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetDiagnosticImagingReportView_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://nehta.hips/2014/03" name="detail" element="q25:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetDiagnosticImagingReportView_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://nehta.hips/2014/03" name="detail" element="q26:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetDiagnosticImagingReportView_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://nehta.hips/2014/03" name="detail" element="q27:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetDiagnosticImagingReportView_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://nehta.hips/2014/03" name="detail" element="q28:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:message name="GetHealthRecordOverviewRequest">
+    <wsdl:part name="parameters" element="tns:GetHealthRecordOverviewRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetHealthRecordOverviewResponse">
+    <wsdl:part name="parameters" element="tns:GetHealthRecordOverviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetHealthRecordOverview_InvalidRequestFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://nehta.hips/2014/03" name="detail" element="q29:InvalidRequestFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetHealthRecordOverview_ServiceOperationFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://nehta.hips/2014/03" name="detail" element="q30:ServiceOperationFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetHealthRecordOverview_InvalidUserFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://nehta.hips/2014/03" name="detail" element="q31:InvalidUserFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetHealthRecordOverview_PcehrServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://nehta.hips/2014/03" name="detail" element="q32:PcehrServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="IPcehrServiceV2_GetHealthRecordOverview_ItemNotFoundFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://nehta.hips/2014/03" name="detail" element="q33:ItemNotFoundFault" />
+  </wsdl:message>
+  <wsdl:portType name="IPcehrServiceV2">
+    <wsdl:documentation>&lt;summary&gt;
+            Web service interface for the PCEHR service version 2.
+            Contains methods which interact with the National PCEHR Service to refresh the patient's participation status, upload or supersede a discharge summary,
+            upload or supersede a Pathology Result Report, upload or supersede a Diagnostic Imaging Exam Report.
+            &lt;/summary&gt;</wsdl:documentation>
+    <wsdl:operation name="RefreshPatientParticipationStatus">
+      <wsdl:documentation>&lt;summary&gt;
+            This operation looks up a patient record in the current facility (for advertised status) and disclosure facility (for disclosed status),
+            gets a validated IHI for the patient, and optionally refreshes the advertised status from the PCEHR system.
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;RefreshPatientParticipationStatusRequest request parameters&lt;/param&gt;
+            &lt;returns&gt;Response indicating the participation status of the patient.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatus" name="RefreshPatientParticipationStatusRequest" message="tns:RefreshPatientParticipationStatusRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusResponse" name="RefreshPatientParticipationStatusResponse" message="tns:RefreshPatientParticipationStatusResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPcehrServiceV2_RefreshPatientParticipationStatus_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPcehrServiceV2_RefreshPatientParticipationStatus_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPcehrServiceV2_RefreshPatientParticipationStatus_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusHiServiceFaultFault" name="HiServiceFaultFault" message="tns:IPcehrServiceV2_RefreshPatientParticipationStatus_HiServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPcehrServiceV2_RefreshPatientParticipationStatus_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/RefreshPatientParticipationStatusItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPcehrServiceV2_RefreshPatientParticipationStatus_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadOrSupersedeDischargeSummaryLevel1A">
+      <wsdl:documentation>&lt;summary&gt;
+            Uploads a PDF discharge summary to the PCEHR National Repository, optionally superseding a previously-uploaded document.
+            This takes in the PDF document, required metadata, and any attachments and creates a CDA document before packaging it.
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;Request containing a PDF and required metadata for creating the CDA package.&lt;/param&gt;
+            &lt;returns&gt;Response indicating that the request was queued or the reason why not.&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1A" name="UploadDischargeSummaryLevel1ARequest" message="tns:UploadDischargeSummaryLevel1ARequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1AResponse" name="UploadDischargeSummaryLevel1AResponse" message="tns:UploadDischargeSummaryLevel1AResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1AInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1AServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1AInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1AHiServiceFaultFault" name="HiServiceFaultFault" message="tns:IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_HiServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1APcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/UploadOrSupersedeDischargeSummaryLevel1AItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPcehrServiceV2_UploadOrSupersedeDischargeSummaryLevel1A_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsPcehrAdvertisedLocal">
+      <wsdl:documentation>&lt;summary&gt;
+            Determines whether a PCEHR is advertised looking at local data only.
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;IsPcehrAdvertisedLocalRequest request.&lt;/param&gt;
+            &lt;returns&gt;Response indicating if the patients PCEHR is advertised and the current access code&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocal" name="IsPcehrAdvertisedLocalRequest" message="tns:IsPcehrAdvertisedLocalRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalResponse" name="IsPcehrAdvertisedLocalResponse" message="tns:IsPcehrAdvertisedLocalResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPcehrServiceV2_IsPcehrAdvertisedLocal_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPcehrServiceV2_IsPcehrAdvertisedLocal_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPcehrServiceV2_IsPcehrAdvertisedLocal_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalHiServiceFaultFault" name="HiServiceFaultFault" message="tns:IPcehrServiceV2_IsPcehrAdvertisedLocal_HiServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPcehrServiceV2_IsPcehrAdvertisedLocal_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/IsPcehrAdvertisedLocalItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPcehrServiceV2_IsPcehrAdvertisedLocal_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPathologyReportView">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the pathology report for a given patient and date range
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;UploadOrRemoveImagingRequest request.&lt;/param&gt;
+            &lt;returns&gt;Response indicating if the upload or remove imaging is successful&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportView" name="GetPathologyReportViewRequest" message="tns:GetPathologyReportViewRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportViewResponse" name="GetPathologyReportViewResponse" message="tns:GetPathologyReportViewResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportViewInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPcehrServiceV2_GetPathologyReportView_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportViewServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPcehrServiceV2_GetPathologyReportView_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportViewInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPcehrServiceV2_GetPathologyReportView_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportViewPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPcehrServiceV2_GetPathologyReportView_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetPathologyReportViewItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPcehrServiceV2_GetPathologyReportView_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDiagnosticImagingReportView">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the diagnostic imaging report for a given patient and date range
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;UploadOrRemoveImagingRequest request.&lt;/param&gt;
+            &lt;returns&gt;Response indicating if the upload or remove imaging is successful&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportView" name="GetDiagnosticImagingReportViewRequest" message="tns:GetDiagnosticImagingReportViewRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportViewResponse" name="GetDiagnosticImagingReportViewResponse" message="tns:GetDiagnosticImagingReportViewResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportViewInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPcehrServiceV2_GetDiagnosticImagingReportView_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportViewServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPcehrServiceV2_GetDiagnosticImagingReportView_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportViewInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPcehrServiceV2_GetDiagnosticImagingReportView_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportViewPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPcehrServiceV2_GetDiagnosticImagingReportView_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetDiagnosticImagingReportViewItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPcehrServiceV2_GetDiagnosticImagingReportView_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHealthRecordOverview">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the diagnostic imaging report for a given patient and date range
+            &lt;/summary&gt;
+            &lt;param name="request"&gt;UploadOrRemoveImagingRequest request.&lt;/param&gt;
+            &lt;returns&gt;Response indicating if the upload or remove imaging is successful&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverview" name="GetHealthRecordOverviewRequest" message="tns:GetHealthRecordOverviewRequest" />
+      <wsdl:output wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverviewResponse" name="GetHealthRecordOverviewResponse" message="tns:GetHealthRecordOverviewResponse" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverviewInvalidRequestFaultFault" name="InvalidRequestFaultFault" message="tns:IPcehrServiceV2_GetHealthRecordOverview_InvalidRequestFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverviewServiceOperationFaultFault" name="ServiceOperationFaultFault" message="tns:IPcehrServiceV2_GetHealthRecordOverview_ServiceOperationFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverviewInvalidUserFaultFault" name="InvalidUserFaultFault" message="tns:IPcehrServiceV2_GetHealthRecordOverview_InvalidUserFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverviewPcehrServiceFaultFault" name="PcehrServiceFaultFault" message="tns:IPcehrServiceV2_GetHealthRecordOverview_PcehrServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://nehta.hips/2014/03/pcehr/IPcehrServiceV2/GetHealthRecordOverviewItemNotFoundFaultFault" name="ItemNotFoundFaultFault" message="tns:IPcehrServiceV2_GetHealthRecordOverview_ItemNotFoundFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

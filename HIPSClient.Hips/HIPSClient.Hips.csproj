@@ -58,9 +58,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\HipsPCEHRService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseLoader\DatabaseLoaderClient.cs" />
     <Compile Include="DatabaseLoader\DatabaseLoaderRequest.cs" />
     <Compile Include="DatabaseLoader\DatabaseLoaderResponse.cs" />
+    <Compile Include="Model\Address.cs" />
+    <Compile Include="Model\ADT_A01.cs" />
+    <Compile Include="Model\Contact.cs" />
+    <Compile Include="Model\HospitalEncounter.cs" />
+    <Compile Include="Model\Identifier.cs" />
+    <Compile Include="Model\IndigenousStatus.cs" />
+    <Compile Include="Model\Patient.cs" />
     <Compile Include="PathologyImaging\PathologyImagingClient.cs" />
     <Compile Include="PathologyImaging\PathologyImagingRequest.cs" />
     <Compile Include="PathologyImaging\PathologyImagingResponse.cs" />
@@ -103,6 +115,141 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\HipsPathologyImagingService\PathologyImagingService.wsdl" />
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.CdaDocumentDetails.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.ChangeHistoryViewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.DiagnosticImagingReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.DocumentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.DocumentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.DoesPcehrExistResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GainPcehrAccessResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GetDiagnosticImagingReportViewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GetHealthRecordOverviewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GetPathologyReportViewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.HealthRecordOverview.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.HipsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.IndividualProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.IsPcehrAdvertisedLocal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.IsPcehrAdvertisedLocalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.Message.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.OperationStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.PathologyReport.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.PatientParticipationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus1.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.RefreshPatientParticipationStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.ResponseStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.UploadDischargeSummaryLevel1AResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.ViewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item.wsdl" />
+    <None Include="Connected Services\HipsPCEHRService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item1.wsdl" />
+    <None Include="Connected Services\HipsPCEHRService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item10.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item13.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item14.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item15.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item7.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item8.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item9.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\PCEHRService.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -110,6 +257,7 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\HipsDatabaseLoaderService\" />
     <WCFMetadataStorage Include="Connected Services\HipsPathologyImagingService\" />
+    <WCFMetadataStorage Include="Connected Services\HipsPCEHRService\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\HipsDatabaseLoaderService\configuration91.svcinfo" />
@@ -140,6 +288,18 @@
       <Project>{aa61f796-a939-4562-98f7-f2277a240239}</Project>
       <Name>HIPSClient.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\HipsPCEHRService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\HipsPCEHRService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\HipsPCEHRService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

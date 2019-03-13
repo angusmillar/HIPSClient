@@ -1,0 +1,1494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" />
+  <xs:complexType name="GainPcehrAccessResponse">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used for the package response from the "GainPcehrAccess" methods.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessPermission" type="tns:GainPcehrAccessStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Status of the Access.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q1:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the common response object.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IHINumber" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the validated IHI number.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="IhiRecordStatus" type="q2:IhiRecordStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the IHI Record Status - Verified/Unverified.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="IhiStatus" type="q3:IhiStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the IHI Status - Active/Deceased/Retured/Resolved/Expired.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GainPcehrAccessResponse" nillable="true" type="tns:GainPcehrAccessResponse" />
+  <xs:simpleType name="GainPcehrAccessStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration is used for returning the status of the request to gain acccess.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Permit">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Access to the PCEHR was permitted.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Deny">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Access to the PCEHR was denied.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="GainPcehrAccessStatus" nillable="true" type="tns:GainPcehrAccessStatus" />
+  <xs:complexType name="ChangeHistoryViewResponse">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ChangeHistoryViewResponse" Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PatientIdentifierBase" Namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentList" nillable="true" type="tns:ArrayOfDocumentMetaDataItem" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q4:HipsResponse" />
+      <xs:element minOccurs="0" name="IhiNumber" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="PatientIdentifier" nillable="true" type="q5:PatientIdentifierBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChangeHistoryViewResponse" nillable="true" type="tns:ChangeHistoryViewResponse" />
+  <xs:complexType name="ArrayOfDocumentMetaDataItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentMetaDataItem" nillable="true" type="tns:DocumentMetaDataItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentMetaDataItem" nillable="true" type="tns:ArrayOfDocumentMetaDataItem" />
+  <xs:complexType name="DocumentMetaDataItem">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used for individual document metadata items from DocumentList and ChangeHistoryView
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AuthorInstitution" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the AuthorInstitution.
+            The HPI-O of the organisation that authored the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorInstitution
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuthorInstitutionName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the AuthorInstitutionName.
+            The HPI-O of the organisation that authored the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorInstitutionName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuthorPerson" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the AuthorPerson.
+            The identifier of the individual that authored the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorPerson
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuthorPersonFamilyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the AuthorPersonFamilyName.
+            The family name of the author.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorPersonFamilyName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuthorPersonGivenName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the AuthorPersonGivenName.
+            The given name of the author.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorPersonGivenName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AuthorPersonNamePrefix" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the AuthorPersonNamePrefix.
+            The name prefix of the author.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The authorPersonNamePrefix
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the CreationTime.
+            The time the document was created.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The creationTime
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentClassCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentClassCode.
+            Class code (also called Document Type Code) for the type of document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentClassCode
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentClassName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentClassName.
+            Class name (also called Document Type Code) for the type of document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentClassName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentEntryUuid" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Document Entry UUID.
+            This is the internal identifier of the document within the XDS repository.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The Document Entry UUID.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentSize" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentSize.
+            The size of the CDA document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentSize
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" minOccurs="0" name="DocumentStatusCode" type="q6:DocumentStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentStatus.
+            The Status of the individual Document
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentStatusCode
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentUniqueId.
+            Unique ID of the document .
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentUniqueId
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FormatCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the FormatCode.
+            Format codes for document conformance.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The formatCode
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FormatName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the FormatName.
+            Format name for document conformance.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The formatName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Hash" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Hash.
+            A SHA-1 hash representation of the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The hash
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HealthCareFacilityTypeCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HealthCareFacilityTypeCode.
+            Health Care Facility Type Code for the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The healthCareFacilityTypeCode
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HealthCareFacilityTypeName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HealthCareFacilityTypeName.
+            Health Care Facility Type Description for the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The healthCareFacilityTypeName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PracticeSettingTypesCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the PracticeSettingTypesCode.
+            Practice Setting Code (also called Clinical Speciality Codes) of the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The practiceSettingTypesCode
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PracticeSettingTypesName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the PracticeSettingTypesName.
+            Practice Setting Description (also called Clinical Speciality Codes) of the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The practiceSettingTypesName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RepositoryUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the RepositoryUniqueId.
+            This is the identifier of the XDS Repository containing the document.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The repositoryUniqueId
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ServiceStartTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the ServiceStartTime.
+            The datetime the service being performed which caused the document to be created started.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The serviceStartTime
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ServiceStopTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the ServiceStopTime.
+            The datetime the service being performed which caused the document to be created stopped.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The serviceStopTime
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentMetaDataItem" nillable="true" type="tns:DocumentMetaDataItem" />
+  <xs:complexType name="DocumentListResponse">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="DocumentListResponse" Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PatientIdentifierBase" Namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentList" nillable="true" type="tns:ArrayOfDocumentMetaDataItem" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q7:HipsResponse" />
+      <xs:element minOccurs="0" name="IhiNumber" nillable="true" type="xs:string" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="PatientIdentifier" nillable="true" type="q8:PatientIdentifierBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentListResponse" nillable="true" type="tns:DocumentListResponse" />
+  <xs:complexType name="DocumentQuery">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object holds all query parameters that are to be sent to the document registry for retrieval.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreationTimeFrom" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the start of the range for the Document Creation Time.
+            This is the date and time when the document was completed, not when
+            work on it started.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CreationTimeTo" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the end of the range for the Document Creation Time.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" minOccurs="0" name="DocumentClassCode" nillable="true" type="q9:ArrayOfClassCodes">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of document class codes (also called document type codes) to filter the list of documents.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" minOccurs="0" name="DocumentStatus" nillable="true" type="q10:ArrayOfDocumentStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            &lt;para&gt;Gets or sets a list of Document Status codes to filter the list of documents.&lt;/para&gt;
+            &lt;para&gt;Status code "Approved" will list active documents. Status code
+            "Deprecated" will list both removed documents and superseded
+            documents (previous versions). Status code "Deleted" will list
+            only removed documents.&lt;/para&gt;
+            &lt;para&gt;Superseded documents can be retrieved, but removed documents cannot.
+            A provider organisation can reinstate a document that it removed with
+            removal reason "withdrawn" by uploading a new version. A consumer can
+            reinstate a document that was removed with the removal reason
+            "elect to remove". Once reinstated, you will then be able to view it.
+            Providers or consumers cannot reinstate documents removed with
+            removal reason "incorrect identity".
+            You can amend a document that a consumer has removed, however will not
+            be able to view the removed document or any documents in its set unless
+            the consumer reinstates it.&lt;/para&gt;
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Unique ID for retrieving the metadata for a single document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q11="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="FormatCodes" nillable="true" type="q11:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of document format codes (also known as template IDs).
+            Refer to the Code column in the DocumentFormat table for examples.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" minOccurs="0" name="HealthCareFacilityType" nillable="true" type="q12:ArrayOfHealthcareFacilityTypeCodes">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of Health Care Facility Types to filter the list of documents.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" minOccurs="0" name="PracticeSettingTypes" nillable="true" type="q13:ArrayOfPracticeSettingTypes">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of Practice Settings (also called Clinical Speciality Codes) to filter the list of documents.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ServiceStartTimeFrom" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the start of the range for the service start time.
+            The service start time is the date and time when the healthcare
+            service that caused the document started, e.g. the admission of
+            the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ServiceStartTimeTo" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the end of the range for the service start time.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ServiceStopTimeFrom" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the start of the range for the service stop time.
+            The service stop time is the date and time when the healthcare
+            service that caused the document ended, e.g. the discharge of
+            the patient. In many cases it's equal to the service start time.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ServiceStopTimeTo" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the end of the range for the service stop time.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentQuery" nillable="true" type="tns:DocumentQuery" />
+  <xs:complexType name="IndividualOperationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            The result of an individual operation status query.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" minOccurs="0" name="ClinicalDocument" nillable="true" type="q14:ClinicalDocument">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Clinical document from the Individual Queue Item.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            This can be the Upload/Supersede or Removal operation
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DecodedPackage" nillable="true" type="xs:base64Binary">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the decoded package that is to be uploaded from the Individual Queue Item.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The decoded package for an Upload or Supersede only
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" minOccurs="0" name="QueuedOperation" nillable="true" type="q15:PcehrMessageQueue">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the queued operation from the Individual Queue Item.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The queued operation.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="Response" nillable="true" type="q16:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HipsResponse.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The response.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualOperationStatus" nillable="true" type="tns:IndividualOperationStatus" />
+  <xs:complexType name="LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="LocalClinicalDocumentResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PatientIdentifierBase" Namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
+      <xs:element minOccurs="0" name="Document" nillable="true" type="xs:base64Binary" />
+      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q17:HipsResponse" />
+      <xs:element minOccurs="0" name="LocalClinicalDocumentMetaData" nillable="true" type="tns:LocalClinicalDocumentMetaData" />
+      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="PatientIdentifier" nillable="true" type="q18:PatientIdentifierBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l" nillable="true" type="tns:LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l" />
+  <xs:complexType name="ArrayOfAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" nillable="true" type="tns:Attachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachment" nillable="true" type="tns:ArrayOfAttachment" />
+  <xs:complexType name="Attachment">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Represents an attachment to a CDA document.
+            The namespace of this class must stay as HIPS.PcehrSchemas for compatibility
+            with the legacy PCEHRService that does not have separate DTO classes.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Contents" nillable="true" type="xs:base64Binary">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the contents of the attachment.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The contents of the attachment.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the file name of the attachment.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The file name of the attachment.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachment" nillable="true" type="tns:Attachment" />
+  <xs:complexType name="LocalClinicalDocumentMetaData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used for individual local document meta-data items from the local document store
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionDate" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the date and time of admission for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AdmissionReason" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the admission reason for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DischargeDate" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the date and time of discharge for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the type of the document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponsibleProviderFamilyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the family name of the patient's responsible provider for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponsibleProviderGivenNames" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the given names of the patient's responsible provider for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponsibleProviderSuffix" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the suffix of the patient's responsible provider (such as 'Jr' or 'Sr') for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ResponsibleProviderTitle" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the title of the patient's responsible provider (such as 'Dr', 'Ms' or 'Mr') for the episode that this document relates to.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SourceSystemDocumentId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Document ID of the document version.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SourceSystemSetId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Set ID of the document, which is common to all versions of the document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Status" type="tns:LocalDocumentStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the status of the document within the local repository.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SupersededDate" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the date and time when this document version was superseded by a newer version uploaded to the PCEHR system.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UploadedDate" nillable="true" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the date and time when this document version was uploaded to the PCEHR system.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalClinicalDocumentMetaData" nillable="true" type="tns:LocalClinicalDocumentMetaData" />
+  <xs:simpleType name="LocalDocumentStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Status of the document process for upload and remove.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document status is unknown.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PendingUpload">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document is queued for upload.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Uploaded">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document has been uploaded.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FailedUpload">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document failed to upload.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PendingRemove">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document is queued for removal.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Removed">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document has been removed.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FailedRemove">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The document failed to remove.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LocalDocumentStatus" nillable="true" type="tns:LocalDocumentStatus" />
+  <xs:complexType name="OperationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This class represents the result of an operation status query.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" minOccurs="0" name="QueuedOperations" nillable="true" type="q19:ArrayOfPcehrMessageQueue">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of pending and failed queue operations.
+            If the upload or remove request is not yet started or still in progress, it will be in this list with status of pending.
+            If the upload or remove request failed, it will be in this list with a status of failed.
+            By default, all successful uploads are removed from the queued list and thus not displayed.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="Response" nillable="true" type="q20:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets an indicator of success or failure of this request and the reason for failure.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" minOccurs="0" name="UploadedDocumentVersions" nillable="true" type="q21:ArrayOfClinicalDocumentVersion">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of individual versions of uploaded clinical documents.
+            This list contains the complete package contents of each
+            version uploaded, and the date and time when it was uploaded.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" minOccurs="0" name="UploadedDocuments" nillable="true" type="q22:ArrayOfClinicalDocument">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a list of uploaded clinical documents. If the upload or remove request
+            succeeded, the document will be in this list and the document status
+            will show Uploaded or Removed as appropriate.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OperationStatus" nillable="true" type="tns:OperationStatus" />
+  <xs:complexType name="QueuedOperationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            The result of an Get Queued Operation List query.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="QueuedOperations" nillable="true" type="tns:ArrayOfMessageQueueItem">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the list of queued operations
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The queued operation.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="Response" nillable="true" type="q23:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HipsResponse.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The response.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueuedOperationStatus" nillable="true" type="tns:QueuedOperationStatus" />
+  <xs:complexType name="ArrayOfMessageQueueItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageQueueItem" nillable="true" type="tns:MessageQueueItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessageQueueItem" nillable="true" type="tns:ArrayOfMessageQueueItem" />
+  <xs:complexType name="MessageQueueItem">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used for individual message queue items populated from the PcehrMessageQueue and related tables
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdmissionDateTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the admission date and time of the episode. This may be a real episode or a
+            stub created for the document upload.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CDAPackageSize" type="xs:long">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the byte size of the CDA package (ZIP file)
+            that is to be uploaded to the PCEHR system.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets details of the error that occurred. This is only populated if the queued operation has failed.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentFormatCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the code (template ID) of the document format from the DocumentFormat
+            reference table.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentFormatDescription" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the description of the document format (template) from the DocumentFormat
+            reference table.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentTypeCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the code for the document type, from the DocumentType reference table.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentTypeDescription" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the description of the document type,
+            from the DocumentType reference table.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentTypeId" nillable="true" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the primary key of the DocumentType table row
+            determined using the "code" element in the CDA document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="EpisodeId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the primary key of the Episode table row. The episode record will be a stub
+            if the ValidatedIhi patient identifier was supplied and there was no actual admission
+            at the specified date and time.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FacilityId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the database primary key of the Hospital table row for the facility.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FacilityName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the readable name of the hospital facility.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IHI" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the IHI of the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PatientId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the primary key of the HospitalPatient table row for the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PcehrMessageQueueId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the database primary key of the PcehrMessageQueue table row that represents this queue item.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="QueueItemDateCreated" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the date and time that the item was created.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="QueueOperationId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the database primary key of the QueueOperation table that identifies what type of
+            operation it is. Upload or Supersede is 1, while Remove is 2.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="QueueOperationName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the readable name of the operation.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="QueueStatusId" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the database primary key of the QueueStatus table corresponding
+            to the queue status of this queued operation.
+            Pending is 1, Success is 2 and Failure is 3.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="QueueStatusName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the readable name of the queue status.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RequestSize" type="xs:long">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the size (in bytes) of the SOAP request. This is only populated if the queued operation has failed.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SourceSystemSetId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the CDA document set ID.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MessageQueueItem" nillable="true" type="tns:MessageQueueItem" />
+  <xs:complexType name="ViewRequestBase">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used to pass the request to access the view from the PCEHR system.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="ViewRequestBase" nillable="true" type="tns:ViewRequestBase" />
+  <xs:complexType name="PrescriptionAndDispenseViewRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ViewRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the from date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Filter the view by start date value. Prescription or dispense clinical event date (serviceStopTime).
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the to date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Filter the view by end date value. Prescription or dispense clinical event date (serviceStopTime).
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PrescriptionAndDispenseViewRequest" nillable="true" type="tns:PrescriptionAndDispenseViewRequest" />
+  <xs:complexType name="MedicareOverviewViewRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ViewRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the from date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Filter the view by start date value. Medicare Overview clinical event date (serviceStopTime).
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the to date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Filter the view by end date value. Medicare Overview  clinical event date (serviceStopTime).
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="MedicareOverviewViewRequest" nillable="true" type="tns:MedicareOverviewViewRequest" />
+  <xs:complexType name="PathologyReportViewRequest">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ViewRequestBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FromDate" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the from date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Filter the view by start date value. Prescription or dispense clinical event date (serviceStopTime).
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ToDate" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the to date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Filter the view by end date value. Prescription or dispense clinical event date (serviceStopTime).
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PathologyReportViewRequest" nillable="true" type="tns:PathologyReportViewRequest" />
+  <xs:complexType name="ViewResponse">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used to return the view and possible list of attachments from the PCEHR system.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ViewResponseBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the Attachments
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The attachments
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the FileName
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The fileName
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the MimeType
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The mimeType
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="TemplateId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentUniqueId
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentUniqueID
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ViewResponse" nillable="true" type="tns:ViewResponse" />
+  <xs:complexType name="ViewResponseBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Document" nillable="true" type="xs:base64Binary">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Document
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The document
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q24:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HipsResponse, which contains information about success, warnings or failure.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The HipsResponse
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ViewResponseBase" nillable="true" type="tns:ViewResponseBase" />
+  <xs:complexType name="DoesPcehrExistResponse">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This class holds the returned response when a check to see if the patient has a PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="AccessCodeRequired" type="q25:AccessCodeRequired">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the access code required indicator.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The access code required.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q26:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HIPS response, including indicator of success or failure and information about any failures.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The HIPS response.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PcehrExists" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the does pcehr exists flag.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The pcehr exists.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DoesPcehrExistResponse" nillable="true" type="tns:DoesPcehrExistResponse" />
+  <xs:complexType name="LocalClinicalDocumentListResponse">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="LocalClinicalDocumentListResponse" Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="PatientIdentifierBase" Namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentList" nillable="true" type="tns:ArrayOfLocalClinicalDocumentMetaData" />
+      <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q27:HipsResponse" />
+      <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="PatientIdentifier" nillable="true" type="q28:PatientIdentifierBase" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LocalClinicalDocumentListResponse" nillable="true" type="tns:LocalClinicalDocumentListResponse" />
+  <xs:complexType name="ArrayOfLocalClinicalDocumentMetaData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LocalClinicalDocumentMetaData" nillable="true" type="tns:LocalClinicalDocumentMetaData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLocalClinicalDocumentMetaData" nillable="true" type="tns:ArrayOfLocalClinicalDocumentMetaData" />
+  <xs:complexType name="DocumentRequest">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used to pass the request to download the document from the PCEHR repository
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DocumentUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentUniqueID
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentUniqueID
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RepositoryUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the RepositoryUniqueId
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The repositoryUniqueId
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SaveDocument" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets whether to save the document in the PCEHR Data Store.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            Whether to save the document in the PCEHR Data Store.
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentRequest" nillable="true" type="tns:DocumentRequest" />
+  <xs:complexType name="DocumentResponse">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This object is used to return the document and possible list of attachments from the PCEHR repository,
+            the document returned is related to the DocumentUniqueID that was passed in the DocumentRequest
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Attachments
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The attachments
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Document" nillable="true" type="xs:base64Binary">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Document
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The document
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the DocumentUniqueId
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The documentUniqueID
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the FileName
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The fileName
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="HipsResponse" nillable="true" type="q29:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the HipsResponse, which contains information about success, warnings or failure.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The HipsResponse
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the MimeType
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The mimeType
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="RepositoryUniqueId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the RepositoryUniqueId
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The repositoryUniqueId
+            &lt;/value&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentResponse" nillable="true" type="tns:DocumentResponse" />
+</xs:schema>

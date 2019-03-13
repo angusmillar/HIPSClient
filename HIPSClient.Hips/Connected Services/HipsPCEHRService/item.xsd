@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://nehta.hips/2014/03/pcehr" elementFormDefault="qualified" targetNamespace="http://nehta.hips/2014/03/pcehr" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd12" namespace="http://nehta.hips/2014/03" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" />
+  <xs:element name="RefreshPatientParticipationStatusRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://nehta.hips/2014/03" minOccurs="0" name="PatientIdentifier" nillable="true" type="q1:PatientIdentifierBase" />
+        <xs:element xmlns:q2="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q2:UserBase" />
+        <xs:element xmlns:q3="http://nehta.hips/2014/03" minOccurs="0" name="DisclosureFacility" nillable="true" type="q3:HospitalIdentifier" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" minOccurs="0" name="ForceRefresh" type="q4:ForceRefreshOption" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RefreshPatientParticipationStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q5:ResponseStatus" />
+        <xs:element xmlns:q6="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q6:ArrayOfMessage" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" minOccurs="0" name="Data" nillable="true" type="q7:PatientParticipationStatus" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadDischargeSummaryLevel1ARequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PdfDocument" nillable="true" type="xs:base64Binary" />
+        <xs:element xmlns:q8="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q8:UserBase" />
+        <xs:element xmlns:q9="http://nehta.hips/2014/03" minOccurs="0" name="PatientIdentifier" nillable="true" type="q9:PatientIdentifierBase" />
+        <xs:element xmlns:q10="http://nehta.hips/2014/03" minOccurs="0" name="CdaHeaderMetadata" nillable="true" type="q10:CdaHeaderMetadata" />
+        <xs:element xmlns:q11="http://nehta.hips/2014/03" minOccurs="0" name="Attachments" nillable="true" type="q11:ArrayOfCdaAttachment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UploadDischargeSummaryLevel1AResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q12:ResponseStatus" />
+        <xs:element xmlns:q13="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q13:ArrayOfMessage" />
+        <xs:element xmlns:q14="http://nehta.hips/2014/03" minOccurs="0" name="Data" nillable="true" type="q14:CdaDocumentDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPcehrAdvertisedLocalRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://nehta.hips/2014/03" minOccurs="0" name="PatientIdentifier" nillable="true" type="q15:PatientIdentifierBase" />
+        <xs:element xmlns:q16="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q16:UserBase" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsPcehrAdvertisedLocalResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q17:ResponseStatus" />
+        <xs:element xmlns:q18="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q18:ArrayOfMessage" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" minOccurs="0" name="Data" nillable="true" type="q19:IsPcehrAdvertisedLocal" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPathologyReportViewRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://nehta.hips/2014/03" minOccurs="0" name="PatientIdentifier" nillable="true" type="q20:PatientIdentifierBase" />
+        <xs:element xmlns:q21="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q21:UserBase" />
+        <xs:element minOccurs="0" name="DateFrom" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="DateTo" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPathologyReportViewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q22:ResponseStatus" />
+        <xs:element xmlns:q23="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q23:ArrayOfMessage" />
+        <xs:element xmlns:q24="http://nehta.hips/2014/03" minOccurs="0" name="Data" nillable="true" type="q24:ArrayOfPathologyReport" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="Individual" nillable="true" type="q25:IndividualProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDiagnosticImagingReportViewRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://nehta.hips/2014/03" minOccurs="0" name="PatientIdentifier" nillable="true" type="q26:PatientIdentifierBase" />
+        <xs:element xmlns:q27="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q27:UserBase" />
+        <xs:element minOccurs="0" name="DateFrom" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="DateTo" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDiagnosticImagingReportViewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q28:ResponseStatus" />
+        <xs:element xmlns:q29="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q29:ArrayOfMessage" />
+        <xs:element xmlns:q30="http://nehta.hips/2014/03" minOccurs="0" name="Data" nillable="true" type="q30:ArrayOfDiagnosticImagingReport" />
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="Individual" nillable="true" type="q31:IndividualProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHealthRecordOverviewRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://nehta.hips/2014/03" minOccurs="0" name="PatientIdentifier" nillable="true" type="q32:PatientIdentifierBase" />
+        <xs:element xmlns:q33="http://nehta.hips/2014/03" minOccurs="0" name="User" nillable="true" type="q33:UserBase" />
+        <xs:element minOccurs="0" name="ClinicalSynopsisLength" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHealthRecordOverviewResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://nehta.hips/2014/03" minOccurs="0" name="Status" type="q34:ResponseStatus" />
+        <xs:element xmlns:q35="http://nehta.hips/2014/03" minOccurs="0" name="Messages" nillable="true" type="q35:ArrayOfMessage" />
+        <xs:element xmlns:q36="http://nehta.hips/2014/03" minOccurs="0" name="Data" nillable="true" type="q36:HealthRecordOverview" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

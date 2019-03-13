@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+  <xs:complexType name="PatientParticipationResponse">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This class is the response from HIPS for a request to get the PCEHR
+            participation status, either for a single patient or for all patients
+            with recent changes to their records.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PatientParticipationList" nillable="true" type="tns:ArrayOfPatientParticipationStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The information required for the calling system to identify one or
+            more patient records and their current PCEHR participation status.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="Response" nillable="true" type="q1:HipsResponse">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets an indicator of success or failure and in case of failure,
+            the reason for the failure.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientParticipationResponse" nillable="true" type="tns:PatientParticipationResponse" />
+  <xs:complexType name="ArrayOfPatientParticipationStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PatientParticipationStatus" nillable="true" type="tns:PatientParticipationStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPatientParticipationStatus" nillable="true" type="tns:ArrayOfPatientParticipationStatus" />
+  <xs:complexType name="PatientParticipationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            The information in this class represents the current PCEHR participation
+            status for a patient. It holds all the information required for the
+            calling system to identify the patient record, including the MRN, the
+            state patient identifier and the validated IHI.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HospitalCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            A code in the in the hospital code system that was specified in the service request,
+            which identifies the hospital that allocated the MRN.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Mrn" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            A patient identifier unique within the hospital, typically allocated by the hospital’s PAS or PMI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ParticipationStatus" type="tns:ParticipationStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the current participation status of the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StatePatientId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a patient identifier unique within the state or territory and
+            typically allocated by the enterprise master patient index.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="ValidatedIhi" nillable="true" type="q2:ValidatedIhi">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets an Individual Healthcare Identifier (IHI) allocated by the national
+            healthcare identifier service, and the information required to
+            check the validity of the IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientParticipationStatus" nillable="true" type="tns:PatientParticipationStatus" />
+  <xs:simpleType name="ParticipationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Represents the PCEHR participation status of a patient.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoValidIhi">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            HIPS was not able to obtain or validate the IHI for this patient. HIPS will not be able to
+            upload the discharge summary for this patient until this situation is resolved.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrNotAdvertised">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            This patient may not have registered for PCEHR, or may have chosen to hide the existence of
+            his/her PCEHR. The clinical system should not send the discharge summary, unless the patient
+            explicitly requests the provider to do so.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrAdvertised">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            This patient has chosen to advertise the existence of his/her PCEHR, or the health provider
+            organisation has already gained access to the PCEHR, so the clinical system should send the
+            discharge summary.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RequestedUpload">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            This patient disclosed the existence of his/her PCEHR to the health provider organisation, and
+            thereby requested the upload of his/her discharge summary for all hospitals that are part of
+            this health provider organisation, so the clinical system should send the discharge summary,
+            regardless of whether the PCEHR is advertised.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ParticipationStatus" nillable="true" type="tns:ParticipationStatus" />
+</xs:schema>

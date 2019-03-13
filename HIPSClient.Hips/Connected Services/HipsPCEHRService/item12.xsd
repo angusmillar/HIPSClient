@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" />
+  <xs:complexType name="ClinicalDocument">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This class represents a Clinical Document
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" base="q1:BaseSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClinicalDocumentId" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the Clinical Document id.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The Clinical Document id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ClinicalDocumentStatusId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+             Gets or sets the clinical document status ID.
+            
+             See &lt;see cref="T:Enumerators.ClinicalDocumentStatus"&gt;the ClinicalDocumentStatus enumerator&lt;/see&gt; for expected values.
+             &lt;/summary&gt;
+             &lt;value&gt;
+             The clinical document status ID.
+             &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DocumentTypeCode" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the document type code.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DocumentTypeDescription" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the document type description.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The document type description.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DocumentTypeId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the document type id.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The document type id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="EpisodeId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the episode id that this document is related to.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The episode id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="RemovalReasonDescription" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the removal reason description.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The removal reason description.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="RemovalReasonId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the removal reason id.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The removal reason id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="RemovedDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the removed date.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The removed date.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SourceSystemSetId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the source system set id.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The source system set id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClinicalDocument" nillable="true" type="tns:ClinicalDocument" />
+  <xs:complexType name="PcehrMessageQueue">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This class represents queued operation for a PCEHR service invocation
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" base="q2:BaseSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the error details and stack trace.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The error details and stack trace.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="EpisodeId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the episode ID.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The episode ID.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="PcehrMessageQueueId" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the primary key for the PCEHR message queue object.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The PCEHR message queue ID.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="QueueOperationId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the queue operation ID.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The queue operation ID.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="QueueOperationName" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the queue operation name.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The queue operation name.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="QueueStatusDescription" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the queue status description.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The queue status description.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="QueueStatusId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the queue status ID.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The queue status ID.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Request" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the SOAP request.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The SOAP request.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Response" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the SOAP response.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The SOAP response.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SerialisedObject" nillable="true" type="xs:base64Binary">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the serialised object.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The serialised object.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SourceSystemDocumentId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the SourceSystemDocument ID.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The SourceSystemDocument ID.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SourceSystemSetId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the SourceSystemSet ID.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The SourceSystemSet ID.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PcehrMessageQueue" nillable="true" type="tns:PcehrMessageQueue" />
+  <xs:complexType name="ArrayOfPcehrMessageQueue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PcehrMessageQueue" nillable="true" type="tns:PcehrMessageQueue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPcehrMessageQueue" nillable="true" type="tns:ArrayOfPcehrMessageQueue" />
+  <xs:complexType name="ArrayOfClinicalDocumentVersion">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClinicalDocumentVersion" nillable="true" type="tns:ClinicalDocumentVersion" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClinicalDocumentVersion" nillable="true" type="tns:ArrayOfClinicalDocumentVersion" />
+  <xs:complexType name="ClinicalDocumentVersion">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This class represents an individual versioned Clinical Document
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" base="q3:BaseSchema">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClinicalDocumentId" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the clinical document id that this version is related to.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The clinical document id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="ClinicalDocumentVersionId" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the clinical document version id.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The clinical document version id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Package" nillable="true" type="xs:base64Binary">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the package - This is the zipped clinical document and all it's attachments.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The package.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SourceSystemDocumentId" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the source system document id.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The source system document id.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="SupersededDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the date that this document was superseded.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The superseded date.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UploadedDate" nillable="true" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the date/time the document was uploaded to the PCEHR.
+            &lt;/summary&gt;
+            &lt;value&gt;
+            The uploaded date.
+            &lt;/value&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="ClinicalDocumentVersion" nillable="true" type="tns:ClinicalDocumentVersion" />
+  <xs:complexType name="ArrayOfClinicalDocument">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClinicalDocument" nillable="true" type="tns:ClinicalDocument" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClinicalDocument" nillable="true" type="tns:ArrayOfClinicalDocument" />
+</xs:schema>

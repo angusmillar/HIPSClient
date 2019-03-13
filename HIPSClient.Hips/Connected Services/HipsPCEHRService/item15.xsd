@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="IhiStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Represents an IHI status. Some values are defined by the national HI Service.
+            Others are defined by HIPS to represent various unresolved alert conditions.
+            See the documentation for each member for details.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            No value has been supplied. Where a value for IhiStatus is required, this
+            represents an invalid invocation of the web service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Active">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents active status as defined by the HI Service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Deceased">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents deceased status as defined by the HI Service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Retired">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents retired status as defined by the HI Service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Expired">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents expired status as defined by the HI Service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Resolved">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents resolved status as defined by the HI Service. The current
+            IHI for a patient should never have this status, but it can be
+            recorded for historical IHI assignments.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents unknown status. This status is assigned to patients whose IHI
+            has not yet been obtained, or when an IHI of record status Unverified or
+            Provisional was found.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicateIhi">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to obtaining an IHI when the same
+            IHI is assigned to another patient record from the same hospital. The
+            administrator must determine whether the two records represent the
+            same person, if so then merge the two records, if not then report a
+            potential replica to Medicare Australia.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicatePatient">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to obtaining an IHI using the same
+            demographic details that are assigned to another patient record from
+            the same hospital. The administrator must determine whether the two
+            records represent the same person, if so then merge the two records,
+            if not then report a potential replica to Medicare Australia.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MergeConflict">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to merging two patient records that have
+            different IHI numbers. The administrator must choose the correct IHI to
+            resolve this alert.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServiceUnavailable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">103</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents a patient whose IHI could not be obtained or validated because of
+            an error while connecting to the HI Service. The IHI search will be repeated
+            by the background process until it is successful.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MedicareDvaChangeMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">104</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to changing the Medicare card number or
+            DVA file number of the patient, if the patient already had an IHI assigned,
+            and a search using the new Medicare or DVA number found no IHI or found a
+            different IHI to the one that was assigned to the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DemographicMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">105</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to changing the date of birth of the patient,
+            if the patient already had an IHI assigned, and a search using the current IHI
+            with the new date of birth found no IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IhiStatus" nillable="true" type="tns:IhiStatus" />
+  <xs:simpleType name="ForceRefreshOption">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This is used to specify the conditions when the PCEHR
+            advertised status should be refreshed.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that a value has not been specified
+            providing this value will cause a validation error.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Never">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that there is no need to refresh the PCEHR
+            advertised status and the previously stored information will be returned.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WhenNotAdvertised">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that the PCEHR advertised status should be refreshed
+            if there is no previously stored information that indicates the patient has a PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Always">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Indicates that the PCEHR advertised status should always be refreshed.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ForceRefreshOption" nillable="true" type="tns:ForceRefreshOption" />
+  <xs:simpleType name="ParticipationStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Represents the PCEHR participation status of a patient.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NoValidIhi">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            HIPS was not able to obtain or validate the IHI for this patient. HIPS will not be able to
+            upload the discharge summary for this patient until this situation is resolved.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrNotAdvertised">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            This patient may not have registered for PCEHR, or may have chosen to hide the existence of
+            his/her PCEHR. The clinical system should not send the discharge summary, unless the patient
+            explicitly requests the provider to do so.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PcehrAdvertised">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            This patient has chosen to advertise the existence of his/her PCEHR, or the health provider
+            organisation has already gained access to the PCEHR, so the clinical system should send the
+            discharge summary.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RequestedUpload">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            This patient disclosed the existence of his/her PCEHR to the health provider organisation, and
+            thereby requested the upload of his/her discharge summary for all hospitals that are part of
+            this health provider organisation, so the clinical system should send the discharge summary,
+            regardless of whether the PCEHR is advertised.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ParticipationStatus" nillable="true" type="tns:ParticipationStatus" />
+  <xs:simpleType name="AttachmentType">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Represents the file type and semantics of an attachment.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            No value has been supplied. This represents an invalid invocation of the web service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AttachedImageJpeg">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents an additional JPEG image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a JPEG image.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AttachedImagePng">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents an additional PNG image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a PNG image.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AttachedImageTiff">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents an additional TIFF image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a TIFF image.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AttachedImageGif">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents an additional GIF image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a GIF image.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AttachedDocumentPdf">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents an additional linked document. This will be linked from the body of the
+            CDA document. This file must be a PDF document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="OrganisationalLogoPng">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents the organisational logo that will appear in the header of the CDA document.
+            This file must be a PNG image. If no attachment is supplied with this type, and there
+            is a logo in the database Hospital table, then HIPS will include the logo from the
+            database.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AttachmentType" nillable="true" type="tns:AttachmentType" />
+</xs:schema>
