@@ -23,5 +23,14 @@ namespace HIPSClient.Common.HIPS
     
     public static string MRNIdentifierTypeCode = "MR";
 
+
+    public static string HPIIAssigningAuthority = "AUSHIC";
+    public static string MedicareProviderNumberAssigningAuthority = "AUSHICPR";
+
+    public static string MyHealthRecordDiscoveredFlagCode = "AUSEHR";
+    
+    
+
+
   }
 }

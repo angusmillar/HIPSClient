@@ -10,19 +10,39 @@ namespace HIPSClient.Hips.Model
 {
   public enum PatientIdentifierType
   {
+    /// <summary>
+    /// Australian Medicare Number
+    /// </summary>
     [EnumLiteral("MC")]
     MedicareNumber,
+    /// <summary>
+    /// Individual Healthcare Identifier
+    /// </summary>
     [EnumLiteral("NI")]
     IHI,
+    /// <summary>
+    /// Department of Veterans Affairs Number
+    /// </summary>
     [EnumLiteral("DVA")]
     DVA,
+    /// <summary>
+    /// Hospital Medicare Record Number
+    /// </summary>
     [EnumLiteral("MR")]
     MedicalRecordNumber,
+    /// <summary>
+    /// EMPI state wide identifier
+    /// </summary>
     [EnumLiteral("StatePatientId")]
-    StatePatientId
-  }
+    StatePatientId,
+    /// <summary>
+    /// PI: Used by pathology and DI when the identifier is their internal patient key
+    /// </summary>
+    [EnumLiteral("PI")]   
+    PatientInternalIdentifier
+}
 
-  public class Identifier
+  public class PatientIdentifier
   {    
     public string Value { get; set; }
 
@@ -42,6 +62,11 @@ namespace HIPSClient.Hips.Model
           case PatientIdentifierType.MedicalRecordNumber:
             if (string.IsNullOrWhiteSpace(_AssigningAuthority))
               throw new ApplicationException($"You must set the AssigningAuthority for identifiers of PatientIdentifierType equal to {PatientIdentifierType.MedicalRecordNumber.ToString()} " +
+                $"The identifier value of {this.Value} did not have an AssigningAuthority set. ");
+            return _AssigningAuthority;
+          case PatientIdentifierType.PatientInternalIdentifier:
+            if (string.IsNullOrWhiteSpace(_AssigningAuthority))
+              throw new ApplicationException($"You must set the AssigningAuthority for identifiers of PatientIdentifierType equal to {PatientIdentifierType.PatientInternalIdentifier.ToString()} " +
                 $"The identifier value of {this.Value} did not have an AssigningAuthority set. ");
             return _AssigningAuthority;
           case PatientIdentifierType.StatePatientId:
@@ -72,6 +97,8 @@ namespace HIPSClient.Hips.Model
             return PatientIdentifierType.MedicalRecordNumber.GetLiteral();
           case PatientIdentifierType.StatePatientId:
             return PatientIdentifierType.StatePatientId.GetLiteral();
+          case PatientIdentifierType.PatientInternalIdentifier:
+            return PatientIdentifierType.PatientInternalIdentifier.GetLiteral();
           default:
             throw new System.ComponentModel.InvalidEnumArgumentException(Type.ToString(), (int)Type, typeof(PatientIdentifierType));
         }

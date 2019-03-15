@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,11 +9,14 @@ namespace HIPSClient.Hips.PathologyImaging
 {
   public class PathologyImagingClient
   {
-    public PathologyImagingResponse Path(PathologyImagingRequest Request)
+    public PathologyImagingResponse UploadPathologyReport(PathologyImagingRequest Request)
     {
-      var Response = new PathologyImagingResponse();
-      
-      using (var client = new HipsPathologyImagingService.PathologyImagingServiceClient("WSHttpBinding_IPathologyImagingService"))
+      var Response = new PathologyImagingResponse();                             
+      string MethodAddress = "PathologyImagingService/HIPS.Service.PathologyImagingService";      
+      WSHttpBinding Binding = new WSHttpBinding(SecurityMode.None);
+      Uri EndpointUri = new Uri(Common.HIPS.HipsConfig.CoreApplicationBaseEndpoint, MethodAddress);
+      EndpointAddress EndpointAddress = new EndpointAddress(EndpointUri);
+      using (var client = new HipsPathologyImagingService.PathologyImagingServiceClient(Binding, EndpointAddress))
       {
         var LocalUser = new HipsPathologyImagingService.LocalUser()
         {
@@ -25,14 +29,35 @@ namespace HIPSClient.Hips.PathologyImaging
         try
         {
           HipsPathologyImagingService.Message[] Messages;
-          var ClientResponse = client.UploadOrRemovePathology(Request.HL7ORUMessage, LocalUser, null, "", "", out Messages);
-          
+          var ClientResponse = client.UploadOrRemovePathology(Request.GetHL7Message, LocalUser, null, "", "", out Messages);
+          switch (ClientResponse)
+          {
+            case HipsPathologyImagingService.ResponseStatus.None:
+              Response.Status = PathologyImagingResponseStatus.None;              
+              break;
+            case HipsPathologyImagingService.ResponseStatus.OK:
+              Response.Status = PathologyImagingResponseStatus.OK; 
+              break;
+            case HipsPathologyImagingService.ResponseStatus.Warning:
+              Response.Status = PathologyImagingResponseStatus.Warning;
+              break;
+            default:
+              throw new System.ComponentModel.InvalidEnumArgumentException(ClientResponse.ToString(), (int)ClientResponse, typeof(HipsPathologyImagingService.ResponseStatus));              
+          }
+          if (Messages != null && Messages.Count() > 0)
+          {
+            foreach(var item in Messages)
+            {
+              Response.Message = Response.Message + " , " + item.Description;
+            }
+          }
+
           return Response;
 
         }
         catch (System.Exception Exec)
         {
-          Response.IsSuccess = false;
+          Response.Status = PathologyImagingResponseStatus.Error;
           Response.Message = Exec.Message;
           return Response;
         }

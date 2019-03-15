@@ -5,13 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static HIPSClient.Hips.Model.ADT;
 
 namespace HIPSClient.Hips.DatabaseLoader
 {
   public class DatabaseLoaderRequest
   {
+    public HL7EventType EventType { get; set; }
     public string HL7ADTMessage { get; set; }
-    public ADT_A01 ADT_A01 { get; set; }
+    public ADT ADT_A01 { get; set; }
     public string GetHL7Message
     {
       get
@@ -22,7 +24,7 @@ namespace HIPSClient.Hips.DatabaseLoader
         }
         else
         {
-          return ADT_A01.GetHL7Message();
+          return ADT_A01.GetA01Message();
         }        
       }
     }

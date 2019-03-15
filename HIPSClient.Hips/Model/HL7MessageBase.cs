@@ -3,23 +3,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HIPSClient.Common.Tools.Attributes;
 using HIPSClient.Common.Tools.Enum;
 using HIPSClient.Common.Tools.String;
 using PeterPiper.Hl7.V2.Model;
 
 namespace HIPSClient.Hips.Model
 {
-  public class ADT_A01
+  public enum HL7MessageType
   {
-    public Patient Patient { get; set; }
-    public HospitalEncounter HospitalEncounter { get; set; }
-    public string GetHL7Message()
+    [EnumLiteral("ADT")]
+    ADT,
+    [EnumLiteral("ORU")]
+    ORU
+  };
+
+  public enum HL7EventType
+  {
+    [EnumLiteral("A01")]
+    A01,
+    [EnumLiteral("A08")]
+    A08,
+    [EnumLiteral("R01")]
+    R01
+  };
+
+
+  public abstract class HL7MessageBase
+  {    
+    protected virtual ISegment CreateMSHSegment(HL7MessageType MessageType,  HL7EventType ADTEvent)
     {
-      var oHL7 = Creator.Message("2.4", "ADT", "A01");
+      IMessage oHL7 = Creator.Message("2.4", MessageType.GetLiteral(), ADTEvent.GetLiteral()); ;
+
       //Sending Application
       oHL7.Segment("MSH").Field(3).AsString = "HIPSClient";
+
       //Sending Facility
-      oHL7.Segment("MSH").Field(4).AsString = Common.HIPS.HipsConfig.HospitalCode;
+      switch (MessageType)
+      {
+        case HL7MessageType.ADT:
+          oHL7.Segment("MSH").Field(4).AsString = Common.HIPS.HipsConfig.HospitalCode;
+          break;
+        case HL7MessageType.ORU:
+          oHL7.Segment("MSH").Field(4).AsString = Common.HIPS.HipsConfig.LISHospitalCode;
+          break;
+        default:
+          throw new System.ComponentModel.InvalidEnumArgumentException(MessageType.ToString(), (int)MessageType, typeof(HL7MessageType));
+      }
+      
       //Receiving Application
       oHL7.Segment("MSH").Field(5).AsString = "HIPS";
       //Receiving Facility
@@ -31,16 +62,13 @@ namespace HIPSClient.Hips.Model
       oHL7.Segment("MSH").Field(17).AsString = "AU";
       oHL7.Segment("MSH").Field(18).AsString = "ASCII";
       oHL7.Segment("MSH").Field(19).AsString = "EN";
+      return oHL7.Segment("MSH").Clone();
+    }
 
-      var EVN = Creator.Segment("EVN");
-      oHL7.Add(EVN);
-      EVN.Field(1).AsString = "A01";
-      EVN.Field(1).AsString = oHL7.Segment("MSH").Field(6).AsString;
-
-      
-
+    protected virtual ISegment CreatePIDSegment(Patient Patient)
+    {
       var PID = Creator.Segment("PID");
-      oHL7.Add(PID);
+
       PID.Field(1).AsString = "1";
       //StateIdentifier
       if (Patient.StateIdentifier != null)
@@ -61,7 +89,7 @@ namespace HIPSClient.Hips.Model
         foreach (var Id in Patient.IdentifierList)
         {
           var PID3 = Creator.Field();
-          if (Id.Type == Model.PatientIdentifierType.MedicalRecordNumber)
+          if (Id.Type == Model.PatientIdentifierType.MedicalRecordNumber || Id.Type == Model.PatientIdentifierType.PatientInternalIdentifier)
           {
             //HIPS Pads 9 char to the left with zeros for MRNs, so may as well do it here to be clear.
             PID3.Component(1).AsString = Id.Value.PadLeft(9, '0');
@@ -141,21 +169,31 @@ namespace HIPSClient.Hips.Model
       {
         if (Patient.WorkContact.Value.IsSet())
         {
-          PID.Field(14).Component(2).AsString = "WPN";
+          PID.Field(15).Component(2).AsString = "WPN";
           if (IsMobileNumber(Patient.WorkContact.Value))
           {
-            PID.Field(14).Component(3).AsString = "CP";
+            PID.Field(15).Component(3).AsString = "CP";
           }
           else
           {
-            PID.Field(14).Component(3).AsString = "PH";
+            PID.Field(15).Component(3).AsString = "PH";
           }
-          PID.Field(14).Component(7).AsString = Patient.WorkContact.Value;
+          PID.Field(15).Component(7).AsString = Patient.WorkContact.Value;
         }
       }
 
+      //DateTime of Death
+      if (Patient.DateOfDeath.HasValue)
+        PID.Field(27).Convert.DateTime.SetDateTimeOffset(Patient.DateOfDeath.Value, true, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.DateHourMin);
+
+
+      return PID;
+    }
+
+    protected virtual ISegment CreatePV1Segment(HospitalEncounter HospitalEncounter)
+    {
       var PV1 = Creator.Segment("PV1");
-      oHL7.Add(PV1);
+
       PV1.Field(2).AsString = "I";
       //Ward
       if (HospitalEncounter.Ward.IsSet())
@@ -176,15 +214,12 @@ namespace HIPSClient.Hips.Model
       if (HospitalEncounter.DischargeDate.HasValue)
         PV1.Field(44).Convert.DateTime.SetDateTimeOffset(new DateTimeOffset(HospitalEncounter.DischargeDate.Value, new TimeSpan(10, 0, 0)), false, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.Date);
 
-      return oHL7.AsStringRaw;
-    }
+      return PV1;
+    } 
 
     private bool IsMobileNumber(string value)
     {
       return (value.RemoveWhitespace().StartsWith("04") || value.RemoveWhitespace().StartsWith("+614"));
     }
-
-    
-
   }
 }

@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace HIPSClient.Hips.PathologyImaging
 {
+  public enum PathologyImagingResponseStatus { None, OK, Warning, Error };
   public class PathologyImagingResponse
   {
-    public bool IsSuccess { get; set; }
+    public PathologyImagingResponseStatus Status { get; set; }
     public string Message { get; set; }
   }
 }

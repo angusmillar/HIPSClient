@@ -13,61 +13,61 @@ namespace HIPSClient.Runner
   {
     static void Main(string[] args)
     {
-      var ADT_A01 = new ADT_A01();
-      ADT_A01.Patient = new Patient();
-      ADT_A01.Patient.Family = "CURRY";
-      ADT_A01.Patient.Given = "ELLENS";
-      ADT_A01.Patient.Title = "Ms";
-      ADT_A01.Patient.DateOfBirth = new DateTime(2003, 09, 15);
-      ADT_A01.Patient.Gender = Gender.Female;
+      var ADT = new ADT();
+      ADT.Patient = new Patient();
+      ADT.Patient.Family = "ENGLISH";
+      ADT.Patient.Given = "CLINTON";
+      ADT.Patient.Title = "Mr";
+      ADT.Patient.DateOfBirth = new DateTime(1957, 02, 14);
+      ADT.Patient.Gender = Gender.Male;
 
-      ADT_A01.Patient.IndigenousStatus = new IndigenousStatus()
+      ADT.Patient.IndigenousStatus = new IndigenousStatus()
       {
         IndigenousStatusType = IndigenousStatusType.NotStatedInadequatelyDescribed
       };
 
-      ADT_A01.Patient.Address = new Address()
+      ADT.Patient.Address = new Address()
       {
-        AddressLineOne = "",
-        AddressLineTwo = "9 HERB AVE",
-        Suburb = "BROADBEACH",
-        PostCode = "4218",
+        AddressLineOne = "Unit 1",
+        AddressLineTwo = "111 Adha Street",
+        Suburb = "Brisbane",
+        PostCode = "4000",
         State = "QLD",
         Country = "AUS"
       };
 
-      ADT_A01.Patient.HomeContact = new Contact()
+      ADT.Patient.HomeContact = new Contact()
       {
         Value = "93235615"
       };
 
-      ADT_A01.Patient.WorkContact = new Contact()
+      ADT.Patient.WorkContact = new Contact()
       {
         Value = "0414778341"
       };
 
-      ADT_A01.Patient.IdentifierList = new List<Identifier>();
+      ADT.Patient.IdentifierList = new List<PatientIdentifier>();
 
       //MRN
-      ADT_A01.Patient.IdentifierList.Add(new Identifier()
+      ADT.Patient.IdentifierList.Add(new PatientIdentifier()
       {
-        Value = "0000020",
+        Value = "2142363",
         Type = PatientIdentifierType.MedicalRecordNumber,
         AssigningAuthority = Common.HIPS.HipsConfig.HospitalCode
       });
 
       //Medicare Number
-      ADT_A01.Patient.IdentifierList.Add(new Identifier()
+      ADT.Patient.IdentifierList.Add(new PatientIdentifier()
       {
-        Value = "4950827451",
+        Value = "6951129981",
         Type = PatientIdentifierType.MedicareNumber
       });
 
 
-      ADT_A01.HospitalEncounter = new HospitalEncounter()
+      ADT.HospitalEncounter = new HospitalEncounter()
       {
         PatientClass = PatientClassType.InPatient,
-        VisitNumber = "000001",
+        VisitNumber = "000002",
         Bed = "Bed",
         Room = "Room",
         Ward = "Ward",
@@ -77,7 +77,78 @@ namespace HIPSClient.Runner
 
       
       var DatabaseLoader = new DatabaseLoaderClient();
-      var Response = DatabaseLoader.ADT(new DatabaseLoaderRequest() {  ADT_A01 = ADT_A01 });
+      var Response = DatabaseLoader.ADT(new DatabaseLoaderRequest()
+      {
+        EventType = HL7EventType.A01,
+        ADT_A01 = ADT
+      });
+
+      //======== Pathology =========================================
+
+      var ORU = new ORU();
+      ORU.Patient = ADT.Patient;
+      //Switch the patient MRN from Hospital Authority Code to the LIS Authority code.
+      var PrimaryIdentifier = ORU.Patient.IdentifierList.SingleOrDefault(x => x.AssigningAuthority == Common.HIPS.HipsConfig.HospitalCode);
+      PrimaryIdentifier.AssigningAuthority = Common.HIPS.HipsConfig.LISHospitalCode;
+      PrimaryIdentifier.Type = PatientIdentifierType.PatientInternalIdentifier;
+
+      ORU.HospitalEncounter = ADT.HospitalEncounter;
+
+      ORU.Order = new PathologyOrder();
+      ORU.Order.OrderedDateTime = new DateTimeOffset(2019, 03, 15, 08, 45, 00, new TimeSpan(10, 0, 0));
+      ORU.Order.CollectionDateTime = new DateTimeOffset(2019, 03, 15, 10, 30, 00, new TimeSpan(10, 0, 0));
+
+      ORU.Order.OrderingProvider = new Provider();
+      ORU.Order.OrderingProvider.Family = "Millar";
+      ORU.Order.OrderingProvider.Given = "Angus";
+      ORU.Order.OrderingProvider.Title = "Mr";
+      ORU.Order.OrderingProvider.Identifer = new ProviderIdentifier()
+      {
+        Type = ProviderIdentifierType.Local,
+        AssigningAuthority = "PathWest",
+        Value = "123456"
+      };
+
+      //ORU.Order.IsMyHealthRecordDisclosed = false;
+
+      ORU.RequestList = new List<PathologyRequest>();
+      var Request = new PathologyRequest();
+      ORU.RequestList.Add(Request);
+      Request.OrderIdentifier = "0000002";
+      Request.ReportIdentifier = "ADHA.P19-00000002-FBP-0";
+      Request.ReportedDateTime = new DateTimeOffset(2019, 03, 15, 14, 15, 00, 00, new TimeSpan(10, 0, 0));
+      Request.DepartmentCode = "HM";
+      Request.ReportName = new UniversalServiceIdentifier()
+      {
+        LocalCode = "HFBP",
+        LocalCodeDescription = "FULL BLOOD PICTURE",
+        LocalCodeSystemCode = "PATHWEST",
+        SnomedTermValue = "26604007",
+        SnomedPreferedTerm = "Full blood count"
+      };
+
+      Request.DocumentAuthor = new Provider()
+      {
+        Family = "Holmes",
+        Given = "Harry",
+        Title = "Dr",
+        Identifer = new ProviderIdentifier()
+        {
+          Type = ProviderIdentifierType.HPII,
+          Value = "8003613233362573"
+        }
+      };
+      
+      Request.ReportStatus = ResultStatus.Final;
+
+      ORU.PDF = new PDFReport()
+      {
+        Filepath = @"C:\GitRepository\HL7V2Examples\Pathology\NEHTA AS4700.2 2012 Examples\Result Output Example 1\FBC NEHTA Pathology Report PDF.pdf",
+        ResultStatus = ResultStatus.Final        
+      };
+
+      HIPSClient.Hips.PathologyImaging.PathologyImagingClient PathClient = new Hips.PathologyImaging.PathologyImagingClient();
+      Hips.PathologyImaging.PathologyImagingResponse PathologyResponse = PathClient.UploadPathologyReport(new Hips.PathologyImaging.PathologyImagingRequest() { ORU = ORU });
 
     }
   }

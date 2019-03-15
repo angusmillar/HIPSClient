@@ -27,10 +27,12 @@ namespace HIPSClient.Hips.Model
     public DateTime DateOfBirth { get; set; }
     public Gender Gender { get; set; }
     public IndigenousStatus IndigenousStatus { get; set; }
-    public Identifier StateIdentifier { get; set; }
-    public List<Identifier> IdentifierList { get; set; }
+    public PatientIdentifier StateIdentifier { get; set; }
+    public List<PatientIdentifier> IdentifierList { get; set; }
     public Address Address { get; set; }
     public Contact HomeContact { get; set; }
     public Contact WorkContact { get; set; }
+    public DateTimeOffset? DateOfDeath { get; set; }
+
   }
 }
