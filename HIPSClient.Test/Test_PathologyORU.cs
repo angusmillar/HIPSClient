@@ -20,13 +20,13 @@ namespace HIPSClient.Test
       //Prepare 
       var GenerateADT = new Support.GenerateADT();
       var DatabaseLoader = new DatabaseLoaderClient();
-      var ADT = GenerateADT.A01();
+      var ADT = GenerateADT.A01_Hungerford();
 
       //Act
       var Response = DatabaseLoader.ADT(new DatabaseLoaderRequest()
       {
         EventType = HL7EventType.A01,
-        ADT_A01 = GenerateADT.A01()
+        ADT_A01 = GenerateADT.A01_Hungerford()
       });
 
       //Assert
