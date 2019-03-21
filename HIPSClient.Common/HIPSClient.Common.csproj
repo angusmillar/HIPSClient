@@ -58,8 +58,6 @@
     <Compile Include="Tools\Enum\ReflectionHelper.cs" />
     <Compile Include="Tools\String\StringExtentions.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HL7Message\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
