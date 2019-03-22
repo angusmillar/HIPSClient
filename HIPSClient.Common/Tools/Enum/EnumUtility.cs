@@ -1,4 +1,7 @@
 ﻿using HIPSClient.Common.Tools.Attributes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace HIPSClient.Common.Tools.Enum
 {
@@ -13,5 +16,16 @@ namespace HIPSClient.Common.Tools.Enum
       else
         return null;
     }
+
+    public static IDictionary<string, Int32> ConvertEnumToDictionary<K>()
+    {
+      if (typeof(K).BaseType != typeof(System.Enum))
+      {
+        throw new InvalidCastException();
+      }
+
+      return System.Enum.GetValues(typeof(K)).Cast<Int32>().ToDictionary(currentItem => System.Enum.GetName(typeof(K), currentItem));
+    }
+
   }
 }

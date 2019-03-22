@@ -1,4 +1,5 @@
-﻿using HIPSClient.Hips.Model;
+﻿using HIPSClient.Common.Tools.Enum;
+using HIPSClient.Hips.Model;
 using System.Collections.ObjectModel;
 
 namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
@@ -16,30 +17,44 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
       {
         new PatientIdentifierItemVM()
         {
-           AssigningAuthority = "AssginAuth",
-           Type = "Medicare",
-           IdentifierType = "MC",
+           AssigningAuthority = "RBWH",
+           Type = PatientIdentifierType.MedicalRecordNumber.ToString(),
+           IdentifierType = PatientIdentifierType.MedicalRecordNumber.GetLiteral(),
            Value = "12345"
         },
         new PatientIdentifierItemVM()
         {
-           AssigningAuthority = "AssginAuth2",
-           Type = "IHI",
-           IdentifierType = "MC2",
+           AssigningAuthority = "AUSLAB",
+           Type =  PatientIdentifierType.PatientInternalIdentifier.ToString(),
+           IdentifierType = PatientIdentifierType.PatientInternalIdentifier.GetLiteral(),
            Value = "1234562"
         },
         new PatientIdentifierItemVM()
         {
-           AssigningAuthority = "AssginAuth2",
-           Type = "DVA",
-           IdentifierType = "MC2",
-           Value = "4B123456"
+           AssigningAuthority = PatientIdentifier.GetAssigningAuthorityForPatientIdentifierType(PatientIdentifierType.DVA),
+           Type = PatientIdentifierType.DVA.ToString(),
+           IdentifierType = PatientIdentifierType.DVA.GetLiteral(),
+           Value = "NABC1234C"
         },
         new PatientIdentifierItemVM()
         {
-           AssigningAuthority = "AssginAuth2",
-           Type = "MR",
-           IdentifierType = "MC2",
+           AssigningAuthority = PatientIdentifier.GetAssigningAuthorityForPatientIdentifierType(PatientIdentifierType.MedicareNumber),
+           Type = PatientIdentifierType.MedicareNumber.ToString(),
+           IdentifierType = PatientIdentifierType.MedicareNumber.GetLiteral(),
+           Value = "61405230931"
+        },
+        new PatientIdentifierItemVM()
+        {
+           AssigningAuthority = PatientIdentifier.GetAssigningAuthorityForPatientIdentifierType(PatientIdentifierType.IHI),
+           Type = PatientIdentifierType.IHI.ToString(),
+           IdentifierType = PatientIdentifierType.IHI.GetLiteral(),
+           Value = "8003608333428779"
+        },
+        new PatientIdentifierItemVM()
+        {
+           AssigningAuthority = PatientIdentifier.GetAssigningAuthorityForPatientIdentifierType(PatientIdentifierType.StatePatientId),
+           Type = PatientIdentifierType.StatePatientId.ToString(),
+           IdentifierType = PatientIdentifierType.StatePatientId.GetLiteral(),
            Value = "QLD123456"
         }
 

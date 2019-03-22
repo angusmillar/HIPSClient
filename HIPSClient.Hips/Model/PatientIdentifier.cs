@@ -51,29 +51,11 @@ namespace HIPSClient.Hips.Model
     {
       get
       {
-        switch (Type)
-        {
-          case PatientIdentifierType.MedicareNumber:
-            return Common.HIPS.HipsConfig.MedicareAssigningAuthority;
-          case PatientIdentifierType.IHI:
-            return Common.HIPS.HipsConfig.IHIAssigningAuthority;            
-          case PatientIdentifierType.DVA:
-            return Common.HIPS.HipsConfig.DVAAssigningAuthority;
-          case PatientIdentifierType.MedicalRecordNumber:
-            if (string.IsNullOrWhiteSpace(_AssigningAuthority))
-              throw new ApplicationException($"You must set the AssigningAuthority for identifiers of PatientIdentifierType equal to {PatientIdentifierType.MedicalRecordNumber.ToString()} " +
-                $"The identifier value of {this.Value} did not have an AssigningAuthority set. ");
-            return _AssigningAuthority;
-          case PatientIdentifierType.PatientInternalIdentifier:
-            if (string.IsNullOrWhiteSpace(_AssigningAuthority))
-              throw new ApplicationException($"You must set the AssigningAuthority for identifiers of PatientIdentifierType equal to {PatientIdentifierType.PatientInternalIdentifier.ToString()} " +
-                $"The identifier value of {this.Value} did not have an AssigningAuthority set. ");
-            return _AssigningAuthority;
-          case PatientIdentifierType.StatePatientId:
-            return PatientIdentifierType.StatePatientId.GetLiteral();
-          default:
-            throw new System.ComponentModel.InvalidEnumArgumentException(Type.ToString(), (int)Type, typeof(PatientIdentifierType));
-        }        
+        string PredefinedAssigingAuthority = GetAssigningAuthorityForPatientIdentifierType(Type);
+        if (PredefinedAssigingAuthority == string.Empty)
+          return _AssigningAuthority;
+        else
+          return PredefinedAssigingAuthority;        
       }
       set
       {
@@ -107,5 +89,25 @@ namespace HIPSClient.Hips.Model
 
     public PatientIdentifierType Type { get; set; }
 
+    public static string GetAssigningAuthorityForPatientIdentifierType(PatientIdentifierType Type)
+    {
+      switch (Type)
+      {
+        case PatientIdentifierType.MedicareNumber:
+          return Common.HIPS.HipsConfig.MedicareAssigningAuthority;
+        case PatientIdentifierType.IHI:
+          return Common.HIPS.HipsConfig.IHIAssigningAuthority;
+        case PatientIdentifierType.DVA:
+          return Common.HIPS.HipsConfig.DVAAssigningAuthority;
+        case PatientIdentifierType.MedicalRecordNumber:
+          return string.Empty;
+        case PatientIdentifierType.PatientInternalIdentifier:
+          return string.Empty;
+        case PatientIdentifierType.StatePatientId:
+          return PatientIdentifierType.StatePatientId.GetLiteral();
+        default:
+          throw new System.ComponentModel.InvalidEnumArgumentException(Type.ToString(), (int)Type, typeof(PatientIdentifierType));
+      }
+    }
   }
 }

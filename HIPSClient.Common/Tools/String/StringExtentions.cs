@@ -14,7 +14,7 @@ namespace HIPSClient.Common.Tools.String
     }
 
     public static string RemoveWhitespace(this string value)
-    {
+    {      
       return new string(value.Where(c => !Char.IsWhiteSpace(c)).ToArray());
     }
   }

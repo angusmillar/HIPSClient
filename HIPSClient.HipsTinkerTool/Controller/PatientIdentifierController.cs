@@ -26,5 +26,11 @@ namespace HIPSClient.HipsTinkerTool.Controller
       PatientIdentifierGrid.PatientIdentifierList.Remove(Item);
       Console.WriteLine($"You clicked Remove ");
     }
+
+    public void OnPatientIdentifierItemAdd(ViewModel.Pathology.PatientIdentifierItemVM Item)
+    {
+      PatientIdentifierGrid.PatientIdentifierList.Add(Item);
+      Console.WriteLine($"You clicked Remove ");
+    }
   }
 }

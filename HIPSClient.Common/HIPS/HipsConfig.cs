@@ -29,8 +29,5 @@ namespace HIPSClient.Common.HIPS
 
     public static string MyHealthRecordDiscoveredFlagCode = "AUSEHR";
     
-    
-
-
   }
 }

@@ -18,8 +18,6 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       InitializeLayout();
     }
 
-
-
     public void InitializeLayout()
     {
       Header = "Pathology";
@@ -39,9 +37,7 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       TabMainGrid.Children.Add(PatientIdentiferGroup);
      
       Common.PatientIdentifierGrid PatientIdentifierGrid = new Common.PatientIdentifierGrid(PathologyVM.PatientIdentifierList);
-      PatientIdentiferGroup.Content = PatientIdentifierGrid;
-
-      
+      PatientIdentiferGroup.Content = PatientIdentifierGrid;      
     }
     
     private Grid GenerateMainGrid()

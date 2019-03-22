@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Identifiers">
+      <HintPath>..\..\Identifiers\Identifiers\bin\Release\Identifiers.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -54,10 +57,12 @@
     <Compile Include="Controller\PatientIdentifierController.cs" />
     <Compile Include="Controller\PathologyController.cs" />
     <Compile Include="Style\GlobalStyleManager.cs" />
+    <Compile Include="ViewModel\BaseValidationVM.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
     <Compile Include="ViewModel\Pathology\PathologyVM.cs" />
     <Compile Include="ViewModel\Pathology\PatientIdentifierItemVM.cs" />
     <Compile Include="View\ADT\ADTTab.cs" />
+    <Compile Include="View\Common\PatientIdentifierEditWindow.cs" />
     <Compile Include="View\Common\PatientIdentifierGrid.cs" />
     <Compile Include="View\IView.cs" />
     <Compile Include="MainWindow.cs" />
