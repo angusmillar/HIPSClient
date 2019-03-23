@@ -1,6 +1,7 @@
 ﻿using HIPSClient.Common.Tools.Enum;
 using HIPSClient.Hips.Model;
 using System.Collections.ObjectModel;
+using HIPSClient.HipsTinkerTool.ViewModel.Common;
 
 namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
 {

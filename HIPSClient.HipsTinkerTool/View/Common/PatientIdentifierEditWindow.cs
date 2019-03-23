@@ -1,6 +1,6 @@
 ﻿using HIPSClient.Common.Tools.String;
 using HIPSClient.HipsTinkerTool.Style;
-using HIPSClient.HipsTinkerTool.ViewModel.Pathology;
+using HIPSClient.HipsTinkerTool.ViewModel.Common;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

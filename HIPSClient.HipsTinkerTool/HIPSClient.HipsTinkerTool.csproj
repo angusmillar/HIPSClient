@@ -60,7 +60,7 @@
     <Compile Include="ViewModel\BaseValidationVM.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
     <Compile Include="ViewModel\Pathology\PathologyVM.cs" />
-    <Compile Include="ViewModel\Pathology\PatientIdentifierItemVM.cs" />
+    <Compile Include="ViewModel\Common\PatientIdentifierItemVM.cs" />
     <Compile Include="View\ADT\ADTTab.cs" />
     <Compile Include="View\Common\PatientIdentifierEditWindow.cs" />
     <Compile Include="View\Common\PatientIdentifierGrid.cs" />

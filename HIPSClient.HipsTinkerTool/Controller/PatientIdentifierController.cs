@@ -21,13 +21,13 @@ namespace HIPSClient.HipsTinkerTool.Controller
       Console.WriteLine($"You clicked it ");
     }
 
-    public void OnPatientIdentifierItemRemove(ViewModel.Pathology.PatientIdentifierItemVM Item)
+    public void OnPatientIdentifierItemRemove(ViewModel.Common.PatientIdentifierItemVM Item)
     {
       PatientIdentifierGrid.PatientIdentifierList.Remove(Item);
       Console.WriteLine($"You clicked Remove ");
     }
 
-    public void OnPatientIdentifierItemAdd(ViewModel.Pathology.PatientIdentifierItemVM Item)
+    public void OnPatientIdentifierItemAdd(ViewModel.Common.PatientIdentifierItemVM Item)
     {
       PatientIdentifierGrid.PatientIdentifierList.Add(Item);
       Console.WriteLine($"You clicked Remove ");

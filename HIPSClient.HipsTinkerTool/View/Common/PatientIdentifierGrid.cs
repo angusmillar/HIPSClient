@@ -1,6 +1,6 @@
 ﻿using HIPSClient.Common.Tools.Enum;
 using HIPSClient.HipsTinkerTool.Controller;
-using HIPSClient.HipsTinkerTool.ViewModel.Pathology;
+using HIPSClient.HipsTinkerTool.ViewModel.Common;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;

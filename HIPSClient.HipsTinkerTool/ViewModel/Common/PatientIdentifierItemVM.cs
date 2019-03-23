@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
+namespace HIPSClient.HipsTinkerTool.ViewModel.Common
 {
   public class PatientIdentifierItemVM : BaseValidationVM
   {
