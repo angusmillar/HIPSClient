@@ -16,7 +16,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
     private IDictionary<string, int> PatientIdentifierTypeDictionary;
     public PatientIdentifierItemVM()
     {
-      PatientIdentifierTypeDictionary = HIPSClient.Common.Tools.Enum.EnumUtility.ConvertEnumToDictionary<HIPSClient.Hips.Model.PatientIdentifierType>();      
+      PatientIdentifierTypeDictionary = HIPSClient.Common.Tools.Enum.EnumUtility.ConvertEnumToUIDisplayDictionary<HIPSClient.Hips.Model.PatientIdentifierType>();      
     }
 
     public PatientIdentifierItemVM(HIPSClient.Hips.Model.PatientIdentifier PatientIdentifier) 
@@ -75,7 +75,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
     {
       get
       {
-        return _Type.ToString();
+        return _Type.GetUIDisplay();
       }
       set
       {               

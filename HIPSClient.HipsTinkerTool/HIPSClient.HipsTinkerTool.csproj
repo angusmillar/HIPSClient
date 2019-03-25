@@ -54,15 +54,21 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PatientIdentifierController.cs" />
     <Compile Include="Controller\PathologyController.cs" />
     <Compile Include="Style\GlobalStyleManager.cs" />
     <Compile Include="ViewModel\BaseValidationVM.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
+    <Compile Include="ViewModel\Common\AddressVM.cs" />
+    <Compile Include="ViewModel\Common\PatientVM.cs" />
     <Compile Include="ViewModel\Pathology\PathologyVM.cs" />
     <Compile Include="ViewModel\Common\PatientIdentifierItemVM.cs" />
     <Compile Include="View\ADT\ADTTab.cs" />
+    <Compile Include="View\Common\AddressWindow.cs" />
+    <Compile Include="View\Common\BaseValidationWindow.cs" />
     <Compile Include="View\Common\PatientIdentifierEditWindow.cs" />
+    <Compile Include="View\Common\PatientGrid.cs" />
     <Compile Include="View\Common\PatientIdentifierGrid.cs" />
     <Compile Include="View\IView.cs" />
     <Compile Include="MainWindow.cs" />

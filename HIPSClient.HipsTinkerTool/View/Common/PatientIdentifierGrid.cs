@@ -27,12 +27,13 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
       IdentiferListView = GeneratePatientIdentifierListBox();
       Grid.SetRow(IdentiferListView, 0);
+      Grid.SetRowSpan(IdentiferListView, 3);
       Grid.SetColumn(IdentiferListView, 0);
 
       this.Children.Add(IdentiferListView);
 
       StackPanel ButtonStack = GenerateButtonStackPanel();
-      Grid.SetRow(ButtonStack, 1);
+      Grid.SetRow(ButtonStack, 4);
       Grid.SetColumn(ButtonStack, 0);
       this.Children.Add(ButtonStack);
 
@@ -44,7 +45,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       RemovePatientIdButton.Content = "Remove";
       RemovePatientIdButton.Width = 60;
       RemovePatientIdButton.HorizontalAlignment = HorizontalAlignment.Right;
-      RemovePatientIdButton.Margin = new Thickness(2);
+      RemovePatientIdButton.Margin = new Thickness(3);
+      RemovePatientIdButton.Padding = new Thickness(3);
       RemovePatientIdButton.Click += new RoutedEventHandler((obj, e) =>
       {
         if (IdentiferListView.SelectedItem is PatientIdentifierItemVM Item)
@@ -58,7 +60,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       EditPatientIdButton.Content = "Edit";
       EditPatientIdButton.Width = 60;
       EditPatientIdButton.HorizontalAlignment = HorizontalAlignment.Right;
-      EditPatientIdButton.Margin = new Thickness(2);
+      EditPatientIdButton.Margin = new Thickness(3);
+      EditPatientIdButton.Padding = new Thickness(3);
       EditPatientIdButton.Click += new RoutedEventHandler((obj, e) =>
       {
         if (IdentiferListView.SelectedItem is PatientIdentifierItemVM Item)
@@ -73,7 +76,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       AddPatientIdButon.Content = "Add";
       AddPatientIdButon.Width = 60;
       AddPatientIdButon.HorizontalAlignment = HorizontalAlignment.Right;
-      AddPatientIdButon.Margin = new Thickness(2);
+      AddPatientIdButon.Margin = new Thickness(3);
+      AddPatientIdButon.Padding = new Thickness(3);
       AddPatientIdButon.Click += new RoutedEventHandler((obj, e) =>
       {
         var NewPatientIdItem = new PatientIdentifierItemVM();
@@ -103,7 +107,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     private ListBox GeneratePatientIdentifierListBox()
     {
       var TypeTextBoxFactory = new FrameworkElementFactory(typeof(Label));
-      TypeTextBoxFactory.SetValue(Label.WidthProperty, 140.0);
+      TypeTextBoxFactory.SetValue(Label.WidthProperty, 143.0);
       TypeTextBoxFactory.SetValue(Label.FontWeightProperty, FontWeights.DemiBold);
       TypeTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("Type"));
 
@@ -129,8 +133,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
       ListBox ResultListBox = new ListBox();
       ResultListBox.HorizontalAlignment = HorizontalAlignment.Stretch;
-      ResultListBox.Height = 100;
-      ResultListBox.Margin = new Thickness(2);
+      ResultListBox.Height = 90;
+      ResultListBox.Margin = new Thickness(3);
       ResultListBox.SelectionMode = SelectionMode.Single;
       ResultListBox.Name = "ListBoxPatientIdList";
       ResultListBox.SelectedIndex = 0;
@@ -146,6 +150,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
       var Row1 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
       var Row2 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
+      var Row3 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
+      var Row4 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
 
       var Grid = new Grid();
 
@@ -154,6 +160,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
       this.RowDefinitions.Add(Row1);
       this.RowDefinitions.Add(Row2);
+      this.RowDefinitions.Add(Row3);
+      this.RowDefinitions.Add(Row4);
 
     }
   }

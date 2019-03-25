@@ -1,9 +1,4 @@
 ﻿using HIPSClient.HipsTinkerTool.View.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HIPSClient.HipsTinkerTool.Controller
 {
@@ -14,23 +9,16 @@ namespace HIPSClient.HipsTinkerTool.Controller
     public PatientIdentifierController(PatientIdentifierGrid PatientIdentifierGrid)
     {
       this.PatientIdentifierGrid = PatientIdentifierGrid;
-    }
-
-    public void OnPatientIdentifierItemSelection()
-    {
-      Console.WriteLine($"You clicked it ");
-    }
+    }    
 
     public void OnPatientIdentifierItemRemove(ViewModel.Common.PatientIdentifierItemVM Item)
     {
-      PatientIdentifierGrid.PatientIdentifierList.Remove(Item);
-      Console.WriteLine($"You clicked Remove ");
+      PatientIdentifierGrid.PatientIdentifierList.Remove(Item);     
     }
 
     public void OnPatientIdentifierItemAdd(ViewModel.Common.PatientIdentifierItemVM Item)
     {
-      PatientIdentifierGrid.PatientIdentifierList.Add(Item);
-      Console.WriteLine($"You clicked Remove ");
+      PatientIdentifierGrid.PatientIdentifierList.Add(Item);      
     }
   }
 }

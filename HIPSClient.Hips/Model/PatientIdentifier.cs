@@ -13,31 +13,37 @@ namespace HIPSClient.Hips.Model
     /// <summary>
     /// Australian Medicare Number
     /// </summary>
+    [EnumUIDisplay("Medicare Number")]
     [EnumLiteral("MC")]
-    MedicareNumber,
+    MedicareNumber, 
     /// <summary>
     /// Individual Healthcare Identifier
     /// </summary>
+    [EnumUIDisplay("IHI")]
     [EnumLiteral("NI")]
     IHI,
     /// <summary>
     /// Department of Veterans Affairs Number
     /// </summary>
+    [EnumUIDisplay("DVA")]
     [EnumLiteral("DVA")]
     DVA,
     /// <summary>
     /// Hospital Medicare Record Number
     /// </summary>
+    [EnumUIDisplay("Medical Record Number")]
     [EnumLiteral("MR")]
     MedicalRecordNumber,
     /// <summary>
     /// EMPI state wide identifier
     /// </summary>
+    [EnumUIDisplay("State Identifier")]
     [EnumLiteral("StatePatientId")]
     StatePatientId,
     /// <summary>
     /// PI: Used by pathology and DI when the identifier is their internal patient key
     /// </summary>
+    [EnumUIDisplay("Patient Identifier")]
     [EnumLiteral("PI")]   
     PatientInternalIdentifier
 }

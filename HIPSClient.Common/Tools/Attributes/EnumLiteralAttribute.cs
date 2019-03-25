@@ -19,4 +19,21 @@ namespace HIPSClient.Common.Tools.Attributes
       get { return literal; }
     }
   }
+
+  [AttributeUsage(AttributeTargets.Field, Inherited = false, AllowMultiple = false)]
+  public sealed class EnumUIDisplayAttribute : Attribute
+  {
+    readonly string _Display;
+    
+    public EnumUIDisplayAttribute(string Display)
+    {
+      this._Display = Display;
+    }
+
+    public string Display
+    {
+      get { return this._Display; }
+    }
+  }
+
 }

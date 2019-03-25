@@ -9,12 +9,16 @@ namespace HIPSClient.Hips.Model
 {
   public enum Gender
   {
+    [EnumUIDisplay("Male")]
     [EnumLiteral("M")]
     Male,
+    [EnumUIDisplay("Female")]
     [EnumLiteral("F")]
     Female,
+    [EnumUIDisplay("Unknown")]
     [EnumLiteral("U")]
     Unknown,
+    [EnumUIDisplay("Other")]
     [EnumLiteral("O")]
     Other
   }

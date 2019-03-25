@@ -9,6 +9,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
   {
     public BaseValidationVM()
     {
+      _CanSave = true;
       _ErrorDic = new Dictionary<string, string>();
     }
     
@@ -33,7 +34,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
         _ErrorDic.Remove(Type);
       }
       OnPropertyChanged("ErrorMessage");
-    }
+    }    
     protected void ClearAllErrors()
     {
       _ErrorDic.Clear();
@@ -55,6 +56,20 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
       }
     }
 
+    private bool _CanSave;
+    public bool CanSave
+    {
+      get
+      {
+        return _CanSave;
+
+      }
+      set
+      {
+        _CanSave = value;
+        OnPropertyChanged("CanSave");
+      }
+    }
     public string this[string PropertyName]
     {
       get
@@ -62,6 +77,8 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
         return IsValid(PropertyName);
       }
     }
+
+    
 
     //We override this to do the validation in the inherited class
     //if not overridden then IsValid is always true.

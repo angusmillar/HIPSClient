@@ -29,10 +29,21 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       //The ViewModel
       DataContext = PathologyVM;
 
+      var PatientGroup = new GroupBox();
+      PatientGroup.Header = "Patient";
+      Grid.SetRow(PatientGroup, 0);
+      Grid.SetColumn(PatientGroup, 0);
+      Grid.SetColumnSpan(PatientGroup, 2);
+      TabMainGrid.Children.Add(PatientGroup);
+
+      Common.PatientGrid PatientGrid = new Common.PatientGrid(PathologyVM.Patient);
+      PatientGroup.Content = PatientGrid;
+
       var PatientIdentiferGroup = new GroupBox();
       PatientIdentiferGroup.Header = "Patient Identifiers";
       Grid.SetRow(PatientIdentiferGroup, 0);
-      Grid.SetColumn(PatientIdentiferGroup, 0);
+      Grid.SetRowSpan(PatientIdentiferGroup, 4);
+      Grid.SetColumn(PatientIdentiferGroup, 2);
       Grid.SetColumnSpan(PatientIdentiferGroup, 2);
       TabMainGrid.Children.Add(PatientIdentiferGroup);
      
@@ -47,10 +58,10 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       var Col3 = new ColumnDefinition();
       var Col4 = new ColumnDefinition();
 
-      var Row1 = new RowDefinition();
-      var Row2 = new RowDefinition(); 
-      var Row3 = new RowDefinition();
-      var Row4 = new RowDefinition();
+      var Row1 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
+      var Row2 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
+      var Row3 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
+      var Row4 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
 
       var Grid = new Grid();
 

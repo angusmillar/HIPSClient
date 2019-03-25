@@ -21,6 +21,38 @@ namespace HIPSClient.HipsTinkerTool.Style
       //Button.Foreground = new SolidColorBrush(Colors.White);
     }
 
+    public static DockPanel GetValueDatePickerDockPanel(string LabelName, int LabelWidth, string ValueBindingName)
+    {
+      Label ValueLabel = new Label();
+      ValueLabel.Content = LabelName;
+      ValueLabel.Width = LabelWidth;
+      ValueLabel.VerticalContentAlignment = VerticalAlignment.Center;
+      ValueLabel.FontWeight = FontWeights.DemiBold;
+      ValueLabel.Margin = new Thickness(3);
+      DockPanel.SetDock(ValueLabel, Dock.Left);
+
+      Binding Binding = new Binding(ValueBindingName);
+      Binding.ValidationRules.Clear();
+      Binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+      Binding.NotifyOnValidationError = true;
+      Binding.ValidatesOnDataErrors = true;
+      
+      DatePicker DatePicker = new DatePicker();
+      DatePicker.VerticalContentAlignment = VerticalAlignment.Center;
+      DatePicker.Margin = new Thickness(3);      
+      DatePicker.SetBinding(DatePicker.SelectedDateProperty, Binding);      
+      
+      DockPanel.SetDock(DatePicker, Dock.Left);
+
+      DockPanel Panel = new DockPanel();
+      Panel.LastChildFill = true;
+      Panel.HorizontalAlignment = HorizontalAlignment.Stretch;
+      Panel.Children.Add(ValueLabel);
+      Panel.Children.Add(DatePicker);
+
+      return Panel;
+    }
+
     public static DockPanel GetValueComboBoxEnumDockPanel(string LabelName, int LabelWidth, string ValueBindingName, List<string> ItemsSource)
     {
       Label ValueLabel = new Label();
@@ -68,6 +100,8 @@ namespace HIPSClient.HipsTinkerTool.Style
       Binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
       Binding.NotifyOnValidationError = true;
       Binding.ValidatesOnDataErrors = true;
+      if (IsReadOnly)
+        Binding.Mode = BindingMode.OneWay;
 
       TextBox ValueTextBox = new TextBox();
       ValueTextBox.SetBinding(TextBox.TextProperty, Binding);
