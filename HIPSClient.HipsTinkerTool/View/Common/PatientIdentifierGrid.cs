@@ -67,6 +67,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
         if (IdentiferListView.SelectedItem is PatientIdentifierItemVM Item)
         {
           var EditPatIdWindow = new PatientIdentifierEditWindow(Item);
+          EditPatIdWindow.Title = "Edit Patient Identifier";
           EditPatIdWindow.Owner = Window.GetWindow(this);
           EditPatIdWindow.ShowDialog();
         }
@@ -81,7 +82,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       AddPatientIdButon.Click += new RoutedEventHandler((obj, e) =>
       {
         var NewPatientIdItem = new PatientIdentifierItemVM();
-        NewPatientIdItem.Type = HIPSClient.Hips.Model.PatientIdentifierType.MedicalRecordNumber.ToString();
+        NewPatientIdItem.Type = HIPSClient.Hips.Model.PatientIdentifierType.MedicalRecordNumber.GetUIDisplay();
         NewPatientIdItem.AssigningAuthority = string.Empty;
         NewPatientIdItem.IdentifierType = HIPSClient.Hips.Model.PatientIdentifierType.MedicalRecordNumber.GetLiteral();
         NewPatientIdItem.Value = string.Empty;

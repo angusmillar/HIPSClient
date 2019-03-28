@@ -42,15 +42,27 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       var PatientIdentiferGroup = new GroupBox();
       PatientIdentiferGroup.Header = "Patient Identifiers";
       Grid.SetRow(PatientIdentiferGroup, 0);
-      Grid.SetRowSpan(PatientIdentiferGroup, 4);
+      Grid.SetRowSpan(PatientIdentiferGroup, 3);
       Grid.SetColumn(PatientIdentiferGroup, 2);
       Grid.SetColumnSpan(PatientIdentiferGroup, 2);
       TabMainGrid.Children.Add(PatientIdentiferGroup);
      
       Common.PatientIdentifierGrid PatientIdentifierGrid = new Common.PatientIdentifierGrid(PathologyVM.PatientIdentifierList);
-      PatientIdentiferGroup.Content = PatientIdentifierGrid;      
+      PatientIdentiferGroup.Content = PatientIdentifierGrid;
+
+      var PathologyOrderGroup = new GroupBox();
+      PathologyOrderGroup.Header = "Order";
+      Grid.SetRow(PathologyOrderGroup, 5);
+      Grid.SetRowSpan(PathologyOrderGroup, 2);
+      Grid.SetColumn(PathologyOrderGroup, 0);
+      Grid.SetColumnSpan(PathologyOrderGroup, 2);
+      TabMainGrid.Children.Add(PathologyOrderGroup);
+
+      Common.PathologyOrderGrid PathologyOrderGrid = new Common.PathologyOrderGrid(PathologyVM.Order);
+      PathologyOrderGroup.Content = PathologyOrderGrid;
+
     }
-    
+
     private Grid GenerateMainGrid()
     {
       var Col1 = new ColumnDefinition();

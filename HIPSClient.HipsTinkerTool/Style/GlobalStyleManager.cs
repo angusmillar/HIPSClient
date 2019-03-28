@@ -52,7 +52,7 @@ namespace HIPSClient.HipsTinkerTool.Style
 
       return Panel;
     }
-
+    
     public static DockPanel GetValueComboBoxEnumDockPanel(string LabelName, int LabelWidth, string ValueBindingName, List<string> ItemsSource)
     {
       Label ValueLabel = new Label();

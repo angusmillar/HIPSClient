@@ -8,54 +8,28 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
   public class PatientVM : BaseValidationVM
   {
     public IDictionary<string, int> GenderEnumDictionary { get; private set; }
+    public IDictionary<string, int> IndigenousStatusEnumDictionary { get; private set; }
     public PatientVM()
     {
       GenderEnumDictionary = EnumUtility.ConvertEnumToUIDisplayDictionary<Gender>();
+      IndigenousStatusEnumDictionary = EnumUtility.ConvertEnumToUIDisplayDictionary<IndigenousStatusType>();
+      _PatientName = new NameVM();
       _Address = new AddressVM();
     }
 
-    private string _FamilyName;
-    public string FamilyName
+    private NameVM _PatientName;
+    public NameVM PatientName
     {
       get
       {
-        return _FamilyName;
+        return _PatientName;
       }
       set
       {
-        _FamilyName = value;
-        OnPropertyChanged("FamilyName");
+        _PatientName = value;       
       }
     }
-
-    private string _GivenName;
-    public string GivenName
-    {
-      get
-      {
-        return _GivenName;
-      }
-      set
-      {
-        _GivenName = value;
-        OnPropertyChanged("GivenName");
-      }
-    }
-
-    private string _Title;
-    public string Title
-    {
-      get
-      {
-        return _Title;
-      }
-      set
-      {
-        _Title = value;
-        OnPropertyChanged("Title");
-      }
-    }
-
+    
     private Gender _Gender;
     public string Gender
     {
@@ -90,8 +64,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }
       set
       {
-        _Address = value;
-        OnPropertyChanged("Address");
+        _Address = value;       
       }
     }
 
@@ -123,19 +96,22 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }
     }
 
+    private IndigenousStatusType _IndigenousStatus;
+    public string IndigenousStatus
+    {
+      get
+      {
+        return _IndigenousStatus.GetUIDisplay();
+      }
+      set
+      {
+        _IndigenousStatus = (IndigenousStatusType)IndigenousStatusEnumDictionary[value];
+        OnPropertyChanged("IndigenousStatus");
+      }
+    }
+
     protected override string IsValid(string PropertyName)
     {
-
-      if (PropertyName == "FamilyName")
-      {
-        if (string.IsNullOrWhiteSpace(this.FamilyName))
-        {
-          AddError("FamilyName", $"Family can not be empty.");
-          return "Error Found!";
-        }
-        RemoveError("FamilyName");
-      }
-
       if (PropertyName == "DateOfBirth")
       {
         if (!this.DateOfBirth.HasValue)

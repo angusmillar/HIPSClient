@@ -9,8 +9,10 @@ namespace HIPSClient.HipsTinkerTool
     public MainWindow()
     {
       Title = "HIPS Tinker Tool";
-      MinWidth = 800;
-      MinHeight = 600;      
+      Width = 1024;
+      Height = 768;
+      MinWidth = 1024;
+      MinHeight = 768;      
       InitializeLayout();
     }
 

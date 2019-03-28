@@ -3,6 +3,7 @@ using HIPSClient.HipsTinkerTool.Style;
 using HIPSClient.HipsTinkerTool.ViewModel.Common;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
@@ -38,8 +39,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       MainGrid.Children.Add(ButtonStack);
 
       Border MainContentBoarder = new Border();
-      MainContentBoarder.Background = Brushes.GhostWhite;
-      MainContentBoarder.BorderBrush = Brushes.Silver;
+      //MainContentBoarder.Background = Brushes.GhostWhite;
+      MainContentBoarder.BorderBrush = Brushes.CadetBlue;
       MainContentBoarder.BorderThickness = new Thickness(3);
       MainContentBoarder.Child = MainGrid;
       DockPanel.SetDock(MainContentBoarder, System.Windows.Controls.Dock.Top);
@@ -53,9 +54,9 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     {
       Title = "Patient Identifier";
       Width = 400;
-      Height = 215;
+      SizeToContent = SizeToContent.Height;
       ResizeMode = ResizeMode.NoResize;
-      WindowStyle = WindowStyle.None;
+      WindowStyle = WindowStyle.ToolWindow;
       DataContext = PatientIdentifierItem;
       WindowStartupLocation = WindowStartupLocation.CenterOwner;      
     }
@@ -86,7 +87,19 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       MainGrid.Children.Add(IdValue);
       
     }
-    
+
+    protected override void OnClosing(CancelEventArgs e)
+    {
+      if (this.DialogResult == null || this.DialogResult == false)
+      {
+        //Copy the unchanged values back as user has cancelled edit.
+        PatientIdentifierItemMapper(TempPatientIdentifierItem, this.PatientIdentifierItem);
+        DialogResult = false;
+      }
+
+      base.OnClosing(e);
+    }
+
     private StackPanel GenerateButtonStackPanel()
     {
       SavePatientIdButton = new Button();
@@ -107,9 +120,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       CancelPatientIdButton.HorizontalAlignment = HorizontalAlignment.Right;
       CancelPatientIdButton.Margin = new Thickness(2);
       CancelPatientIdButton.Click += new RoutedEventHandler((obj, e) =>
-      {
-        //Copy the unchanged values back as user has cancelled edit.
-        PatientIdentifierItemMapper(TempPatientIdentifierItem, this.PatientIdentifierItem);
+      {       
         DialogResult = false;
         this.Close();
       });

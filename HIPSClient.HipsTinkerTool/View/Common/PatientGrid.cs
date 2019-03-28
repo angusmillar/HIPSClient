@@ -26,25 +26,41 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     {
       int ColOneLabelWidth = 60;
       int ColTwoLabelWidth = 40;
-      int ColThreeLabelWidth = 40;
       
-      DockPanel Family = GlobalStyleManager.GetValueParameterDockPanel("Family", ColOneLabelWidth, "Patient.FamilyName");
-      Grid.SetColumn(Family, 0);
-      Grid.SetColumnSpan(Family, 3);
-      Grid.SetRow(Family, 0);
-      this.Children.Add(Family);
+      
+      DockPanel PatientNameFormated = GlobalStyleManager.GetValueParameterDockPanel("Name", ColOneLabelWidth, "Patient.PatientName.NameFormated", true);
+      Grid.SetColumn(PatientNameFormated, 0);
+      Grid.SetColumnSpan(PatientNameFormated, 5);
+      Grid.SetRow(PatientNameFormated, 0);
+      this.Children.Add(PatientNameFormated);
 
-      DockPanel Given = GlobalStyleManager.GetValueParameterDockPanel("Given", ColTwoLabelWidth, "Patient.GivenName");
-      Grid.SetColumn(Given, 3);
-      Grid.SetColumnSpan(Given, 3);
-      Grid.SetRow(Given, 0);
-      this.Children.Add(Given);
+      Button EditPatientNameButton = new Button();
+      EditPatientNameButton.Content = "Edit Name";
+      EditPatientNameButton.Margin = new Thickness(3);
+      EditPatientNameButton.Padding = new Thickness(3);
+      Grid.SetColumn(EditPatientNameButton, 5);
+      Grid.SetColumnSpan(EditPatientNameButton, 2);
+      Grid.SetRow(EditPatientNameButton, 0);
+      this.Children.Add(EditPatientNameButton);
+      EditPatientNameButton.Click += new RoutedEventHandler((obj, e) =>
+      {
+        var PatientNameEditWindow = new NameWindow(PatientVM.PatientName);
+        PatientNameEditWindow.Title = "Edit Patient Name";
+        PatientNameEditWindow.Owner = Window.GetWindow(this);
+        PatientNameEditWindow.ShowDialog();
+      });
 
-      DockPanel Title = GlobalStyleManager.GetValueParameterDockPanel("Title", ColThreeLabelWidth, "Patient.Title");
-      Grid.SetColumn(Title, 6);
-      Grid.SetColumnSpan(Title, 2);
-      Grid.SetRow(Title, 0);
-      this.Children.Add(Title);
+      //DockPanel Given = GlobalStyleManager.GetValueParameterDockPanel("Given", ColTwoLabelWidth, "Patient.GivenName");
+      //Grid.SetColumn(Given, 3);
+      //Grid.SetColumnSpan(Given, 3);
+      //Grid.SetRow(Given, 0);
+      //this.Children.Add(Given);
+
+      //DockPanel Title = GlobalStyleManager.GetValueParameterDockPanel("Title", ColThreeLabelWidth, "Patient.Title");
+      //Grid.SetColumn(Title, 6);
+      //Grid.SetColumnSpan(Title, 2);
+      //Grid.SetRow(Title, 0);
+      //this.Children.Add(Title);
 
       DockPanel Gender = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Sex", ColOneLabelWidth, "Patient.Gender", PatientVM.GenderEnumDictionary.Select(x => x.Key).ToList());
       Grid.SetColumn(Gender, 0);
@@ -65,16 +81,17 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       this.Children.Add(AddressFormated);
 
       Button EditAddressButton = new Button();
-      EditAddressButton.Content = "Edit Address";
+      EditAddressButton.Content = "Edit";
       EditAddressButton.Margin = new Thickness(3);
       EditAddressButton.Padding = new Thickness(3);      
       Grid.SetColumn(EditAddressButton, 6);
-      Grid.SetColumnSpan(EditAddressButton, 3);
+      Grid.SetColumnSpan(EditAddressButton, 1);
       Grid.SetRow(EditAddressButton, 3);
       this.Children.Add(EditAddressButton);
       EditAddressButton.Click += new RoutedEventHandler((obj, e) =>
       {
         var AddressEditWindow = new AddressWindow(PatientVM.Address);
+        AddressEditWindow.Title = "Edit Patient Address";
         AddressEditWindow.Owner = Window.GetWindow(this);
         AddressEditWindow.ShowDialog();        
       });
@@ -91,20 +108,17 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetRow(WorkPhone, 4);
       this.Children.Add(WorkPhone);
 
-
-
+      DockPanel IndigenousStatus = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Indigenous Status", 120, "Patient.IndigenousStatus", PatientVM.IndigenousStatusEnumDictionary.Select(x => x.Key).ToList());
+      Grid.SetColumn(IndigenousStatus, 0);
+      Grid.SetColumnSpan(IndigenousStatus, 8);
+      Grid.SetRow(IndigenousStatus, 5);
+      this.Children.Add(IndigenousStatus);
     }
-
-    //private RoutedEventHandler RoutedEventHandler(Func<object, object, object> p)
-    //{
-    //  throw new NotImplementedException();
-    //}
-
+    
     public void InitializeLayout()
     {
       GenerateMainGrid();
     }
-
 
     private void GenerateMainGrid()
     {

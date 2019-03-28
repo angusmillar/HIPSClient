@@ -10,6 +10,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
     private ORU Oru;
     public ObservableCollection<PatientIdentifierItemVM> PatientIdentifierList { get; set; }
     public PatientVM Patient { get; set; }
+    public OrderVM Order { get; set; }
 
     public PathologyVM()
     {
@@ -63,9 +64,12 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
       };
       Patient = new PatientVM()
       {
-        Title = "Mr",
-        FamilyName = "Millar",
-        GivenName = "Angus",
+        PatientName = new NameVM()
+        {
+          Family = "MIllar",
+          Given = "Angus",
+          Title = "Mr"
+        },        
         DateOfBirth = new System.DateTime(1973, 09, 30),
         Gender = HIPSClient.Hips.Model.Gender.Male.GetUIDisplay(),
         Address = new AddressVM()
@@ -78,7 +82,28 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
           Country = "AUS"
         },
          HomePhone = "08 9341 2041",
-         WorkPhone = "0481 059995"        
+         WorkPhone = "0481 059995",
+         IndigenousStatus = IndigenousStatusType.NeitherAboriginalNorTorresStraitIslanderOrigin.GetUIDisplay() 
+      };
+      Order = new OrderVM()
+      {
+        OrderNumber = "P654321",
+        RequestedDateTime = new DateTimeVM()
+        {
+           Date = new System.DateTime(2019, 01, 25),
+            TimeFormated = "10:00 AM"
+        },
+        CollectionDateTime = new DateTimeVM()
+        {
+          Date = new System.DateTime(2019, 01, 25),
+          TimeFormated = "1:30 PM"
+        },
+        ProviderName = new NameVM()
+        {
+          Family = "Blackwell",
+          Given = "Scott",
+          Title = "Dr"
+        }
       };
       
     }

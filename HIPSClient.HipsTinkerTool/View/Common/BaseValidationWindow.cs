@@ -1,6 +1,7 @@
 ﻿using HIPSClient.HipsTinkerTool.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       _MainDocK.Children.Add(Item);
       _MainDocK.Children.Add(_ErrorBorder);
     }
-
+    
     private void InitializeMainDock()
     {
       //Create a Dock as the main Windows control and the dock has two
