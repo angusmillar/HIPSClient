@@ -30,16 +30,16 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       
       DockPanel PatientNameFormated = GlobalStyleManager.GetValueParameterDockPanel("Name", ColOneLabelWidth, "Patient.PatientName.NameFormated", true);
       Grid.SetColumn(PatientNameFormated, 0);
-      Grid.SetColumnSpan(PatientNameFormated, 5);
+      Grid.SetColumnSpan(PatientNameFormated, 6);
       Grid.SetRow(PatientNameFormated, 0);
       this.Children.Add(PatientNameFormated);
 
       Button EditPatientNameButton = new Button();
-      EditPatientNameButton.Content = "Edit Name";
+      EditPatientNameButton.Content = "Edit";
       EditPatientNameButton.Margin = new Thickness(3);
       EditPatientNameButton.Padding = new Thickness(3);
-      Grid.SetColumn(EditPatientNameButton, 5);
-      Grid.SetColumnSpan(EditPatientNameButton, 2);
+      Grid.SetColumn(EditPatientNameButton, 6);
+      Grid.SetColumnSpan(EditPatientNameButton, 1);
       Grid.SetRow(EditPatientNameButton, 0);
       this.Children.Add(EditPatientNameButton);
       EditPatientNameButton.Click += new RoutedEventHandler((obj, e) =>

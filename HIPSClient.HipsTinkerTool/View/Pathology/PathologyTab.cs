@@ -61,6 +61,17 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       Common.PathologyOrderGrid PathologyOrderGrid = new Common.PathologyOrderGrid(PathologyVM.Order);
       PathologyOrderGroup.Content = PathologyOrderGrid;
 
+      var PatientRequestGroup = new GroupBox();
+      PatientRequestGroup.Header = "Requests";
+      Grid.SetRow(PatientRequestGroup, 5);
+      Grid.SetRowSpan(PatientRequestGroup, 2);
+      Grid.SetColumn(PatientRequestGroup, 2);
+      Grid.SetColumnSpan(PatientRequestGroup, 2);
+      TabMainGrid.Children.Add(PatientRequestGroup);
+
+      Common.PathologyRequestGrid PathologyRequestGrid = new Common.PathologyRequestGrid(PathologyVM.PathologyRequestList);
+      PatientRequestGroup.Content = PathologyRequestGrid;
+
     }
 
     private Grid GenerateMainGrid()

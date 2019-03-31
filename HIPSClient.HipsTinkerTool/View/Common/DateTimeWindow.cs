@@ -7,10 +7,23 @@ using System.Windows.Media;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
+  
   public class DateTimeWindow : BaseValidationWindow, IView
   {
     public DateTimeVM DateTimeVM { get; private set; }
-    public DateTimeVM TempDateTimeVM { get; private set; }    
+    public DateTimeVM TempDateTimeVM { get; private set; }
+    
+    public bool IsTimeOptional
+    {
+      get
+      {
+        return DateTimeVM.IsTimeOptional;
+      }
+      set
+      {
+        DateTimeVM.IsTimeOptional = value;
+      }
+    }
 
     public DateTimeWindow(DateTimeVM DateTimeVM)
       : base(DateTimeVM)
@@ -43,16 +56,16 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     private void DateTimeVMMapper(DateTimeVM From, DateTimeVM To)
     {
       To.Date = From.Date;
-      To.TimeZone = From.TimeZone;
-      To.TimeFormated = From.TimeFormated;
-
+      To.TimeZoneFormatted = From.TimeZoneFormatted;
+      To.TimeFormatted = From.TimeFormatted;
+      
     }
 
 
     public void InitializeLayout()
     {
       Title = " Edit Date & Time";
-      Width = 500;
+      Width = 600;
       ResizeMode = ResizeMode.NoResize;
       WindowStyle = WindowStyle.ToolWindow;
       WindowStartupLocation = WindowStartupLocation.CenterOwner;
@@ -61,17 +74,23 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     private void GenerateControls(Grid MainGrid)
     {
-      DockPanel RequestedDate = GlobalStyleManager.GetValueDatePickerDockPanel("Date", 45, "Date");
-      Grid.SetColumn(RequestedDate, 0);
-      Grid.SetColumnSpan(RequestedDate, 3);
-      Grid.SetRow(RequestedDate, 1);
-      MainGrid.Children.Add(RequestedDate);
+      DockPanel Date = GlobalStyleManager.GetValueDatePickerDockPanel("Date", 45, "Date");
+      Grid.SetColumn(Date, 0);
+      Grid.SetColumnSpan(Date, 3);
+      Grid.SetRow(Date, 1);
+      MainGrid.Children.Add(Date);
 
-      DockPanel RequestedTime = GlobalStyleManager.GetValueParameterDockPanel("Time", 45, "TimeFormated");
-      Grid.SetColumn(RequestedTime, 3);
-      Grid.SetColumnSpan(RequestedTime, 3);
-      Grid.SetRow(RequestedTime, 1);
-      MainGrid.Children.Add(RequestedTime);
+      DockPanel Time = GlobalStyleManager.GetValueParameterDockPanel("Time", 45, "TimeFormatted");
+      Grid.SetColumn(Time, 3);
+      Grid.SetColumnSpan(Time, 3);
+      Grid.SetRow(Time, 1);
+      MainGrid.Children.Add(Time);
+
+      DockPanel TimeZone = GlobalStyleManager.GetValueParameterDockPanel("Zone", 45, "TimeZoneFormatted");
+      Grid.SetColumn(TimeZone, 6);
+      Grid.SetColumnSpan(TimeZone, 3);
+      Grid.SetRow(TimeZone, 1);
+      MainGrid.Children.Add(TimeZone);
 
     }
 
@@ -135,6 +154,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       var Col5 = new ColumnDefinition();
       var Col6 = new ColumnDefinition();
       var Col7 = new ColumnDefinition();
+      var Col8 = new ColumnDefinition();
 
       var Row0 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
       var Row1 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
@@ -144,6 +164,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       var Row5 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
       var Row6 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
       var Row7 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
+      
 
 
       var Grid = new Grid();
@@ -157,6 +178,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.ColumnDefinitions.Add(Col5);
       Grid.ColumnDefinitions.Add(Col6);
       Grid.ColumnDefinitions.Add(Col7);
+      Grid.ColumnDefinitions.Add(Col8);
 
       Grid.RowDefinitions.Add(Row0);
       Grid.RowDefinitions.Add(Row1);

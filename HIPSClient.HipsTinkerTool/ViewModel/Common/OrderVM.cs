@@ -26,6 +26,19 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
     public NameVM ProviderName { get; set; }
     public DateTimeVM RequestedDateTime { get; set; }
     public DateTimeVM CollectionDateTime { get; set; }
+    private bool _IsMyHealthRecordDisclosed;
+    public bool IsMyHealthRecordDisclosed
+    {
+      get
+      {
+        return _IsMyHealthRecordDisclosed;
+      }
+      set
+      {
+        _IsMyHealthRecordDisclosed = value;
+        OnPropertyChanged("IsMyHealthRecordDisclosed");
+      }
+    }
 
     protected override string IsValid(string PropertyName)
     {

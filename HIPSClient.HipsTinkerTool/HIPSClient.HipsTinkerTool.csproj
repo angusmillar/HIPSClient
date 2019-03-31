@@ -64,6 +64,7 @@
     <Compile Include="ViewModel\Common\NameVM.cs" />
     <Compile Include="ViewModel\Common\AddressVM.cs" />
     <Compile Include="ViewModel\Common\OrderVM.cs" />
+    <Compile Include="ViewModel\Common\PathologyRequestItemVM.cs" />
     <Compile Include="ViewModel\Common\PatientVM.cs" />
     <Compile Include="ViewModel\Pathology\PathologyVM.cs" />
     <Compile Include="ViewModel\Common\PatientIdentifierItemVM.cs" />
@@ -73,8 +74,10 @@
     <Compile Include="View\Common\AddressWindow.cs" />
     <Compile Include="View\Common\BaseValidationWindow.cs" />
     <Compile Include="View\Common\PathologyOrderGrid.cs" />
+    <Compile Include="View\Common\PathologyRequestEditWindow.cs" />
     <Compile Include="View\Common\PatientIdentifierEditWindow.cs" />
     <Compile Include="View\Common\PatientGrid.cs" />
+    <Compile Include="View\Common\PathologyRequestGrid.cs" />
     <Compile Include="View\Common\PatientIdentifierGrid.cs" />
     <Compile Include="View\IView.cs" />
     <Compile Include="MainWindow.cs" />

@@ -11,6 +11,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
     public ObservableCollection<PatientIdentifierItemVM> PatientIdentifierList { get; set; }
     public PatientVM Patient { get; set; }
     public OrderVM Order { get; set; }
+    public ObservableCollection<PathologyRequestItemVM> PathologyRequestList { get; set; }
 
     public PathologyVM()
     {
@@ -90,20 +91,23 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
         OrderNumber = "P654321",
         RequestedDateTime = new DateTimeVM()
         {
-           Date = new System.DateTime(2019, 01, 25),
-            TimeFormated = "10:00 AM"
+          Date = new System.DateTime(2019, 01, 25),
+          TimeFormatted = "10:00 AM",
+          TimeZoneFormatted = "-1000"
         },
         CollectionDateTime = new DateTimeVM()
         {
           Date = new System.DateTime(2019, 01, 25),
-          TimeFormated = "1:30 PM"
+          TimeFormatted = "1:30 PM",
+          TimeZoneFormatted = "+1200"
         },
         ProviderName = new NameVM()
         {
           Family = "Blackwell",
           Given = "Scott",
           Title = "Dr"
-        }
+        },
+        IsMyHealthRecordDisclosed = true
       };
       
     }

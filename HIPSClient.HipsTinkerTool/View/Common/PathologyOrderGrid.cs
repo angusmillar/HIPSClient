@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
@@ -72,6 +73,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       {
         DateTimeWindow RequestedDateTimeWindow = new DateTimeWindow(OrderVM.RequestedDateTime);
         RequestedDateTimeWindow.Title = "Edit Requested Date & Time";
+        RequestedDateTimeWindow.IsTimeOptional = true;
         RequestedDateTimeWindow.Owner = Window.GetWindow(this);
         RequestedDateTimeWindow.ShowDialog();
       });
@@ -99,8 +101,21 @@ namespace HIPSClient.HipsTinkerTool.View.Common
         CollectionDateTimeWindow.ShowDialog();
       });
 
-      
-      
+      CheckBox DisclosedMHRCheckBox = new CheckBox();
+      DisclosedMHRCheckBox.Content = "Disclosed MHR";
+      DisclosedMHRCheckBox.VerticalContentAlignment = VerticalAlignment.Center;
+      Binding DisclosedMHRBinding = new Binding("Order.IsMyHealthRecordDisclosed");
+      DisclosedMHRBinding.ValidationRules.Clear();
+      DisclosedMHRBinding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
+      DisclosedMHRBinding.NotifyOnValidationError = true;
+      DisclosedMHRBinding.ValidatesOnDataErrors = true;
+      DisclosedMHRCheckBox.SetBinding(CheckBox.IsCheckedProperty, DisclosedMHRBinding);
+      Grid.SetColumn(DisclosedMHRCheckBox, 5);
+      Grid.SetColumnSpan(DisclosedMHRCheckBox, 4);
+      Grid.SetRow(DisclosedMHRCheckBox, 0);
+      this.Children.Add(DisclosedMHRCheckBox);
+
+
     }
     
     public void InitializeLayout()
