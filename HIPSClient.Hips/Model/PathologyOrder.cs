@@ -8,7 +8,10 @@ namespace HIPSClient.Hips.Model
 {
   public class PathologyOrder
   {
-    //OBR-27.4. ORC-9
+    /// <summary>
+    /// OBR-3
+    /// </summary>
+    public string OrderIdentifier { get; set; }
 
     /// <summary>
     /// OBR-27.4. or ORC-9 (This client uses use OBR-27.4)

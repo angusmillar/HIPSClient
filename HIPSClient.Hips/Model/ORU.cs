@@ -24,19 +24,19 @@ namespace HIPSClient.Hips.Model
       oHL7.Add(CreatePV1Segment(this.HospitalEncounter));
       foreach(PathologyRequest Request in this.RequestList)
       {
-        oHL7.Add(CreateORCSegment(Request));
+        oHL7.Add(CreateORCSegment(this.Order, Request));
         oHL7.Add(CreateOBRSegment(this.Order, Request));
       }
       oHL7.Add(CreateOBXSegment(this.PDF));
       return oHL7.AsStringRaw;    
     }
 
-    protected virtual ISegment CreateORCSegment(PathologyRequest Request)
+    protected virtual ISegment CreateORCSegment(PathologyOrder Order, PathologyRequest Request)
     {
       var oORC = Creator.Segment("ORC");
       oORC.Field(1).AsString = "RE";
       //Placer Order number
-      oORC.Field(2).AsString = Request.OrderIdentifier;
+      oORC.Field(2).AsString = Order.OrderIdentifier;
       //Filler Order number
       oORC.Field(3).AsString = Request.ReportIdentifier;
       //Order status
@@ -49,7 +49,7 @@ namespace HIPSClient.Hips.Model
       var oOBR = Creator.Segment("OBR");
       oOBR.Field(1).AsString = "RE";
       //Placer Order number
-      oOBR.Field(2).AsString = Request.OrderIdentifier;
+      oOBR.Field(2).AsString = Order.OrderIdentifier;
       //Filler Order number
       oOBR.Field(3).AsString = Request.ReportIdentifier;
 

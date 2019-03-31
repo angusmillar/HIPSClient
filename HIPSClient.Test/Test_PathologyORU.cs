@@ -46,6 +46,7 @@ namespace HIPSClient.Test
       ORU.HospitalEncounter = ADT.HospitalEncounter;
 
       ORU.Order = new PathologyOrder();
+      ORU.Order.OrderIdentifier = "0000002";
       ORU.Order.OrderedDateTime = new DateTimeOffset(2019, 03, 15, 08, 45, 00, new TimeSpan(10, 0, 0));
       ORU.Order.CollectionDateTime = new DateTimeOffset(2019, 03, 15, 10, 30, 00, new TimeSpan(10, 0, 0));
 
@@ -64,8 +65,7 @@ namespace HIPSClient.Test
 
       ORU.RequestList = new List<PathologyRequest>();
       var Request = new PathologyRequest();
-      ORU.RequestList.Add(Request);
-      Request.OrderIdentifier = "0000002";
+      ORU.RequestList.Add(Request);      
       Request.ReportIdentifier = "ADHA.P19-00000002-FBP-0";
       Request.ReportedDateTime = new DateTimeOffset(2019, 03, 15, 14, 15, 00, 00, new TimeSpan(10, 0, 0));
       Request.DepartmentCode = "HM";

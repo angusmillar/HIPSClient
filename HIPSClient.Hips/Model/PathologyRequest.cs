@@ -20,11 +20,6 @@ namespace HIPSClient.Hips.Model
   public class PathologyRequest
   {
     /// <summary>
-    /// OBR-3
-    /// </summary>
-    public string OrderIdentifier { get; set; }
-
-    /// <summary>
     /// OBR-2
     /// </summary>
     public string ReportIdentifier { get; set; }
