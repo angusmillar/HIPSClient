@@ -84,6 +84,9 @@
     <Compile Include="PathologyImaging\PathologyImagingClient.cs" />
     <Compile Include="PathologyImaging\PathologyImagingRequest.cs" />
     <Compile Include="PathologyImaging\PathologyImagingResponse.cs" />
+    <Compile Include="PCEHRService\IsPcehrAdvertisedRequest.cs" />
+    <Compile Include="PCEHRService\IsPcehrAdvertisedResponse.cs" />
+    <Compile Include="PCEHRService\PCEHRServiceClient.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

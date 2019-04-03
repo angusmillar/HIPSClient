@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Support\GenerateADT.cs" />
+    <Compile Include="Test_IsPCEHRAdvertised.cs" />
     <Compile Include="Test_ADT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test_PathologyORU.cs" />
