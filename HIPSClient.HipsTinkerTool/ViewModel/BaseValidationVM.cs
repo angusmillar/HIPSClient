@@ -88,6 +88,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
     }
 
     //Not Used but required by IDataErrorInfo interface
-    public string Error => throw new NotImplementedException();
+    //public string Error => throw new NotImplementedException();
+    public string Error => string.Empty;
   }
 }

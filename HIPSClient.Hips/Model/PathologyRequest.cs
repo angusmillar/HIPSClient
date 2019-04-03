@@ -9,10 +9,13 @@ namespace HIPSClient.Hips.Model
 {
   public enum ResultStatus
   {
+    [EnumUIDisplay("Final")]
     [EnumLiteral("F")]
     Final,
+    [EnumUIDisplay("Corrected")]
     [EnumLiteral("C")]
     Corrected,
+    [EnumUIDisplay("Deleted")]
     [EnumLiteral("X")]
     Delete
   }

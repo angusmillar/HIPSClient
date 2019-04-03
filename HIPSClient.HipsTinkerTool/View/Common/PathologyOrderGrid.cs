@@ -23,7 +23,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     private void GenerateControls()
     {
       int ColOneLabelWidth = 90;
-      
+
       //Order Number
       DockPanel OrderNumber = GlobalStyleManager.GetValueParameterDockPanel("Order Number", ColOneLabelWidth, "Order.OrderNumber");
       Grid.SetColumn(OrderNumber, 0);
@@ -38,12 +38,10 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetRow(ProviderNameFormated, 1);
       this.Children.Add(ProviderNameFormated);
 
-      Button EditProviderNameButton = new Button();
-      EditProviderNameButton.Content = "Edit";
-      EditProviderNameButton.Margin = new Thickness(3);
-      EditProviderNameButton.Padding = new Thickness(3);
+      Button EditProviderNameButton = GlobalStyleManager.GetButton("Edit");
+      EditProviderNameButton.HorizontalAlignment = HorizontalAlignment.Left;
       Grid.SetColumn(EditProviderNameButton, 5);
-      Grid.SetColumnSpan(EditProviderNameButton, 1);
+      Grid.SetColumnSpan(EditProviderNameButton, 2);
       Grid.SetRow(EditProviderNameButton, 1);
       this.Children.Add(EditProviderNameButton);
       EditProviderNameButton.Click += new RoutedEventHandler((obj, e) =>
@@ -61,12 +59,10 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetRow(RequestedDateTimeFormatted, 2);
       this.Children.Add(RequestedDateTimeFormatted);
 
-      Button EditRequestDateTimeButton = new Button();
-      EditRequestDateTimeButton.Content = "Edit";
-      EditRequestDateTimeButton.Margin = new Thickness(3);
-      EditRequestDateTimeButton.Padding = new Thickness(3);
+      Button EditRequestDateTimeButton = GlobalStyleManager.GetButton("Edit");
+      EditRequestDateTimeButton.HorizontalAlignment = HorizontalAlignment.Left;
       Grid.SetColumn(EditRequestDateTimeButton, 5);
-      Grid.SetColumnSpan(EditRequestDateTimeButton, 1);
+      Grid.SetColumnSpan(EditRequestDateTimeButton, 2);
       Grid.SetRow(EditRequestDateTimeButton, 2);
       this.Children.Add(EditRequestDateTimeButton);
       EditRequestDateTimeButton.Click += new RoutedEventHandler((obj, e) =>
@@ -85,12 +81,10 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetRow(CollectionDateTimeFormatted, 3);
       this.Children.Add(CollectionDateTimeFormatted);
 
-      Button EditCollectionDateTimeButton = new Button();
-      EditCollectionDateTimeButton.Content = "Edit";
-      EditCollectionDateTimeButton.Margin = new Thickness(3);
-      EditCollectionDateTimeButton.Padding = new Thickness(3);
+      Button EditCollectionDateTimeButton = GlobalStyleManager.GetButton("Edit");
+      EditCollectionDateTimeButton.HorizontalAlignment = HorizontalAlignment.Left;
       Grid.SetColumn(EditCollectionDateTimeButton, 5);
-      Grid.SetColumnSpan(EditCollectionDateTimeButton, 1);
+      Grid.SetColumnSpan(EditCollectionDateTimeButton, 2);
       Grid.SetRow(EditCollectionDateTimeButton, 3);
       this.Children.Add(EditCollectionDateTimeButton);
       EditCollectionDateTimeButton.Click += new RoutedEventHandler((obj, e) =>
@@ -114,8 +108,6 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetColumnSpan(DisclosedMHRCheckBox, 4);
       Grid.SetRow(DisclosedMHRCheckBox, 0);
       this.Children.Add(DisclosedMHRCheckBox);
-
-
     }
     
     public void InitializeLayout()

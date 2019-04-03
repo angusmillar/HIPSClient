@@ -8,184 +8,239 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HIPSClient.Hips.Model;
 
 namespace HIPSClient.HipsTinkerTool.ViewModel.Common
 {
   public class PathologyRequestItemVM : BaseValidationVM
   {
-    private IDictionary<string, int> PatientIdentifierTypeDictionary;
+    public IDictionary<string, int> ReportStatusEnumDictionary { get; private set; }
     public PathologyRequestItemVM()
     {
-      PatientIdentifierTypeDictionary = HIPSClient.Common.Tools.Enum.EnumUtility.ConvertEnumToUIDisplayDictionary<HIPSClient.Hips.Model.PatientIdentifierType>();      
-    }
-
-    public PathologyRequestItemVM(HIPSClient.Hips.Model.PatientIdentifier PatientIdentifier) 
-      : this()
-    {
-      _Value = PatientIdentifier.Value;
-      _IdentifierType = PatientIdentifier.IdentifierTypeCode;
-      _AssigningAuthority = PatientIdentifier.AssigningAuthority;
-      _Type = PatientIdentifier.Type;      
+      ReportStatusEnumDictionary = EnumUtility.ConvertEnumToUIDisplayDictionary<ResultStatus>();
     }
     
-    private string _Value;
-    public string Value
+    private string _ReportIdentifier;
+    public string ReportIdentifier
     {
       get
       {
-        return _Value;
+        return _ReportIdentifier;
       }
       set
       {
-        _Value = value;
-        OnPropertyChanged("Value");
+        _ReportIdentifier = value;
+        OnPropertyChanged("ReportIdentifier");
       }
     }
 
-    private string _IdentifierType;
-    public string IdentifierType
+    private string _LocalCode;
+    public string LocalCode
     {
       get
       {
-        return _IdentifierType;
+        return _LocalCode;
       }
       set
       {
-        _IdentifierType = value;
-        OnPropertyChanged("IdentifierType");
+        _LocalCode = value;
+        OnPropertyChanged("LocalCode");
       }
     }
 
-    private string _AssigningAuthority;
-    public string AssigningAuthority
+    private string _LocalDescription;
+    public string LocalDescription
     {
       get
       {
-        return _AssigningAuthority;
+        return _LocalDescription;
       }
       set
       {
-        _AssigningAuthority = value;
-        OnPropertyChanged("AssigningAuthority");
+        _LocalDescription = value;
+        OnPropertyChanged("LocalDescription");
       }
     }
 
-    private HIPSClient.Hips.Model.PatientIdentifierType _Type;
-    public string Type
+    private string _LocalSystemCode;
+    public string LocalSystemCode
     {
       get
       {
-        return _Type.GetUIDisplay();
+        return _LocalSystemCode;
       }
       set
-      {               
-        _Type = (HIPSClient.Hips.Model.PatientIdentifierType)PatientIdentifierTypeDictionary[value];
-        this.IdentifierType = _Type.GetLiteral();     
-        if (_Type != Hips.Model.PatientIdentifierType.MedicalRecordNumber && _Type != Hips.Model.PatientIdentifierType.PatientInternalIdentifier)
-        {
-          this.AssigningAuthority = HIPSClient.Hips.Model.PatientIdentifier.GetAssigningAuthorityForPatientIdentifierType(_Type);
-        }
-        else
-        {
-          this.AssigningAuthority = _AssigningAuthority;
-        }
-        this.Value = string.Empty;
+      {
+        _LocalSystemCode = value;
+        OnPropertyChanged("LocalSystemCode");
+      }
+    }
 
-        ClearAllErrors();
-        OnPropertyChanged("Type");
-        OnPropertyChanged("Value");
-        OnPropertyChanged("AssigningAuthority");
-       
+    private string _SnomedCode;
+    public string SnomedCode
+    {
+      get
+      {
+        return _SnomedCode;
+      }
+      set
+      {
+        _SnomedCode = value;
+        OnPropertyChanged("SnomedCode");
+        OnPropertyChanged("SnomedPreferredTerm");
+      }
+    }
+
+    private string _SnomedPreferredTerm;
+    public string SnomedPreferredTerm
+    {
+      get
+      {
+        return _SnomedPreferredTerm;
+      }
+      set
+      {
+        _SnomedPreferredTerm = value;
+        OnPropertyChanged("SnomedPreferredTerm");
+        OnPropertyChanged("SnomedCode");
+      }
+    }
+
+    private DateTimeVM _ReportedDateTime;
+    public DateTimeVM ReportedDateTime
+    {
+      get
+      {
+        return _ReportedDateTime;
+      }
+      set
+      {
+        _ReportedDateTime = value;
+        OnPropertyChanged("ReportedDateTime");
+      }
+    }
+    
+    private string _DepartmentCode;
+    public string DepartmentCode
+    {
+      get
+      {
+        return _DepartmentCode;
+      }
+      set
+      {
+        _DepartmentCode = value;
+        OnPropertyChanged("DepartmentCode");
+      }
+    }
+    
+    private ResultStatus _ReportStatus;
+    public string ReportStatus
+    {
+      get
+      {
+        return _ReportStatus.GetUIDisplay(); ;
+      }
+      set
+      {
+        _ReportStatus = (ResultStatus)ReportStatusEnumDictionary[value];
+        OnPropertyChanged("ReportStatus");
       }
     }
 
     protected override string IsValid(string PropertyName)
-    {    
-      //No need to validate IdentiferType as it is readonly and always set by code.
-
-      string AssAuthCode = HIPSClient.Hips.Model.PatientIdentifier.GetAssigningAuthorityForPatientIdentifierType(_Type).ToUpper();
-      if (PropertyName == "AssigningAuthority")
+    {      
+      if (PropertyName == "ReportIdentifier")
       {
-        if (_Type != Hips.Model.PatientIdentifierType.MedicalRecordNumber && _Type != Hips.Model.PatientIdentifierType.PatientInternalIdentifier)
+        if (string.IsNullOrWhiteSpace(this._ReportIdentifier))
         {
-          if (this.AssigningAuthority != null && this.AssigningAuthority.ToUpper() != AssAuthCode || this.AssigningAuthority == null)
-          {
-            AddError("AssigningAuthority", $"The Assigning Authority for a {_Type.ToString()} must be {AssAuthCode}");
-            return "Error Found!";
-          }            
-        }
-        if (string.IsNullOrWhiteSpace(this.AssigningAuthority))
-        {
-          AddError("AssigningAuthority", $"The Assigning Authority must be populated");
+          AddError("ReportIdentifier", "Report Id must be populated.");
           return "Error Found!";
         }
-        RemoveError("AssigningAuthority");
-      }
-
-      if (PropertyName == "Value")
-      {
-        switch (_Type)
+        else
         {
-          case Hips.Model.PatientIdentifierType.MedicareNumber:
-            {
-              IMedicareNumberParser Parser = new MedicareNumberParser();
-              IMedicareNumber MedNum;
-              if (string.IsNullOrWhiteSpace(this.Value) || this.Value == null || !Parser.TryParse(this.Value.RemoveWhitespace(), out MedNum))
-              {
-                AddError("Value", "The Medicare Number does not pass validation.");
-                return "Error Found!";
-              }
-            }
-            break;
-          case Hips.Model.PatientIdentifierType.IHI:
-            {
-              IIndividualHealthcareIdentifier IHI;
-              IIndividualHealthcareIdentifierParser Parser = new IndividualHealthcareIdentifierParser();
-              if (string.IsNullOrWhiteSpace(this.Value) || this.Value == null || !Parser.TryParse(this.Value.RemoveWhitespace(), out IHI))
-              {
-                AddError("Value", "The IHI number does not pass validation.");
-                return "Error Found!";
-              }
-            }
-            break;
-          case Hips.Model.PatientIdentifierType.DVA:
-            {
-              IDVANumberParser Parser = new DVANumberParser();
-              IDVANumber DVA;
-              if (this.Value == null || !Parser.TryParse(this.Value.RemoveWhitespace(), out DVA))
-              {
-                AddError("Value", "The DVA number does not pass validation.");
-                return "Error Found!";
-              }
-            }
-            break;
-          case Hips.Model.PatientIdentifierType.MedicalRecordNumber:
-            if (string.IsNullOrWhiteSpace(this.Value))
-            {
-              AddError("Value", "The Medical Record Number must be populated.");
-              return "Error Found!";
-            }
-            break;
-          case Hips.Model.PatientIdentifierType.StatePatientId:
-            if (string.IsNullOrWhiteSpace(this.Value))
-            {
-              AddError("Value", "The State Patient Id value must be populated.");
-              return "Error Found!";
-            }
-            break;
-          case Hips.Model.PatientIdentifierType.PatientInternalIdentifier:
-            if (string.IsNullOrWhiteSpace(this.Value))
-            {
-              AddError("Value", "The Patient Internal Identifier value must be populated.");
-              return "Error Found!";
-            }
-            break;
-          default:
-            break;
+          RemoveError("ReportIdentifier");
         }
-        RemoveError("Value");
       }
 
+      if (PropertyName == "LocalCode")
+      {
+        if (string.IsNullOrWhiteSpace(this._LocalCode))
+        {
+          AddError("LocalCode", "Local Code must be populated.");
+          return "Error Found!";
+        }
+        else
+        {
+          RemoveError("LocalCode");
+        }
+      }
+
+      if (PropertyName == "LocalDescription")
+      {
+        if (string.IsNullOrWhiteSpace(this._LocalDescription))
+        {
+          AddError("LocalDescription", "Local Desc must be populated.");
+          return "Error Found!";
+        }
+        else
+        {
+          RemoveError("LocalDescription");
+        }
+      }
+
+      if (PropertyName == "LocalSystemCode")
+      {
+        if (string.IsNullOrWhiteSpace(this._LocalSystemCode))
+        {
+          AddError("LocalSystemCode", "Local System must be populated.");
+          return "Error Found!";
+        }
+        else
+        {
+          RemoveError("LocalSystemCode");
+        }
+      }
+
+      if (PropertyName == "SnomedCode")
+      {
+        if (!string.IsNullOrWhiteSpace(this._SnomedCode) && string.IsNullOrWhiteSpace(this._SnomedPreferredTerm))
+        {
+          AddError("SnomedCode", "If Snomed Code is populated then Snomed Preferred must also be populated.");
+          return "Error Found!";
+        }
+        else
+        {
+          RemoveError("SnomedCode");
+        }
+      }
+
+      if (PropertyName == "SnomedPreferredTerm")
+      {
+        if (!string.IsNullOrWhiteSpace(this._SnomedPreferredTerm) && string.IsNullOrWhiteSpace(this.SnomedCode))
+        {
+          AddError("SnomedPreferredTerm", "If Snomed Preferred is populated then Snomed Code must also be populated.");
+          return "Error Found!";
+        }
+        else
+        {
+          RemoveError("SnomedPreferredTerm");
+        }
+      }
+
+      if (PropertyName == "DepartmentCode")
+      {
+        if (string.IsNullOrWhiteSpace(this._DepartmentCode))
+        {
+          AddError("DepartmentCode", "Department Code must be populated.");
+          return "Error Found!";
+        }
+        else
+        {
+          RemoveError("DepartmentCode");
+        }
+      }
+      
       return string.Empty;
     }
   }

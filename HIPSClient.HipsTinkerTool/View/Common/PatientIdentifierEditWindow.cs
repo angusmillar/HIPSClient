@@ -53,7 +53,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     public void InitializeLayout()
     {
       Title = "Patient Identifier";
-      Width = 400;
+      Width = 600;
       SizeToContent = SizeToContent.Height;
       ResizeMode = ResizeMode.NoResize;
       WindowStyle = WindowStyle.ToolWindow;

@@ -1,4 +1,6 @@
 ﻿using HIPSClient.HipsTinkerTool.Controller;
+using HIPSClient.HipsTinkerTool.Style;
+using HIPSClient.HipsTinkerTool.View.Common;
 using HIPSClient.HipsTinkerTool.ViewModel.Pathology;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,8 +34,7 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       var PatientGroup = new GroupBox();
       PatientGroup.Header = "Patient";
       Grid.SetRow(PatientGroup, 0);
-      Grid.SetColumn(PatientGroup, 0);
-      Grid.SetColumnSpan(PatientGroup, 2);
+      Grid.SetColumn(PatientGroup, 0);      
       TabMainGrid.Children.Add(PatientGroup);
 
       Common.PatientGrid PatientGrid = new Common.PatientGrid(PathologyVM.Patient);
@@ -41,10 +42,8 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
 
       var PatientIdentiferGroup = new GroupBox();
       PatientIdentiferGroup.Header = "Patient Identifiers";
-      Grid.SetRow(PatientIdentiferGroup, 0);
-      Grid.SetRowSpan(PatientIdentiferGroup, 3);
-      Grid.SetColumn(PatientIdentiferGroup, 2);
-      Grid.SetColumnSpan(PatientIdentiferGroup, 2);
+      Grid.SetRow(PatientIdentiferGroup, 0);      
+      Grid.SetColumn(PatientIdentiferGroup, 1);      
       TabMainGrid.Children.Add(PatientIdentiferGroup);
      
       Common.PatientIdentifierGrid PatientIdentifierGrid = new Common.PatientIdentifierGrid(PathologyVM.PatientIdentifierList);
@@ -52,53 +51,53 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
 
       var PathologyOrderGroup = new GroupBox();
       PathologyOrderGroup.Header = "Order";
-      Grid.SetRow(PathologyOrderGroup, 5);
-      Grid.SetRowSpan(PathologyOrderGroup, 2);
-      Grid.SetColumn(PathologyOrderGroup, 0);
-      Grid.SetColumnSpan(PathologyOrderGroup, 2);
+      Grid.SetRow(PathologyOrderGroup, 1);      
+      Grid.SetColumn(PathologyOrderGroup, 0);      
       TabMainGrid.Children.Add(PathologyOrderGroup);
 
       Common.PathologyOrderGrid PathologyOrderGrid = new Common.PathologyOrderGrid(PathologyVM.Order);
       PathologyOrderGroup.Content = PathologyOrderGrid;
 
       var PatientRequestGroup = new GroupBox();
-      PatientRequestGroup.Header = "Requests";
-      Grid.SetRow(PatientRequestGroup, 5);
-      Grid.SetRowSpan(PatientRequestGroup, 2);
-      Grid.SetColumn(PatientRequestGroup, 2);
-      Grid.SetColumnSpan(PatientRequestGroup, 2);
+      PatientRequestGroup.Header = "Reports";
+      Grid.SetRow(PatientRequestGroup, 1);      
+      Grid.SetColumn(PatientRequestGroup, 1);      
       TabMainGrid.Children.Add(PatientRequestGroup);
 
+      
+      StackPanel PathologyRequestStack = new StackPanel();
+      PathologyRequestStack.Orientation = Orientation.Vertical;
+      PatientRequestGroup.Content = PathologyRequestStack;
+
+      //Provider Name
+      StackPanel AuthorStackPanel = new StackPanel();
+      AuthorStackPanel.Orientation = Orientation.Horizontal;            
+      AuthorStackPanel.HorizontalAlignment = HorizontalAlignment.Left;
+      PathologyRequestStack.Children.Add(AuthorStackPanel);
+
+      DockPanel AuthorNameFormated = GlobalStyleManager.GetValueParameterDockPanel("Author", 50, "AuthorName.NameFormated", true);      
+      AuthorStackPanel.Children.Add(AuthorNameFormated);
+
+      Button EditAuthorNameButton = GlobalStyleManager.GetButton("Edit");      
+      EditAuthorNameButton.Click += new RoutedEventHandler((obj, e) =>
+      {
+        var AuthorNameEditWindow = new NameWindow(PathologyVM.AuthorName);
+        AuthorNameEditWindow.Title = "Edit Author Name";
+        AuthorNameEditWindow.Owner = Window.GetWindow(this);
+        AuthorNameEditWindow.ShowDialog();
+      });
+      AuthorStackPanel.Children.Add(EditAuthorNameButton);
+      
       Common.PathologyRequestGrid PathologyRequestGrid = new Common.PathologyRequestGrid(PathologyVM.PathologyRequestList);
-      PatientRequestGroup.Content = PathologyRequestGrid;
+      PathologyRequestStack.Children.Add(PathologyRequestGrid);
+
+      
 
     }
 
     private Grid GenerateMainGrid()
-    {
-      var Col1 = new ColumnDefinition();
-      var Col2 = new ColumnDefinition();
-      var Col3 = new ColumnDefinition();
-      var Col4 = new ColumnDefinition();
-
-      var Row1 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
-      var Row2 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
-      var Row3 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
-      var Row4 = new RowDefinition() { Height = new GridLength(0, GridUnitType.Auto) };
-
-      var Grid = new Grid();
-
-      Grid.ColumnDefinitions.Add(Col1);
-      Grid.ColumnDefinitions.Add(Col2);
-      Grid.ColumnDefinitions.Add(Col3);
-      Grid.ColumnDefinitions.Add(Col4);
-
-      Grid.RowDefinitions.Add(Row1);
-      Grid.RowDefinitions.Add(Row2);
-      Grid.RowDefinitions.Add(Row3);
-      Grid.RowDefinitions.Add(Row4);
-
-      return Grid;
+    {  
+      return GlobalStyleManager.GetGrid(3, 2);
     }
   }
 }

@@ -34,12 +34,10 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetRow(PatientNameFormated, 0);
       this.Children.Add(PatientNameFormated);
 
-      Button EditPatientNameButton = new Button();
-      EditPatientNameButton.Content = "Edit";
-      EditPatientNameButton.Margin = new Thickness(3);
-      EditPatientNameButton.Padding = new Thickness(3);
+      Button EditPatientNameButton = GlobalStyleManager.GetButton("Edit");
+      EditPatientNameButton.HorizontalAlignment = HorizontalAlignment.Left;
       Grid.SetColumn(EditPatientNameButton, 6);
-      Grid.SetColumnSpan(EditPatientNameButton, 1);
+      Grid.SetColumnSpan(EditPatientNameButton, 2);
       Grid.SetRow(EditPatientNameButton, 0);
       this.Children.Add(EditPatientNameButton);
       EditPatientNameButton.Click += new RoutedEventHandler((obj, e) =>
@@ -49,19 +47,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
         PatientNameEditWindow.Owner = Window.GetWindow(this);
         PatientNameEditWindow.ShowDialog();
       });
-
-      //DockPanel Given = GlobalStyleManager.GetValueParameterDockPanel("Given", ColTwoLabelWidth, "Patient.GivenName");
-      //Grid.SetColumn(Given, 3);
-      //Grid.SetColumnSpan(Given, 3);
-      //Grid.SetRow(Given, 0);
-      //this.Children.Add(Given);
-
-      //DockPanel Title = GlobalStyleManager.GetValueParameterDockPanel("Title", ColThreeLabelWidth, "Patient.Title");
-      //Grid.SetColumn(Title, 6);
-      //Grid.SetColumnSpan(Title, 2);
-      //Grid.SetRow(Title, 0);
-      //this.Children.Add(Title);
-
+      
       DockPanel Gender = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Sex", ColOneLabelWidth, "Patient.Gender", PatientVM.GenderEnumDictionary.Select(x => x.Key).ToList());
       Grid.SetColumn(Gender, 0);
       Grid.SetColumnSpan(Gender, 3);
@@ -77,16 +63,14 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       DockPanel AddressFormated = GlobalStyleManager.GetValueParameterDockPanel("Address", ColOneLabelWidth, "Patient.Address.AddressFormated", true);
       Grid.SetColumn(AddressFormated, 0);
       Grid.SetColumnSpan(AddressFormated, 6);
-      Grid.SetRow(AddressFormated, 3);
+      Grid.SetRow(AddressFormated, 2);
       this.Children.Add(AddressFormated);
 
-      Button EditAddressButton = new Button();
-      EditAddressButton.Content = "Edit";
-      EditAddressButton.Margin = new Thickness(3);
-      EditAddressButton.Padding = new Thickness(3);      
+      Button EditAddressButton = GlobalStyleManager.GetButton("Edit");
+      EditAddressButton.HorizontalAlignment = HorizontalAlignment.Left;
       Grid.SetColumn(EditAddressButton, 6);
-      Grid.SetColumnSpan(EditAddressButton, 1);
-      Grid.SetRow(EditAddressButton, 3);
+      Grid.SetColumnSpan(EditAddressButton, 2);
+      Grid.SetRow(EditAddressButton, 2);
       this.Children.Add(EditAddressButton);
       EditAddressButton.Click += new RoutedEventHandler((obj, e) =>
       {
@@ -99,19 +83,19 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       DockPanel HomePhone = GlobalStyleManager.GetValueParameterDockPanel("Home Ph", ColOneLabelWidth, "Patient.HomePhone");
       Grid.SetColumn(HomePhone, 0);
       Grid.SetColumnSpan(HomePhone, 3);
-      Grid.SetRow(HomePhone, 4);
+      Grid.SetRow(HomePhone, 3);
       this.Children.Add(HomePhone);
 
       DockPanel WorkPhone = GlobalStyleManager.GetValueParameterDockPanel("Work Ph", ColOneLabelWidth, "Patient.WorkPhone");
       Grid.SetColumn(WorkPhone, 3);
       Grid.SetColumnSpan(WorkPhone, 3);
-      Grid.SetRow(WorkPhone, 4);
+      Grid.SetRow(WorkPhone, 3);
       this.Children.Add(WorkPhone);
 
       DockPanel IndigenousStatus = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Indigenous Status", 120, "Patient.IndigenousStatus", PatientVM.IndigenousStatusEnumDictionary.Select(x => x.Key).ToList());
       Grid.SetColumn(IndigenousStatus, 0);
       Grid.SetColumnSpan(IndigenousStatus, 8);
-      Grid.SetRow(IndigenousStatus, 5);
+      Grid.SetRow(IndigenousStatus, 4);
       this.Children.Add(IndigenousStatus);
     }
     
@@ -122,43 +106,8 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     private void GenerateMainGrid()
     {
-      this.Margin = new Thickness(5);
-      var Col0 = new ColumnDefinition();
-      var Col1 = new ColumnDefinition();
-      var Col2 = new ColumnDefinition();
-      var Col3 = new ColumnDefinition();
-      var Col4 = new ColumnDefinition();
-      var Col5 = new ColumnDefinition();
-      var Col6 = new ColumnDefinition();
-      var Col7 = new ColumnDefinition();
-
-      var Row0 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row1 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row2 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row3 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row4 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row5 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row6 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row7 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-
-      this.ColumnDefinitions.Add(Col0);
-      this.ColumnDefinitions.Add(Col1);
-      this.ColumnDefinitions.Add(Col2);
-      this.ColumnDefinitions.Add(Col3);
-      this.ColumnDefinitions.Add(Col4);
-      this.ColumnDefinitions.Add(Col5);
-      this.ColumnDefinitions.Add(Col6);
-      this.ColumnDefinitions.Add(Col7);
-
-      this.RowDefinitions.Add(Row0);
-      this.RowDefinitions.Add(Row1);
-      this.RowDefinitions.Add(Row2);
-      this.RowDefinitions.Add(Row3);
-      this.RowDefinitions.Add(Row4);
-      this.RowDefinitions.Add(Row5);
-      this.RowDefinitions.Add(Row6);
-      this.RowDefinitions.Add(Row7);
-
+      this.SetGrid(5, 8);
+      this.Margin = new Thickness(5);      
     }
   }
 }

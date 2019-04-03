@@ -6,6 +6,12 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
 {
   public class DateTimeVM : BaseValidationVM
   {
+    private static string ZoneFormat = @"hhmm";
+    private static string ZonePlusFormat =  $@"\+{ZoneFormat}";
+    private static string ZoneMiniusFormat = $@"\-{ZoneFormat}";
+    private static string TimeFormat = @"h:mm tt";
+    private static string DateFormat = "dd-MMM-yyyy";
+
     public DateTimeVM()
     {
       IsTimeOptional = false;
@@ -32,7 +38,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       get
       {
         if (_Time.HasValue)
-          return _Time.Value.ToString("h:mm tt");
+          return _Time.Value.ToString(TimeFormat);
         else
           return _TimeFormatted;
       }
@@ -74,14 +80,13 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
         OnPropertyChanged("DateTimeFormatted");
       }
     }
-
     public string DateTimeFormatted
     {
       get
       {
         if (Date.HasValue)
         {
-          return $"{Date.Value.ToString("dd-MMM-yyyy")} {TimeFormatted} {TimeZoneFormatted}";
+          return $"{Date.Value.ToString(DateFormat)} {TimeFormatted} {TimeZoneFormatted}";
         }
         else
         {
@@ -91,11 +96,28 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }  
     }
 
+    public static DateTimeVM Now()
+    {
+      var TimeNow = System.DateTimeOffset.Now;
+      string TimeZoneNow = string.Empty;
+      if (TimeNow.Offset.Hours < 0)
+        TimeZoneNow = TimeNow.Offset.ToString(ZoneMiniusFormat);
+      else
+        TimeZoneNow = TimeNow.Offset.ToString(ZonePlusFormat);
+      var DateTimeVMResult = new DateTimeVM()
+      {
+        Date = TimeNow.Date,
+        TimeFormatted = TimeNow.ToString(TimeFormat),
+        TimeZoneFormatted = TimeZoneNow,
+        IsTimeOptional = true
+      };
+      return DateTimeVMResult;
+    }
 
     private DateTime? TryParseTime(string TimeString)
     {
       DateTime TempDateTime;
-      if (DateTime.TryParseExact(TimeString, "h:mm tt", System.Globalization.DateTimeFormatInfo.InvariantInfo, DateTimeStyles.AllowWhiteSpaces, out TempDateTime))
+      if (DateTime.TryParseExact(TimeString, TimeFormat, System.Globalization.DateTimeFormatInfo.InvariantInfo, DateTimeStyles.AllowWhiteSpaces, out TempDateTime))
       {
         return TempDateTime;
       }
@@ -113,7 +135,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
         temp = temp.TrimStart('-');
         var culture = CultureInfo.CurrentCulture;
         TimeSpan TempTimeSpan;
-        if (TimeSpan.TryParseExact(temp, @"hhmm", culture, TimeSpanStyles.AssumeNegative, out TempTimeSpan))     
+        if (TimeSpan.TryParseExact(temp, ZoneFormat, culture, TimeSpanStyles.AssumeNegative, out TempTimeSpan))     
         {          
           return TempTimeSpan;
         }
@@ -127,7 +149,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
         temp = temp.TrimStart('+');
         var culture = CultureInfo.CurrentCulture;
         TimeSpan TempTimeSpan;
-        if (TimeSpan.TryParseExact(temp, @"hhmm", culture, TimeSpanStyles.None, out TempTimeSpan))
+        if (TimeSpan.TryParseExact(temp, ZoneFormat, culture, TimeSpanStyles.None, out TempTimeSpan))
         {
           return TempTimeSpan;
         }
@@ -143,8 +165,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
 
 
     }
-
-
+    
     protected override string IsValid(string PropertyName)
     {
       if (PropertyName == "Date")

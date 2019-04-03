@@ -117,5 +117,38 @@ namespace HIPSClient.HipsTinkerTool.Style
       Panel.Children.Add(ValueTextBox);
       return Panel;
     }
+
+    public static Grid GetGrid(int RowCount, int ColCount)
+    {
+      var Grid = new Grid();
+      Grid.SetGrid(RowCount, ColCount);            
+      return Grid;
+    }
+
+    public static Button GetButton(object Content)
+    {
+      Button Button = new Button();
+      Button.Content = Content;
+      Button.Width = 60;
+      Button.Margin = new Thickness(3);
+      Button.Padding = new Thickness(3);
+      return Button;
+    }
+
+    public static void SetGrid(this Grid Grid, int RowCount, int ColCount)
+    {
+      for (int i = 0; i < RowCount; i++)
+      {
+        var Row = new RowDefinition();
+        Row.Height = new GridLength(30, GridUnitType.Auto);
+        Grid.RowDefinitions.Add(Row);
+      }
+
+      for (int i = 0; i < ColCount; i++)
+      {
+        var Col = new ColumnDefinition();
+        Grid.ColumnDefinitions.Add(Col);
+      }
+    }
   }
 }

@@ -1,5 +1,7 @@
 ﻿using HIPSClient.Common.Tools.Enum;
+using HIPSClient.Hips.Model;
 using HIPSClient.HipsTinkerTool.Controller;
+using HIPSClient.HipsTinkerTool.Style;
 using HIPSClient.HipsTinkerTool.ViewModel.Common;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -24,7 +26,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     {
       GenerateMainGrid();
 
-      PathologyRequestListView = GeneratePatientIdentifierListBox();
+      PathologyRequestListView = GeneratePathologyRequestListBox();
       Grid.SetRow(PathologyRequestListView, 0);
       Grid.SetRowSpan(PathologyRequestListView, 3);
       Grid.SetColumn(PathologyRequestListView, 0);
@@ -40,13 +42,9 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     private StackPanel GenerateButtonStackPanel()
     {
-      Button RemovePatientIdButton = new Button();
-      RemovePatientIdButton.Content = "Remove";
-      RemovePatientIdButton.Width = 60;
-      RemovePatientIdButton.HorizontalAlignment = HorizontalAlignment.Right;
-      RemovePatientIdButton.Margin = new Thickness(3);
-      RemovePatientIdButton.Padding = new Thickness(3);
-      RemovePatientIdButton.Click += new RoutedEventHandler((obj, e) =>
+      Button RemoveButton = GlobalStyleManager.GetButton("Remove");
+      RemoveButton.HorizontalAlignment = HorizontalAlignment.Right;      
+      RemoveButton.Click += new RoutedEventHandler((obj, e) =>
       {
         if (PathologyRequestListView.SelectedItem is PathologyRequestItemVM Item)
         {
@@ -55,37 +53,34 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       });
 
 
-      Button EditPatientIdButton = new Button();
-      EditPatientIdButton.Content = "Edit";
-      EditPatientIdButton.Width = 60;
-      EditPatientIdButton.HorizontalAlignment = HorizontalAlignment.Right;
-      EditPatientIdButton.Margin = new Thickness(3);
-      EditPatientIdButton.Padding = new Thickness(3);
-      EditPatientIdButton.Click += new RoutedEventHandler((obj, e) =>
+      Button EditButton = GlobalStyleManager.GetButton("Edit");      
+      EditButton.HorizontalAlignment = HorizontalAlignment.Right;      
+      EditButton.Click += new RoutedEventHandler((obj, e) =>
       {
         if (PathologyRequestListView.SelectedItem is PathologyRequestItemVM Item)
         {
           var EditPathRequestWindow = new PathologyRequestEditWindow(Item);
-          EditPathRequestWindow.Title = "Edit Pathology Request";
+          EditPathRequestWindow.Title = "Edit Pathology Report";
           EditPathRequestWindow.Owner = Window.GetWindow(this);
           EditPathRequestWindow.ShowDialog();
         }
       });
 
-      Button AddPatientIdButon = new Button();
-      AddPatientIdButon.Content = "Add";
-      AddPatientIdButon.Width = 60;
-      AddPatientIdButon.HorizontalAlignment = HorizontalAlignment.Right;
-      AddPatientIdButon.Margin = new Thickness(3);
-      AddPatientIdButon.Padding = new Thickness(3);
-      AddPatientIdButon.Click += new RoutedEventHandler((obj, e) =>
+      Button AddButton = GlobalStyleManager.GetButton("Add");      
+      AddButton.HorizontalAlignment = HorizontalAlignment.Right;     
+      AddButton.Click += new RoutedEventHandler((obj, e) =>
       {
         var NewRequestItem = new PathologyRequestItemVM();
-        NewRequestItem.Type = HIPSClient.Hips.Model.PatientIdentifierType.MedicalRecordNumber.GetUIDisplay();
-        NewRequestItem.AssigningAuthority = string.Empty;
-        NewRequestItem.IdentifierType = HIPSClient.Hips.Model.PatientIdentifierType.MedicalRecordNumber.GetLiteral();
-        NewRequestItem.Value = string.Empty;
+        NewRequestItem.ReportIdentifier = string.Empty;
+        NewRequestItem.LocalCode = string.Empty;
+        NewRequestItem.LocalDescription = string.Empty;
+        NewRequestItem.LocalSystemCode = string.Empty;
+        NewRequestItem.SnomedCode = string.Empty;
+        NewRequestItem.SnomedPreferredTerm = string.Empty;
+        NewRequestItem.ReportedDateTime = DateTimeVM.Now();        
+        NewRequestItem.ReportStatus = ResultStatus.Final.GetUIDisplay();        
         var EditPathRequestWindow = new PathologyRequestEditWindow(NewRequestItem);
+        EditPathRequestWindow.Title = "Add Pathology Report";
         EditPathRequestWindow.Owner = Window.GetWindow(this);
         if (EditPathRequestWindow.ShowDialog().Value)
         {
@@ -95,36 +90,44 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     
       StackPanel ButtonStack = new StackPanel();
       ButtonStack.Orientation = Orientation.Horizontal;
-      ButtonStack.Children.Add(AddPatientIdButon);
-      ButtonStack.Children.Add(EditPatientIdButton);
-      ButtonStack.Children.Add(RemovePatientIdButton);
+      ButtonStack.Children.Add(AddButton);
+      ButtonStack.Children.Add(EditButton);
+      ButtonStack.Children.Add(RemoveButton);
       ButtonStack.HorizontalAlignment = HorizontalAlignment.Right;
 
       return ButtonStack;
     }
 
-    private ListBox GeneratePatientIdentifierListBox()
+    private ListBox GeneratePathologyRequestListBox()
     {
-      var TypeTextBoxFactory = new FrameworkElementFactory(typeof(Label));
-      TypeTextBoxFactory.SetValue(Label.WidthProperty, 143.0);
-      TypeTextBoxFactory.SetValue(Label.FontWeightProperty, FontWeights.DemiBold);
-      TypeTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("Type"));
+      var ReportIdTextBoxFactory = new FrameworkElementFactory(typeof(Label));
+      ReportIdTextBoxFactory.SetValue(Label.WidthProperty, 100.0);
+      ReportIdTextBoxFactory.SetValue(Label.FontWeightProperty, FontWeights.DemiBold);      
+      ReportIdTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("ReportIdentifier"));
 
-      var AssignAuthBoxFactory = new FrameworkElementFactory(typeof(Label));
-      AssignAuthBoxFactory.SetValue(Label.WidthProperty, 100.0);      
-      AssignAuthBoxFactory.SetBinding(Label.ContentProperty, new Binding("AssigningAuthority"));
+      var LocalDescTextBoxFactory = new FrameworkElementFactory(typeof(Label));      
+      LocalDescTextBoxFactory.SetValue(Label.WidthProperty, 120.0);
+      LocalDescTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("LocalDescription"));
 
-      var ValueTextBoxFactory = new FrameworkElementFactory(typeof(Label));
-      ValueTextBoxFactory.SetValue(Label.HorizontalContentAlignmentProperty, HorizontalAlignment.Center);
-      ValueTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("Value"));
+      var StatusTextBoxFactory = new FrameworkElementFactory(typeof(Label));
+      StatusTextBoxFactory.SetValue(Label.HorizontalContentAlignmentProperty, HorizontalAlignment.Center);
+      StatusTextBoxFactory.SetValue(Label.WidthProperty, 70.0);
+      StatusTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("ReportStatus"));
+
+
+      var ReportedDateTextBoxFactory = new FrameworkElementFactory(typeof(Label));
+      ReportedDateTextBoxFactory.SetValue(Label.HorizontalContentAlignmentProperty, HorizontalAlignment.Center);
+      ReportedDateTextBoxFactory.SetBinding(Label.ContentProperty, new Binding("ReportedDateTime.DateTimeFormatted"));
+
 
       var StackPanelFactory = new FrameworkElementFactory(typeof(StackPanel));
       StackPanelFactory.SetValue(StackPanel.OrientationProperty, Orientation.Horizontal);
       StackPanelFactory.SetValue(StackPanel.HorizontalAlignmentProperty, HorizontalAlignment.Center);
 
-      StackPanelFactory.AppendChild(TypeTextBoxFactory);
-      StackPanelFactory.AppendChild(AssignAuthBoxFactory);
-      StackPanelFactory.AppendChild(ValueTextBoxFactory);
+      StackPanelFactory.AppendChild(ReportIdTextBoxFactory);
+      StackPanelFactory.AppendChild(LocalDescTextBoxFactory);
+      StackPanelFactory.AppendChild(StatusTextBoxFactory);
+      StackPanelFactory.AppendChild(ReportedDateTextBoxFactory);
 
       DataTemplate Template = new DataTemplate();
       Template.VisualTree = StackPanelFactory;
@@ -134,9 +137,9 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       ResultListBox.Height = 90;
       ResultListBox.Margin = new Thickness(3);
       ResultListBox.SelectionMode = SelectionMode.Single;
-      ResultListBox.Name = "ListBoxPatientIdList";
+      ResultListBox.Name = "ListBoxPathologyRequests";
       ResultListBox.SelectedIndex = 0;
-      BindingOperations.SetBinding(ResultListBox, ListView.ItemsSourceProperty, new Binding("PatientIdentifierList"));
+      BindingOperations.SetBinding(ResultListBox, ListView.ItemsSourceProperty, new Binding("PathologyRequestList"));
       ResultListBox.ItemTemplate = Template;
       return ResultListBox;
     }
@@ -150,9 +153,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       var Row2 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
       var Row3 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
       var Row4 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-
-      var Grid = new Grid();
-
+      
       this.ColumnDefinitions.Add(Col1);
 
 

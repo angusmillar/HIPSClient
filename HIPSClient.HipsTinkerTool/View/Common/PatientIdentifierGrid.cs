@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using HIPSClient.HipsTinkerTool.Style;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
@@ -27,13 +28,13 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
       IdentiferListView = GeneratePatientIdentifierListBox();
       Grid.SetRow(IdentiferListView, 0);
-      Grid.SetRowSpan(IdentiferListView, 3);
+      Grid.SetRowSpan(IdentiferListView, 4);
       Grid.SetColumn(IdentiferListView, 0);
-
       this.Children.Add(IdentiferListView);
 
       StackPanel ButtonStack = GenerateButtonStackPanel();
-      Grid.SetRow(ButtonStack, 4);
+      //ButtonStack.Height = 30;
+      Grid.SetRow(ButtonStack, 5);
       Grid.SetColumn(ButtonStack, 0);
       this.Children.Add(ButtonStack);
 
@@ -146,23 +147,25 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     private void GenerateMainGrid()
     {
-      this.Margin = new Thickness(5);
-      var Col1 = new ColumnDefinition();
+      this.SetGrid(5, 1);
+      
+      this.Margin = new Thickness(3);
+      //var Col1 = new ColumnDefinition();
 
-      var Row1 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row2 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row3 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row4 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
+      //var Row1 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
+      //var Row2 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
+      //var Row3 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
+      //var Row4 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
 
-      var Grid = new Grid();
+      
 
-      this.ColumnDefinitions.Add(Col1);
+      //this.ColumnDefinitions.Add(Col1);
 
 
-      this.RowDefinitions.Add(Row1);
-      this.RowDefinitions.Add(Row2);
-      this.RowDefinitions.Add(Row3);
-      this.RowDefinitions.Add(Row4);
+      //this.RowDefinitions.Add(Row1);
+      //this.RowDefinitions.Add(Row2);
+      //this.RowDefinitions.Add(Row3);
+      //this.RowDefinitions.Add(Row4);
 
     }
   }

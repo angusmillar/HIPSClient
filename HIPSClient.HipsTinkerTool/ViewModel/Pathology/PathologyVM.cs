@@ -1,7 +1,7 @@
 ﻿using HIPSClient.Common.Tools.Enum;
 using HIPSClient.Hips.Model;
-using System.Collections.ObjectModel;
 using HIPSClient.HipsTinkerTool.ViewModel.Common;
+using System.Collections.ObjectModel;
 
 namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
 {
@@ -12,11 +12,12 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
     public PatientVM Patient { get; set; }
     public OrderVM Order { get; set; }
     public ObservableCollection<PathologyRequestItemVM> PathologyRequestList { get; set; }
+    public NameVM AuthorName { get; set; }
 
     public PathologyVM()
     {
       Oru = new ORU();
-      
+
       PatientIdentifierList = new ObservableCollection<PatientIdentifierItemVM>()
       {
         new PatientIdentifierItemVM()
@@ -63,6 +64,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
         }
 
       };
+
       Patient = new PatientVM()
       {
         PatientName = new NameVM()
@@ -70,7 +72,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
           Family = "MIllar",
           Given = "Angus",
           Title = "Mr"
-        },        
+        },
         DateOfBirth = new System.DateTime(1973, 09, 30),
         Gender = HIPSClient.Hips.Model.Gender.Male.GetUIDisplay(),
         Address = new AddressVM()
@@ -82,9 +84,9 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
           State = "W.A",
           Country = "AUS"
         },
-         HomePhone = "08 9341 2041",
-         WorkPhone = "0481 059995",
-         IndigenousStatus = IndigenousStatusType.NeitherAboriginalNorTorresStraitIslanderOrigin.GetUIDisplay() 
+        HomePhone = "08 9341 2041",
+        WorkPhone = "0481 059995",
+        IndigenousStatus = IndigenousStatusType.NeitherAboriginalNorTorresStraitIslanderOrigin.GetUIDisplay()
       };
       Order = new OrderVM()
       {
@@ -109,8 +111,55 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
         },
         IsMyHealthRecordDisclosed = true
       };
-      
+
+      PathologyRequestList = new ObservableCollection<PathologyRequestItemVM>()
+      {
+        new PathologyRequestItemVM()
+        {
+           ReportIdentifier = "19P123456",
+           LocalCode = "FBE",
+           LocalDescription = "Full Blood Examination",
+           LocalSystemCode = "ADHA",
+           SnomedCode = "12345678",
+           SnomedPreferredTerm = "Full Blood Count",
+           DepartmentCode = "HM",
+           ReportedDateTime = new DateTimeVM()
+           {
+              Date = new System.DateTime(2019, 01, 12),
+              TimeFormatted = "10:30 AM",
+              TimeZoneFormatted = "+1000",
+              IsTimeOptional = true
+               
+
+           },          
+           ReportStatus = "Final"
+        },
+        new PathologyRequestItemVM()
+        {
+           ReportIdentifier = "19P654321",
+           LocalCode = "IM",
+           LocalDescription = "Infectious Mononucleosis",
+           LocalSystemCode = "ADHA",
+           SnomedCode = "87654321",
+           SnomedPreferredTerm = "Infectious Mononucleosis",
+           DepartmentCode = "HM",          
+           ReportedDateTime = new DateTimeVM()
+           {
+              Date = new System.DateTime(2019, 01, 12),
+              TimeFormatted = "10:35 AM",
+              TimeZoneFormatted = "+1000",
+              IsTimeOptional = true
+           },
+           ReportStatus = "Corrected"
+        },         
+      };
+      AuthorName = new NameVM()
+      {
+        Family = "Jones",
+        Given = "Ken",
+        Title = "Dr"
+      };
     }
-    
+
   }
 }

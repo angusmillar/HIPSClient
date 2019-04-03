@@ -69,6 +69,7 @@
     <Compile Include="ViewModel\Pathology\PathologyVM.cs" />
     <Compile Include="ViewModel\Common\PatientIdentifierItemVM.cs" />
     <Compile Include="View\ADT\ADTTab.cs" />
+    <Compile Include="View\Common\DateTimeGrid.cs" />
     <Compile Include="View\Common\DateTimeWindow.cs" />
     <Compile Include="View\Common\NameWindow.cs" />
     <Compile Include="View\Common\AddressWindow.cs" />
