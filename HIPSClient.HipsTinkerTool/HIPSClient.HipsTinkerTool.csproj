@@ -35,8 +35,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
+      <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
+    </Reference>
     <Reference Include="Identifiers">
       <HintPath>..\..\Identifiers\Identifiers\bin\Release\Identifiers.dll</HintPath>
+    </Reference>
+    <Reference Include="PeterPiper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PeterPiper\PeterPiper\bin\Release\PeterPiper.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -54,9 +61,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AvalonEditSupport\EnumsAvalonEdit.cs" />
+    <Compile Include="AvalonEditSupport\ExtentionAvalonEdit.cs" />
     <Compile Include="Controller\PatientController.cs" />
     <Compile Include="Controller\PatientIdentifierController.cs" />
     <Compile Include="Controller\PathologyController.cs" />
+    <Compile Include="Extention\ExtentionEnums.cs" />
+    <Compile Include="HL7V2Support\Hl7V2EditorSupport.cs" />
+    <Compile Include="HL7V2Support\HL7V2PathDetailItems.cs" />
     <Compile Include="Style\GlobalStyleManager.cs" />
     <Compile Include="ViewModel\BaseValidationVM.cs" />
     <Compile Include="ViewModel\BaseVM.cs" />
@@ -102,6 +114,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -120,5 +133,6 @@
       <Name>HIPSClient.Hips</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
