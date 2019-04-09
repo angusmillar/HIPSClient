@@ -114,6 +114,15 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       return DateTimeVMResult;
     }
 
+    public DateTimeOffset FinalDateTimeOffSet
+    {
+      get
+      {
+        var DateAndTime = new DateTime(_Date.Value.Year, _Date.Value.Month, _Date.Value.Day, _Time.Value.Hour, _Time.Value.Minute, 0);
+        return new DateTimeOffset(DateAndTime, _TimeZone.Value);
+      }
+    }
+
     private DateTime? TryParseTime(string TimeString)
     {
       DateTime TempDateTime;

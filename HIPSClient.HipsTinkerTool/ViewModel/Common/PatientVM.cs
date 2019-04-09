@@ -30,8 +30,8 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }
     }
     
-    private Gender _Gender;
-    public string Gender
+    public Gender _Gender { get; private set; }
+    public string GenderFormatted
     {
       get
       {
@@ -40,21 +40,21 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       set
       {        
         _Gender = (Gender)GenderEnumDictionary[value];
-        OnPropertyChanged("Gender");
+        OnPropertyChanged("GenderFormatted");
       }
     }
 
-    private DateTime? _DateOfBirth;
-    public DateTime? DateOfBirth
+    private DateTime? _PatientDateOfBirth;
+    public DateTime? PatientDateOfBirth
     {
-      get { return _DateOfBirth; }
+      get { return _PatientDateOfBirth; }
       set
       {
-        _DateOfBirth = value;
-        OnPropertyChanged("DateOfBirth");       
+        _PatientDateOfBirth = value;
+        OnPropertyChanged("PatientDateOfBirth");
       }
     }
-   
+
     private AddressVM _Address;
     public AddressVM Address
     {
@@ -79,6 +79,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       {
         _HomePhone = value;
         OnPropertyChanged("HomePhone");
+        
       }
     }
 
@@ -96,7 +97,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }
     }
 
-    private IndigenousStatusType _IndigenousStatus;
+    public IndigenousStatusType _IndigenousStatus { get; private set; }
     public string IndigenousStatus
     {
       get
@@ -112,15 +113,15 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
 
     protected override string IsValid(string PropertyName)
     {
-      if (PropertyName == "DateOfBirth")
-      {
-        if (!this.DateOfBirth.HasValue)
-        {
-          AddError("DateOfBirth", $"Date of Birth (DOB) must be populated.");
-          return "Error Found!";
-        }
-        RemoveError("DateOfBirth");
-      }
+      //if (PropertyName == "PatientDateOfBirth")
+      //{
+      //  if (!this.PatientDateOfBirth.HasValue)
+      //  {
+      //    AddError("PatientDateOfBirth", $"Date of Birth (DOB) must be populated.");
+      //    return "Error Found!";
+      //  }
+      //  RemoveError("PatientDateOfBirth");
+      //}
 
       return string.Empty;
     }

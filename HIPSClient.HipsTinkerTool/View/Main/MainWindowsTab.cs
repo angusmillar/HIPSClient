@@ -1,6 +1,7 @@
 ﻿using HIPSClient.HipsTinkerTool.Controller;
 using HIPSClient.HipsTinkerTool.View.ADT;
 using HIPSClient.HipsTinkerTool.View.Pathology;
+using HIPSClient.HipsTinkerTool.ViewModel.Pathology;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace HIPSClient.HipsTinkerTool.View.Main
 
     public void InitializeLayout()
     {      
-      Items.Add(new PathologyTab());
+      Items.Add(new PathologyTab(new PathologyVM()));
       Items.Add(new ADTTab());
     }
   }

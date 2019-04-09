@@ -1,11 +1,9 @@
-﻿using System;
+﻿using HIPSClient.HipsTinkerTool.Extention;
+using PeterPiper.Hl7.V2.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using PeterPiper.Hl7.V2.Model;
-using PeterPiper.Hl7.V2.Support;
-using HIPSClient.HipsTinkerTool.Extention;
 
 namespace HIPSClient.HipsTinkerTool.HL7V2Support
 {
@@ -20,8 +18,8 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
           MSHSegment.Substring(5, 1).ToCharArray()[0],
           MSHSegment.Substring(4, 1).ToCharArray()[0],
           MSHSegment.Substring(7, 1).ToCharArray()[0],
-          MSHSegment.Substring(6, 1).ToCharArray()[0]);                
-          return oMessageDelimiters;
+          MSHSegment.Substring(6, 1).ToCharArray()[0]);
+        return oMessageDelimiters;
       }
       return null;
     }
@@ -56,7 +54,7 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
       const string SegmentDescriptionText = "Segment";
       const string FieldDescriptionText = "Field";
       const string ElementUnknownText = "<Unknown Element>";
-      const string ComponentUnknownText = "<Unknown Component>";      
+      const string ComponentUnknownText = "<Unknown Component>";
 
       if (oDetails.ElementIndex == 0)
       {
@@ -64,14 +62,14 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
         oDetails.PostionDescriptionVerbose = String.Format("{0}: {1}", SegmentDescriptionText, oDetails.SegmentCode);
       }
       else if (oDetails.ElementIndex == 1 && oDetails.SegmentCode == PeterPiper.Hl7.V2.Support.Standard.Segments.Msh.Code)
-      {        
+      {
         oDetails.PostionDescriptionBreif = String.Format("{0}", oDetails.SegmentCode);
         oDetails.PostionDescriptionVerbose = String.Format("{0}: {1}", SegmentDescriptionText, oDetails.SegmentCode);
       }
       else if (oDetails.ElementIndex == 2 && oDetails.SegmentCode == PeterPiper.Hl7.V2.Support.Standard.Segments.Msh.Code)
-      {       
-        oDetails.PostionDescriptionBreif = String.Format("{0}-{1}", oDetails.SegmentCode, oDetails.ElementIndex);  
-        oDetails.PostionDescriptionVerbose = String.Format("{0}: {1}, {2}: {3}", SegmentDescriptionText, oDetails.SegmentCode, FieldDescriptionText, oDetails.ElementIndex);        
+      {
+        oDetails.PostionDescriptionBreif = String.Format("{0}-{1}", oDetails.SegmentCode, oDetails.ElementIndex);
+        oDetails.PostionDescriptionVerbose = String.Format("{0}: {1}, {2}: {3}", SegmentDescriptionText, oDetails.SegmentCode, FieldDescriptionText, oDetails.ElementIndex);
       }
       else if (oDetails.MesageVersion == PeterPiper.Hl7.V2.Schema.Model.VersionsSupported.NotSupported)
       {
@@ -134,57 +132,70 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
                 oDetails.ComponentDataTypeCode = ElementPrimitiveSchema.Code;
                 oDetails.ComponentDescription = ElementPrimitiveSchema.Name;
               }
-            }      
+            }
           }
           else
           {
-            oDetails.ElementDescription = ElementUnknownText; 
+            oDetails.ElementDescription = ElementUnknownText;
           }
         }
         else
         {
-          oDetails.ElementDescription = ElementUnknownText;          
+          oDetails.ElementDescription = ElementUnknownText;
         }
       }
     }
 
-    public static HL7V2PathDetailItems GetPathDetails(string SegmentLine, 
+    public static HL7V2PathDetailItems GetPathDetails(string SegmentLine,
       int Position,
       IMessage oMessageMSHOnly,
       Dictionary<PeterPiper.Hl7.V2.Schema.Model.VersionsSupported, PeterPiper.Hl7.V2.Schema.Support.SchemaSupport> oSchemaSupportDic)
-    {     
-      Position--;     
+    {
+      Position--;
       string LeftPart = SegmentLine.Substring(0, Position);
-      string RightPart = SegmentLine.Substring(Position, SegmentLine.Length - Position);      
-      
+      string RightPart = SegmentLine.Substring(Position, SegmentLine.Length - Position);
+
       var Char = string.Empty;
       string LeftElement = string.Empty;
-      var counter = LeftPart.Length -1;
-      while (Char != oMessageMSHOnly.MessageDelimiters.Field.ToString())
-      {        
-        Char = LeftPart.Substring(counter, 1);
-        LeftElement = Char + LeftElement;
-        counter--;
-        if (counter < 0)
-          break;
-      }      
+      var counter = LeftPart.Length - 1;
+
+      int IndexOfField = LeftPart.LastIndexOf(oMessageMSHOnly.MessageDelimiters.Field);
+      if (IndexOfField == -1)
+      {
+        LeftElement = LeftPart;
+      }
+      else
+      {
+        LeftElement = LeftPart.Substring(IndexOfField);
+      }
+      
+   
       string RightElement = string.Empty;
       Char = string.Empty;
       counter = 0;
       HL7V2PathDetailItems oDetails = new HL7V2PathDetailItems();
-      oDetails.MesageVersion = PeterPiper.Hl7.V2.Schema.Model.Version.GetVersionFromString(oMessageMSHOnly.MessageVersion);      
-      oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.Unknown;
-      while (Char != oMessageMSHOnly.MessageDelimiters.Field.ToString() && counter < RightPart.Length)
-      {
-        Char = RightPart.Substring(counter, 1);
-        if (Char == oMessageMSHOnly.MessageDelimiters.Component.ToString() && oDetails.ItemUnderMouseStructureType == HL7V2PathDetailItems.ItemHL7V2StructureType.Unknown)
-          oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.Component;
-        if (Char == oMessageMSHOnly.MessageDelimiters.SubComponent.ToString() && oDetails.ItemUnderMouseStructureType == HL7V2PathDetailItems.ItemHL7V2StructureType.Unknown)
-          oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.SubComponent;        
-        RightElement = RightElement + Char;
-        counter++;        
-      }
+      oDetails.MesageVersion = PeterPiper.Hl7.V2.Schema.Model.Version.GetVersionFromString(oMessageMSHOnly.MessageVersion);
 
+      int IndexOfComponent = RightPart.IndexOf(oMessageMSHOnly.MessageDelimiters.Component);
+      int IndexOfSubComponent = RightPart.IndexOf(oMessageMSHOnly.MessageDelimiters.SubComponent);
+      oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.Unknown;
+      if (IndexOfComponent == -1 && IndexOfSubComponent > 0)
+      {
+        oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.SubComponent;
+      }
+      else if (IndexOfSubComponent == -1 && IndexOfComponent > 0)
+      {
+        oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.Component;
+      }
+      else if (IndexOfComponent < IndexOfSubComponent)
+      {
+        oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.Component;
+      }
+      else
+      {
+        oDetails.ItemUnderMouseStructureType = HL7V2PathDetailItems.ItemHL7V2StructureType.SubComponent;
+      }
+      
       var RepeatArray = LeftElement.Split(oMessageMSHOnly.MessageDelimiters.Repeat);
       var ComponentArray = RepeatArray[RepeatArray.Length - 1].Split(oMessageMSHOnly.MessageDelimiters.Component);
       var SubComponentArray = ComponentArray[ComponentArray.Length - 1].Split(oMessageMSHOnly.MessageDelimiters.SubComponent);
@@ -196,25 +207,25 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
       oDetails.ComponentIndex = ComponentArray.Length;
       oDetails.SubComponentIndex = SubComponentArray.Length;
 
-      if (oDetails.SegmentCode == PeterPiper.Hl7.V2.Support.Standard.Segments.Msh.Code)      
+      if (oDetails.SegmentCode == PeterPiper.Hl7.V2.Support.Standard.Segments.Msh.Code)
         oDetails.ElementIndex++;
-     
+
       GetSchemaInfoText(oDetails, oSchemaSupportDic);
 
-      return oDetails;     
+      return oDetails;
     }
 
     public static string FormatToolTipText(HL7V2PathDetailItems oDetails)
     {
-      
+
       StringBuilder sb = new StringBuilder();
       sb.AppendLine(oDetails.PostionDescriptionBreif);
       sb.Append("--");
       for (int i = 0; i < oDetails.PostionDescriptionBreif.Length; i++)
       {
-        sb.Append("-");  
+        sb.Append("-");
       }
-      
+
       if (!String.IsNullOrEmpty(oDetails.ElementDescription))
       {
         sb.AppendLine();
@@ -237,7 +248,7 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
         {
           sb.AppendLine();
           sb.AppendLine("Component: " + oDetails.ComponentIndex.ToString());
-          sb.AppendLine("  " + oDetails.ComponentDescription);          
+          sb.AppendLine("  " + oDetails.ComponentDescription);
           sb.Append("  ");
           sb.Append(String.Format("DataType: {0}", oDetails.ComponentDataTypeCode));
           if (oDetails.ComponentTableNumber > 0 && !(oDetails.ItemUnderMouseStructureType == HL7V2PathDetailItems.ItemHL7V2StructureType.SubComponent || oDetails.SubComponentIndex > 1))
@@ -264,7 +275,7 @@ namespace HIPSClient.HipsTinkerTool.HL7V2Support
             sb.Append(String.Format(", HL7Table: {0}", TableNumber));
           }
         }
-      }      
+      }
       return sb.ToString();
     }
   }

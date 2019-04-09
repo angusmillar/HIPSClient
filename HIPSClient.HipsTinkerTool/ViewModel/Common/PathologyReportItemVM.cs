@@ -12,10 +12,10 @@ using HIPSClient.Hips.Model;
 
 namespace HIPSClient.HipsTinkerTool.ViewModel.Common
 {
-  public class PathologyRequestItemVM : BaseValidationVM
+  public class PathologyReportItemVM : BaseValidationVM
   {
     public IDictionary<string, int> ReportStatusEnumDictionary { get; private set; }
-    public PathologyRequestItemVM()
+    public PathologyReportItemVM()
     {
       ReportStatusEnumDictionary = EnumUtility.ConvertEnumToUIDisplayDictionary<ResultStatus>();
     }
@@ -134,7 +134,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }
     }
     
-    private ResultStatus _ReportStatus;
+    public ResultStatus _ReportStatus { get; private set; }
     public string ReportStatus
     {
       get

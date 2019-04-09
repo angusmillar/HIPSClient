@@ -13,18 +13,18 @@ using System.Windows.Media;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
-  public class PathologyRequestEditWindow : BaseValidationWindow, IView
+  public class PathologyReportEditWindow : BaseValidationWindow, IView
   {
-    public PathologyRequestItemVM PathologyRequestItem { get; private set; }
-    public PathologyRequestItemVM TempPathologyRequestItem { get; private set; }
+    public PathologyReportItemVM PathologyRequestItem { get; private set; }
+    public PathologyReportItemVM TempPathologyRequestItem { get; private set; }
         
-    public PathologyRequestEditWindow(PathologyRequestItemVM PathologyRequestItem) 
-      : base(PathologyRequestItem)
+    public PathologyReportEditWindow(PathologyReportItemVM PathologyReportItem) 
+      : base(PathologyReportItem)
     {
-      this.PathologyRequestItem = PathologyRequestItem;
+      this.PathologyRequestItem = PathologyReportItem;
       
       //This is a copy of the unchanged data in case they cancel the edit operation
-      TempPathologyRequestItem = new PathologyRequestItemVM();
+      TempPathologyRequestItem = new PathologyReportItemVM();
       PathologyRequestItemMapper(this.PathologyRequestItem, TempPathologyRequestItem);
      
       InitializeLayout();
@@ -99,14 +99,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       Grid.SetColumn(SnomedPreferredTerm, 4);
       Grid.SetColumnSpan(SnomedPreferredTerm, 8);
       MainGrid.Children.Add(SnomedPreferredTerm);
-
-      //var ReportedDateTime = new DateTimeGrid(LabelWidth);
-      //ReportedDateTime.SetBinding(DateTimeGrid.DataContextProperty, "ReportedDateTime");      
-      //Grid.SetRow(ReportedDateTime, 3);
-      //Grid.SetColumn(ReportedDateTime, 0);
-      //Grid.SetColumnSpan(ReportedDateTime, 12);
-      //MainGrid.Children.Add(ReportedDateTime);
-
+      
       DockPanel ReportedDateTimeFormatted = GlobalStyleManager.GetValueParameterDockPanel("Reported", LabelWidth, "ReportedDateTime.DateTimeFormatted", true);
       Grid.SetRow(ReportedDateTimeFormatted, 3);
       Grid.SetColumn(ReportedDateTimeFormatted, 0);
@@ -195,7 +188,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       return ButtonStack;
     }
 
-    private void PathologyRequestItemMapper(PathologyRequestItemVM From, PathologyRequestItemVM To)
+    private void PathologyRequestItemMapper(PathologyReportItemVM From, PathologyReportItemVM To)
     {      
       To.LocalCode = From.LocalCode;
       To.LocalDescription = From.LocalDescription;

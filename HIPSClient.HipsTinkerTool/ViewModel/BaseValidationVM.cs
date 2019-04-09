@@ -25,7 +25,9 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
       {
         _ErrorDic.Add(Type, Message);
       }
+      this.CanSave = false;
       OnPropertyChanged("ErrorMessage");
+      OnPropertyChanged("CanSave");
     }
     protected void RemoveError(string Type)
     {
@@ -33,12 +35,16 @@ namespace HIPSClient.HipsTinkerTool.ViewModel
       {
         _ErrorDic.Remove(Type);
       }
+      this.CanSave = (_ErrorDic.Count == 0);
       OnPropertyChanged("ErrorMessage");
+      OnPropertyChanged("CanSave");
     }    
     protected void ClearAllErrors()
     {
       _ErrorDic.Clear();
+      this.CanSave = true;
       OnPropertyChanged("ErrorMessage");
+      OnPropertyChanged("CanSave");
     }
 
     //The error message for the error reporting control to bind to.

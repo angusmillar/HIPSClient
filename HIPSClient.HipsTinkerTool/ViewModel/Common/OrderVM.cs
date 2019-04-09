@@ -39,20 +39,20 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
         OnPropertyChanged("IsMyHealthRecordDisclosed");
       }
     }
-
+    
     protected override string IsValid(string PropertyName)
     {
-      //if (PropertyName == "RequestedTimeString")
+      //if (PropertyName == "OrderNumber")
       //{
-      //  if (TryParseTime(this.RequestedTimeString) == null)
+      //  if (string.IsNullOrWhiteSpace(this.OrderNumber))
       //  {
-      //    AddError("RequestedTimeString", "Time must be formatted as hh:mm PM/ AM(e.g. 9:30 PM)");
+      //    AddError("OrderNumber", "OrderNumber ");
       //    return "Error Found";
       //  }
       //  else
       //  {
-      //    RemoveError("RequestedTimeString");
-      //  }        
+      //    RemoveError("OrderNumber");
+      //  }
       //}
 
       return string.Empty;

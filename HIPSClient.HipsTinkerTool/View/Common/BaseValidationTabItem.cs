@@ -1,22 +1,18 @@
 ﻿using HIPSClient.HipsTinkerTool.ViewModel;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Media;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
-  public abstract class BaseValidationWindow : Window
+  public class BaseValidationTabItem : TabItem
   {
-
     private ValidationTool ValTool;
-    public BaseValidationWindow(BaseValidationVM BaseValidationVM)
+    public BaseValidationTabItem(BaseValidationVM BaseValidationVM)
     {
       ValTool = new ValidationTool(BaseValidationVM);
       AddHandler(Validation.ErrorEvent, new RoutedEventHandler(OnErrorEvent));
@@ -30,7 +26,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     private void OnErrorEvent(object sender, RoutedEventArgs e)
     {
-      ValTool.OnErrorEvent(sender, e);
+      ValTool.OnErrorEvent(sender, e);      
     }
   }
 }

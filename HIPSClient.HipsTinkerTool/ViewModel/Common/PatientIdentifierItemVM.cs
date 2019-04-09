@@ -70,7 +70,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Common
       }
     }
 
-    private HIPSClient.Hips.Model.PatientIdentifierType _Type;
+    public HIPSClient.Hips.Model.PatientIdentifierType _Type { get; private set; } 
     public string Type
     {
       get

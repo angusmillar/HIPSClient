@@ -3,6 +3,7 @@ using HIPSClient.Hips.Model;
 using HIPSClient.HipsTinkerTool.Controller;
 using HIPSClient.HipsTinkerTool.Style;
 using HIPSClient.HipsTinkerTool.ViewModel.Common;
+using System;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,15 +11,15 @@ using System.Windows.Data;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
-  public class PathologyRequestGrid : Grid, IView
+  public class PathologyReportListGrid : Grid, IView
   {
-    public ObservableCollection<PathologyRequestItemVM> PathologyRequestList { get; private set; }
+    public ObservableCollection<PathologyReportItemVM> PathologyReportList { get; private set; }
     
-    private ListBox PathologyRequestListView;
+    private ListBox PathologyReportListView;
 
-    public PathologyRequestGrid(ObservableCollection<PathologyRequestItemVM> PathologyRequestList)
+    public PathologyReportListGrid(ObservableCollection<PathologyReportItemVM> PathologyRequestList)
     {
-      this.PathologyRequestList = PathologyRequestList;
+      this.PathologyReportList = PathologyRequestList;
       InitializeLayout();
     }
 
@@ -26,29 +27,31 @@ namespace HIPSClient.HipsTinkerTool.View.Common
     {
       GenerateMainGrid();
 
-      PathologyRequestListView = GeneratePathologyRequestListBox();
-      Grid.SetRow(PathologyRequestListView, 0);
-      Grid.SetRowSpan(PathologyRequestListView, 3);
-      Grid.SetColumn(PathologyRequestListView, 0);
-
-      this.Children.Add(PathologyRequestListView);
+      PathologyReportListView = GeneratePathologyReportListBox();
+      Grid.SetRow(PathologyReportListView, 0);
+      Grid.SetRowSpan(PathologyReportListView, 3);
+      Grid.SetColumn(PathologyReportListView, 0);
+      Grid.SetColumnSpan(PathologyReportListView, 8);
+      this.Children.Add(PathologyReportListView);
 
       StackPanel ButtonStack = GenerateButtonStackPanel();
-      Grid.SetRow(ButtonStack, 4);
+      ButtonStack.HorizontalAlignment = HorizontalAlignment.Right;
+      Grid.SetRow(ButtonStack, 3);
       Grid.SetColumn(ButtonStack, 0);
+      Grid.SetColumnSpan(ButtonStack, 8);
       this.Children.Add(ButtonStack);
-
+      
     }
-
+    
     private StackPanel GenerateButtonStackPanel()
     {
       Button RemoveButton = GlobalStyleManager.GetButton("Remove");
       RemoveButton.HorizontalAlignment = HorizontalAlignment.Right;      
       RemoveButton.Click += new RoutedEventHandler((obj, e) =>
       {
-        if (PathologyRequestListView.SelectedItem is PathologyRequestItemVM Item)
+        if (PathologyReportListView.SelectedItem is PathologyReportItemVM Item)
         {
-          this.PathologyRequestList.Remove(Item);          
+          this.PathologyReportList.Remove(Item);          
         }
       });
 
@@ -57,12 +60,12 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       EditButton.HorizontalAlignment = HorizontalAlignment.Right;      
       EditButton.Click += new RoutedEventHandler((obj, e) =>
       {
-        if (PathologyRequestListView.SelectedItem is PathologyRequestItemVM Item)
+        if (PathologyReportListView.SelectedItem is PathologyReportItemVM Item)
         {
-          var EditPathRequestWindow = new PathologyRequestEditWindow(Item);
-          EditPathRequestWindow.Title = "Edit Pathology Report";
-          EditPathRequestWindow.Owner = Window.GetWindow(this);
-          EditPathRequestWindow.ShowDialog();
+          var EditPathReportWindow = new PathologyReportEditWindow(Item);
+          EditPathReportWindow.Title = "Edit Pathology Report";
+          EditPathReportWindow.Owner = Window.GetWindow(this);
+          EditPathReportWindow.ShowDialog();
         }
       });
 
@@ -70,21 +73,21 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       AddButton.HorizontalAlignment = HorizontalAlignment.Right;     
       AddButton.Click += new RoutedEventHandler((obj, e) =>
       {
-        var NewRequestItem = new PathologyRequestItemVM();
-        NewRequestItem.ReportIdentifier = string.Empty;
-        NewRequestItem.LocalCode = string.Empty;
-        NewRequestItem.LocalDescription = string.Empty;
-        NewRequestItem.LocalSystemCode = string.Empty;
-        NewRequestItem.SnomedCode = string.Empty;
-        NewRequestItem.SnomedPreferredTerm = string.Empty;
-        NewRequestItem.ReportedDateTime = DateTimeVM.Now();        
-        NewRequestItem.ReportStatus = ResultStatus.Final.GetUIDisplay();        
-        var EditPathRequestWindow = new PathologyRequestEditWindow(NewRequestItem);
-        EditPathRequestWindow.Title = "Add Pathology Report";
-        EditPathRequestWindow.Owner = Window.GetWindow(this);
-        if (EditPathRequestWindow.ShowDialog().Value)
+        var NewReportItem = new PathologyReportItemVM();
+        NewReportItem.ReportIdentifier = string.Empty;
+        NewReportItem.LocalCode = string.Empty;
+        NewReportItem.LocalDescription = string.Empty;
+        NewReportItem.LocalSystemCode = string.Empty;
+        NewReportItem.SnomedCode = string.Empty;
+        NewReportItem.SnomedPreferredTerm = string.Empty;
+        NewReportItem.ReportedDateTime = DateTimeVM.Now();        
+        NewReportItem.ReportStatus = ResultStatus.Final.GetUIDisplay();        
+        var EditPathReportWindow = new PathologyReportEditWindow(NewReportItem);
+        EditPathReportWindow.Title = "Add Pathology Report";
+        EditPathReportWindow.Owner = Window.GetWindow(this);
+        if (EditPathReportWindow.ShowDialog().Value)
         {
-          this.PathologyRequestList.Add(NewRequestItem);          
+          this.PathologyReportList.Add(NewReportItem);          
         }
       });
     
@@ -98,7 +101,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       return ButtonStack;
     }
 
-    private ListBox GeneratePathologyRequestListBox()
+    private ListBox GeneratePathologyReportListBox()
     {
       var ReportIdTextBoxFactory = new FrameworkElementFactory(typeof(Label));
       ReportIdTextBoxFactory.SetValue(Label.WidthProperty, 100.0);
@@ -146,22 +149,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     private void GenerateMainGrid()
     {
-      this.Margin = new Thickness(5);
-      var Col1 = new ColumnDefinition();
-
-      var Row1 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row2 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row3 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      var Row4 = new RowDefinition() { Height = new System.Windows.GridLength(0, System.Windows.GridUnitType.Auto) };
-      
-      this.ColumnDefinitions.Add(Col1);
-
-
-      this.RowDefinitions.Add(Row1);
-      this.RowDefinitions.Add(Row2);
-      this.RowDefinitions.Add(Row3);
-      this.RowDefinitions.Add(Row4);
-
+      this.SetGrid(5, 8);     
     }
   }
 }

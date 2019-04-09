@@ -48,13 +48,13 @@ namespace HIPSClient.HipsTinkerTool.View.Common
         PatientNameEditWindow.ShowDialog();
       });
       
-      DockPanel Gender = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Sex", ColOneLabelWidth, "Patient.Gender", PatientVM.GenderEnumDictionary.Select(x => x.Key).ToList());
+      DockPanel Gender = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Sex", ColOneLabelWidth, "Patient.GenderFormatted", PatientVM.GenderEnumDictionary.Select(x => x.Key).ToList());
       Grid.SetColumn(Gender, 0);
       Grid.SetColumnSpan(Gender, 3);
       Grid.SetRow(Gender, 1);
       this.Children.Add(Gender);
 
-      DockPanel DOB = GlobalStyleManager.GetValueDatePickerDockPanel("DOB", ColTwoLabelWidth, "Patient.DateOfBirth");
+      DockPanel DOB = GlobalStyleManager.GetValueDatePickerDockPanel("DOB", ColTwoLabelWidth, "PatientDateOfBirth");
       Grid.SetColumn(DOB, 3);
       Grid.SetColumnSpan(DOB, 3);
       Grid.SetRow(DOB, 1);
