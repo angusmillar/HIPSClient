@@ -316,6 +316,10 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
         RemoveError(PropertyName);        
       }
       this.OkToSave = (this.CanSave && Patient.CanSave && Order.CanSave && AuthorName.CanSave);
+      if (this.OkToSave)
+      {
+
+      }
       return Result;
     }
     

@@ -35,11 +35,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="HealthIdentifiers.Identifiers">
+      <HintPath>..\..\HealthIdentifiers\HealthIdentifiers.Identifiers\bin\Release\netstandard2.0\HealthIdentifiers.Identifiers.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
       <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
-    </Reference>
-    <Reference Include="Identifiers">
-      <HintPath>..\..\Identifiers\Identifiers\bin\Release\Identifiers.dll</HintPath>
     </Reference>
     <Reference Include="PeterPiper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

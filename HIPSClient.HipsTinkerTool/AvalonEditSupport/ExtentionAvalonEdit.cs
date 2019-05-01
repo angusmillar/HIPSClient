@@ -125,20 +125,29 @@ namespace HIPSClient.HipsTinkerTool.AvalonEditSupport
     {
       var oLine = document.GetLineByNumber(1);
       var LineText = document.GetText(oLine.Offset, oLine.Length);
-            
-      PeterPiper.Hl7.V2.Model.IMessage oMessageMSH = PeterPiper.Hl7.V2.Model.Creator.Message(LineText);            
+      try
+      {
+        PeterPiper.Hl7.V2.Model.IMessage oMessageMSH = PeterPiper.Hl7.V2.Model.Creator.Message(LineText);
 
-      oLine = document.GetLineByNumber(position.Line);
-      if (oLine.Length == 0)
-        return null;
-      if (position.Column > oLine.Length)
-        return null;
+        oLine = document.GetLineByNumber(position.Line);
+        if (oLine.Length == 0)
+          return null;
+        if (position.Column > oLine.Length)
+          return null;
 
-      LineText = document.GetText(oLine.Offset, oLine.Length);
-      var V2Detail = HL7V2Support.Hl7V2EditorSupport.GetPathDetails(LineText, position.Column, oMessageMSH, oSchemaSupportDic);     
-      var toolTip = new ToolTip();
-      toolTip.Content = HL7V2Support.Hl7V2EditorSupport.FormatToolTipText(V2Detail);      
-      return toolTip;
+        LineText = document.GetText(oLine.Offset, oLine.Length);
+        var V2Detail = HL7V2Support.Hl7V2EditorSupport.GetPathDetails(LineText, position.Column, oMessageMSH, oSchemaSupportDic);
+        var toolTip = new ToolTip();
+        toolTip.Content = HL7V2Support.Hl7V2EditorSupport.FormatToolTipText(V2Detail);
+        return toolTip;
+      }
+      catch(Exception Exec)
+      {
+        var toolTip = new ToolTip();
+        toolTip.Content = $"The text under the mouse appears to not be a HL7 V2 Message:\n{Exec.Message}"; 
+        return toolTip;
+      }
+      
     }
 
 

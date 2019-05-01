@@ -33,7 +33,6 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       this.Children.Add(IdentiferListView);
 
       StackPanel ButtonStack = GenerateButtonStackPanel();
-      //ButtonStack.Height = 30;
       Grid.SetRow(ButtonStack, 5);
       Grid.SetColumn(ButtonStack, 0);
       this.Children.Add(ButtonStack);

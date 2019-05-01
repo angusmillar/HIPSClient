@@ -3,11 +3,9 @@ using HIPSClient.HipsTinkerTool.Controller;
 using HIPSClient.HipsTinkerTool.Style;
 using HIPSClient.HipsTinkerTool.View.Common;
 using HIPSClient.HipsTinkerTool.ViewModel.Pathology;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 
 namespace HIPSClient.HipsTinkerTool.View.Pathology
@@ -21,7 +19,7 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
     private Dictionary<PeterPiper.Hl7.V2.Schema.Model.VersionsSupported, PeterPiper.Hl7.V2.Schema.Support.SchemaSupport> oHl7V2SchemaSupportDic = new Dictionary<PeterPiper.Hl7.V2.Schema.Model.VersionsSupported, PeterPiper.Hl7.V2.Schema.Support.SchemaSupport>();
 
     public PathologyTab(PathologyVM PathologyVM)
-      :base(PathologyVM)
+      : base(PathologyVM)
     {
       this.PathologyVM = PathologyVM;
       Controller = new PathologyController(this);
@@ -35,7 +33,7 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
 
       //The Main Tabs Content
       this.SetContent(TabMainGrid);
-      
+
 
       //The ViewModel
       DataContext = PathologyVM;
@@ -46,7 +44,7 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       Grid.SetRow(PatientGroup, 0);
       Grid.SetColumn(PatientGroup, 0);
       TabMainGrid.Children.Add(PatientGroup);
-    
+
       Common.PatientGrid PatientGrid = new Common.PatientGrid(PathologyVM.Patient);
       PatientGroup.Content = PatientGrid;
 
@@ -77,11 +75,9 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
 
       Grid HL7MessageGenGrid = GlobalStyleManager.GetGrid(1, 4);
       HL7MessageGenGroup.Content = HL7MessageGenGrid;
-     
 
       Button GenerateHL7MessageButton = new Button();
       GenerateHL7MessageButton.Content = "Generate Message";
-
       GenerateHL7MessageButton.SetBinding(Button.IsEnabledProperty, "OkToSave");
       GenerateHL7MessageButton.Margin = new Thickness(3);
       GenerateHL7MessageButton.Padding = new Thickness(3);
@@ -100,6 +96,24 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       });
       HL7MessageGenGrid.Children.Add(GenerateHL7MessageButton);
 
+      Button SendToHIPSButton = new Button();
+      SendToHIPSButton.Content = "Send to HIPS";
+      SendToHIPSButton.SetBinding(Button.IsEnabledProperty, "SendToHIPS");
+      SendToHIPSButton.Margin = new Thickness(3);
+      SendToHIPSButton.Padding = new Thickness(3);
+      Grid.SetRow(SendToHIPSButton, 0);
+      Grid.SetColumn(SendToHIPSButton, 2);
+      SendToHIPSButton.Click += new RoutedEventHandler((Obj, e) =>
+      {
+        string HL7Message = HL7MessageTextEditor.Text;
+        HL7MessageTextEditor.Clear();
+        Hips.PathologyImaging.PathologyImagingClient PathClient = new Hips.PathologyImaging.PathologyImagingClient();
+        var HipsRequest = new Hips.PathologyImaging.PathologyImagingRequest() { HL7ORUMessage = HL7Message };
+        Hips.PathologyImaging.PathologyImagingResponse PathologyResponse = PathClient.UploadPathologyReport(HipsRequest);
+        HL7MessageTextEditor.Text = PathologyResponse.Message;       
+      });
+      HL7MessageGenGrid.Children.Add(SendToHIPSButton);
+      
       //Order Group ----------------------------------------------
       var PathologyOrderGroup = new GroupBox();
       PathologyOrderGroup.Header = "Order";
@@ -134,10 +148,10 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
 
       var Row2 = new RowDefinition();
       Hl7MessageGrid.RowDefinitions.Add(Row2);
-      
+
       var Col = new ColumnDefinition();
       Hl7MessageGrid.ColumnDefinitions.Add(Col);
-      
+
 
       HL7MessageGroup.Content = Hl7MessageGrid;
 
@@ -150,7 +164,7 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       }
 
       HL7MessageTextEditor = new ICSharpCode.AvalonEdit.TextEditor();
-      HL7MessageTextEditor.VerticalAlignment = VerticalAlignment.Center;
+      HL7MessageTextEditor.VerticalAlignment = VerticalAlignment.Stretch;
       ExtentionAvalonEdit.AvalonEditContextMenu(HL7MessageTextEditor);
       HL7MessageTextEditor.SetSyntaxType(AvalonEditSyntaxHighlightingTypes.HL7V2);
       HL7MessageTextEditor.Text = PathologyVM.GetHL7Message();
@@ -158,8 +172,8 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       HL7MessageTextEditor.MouseHoverStopped += HL7MessageTextEditor_MouseHoverStopped;
       HL7MessageTextEditor.TextChanged += HL7MessageTextEditor_TextChanged;
       HL7MessageTextEditor.MouseHover += HL7MessageTextEditor_MouseHover;
-      
-      
+
+
       Border Boarder = new Border();
       Boarder.BorderThickness = new Thickness(3);
       Boarder.BorderBrush = Brushes.LightGray;
@@ -168,9 +182,9 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       Boarder.Child = HL7MessageTextEditor;
 
       Hl7MessageGrid.Children.Add(Boarder);
-      
+
     }
-    
+
     private void HL7MessageTextEditor_MouseHover(object sender, System.Windows.Input.MouseEventArgs e)
     {
       var pos = HL7MessageTextEditor.GetPositionFromPoint(e.GetPosition(HL7MessageTextEditor));
@@ -228,13 +242,8 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
       Grid.RowDefinitions.Add(Row2);
 
       var Row3 = new RowDefinition();
-      Row3.Height = new GridLength(6, GridUnitType.Star);
+      Row3.Height = new GridLength(30, GridUnitType.Star);
       Grid.RowDefinitions.Add(Row3);
-
-      var Row4 = new RowDefinition();
-      Row4.Height = new GridLength(60, GridUnitType.Pixel);
-      Grid.RowDefinitions.Add(Row4);
-
 
       var Col1 = new ColumnDefinition();
       Grid.ColumnDefinitions.Add(Col1);
@@ -244,7 +253,6 @@ namespace HIPSClient.HipsTinkerTool.View.Pathology
 
       return Grid;
 
-      //return GlobalStyleManager.GetGrid(3, 2);
     }
 
 

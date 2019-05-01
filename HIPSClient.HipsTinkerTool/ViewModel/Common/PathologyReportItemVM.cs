@@ -1,8 +1,8 @@
 ﻿using HIPSClient.Common.Tools.Enum;
 using HIPSClient.Common.Tools.String;
-using Identifiers.Australian.DepartmentVeteransAffairs;
-using Identifiers.Australian.MedicareNumber;
-using Identifiers.Australian.NationalHealthcareIdentifier;
+using HealthIdentifiers.Identifiers.Australian.DepartmentVeteransAffairs;
+using HealthIdentifiers.Identifiers.Australian.MedicareNumber;
+using HealthIdentifiers.Identifiers.Australian.NationalHealthcareIdentifier;
 using System;
 using System.Collections.Generic;
 using System.Linq;

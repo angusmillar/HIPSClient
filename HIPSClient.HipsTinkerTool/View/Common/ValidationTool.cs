@@ -1,9 +1,5 @@
 ﻿using HIPSClient.HipsTinkerTool.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -11,10 +7,10 @@ using System.Windows.Media;
 
 namespace HIPSClient.HipsTinkerTool.View.Common
 {
-  public class ValidationTool 
+  public class ValidationTool
   {
     public int _ErrorCount;
-    public DockPanel _MainDocK;
+    public Grid _MainGrid;
     public TextBox _ErrorMessageTextBox;
     public Border _ErrorBorder;
     public BaseValidationVM BaseValidationVM { get; private set; }
@@ -28,16 +24,20 @@ namespace HIPSClient.HipsTinkerTool.View.Common
 
     public void SetContent(UIElement Item)
     {
-      _MainDocK.Children.Clear();
-      DockPanel.SetDock(Item, Dock.Top);
-      DockPanel.SetDock(_ErrorBorder, Dock.Bottom);
-      _MainDocK.Children.Add(Item);
-      _MainDocK.Children.Add(_ErrorBorder);
+      _MainGrid.Children.Clear();
+
+      Grid.SetRow(Item, 0);
+      Grid.SetColumn(Item, 0);
+      _MainGrid.Children.Add(Item);
+
+      Grid.SetRow(_ErrorBorder, 1);
+      Grid.SetColumn(_ErrorBorder, 0);
+      _MainGrid.Children.Add(_ErrorBorder);
     }
 
-    public DockPanel GetContent()
+    public Grid GetContent()
     {
-      return _MainDocK;
+      return _MainGrid;
     }
 
     private void InitializeMainDock()
@@ -46,10 +46,20 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       //Controls.
       // - At the top the Main Grid for all content
       // - At the bottom a Border with a text bock inside for error messages when present.
-      _MainDocK = new DockPanel();
-      _MainDocK.LastChildFill = true;
+      _MainGrid = new Grid();
 
-      GenerateErrorMessageDisplay();           
+      var Row1 = new RowDefinition();
+      Row1.Height = new GridLength(30, GridUnitType.Star);
+      _MainGrid.RowDefinitions.Add(Row1);
+
+      var Row2 = new RowDefinition();
+      Row2.Height = new GridLength(1, GridUnitType.Star);
+      _MainGrid.RowDefinitions.Add(Row2);
+
+      var Col1 = new ColumnDefinition();
+      _MainGrid.ColumnDefinitions.Add(Col1);
+
+      GenerateErrorMessageDisplay();
     }
 
     private void GenerateErrorMessageDisplay()
@@ -63,7 +73,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       _ErrorMessageTextBox.Background = Brushes.Salmon;
       _ErrorMessageTextBox.TextWrapping = TextWrapping.Wrap;
       _ErrorMessageTextBox.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
-      
+
 
       Binding Bind = new Binding("ErrorMessage");
       Bind.Mode = BindingMode.OneWay;
@@ -75,7 +85,11 @@ namespace HIPSClient.HipsTinkerTool.View.Common
       _ErrorBorder.BorderThickness = new Thickness(1);
       _ErrorBorder.Child = _ErrorMessageTextBox;
       _ErrorBorder.Visibility = Visibility.Collapsed;
-      DockPanel.SetDock(_ErrorBorder, System.Windows.Controls.Dock.Bottom);
+
+      Grid.SetRow(_ErrorBorder, 1);
+      Grid.SetColumn(_ErrorBorder, 0);
+      _MainGrid.Children.Add(_ErrorBorder);
+      
     }
 
     public void OnErrorEvent(object sender, RoutedEventArgs e)
