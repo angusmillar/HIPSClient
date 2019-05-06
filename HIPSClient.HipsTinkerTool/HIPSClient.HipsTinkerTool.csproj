@@ -35,8 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HealthIdentifiers.Identifiers">
-      <HintPath>..\..\HealthIdentifiers\HealthIdentifiers.Identifiers\bin\Release\netstandard2.0\HealthIdentifiers.Identifiers.dll</HintPath>
+    <Reference Include="HealthIdentifiers.Identifiers, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HealthIdentifiers.Identifiers.1.0.1\lib\netstandard2.0\HealthIdentifiers.Identifiers.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit, Version=5.0.3.0, Culture=neutral, PublicKeyToken=9cc39be672370310, processorArchitecture=MSIL">
       <HintPath>..\packages\AvalonEdit.5.0.4\lib\Net40\ICSharpCode.AvalonEdit.dll</HintPath>
