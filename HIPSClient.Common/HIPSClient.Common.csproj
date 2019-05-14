@@ -31,8 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PeterPiper">
-      <HintPath>..\..\PeterPiper\PeterPiper\bin\Release\PeterPiper.dll</HintPath>
+    <Reference Include="PeterPiper, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PeterPiper.1.0.1\lib\net46\PeterPiper.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -58,6 +58,8 @@
     <Compile Include="Tools\Enum\ReflectionHelper.cs" />
     <Compile Include="Tools\String\StringExtentions.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
