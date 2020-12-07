@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.HIPS/Services/2012/01" elementFormDefault="qualified" targetNamespace="http://schemas.HIPS/Services/2012/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+  <xs:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+  <xs:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
+  <xs:element name="CheckConsent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q1:PatientIdentifierBase" />
+        <xs:element minOccurs="0" name="admissionDate" type="xs:dateTime" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q2:UserDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckConsentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" minOccurs="0" name="CheckConsentResult" nillable="true" type="q3:EpisodeConsentResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPatientParticipationStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q4:PatientIdentifierBase" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q5:UserDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPatientParticipationStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" minOccurs="0" name="GetPatientParticipationStatusResult" nillable="true" type="q6:PatientParticipationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecentPatientParticipationStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="since" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="hospitalCodeSystem" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q7:UserDetails" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRecentPatientParticipationStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" minOccurs="0" name="GetRecentPatientParticipationStatusResult" nillable="true" type="q8:PatientParticipationResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordConsent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="consentWithdrawn" type="xs:boolean" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q9:PatientIdentifierBase" />
+        <xs:element minOccurs="0" name="admissionDate" type="xs:dateTime" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q10:UserDetails" />
+        <xs:element minOccurs="0" name="auditInformation" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordConsentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="RecordConsentResult" nillable="true" type="q11:HipsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordDisclosure">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pcehrDisclosed" type="xs:boolean" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q12:PatientIdentifierBase" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q13:UserDetails" />
+        <xs:element minOccurs="0" name="auditInformation" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecordDisclosureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="RecordDisclosureResult" nillable="true" type="q14:HipsResponse" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

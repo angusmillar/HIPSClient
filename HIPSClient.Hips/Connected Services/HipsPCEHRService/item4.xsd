@@ -1,303 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" />
-  <xs:complexType name="PatientIdentifierBase">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This abstract class is used for the Patient Identifier classes.
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="BaseSchema">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:HipsObservableObject">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date and Time that this record was created.
             &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="DateModified" type="xs:dateTime">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date and Time that this record was last modified.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:int">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the primary key of this record.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UserCreated" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the user who created this record.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="UserModified" nillable="true" type="xs:string">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Gets or sets the user who last modified this record
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BaseSchema" nillable="true" type="tns:BaseSchema" />
+  <xs:complexType name="HipsObservableObject">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AlternateOrganisationName" nillable="true" type="xs:string">
+      <xs:element minOccurs="0" name="IsDirty" type="xs:boolean">
         <xs:annotation>
           <xs:appinfo />
           <xs:documentation>&lt;summary&gt;
-            Gets or sets the alternate organisation name.
-            As defined in "PCEHR R12 Implementation Guide", the accessing organisation
-            may choose to disclose a different organisation name on the PCEHR Audit Log
-            by populating the alternateOrganisationName in the PCEHR header.
+            Gets a value indicating whether this instance is dirty, i.e. it has been changed and needs updating.
             &lt;/summary&gt;
             &lt;value&gt;
-            The alternate organisation name.
-            &lt;/value&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="HospitalCode" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the hospital code. This code, qualified by the hospital code system,
-            is used to determine:
-            a) Which hospital allocated the MRN, if the Mrn subclass is used.
-            b) Which hospital the episode occurred in, for consent, upload and remove calls.
-            c) Which authorised employee is identified, if the user.Role is AuthorisedEmployee.
-            d) Which health provider organisation (HPI-O) is making the calls to HI Service and PCEHR B2B Gateway.
-            &lt;/summary&gt;
-            &lt;value&gt;
-            A code identifying the hospital in which this patient received health care.
-            &lt;/value&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="HospitalCodeSystem" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the hospital code system.
-            This is necessary because different systems may use different codes to identify the
-            same hospital. For example, "NOA" or "NHS" for Noarlunga Health Service, where
-            "NOA" is the LAB Facility Code and "NHS" is the PAS Facility Code.
-            &lt;/summary&gt;
-            &lt;value&gt;
-            A code identifying the system under which the hospital code was allocated.
+              &lt;c&gt;true&lt;/c&gt; if this instance is dirty; otherwise, &lt;c&gt;false&lt;/c&gt;.
             &lt;/value&gt;</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="PatientIdentifierBase" nillable="true" type="tns:PatientIdentifierBase" />
-  <xs:complexType name="Mrn">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the mrn
-            &lt;/summary&gt;
-            &lt;value&gt;
-            Value
-            &lt;/value&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Mrn" nillable="true" type="tns:Mrn" />
-  <xs:complexType name="PatientMasterId">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="HospitalId" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the HospitalId (HIPS database Hospital table primary key). If supplied, overrides the hospital code and code system.
-            &lt;/summary&gt;
-            &lt;value&gt;
-            Value
-            &lt;/value&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Value" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the PatientMasterId (HIPS database PatientMaster table primary key).
-            &lt;/summary&gt;
-            &lt;value&gt;
-            Value
-            &lt;/value&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PatientMasterId" nillable="true" type="tns:PatientMasterId" />
-  <xs:complexType name="StatePatientId">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the StatePatientId
-            &lt;/summary&gt;
-            &lt;value&gt;
-            Value
-            &lt;/value&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="StatePatientId" nillable="true" type="tns:StatePatientId" />
-  <xs:complexType name="ValidatedIhi">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The date of birth that was used to obtain or validate the IHI with the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The family name that was used to obtain or validate the IHI with the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="GivenName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The given name that was used to obtain or validate the IHI with the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Ihi" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The value of the IHI.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="IhiLastValidated" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The date and time when the IHI was last validated with the HI Service.
-            If this value is within the configured period then HIPS will not attempt
-            to revalidate the IHI before use in a PCEHR service call.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="IhiRecordStatus" type="q1:IhiRecordStatus">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The IHI record status
-            Note: In this release HIPS only supports Verified IHIs.
-            It is an error to provide an IHI with any record status apart from Verified.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="IhiStatus" type="q2:IhiStatus">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The IHI status.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="Sex" type="q3:SexEnumerator">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            The sex that was used to obtain or validate the IHI with the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ValidatedIhi" nillable="true" type="tns:ValidatedIhi" />
-  <xs:complexType name="Demographic">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the person's date of birth.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="DvaNumber" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the DVA file number on the person's repatriation health card.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the family name that appears on the person's Medicare or DVA card.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="GivenName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the given name that appears on the person's Medicare or DVA card.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="MedicareIrn" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the 1-digit IRN for this person on the Medicare card.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="MedicareNumber" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the 10-digit card number on the person's Medicare card.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="Sex" type="q4:SexEnumerator">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the person's sex.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Demographic" nillable="true" type="tns:Demographic" />
-  <xs:complexType name="RegisteredEnterprisePatient">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Mrn" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the facility-level ID for the patient.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="StatePatientId" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the enterprise-level ID for the patient.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="RegisteredEnterprisePatient" nillable="true" type="tns:RegisteredEnterprisePatient" />
-  <xs:complexType name="ArrayOfPatientIdentifierBase">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PatientIdentifierBase" nillable="true" type="tns:PatientIdentifierBase" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPatientIdentifierBase" nillable="true" type="tns:ArrayOfPatientIdentifierBase" />
+  <xs:element name="HipsObservableObject" nillable="true" type="tns:HipsObservableObject" />
 </xs:schema>

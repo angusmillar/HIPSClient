@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://schemas.HIPS/Services/2012/01" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://schemas.HIPS/Services/2012/01" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://schemas.HIPS/Services/2012/01/Imports">
+      <xsd:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd0" namespace="http://schemas.HIPS/Services/2012/01" />
+      <xsd:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
+      <xsd:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" />
+      <xsd:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IConsentService_CheckConsent_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckConsent" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_CheckConsent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckConsentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_GetPatientParticipationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientParticipationStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_GetPatientParticipationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientParticipationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_GetRecentPatientParticipationStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentPatientParticipationStatus" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_GetRecentPatientParticipationStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRecentPatientParticipationStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_RecordConsent_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecordConsent" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_RecordConsent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecordConsentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_RecordDisclosure_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecordDisclosure" />
+  </wsdl:message>
+  <wsdl:message name="IConsentService_RecordDisclosure_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecordDisclosureResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IConsentService">
+    <wsdl:documentation>&lt;summary&gt;
+            Web service interface for the Consent service.
+            Contains methods to check and record patients consent or withdrawal of consent for the upload of documents to the PCEHR.
+            &lt;/summary&gt;</wsdl:documentation>
+    <wsdl:operation name="CheckConsent">
+      <wsdl:documentation>&lt;summary&gt;
+            Finds out whether HIPS has recorded an explicit request to upload or a withdrawal of consent to upload
+            clinical documents for a specified episode.
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="admissionDate"&gt;The date and time when the episode started (Episode.AdmissionDate)&lt;/param&gt;
+            &lt;param name="user"&gt;Information to identify the person responsible for this action&lt;/param&gt;
+            &lt;returns&gt;Response containing the consent status for this episode and an error indicator&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/CheckConsent" message="tns:IConsentService_CheckConsent_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/CheckConsentResponse" message="tns:IConsentService_CheckConsent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientParticipationStatus">
+      <wsdl:documentation>&lt;summary&gt;
+            Gets the participation status for a single hospital patient record. This involves
+            checking both the HI Service and the PCEHR System, as well as local consent records.
+            &lt;list type="ordered"&gt;
+            &lt;item&gt;If we do not have a valid IHI then the patient is not considered participating.
+                  We cannot upload a discharge summary for a patient without a valid IHI.&lt;/item&gt;
+            &lt;item&gt;If the patient has explicitly consented to the upload of any of the discharge
+                  summaries from a hospital then they are considered participating in that hospital
+                  only.&lt;/item&gt;
+            &lt;item&gt;If the patient has an advertised PCEHR, then we assume they do want their discharge
+                  summary to be uploaded to PCEHR.&lt;/item&gt;
+            &lt;item&gt;With no advertised PCEHR and no explicit consents in the hospital, we assume the
+                  patient will not expect that hospital to upload the discharge summary.&lt;/item&gt;
+               &lt;/list&gt;
+            &lt;/summary&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;The user responsible for any IHI and PCEHR checks required&lt;/param&gt;
+            &lt;returns&gt;Participation status for the requested patient&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/GetPatientParticipationStatus" message="tns:IConsentService_GetPatientParticipationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/GetPatientParticipationStatusResponse" message="tns:IConsentService_GetPatientParticipationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRecentPatientParticipationStatus">
+      <wsdl:documentation>&lt;summary&gt;
+            For patients in hospitals that have a code in the given hospital code system (e.g. those which use a particular PAS or CIS),
+            This service will obtain the participation status for all patients with changes to their episodes since the given date/time.
+            &lt;/summary&gt;
+            &lt;param name="since"&gt;The date/time after which the episode must have been modified to be included&lt;/param&gt;
+            &lt;param name="hospitalCodeSystem"&gt;Code that identifies which type of hospital codes should be returned&lt;/param&gt;
+            &lt;param name="user"&gt;The user details for IHI validation and PCEHR advertised checking.&lt;/param&gt;
+            &lt;returns&gt;List of participation status for patients&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/GetRecentPatientParticipationStatus" message="tns:IConsentService_GetRecentPatientParticipationStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/GetRecentPatientParticipationStatusResponse" message="tns:IConsentService_GetRecentPatientParticipationStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordConsent">
+      <wsdl:documentation>&lt;summary&gt;
+            Record the withdrawal of consent to upload a discharge summary for a particular episode, or reverse that action.
+            In order to check or record the consent to upload the discharge summary to PCEHR for an episode,
+            the clinical system must specify the admission date/time of the episode within a configured tolerance.
+            If there is no unique match to an episode then an error will be returned and the situation
+            may be investigated by the system administrator.
+            &lt;/summary&gt;
+            &lt;param name="consentWithdrawn"&gt;True if the patient withdrew consent to upload, false if the patient reinstated consent to upload.&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="admissionDate"&gt;The date and time when the episode started (Episode.AdmissionDate)&lt;/param&gt;
+            &lt;param name="user"&gt;Information to identify the person responsible for this action&lt;/param&gt;
+            &lt;param name="auditInformation"&gt;Additional audit information to store&lt;/param&gt;
+            &lt;returns&gt;Indicator of any error that occurred&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/RecordConsent" message="tns:IConsentService_RecordConsent_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/RecordConsentResponse" message="tns:IConsentService_RecordConsent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecordDisclosure">
+      <wsdl:documentation>&lt;summary&gt;
+            Record whether the patient has disclosed the existence of a PCEHR.
+            &lt;/summary&gt;
+            &lt;param name="pcehrDisclosed"&gt;True if the patient disclosed the existence of a PCEHR, false if the patient has not disclosed the existence of a PCEHR.&lt;/param&gt;
+            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
+            &lt;param name="user"&gt;Information to identify the person responsible for this action&lt;/param&gt;
+            &lt;param name="auditInformation"&gt;Additional audit information to store&lt;/param&gt;
+            &lt;returns&gt;Indicator of any error that occurred&lt;/returns&gt;</wsdl:documentation>
+      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/RecordDisclosure" message="tns:IConsentService_RecordDisclosure_InputMessage" />
+      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IConsentService/RecordDisclosureResponse" message="tns:IConsentService_RecordDisclosure_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

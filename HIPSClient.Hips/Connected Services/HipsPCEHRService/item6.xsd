@@ -1,361 +1,452 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.HIPS/Services/2012/01" elementFormDefault="qualified" targetNamespace="http://schemas.HIPS/Services/2012/01" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
-  <xs:element name="GainAccessEmergency">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q1:PatientIdentifierBase" />
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q2:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GainAccessEmergencyResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GainAccessEmergencyResult" nillable="true" type="q3:GainPcehrAccessResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GainAccessWithCode">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q4:PatientIdentifierBase" />
-        <xs:element minOccurs="0" name="AccessCode" nillable="true" type="xs:string" />
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q5:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GainAccessWithCodeResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GainAccessWithCodeResult" nillable="true" type="q6:GainPcehrAccessResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GainAccessWithOutCode">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q7:PatientIdentifierBase" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q8:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GainAccessWithOutCodeResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GainAccessWithOutCodeResult" nillable="true" type="q9:GainPcehrAccessResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetChangeHistoryView">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q10:PatientIdentifierBase" />
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q11:UserDetails" />
-        <xs:element minOccurs="0" name="documentUniqueId" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetChangeHistoryViewResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetChangeHistoryViewResult" nillable="true" type="q12:ChangeHistoryViewResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentList">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q13:PatientIdentifierBase" />
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q14:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetDocumentListResult" nillable="true" type="q15:DocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListFilterDates">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q16:PatientIdentifierBase" />
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q17:UserDetails" />
-        <xs:element minOccurs="0" name="creationTimeStart" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="creationTimeEnd" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="serviceTimeStart" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="serviceTimeEnd" nillable="true" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListFilterDatesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetDocumentListFilterDatesResult" nillable="true" type="q18:DocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListFilterStatusAndDates">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q19:PatientIdentifierBase" />
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q20:UserDetails" />
-        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" minOccurs="0" name="documentStatus" nillable="true" type="q21:ArrayOfDocumentStatus" />
-        <xs:element minOccurs="0" name="creationTimeStart" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="creationTimeEnd" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="serviceTimeStart" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="serviceTimeEnd" nillable="true" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListFilterStatusAndDatesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetDocumentListFilterStatusAndDatesResult" nillable="true" type="q22:DocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListWithQuery">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q23:PatientIdentifierBase" />
-        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q24:UserDetails" />
-        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="docQuery" nillable="true" type="q25:DocumentQuery" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListWithQueryResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetDocumentListWithQueryResult" nillable="true" type="q26:DocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListActive">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q27:PatientIdentifierBase" />
-        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q28:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListActiveResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetDocumentListActiveResult" nillable="true" type="q29:DocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListActiveFilterDates">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q30:PatientIdentifierBase" />
-        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q31:UserDetails" />
-        <xs:element minOccurs="0" name="creationTimeStart" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="creationTimeEnd" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="serviceTimeStart" nillable="true" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="serviceTimeEnd" nillable="true" type="xs:dateTime" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDocumentListActiveFilterDatesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetDocumentListActiveFilterDatesResult" nillable="true" type="q32:DocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetIndividualOperationStatus">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="pcehrMessageQueueId" type="xs:int" />
-        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q33:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetIndividualOperationStatusResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetIndividualOperationStatusResult" nillable="true" type="q34:IndividualOperationStatus" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetLocalUploadedDocument">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q35:UserDetails" />
-        <xs:element minOccurs="0" name="sourceSystemSetId" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="sourceSystemDocumentId" nillable="true" type="xs:string" />
-        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q36:PatientIdentifierBase" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetLocalUploadedDocumentResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetLocalUploadedDocumentResult" nillable="true" type="q37:LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetOperationStatus">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q38:PatientIdentifierBase" />
-        <xs:element minOccurs="0" name="admissionDate" type="xs:dateTime" />
-        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q39:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetOperationStatusResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetOperationStatusResult" nillable="true" type="q40:OperationStatus" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetQueuedOperationList">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="dateTimeFrom" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="dateTimeTo" type="xs:dateTime" />
-        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="queueOperation" nillable="true" type="q41:ArrayOfQueueOperation" />
-        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="queueStatus" nillable="true" type="q42:ArrayOfQueueStatus" />
-        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q43:ArrayOfPatientIdentifierBase" />
-        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q44:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetQueuedOperationListResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetQueuedOperationListResult" nillable="true" type="q45:QueuedOperationStatus" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetView">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q46:PatientIdentifierBase" />
-        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q47:UserDetails" />
-        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="request" nillable="true" type="q48:ViewRequestBase" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetViewResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="GetViewResult" nillable="true" type="q49:ViewResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="IsPcehrAdvertised">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q50:PatientIdentifierBase" />
-        <xs:element minOccurs="0" name="dateOfBirth" type="xs:dateTime" />
-        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q51:UserDetails" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="IsPcehrAdvertisedResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="IsPcehrAdvertisedResult" nillable="true" type="q52:DoesPcehrExistResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ListUploadedDocuments">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q53:UserDetails" />
-        <xs:element minOccurs="0" name="sourceSystemSetId" nillable="true" type="xs:string" />
-        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q54:PatientIdentifierBase" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ListUploadedDocumentsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="ListUploadedDocumentsResult" nillable="true" type="q55:LocalClinicalDocumentListResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RefreshPatientParticipationStatus">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q56:UserDetails" />
-        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q57:PatientIdentifierBase" />
-        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="disclosureFacility" nillable="true" type="q58:HospitalIdentifier" />
-        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="forceRefresh" type="q59:ForceRefreshOption" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RefreshPatientParticipationStatusResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" minOccurs="0" name="RefreshPatientParticipationStatusResult" nillable="true" type="q60:PatientParticipationResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Remove">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q61:PatientIdentifierBase" />
-        <xs:element minOccurs="0" name="admissionDate" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="documentSetId" nillable="true" type="xs:string" />
-        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" minOccurs="0" name="reason" type="q62:RemovalReason" />
-        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q63:UserDetails" />
-        <xs:element minOccurs="0" name="auditInformation" nillable="true" type="xs:base64Binary" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RemoveResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="RemoveResult" nillable="true" type="q64:HipsResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RetrieveDocument">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q65:PatientIdentifierBase" />
-        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q66:UserDetails" />
-        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="request" nillable="true" type="q67:DocumentRequest" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RetrieveDocumentResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q68="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="RetrieveDocumentResult" nillable="true" type="q68:DocumentResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UploadOrSupersedeDocument">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="cdaDocument" nillable="true" type="xs:base64Binary" />
-        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas.PatientIdentifier" minOccurs="0" name="patientIdentifier" nillable="true" type="q69:PatientIdentifierBase" />
-        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="user" nillable="true" type="q70:UserDetails" />
-        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" minOccurs="0" name="attachments" nillable="true" type="q71:ArrayOfAttachment" />
-        <xs:element minOccurs="0" name="admissionDate" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="documentFormatCode" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="UploadOrSupersedeDocumentResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/HIPS.CommonSchemas" minOccurs="0" name="UploadOrSupersedeDocumentResult" nillable="true" type="q72:HipsResponse" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="IhiRecordStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration is used to match the record status in the IhiRecordStatus table to code
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Verified">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI is a verified IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unverified">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI is an unverified IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Provisional">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI is a provisional IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI record status is unknown or not applicable.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IhiRecordStatus" nillable="true" type="tns:IhiRecordStatus" />
+  <xs:simpleType name="IhiStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This is used to match the status in the IhiStatus table to code
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Active.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Deceased">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Deceased.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Retired">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Retired.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Expired">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Expired.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Resolved">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Resolved. This status should never be stored for the current IHI of a patient, but will be stored in IHI history.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is unknown or not applicable (including when no IHI was found).
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicateIhi">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because another patient record in the same hospital had the same IHI number.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicatePatient">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because another patient record in the same hospital had demographic information identical to that used to obtain the IHI for this patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MergeConflict">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because it was merged with another patient record that had a different IHI number.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServiceUnavailable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">103</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI or PCEHR lookup failed and will be retried by the background IHI cleanup service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MedicareDvaChangeMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">104</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because the Medicare or DVA number was changed,
+            resulting in an IHI search that returned no IHI or returned a different IHI to that
+            which was assigned to the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DemographicMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">105</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because no IHI was found when the IHI assigned
+            to the patient was validated using the patient's name, sex and date of birth.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IhiStatus" nillable="true" type="tns:IhiStatus" />
+  <xs:simpleType name="SexEnumerator">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration represents a person's sex, and is used to match the Sex table to code.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotStatedOrInadequatelyDescribed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Not stated or inadequately described.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Male">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The male sex.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Female">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The female sex.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IntersexOrIndeterminate">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Intersex or indeterminate.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SexEnumerator" nillable="true" type="tns:SexEnumerator" />
+  <xs:simpleType name="AccessCodeRequired">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This is used to match the status in the AccessCodeRequired table primary key to code.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The access status is unknown.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WithCode">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Except in an emergency, the patient must provide his/her
+            Record Access Code for the healthcare provider organisation
+            to gain access to this PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="WithoutCode">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            No code is required for the health provider organisation
+            to gain access to this PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="AccessGranted">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The health provider organisation has already gained
+            access to this PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AccessCodeRequired" nillable="true" type="tns:AccessCodeRequired" />
+  <xs:simpleType name="RemovalReason">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enum is used to match the removal reason id in the RemovalReason table to code.
+            The values of the IDs should also be kept in sync with the NEHTA enum
+            Nehta.VendorLibrary.PCEHR.RemoveDocument.removeDocumentReasonForRemoval.
+            Note: The NEHTA enum has an extra item "ElectToRemove", which is omitted from this
+            enum because that is defined for consumer use only.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Withdrawn">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The provider organisation withdraws the document from the PCEHR.
+            Withdrawn documents will be reinstated if a new version of the
+            document is uploaded.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IncorrectIdentity">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The document is removed because it relates to the wrong consumer.
+            Documents removed with this reason cannot be reinstated by the
+            provider or the consumer.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="RemovalReason" nillable="true" type="tns:RemovalReason" />
+  <xs:simpleType name="MessageQueueLeaseState">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration represents the state of a message queue item's lease.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Inactive">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The queued message's lease is currently inactive.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Active">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The queued message's lease is currently active, which indicates a component is actively
+            processing the message.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Retrying">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The queued message's lease is currently retrying, which indicates it will become
+            available for processing again after the current lease expires.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MessageQueueLeaseState" nillable="true" type="tns:MessageQueueLeaseState" />
+  <xs:simpleType name="MessageQueueState">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration represents the state of a message queue item.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Pending">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The queued message is currently waiting to be processed (incomplete).
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Success">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Processing of the queued message was successful. This status is not typically found
+            because the default behaviour is to remove queued items after successful
+            processing.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Failure">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Processing of the queued operation was not successful. The system administrator should
+            review and correct the reason for failure and resubmit the request.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="MessageQueueState" nillable="true" type="tns:MessageQueueState" />
+  <xs:complexType name="ArrayOfQueueOperation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QueueOperation" type="tns:QueueOperation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQueueOperation" nillable="true" type="tns:ArrayOfQueueOperation" />
+  <xs:simpleType name="QueueOperation">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This is used to match the QueueOperation table to code.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="UploadOrSupersede">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The queued operation is to upload a document to a PCEHR, possibly superseding an older version of the same document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Remove">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The queued operation is to remove a document from a PCEHR.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="QueueOperation" nillable="true" type="tns:QueueOperation" />
+  <xs:complexType name="ArrayOfMessageQueueState">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MessageQueueState" type="tns:MessageQueueState" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMessageQueueState" nillable="true" type="tns:ArrayOfMessageQueueState" />
 </xs:schema>

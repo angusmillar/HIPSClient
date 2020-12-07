@@ -20,8 +20,10 @@ namespace HIPSClient.HipsTinkerTool.View.Main
 
     public void InitializeLayout()
     {      
-      Items.Add(new PathologyTab(new PathologyVM()));
+      var test = new PathologyVM();
+      Items.Add(new PathologyTab(test));
       Items.Add(new ADTTab());
+      test.Initalise();
     }
   }
 }

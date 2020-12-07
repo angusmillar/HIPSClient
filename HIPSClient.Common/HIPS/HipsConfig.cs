@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace HIPSClient.Common.HIPS
 {
   public static class HipsConfig
-  {
+  {    
     public static Uri CoreApplicationBaseEndpoint = new Uri("http://localhost:52500");
+    
+
     public static string HospitalCode = "ANGPATH";
     public static string LISHospitalCode = "ANGUSLIS";
 

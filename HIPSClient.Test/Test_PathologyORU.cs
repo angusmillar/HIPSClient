@@ -46,9 +46,9 @@ namespace HIPSClient.Test
       ORU.HospitalEncounter = ADT.HospitalEncounter;
 
       ORU.Order = new PathologyOrder();
-      ORU.Order.OrderIdentifier = "0000002";
-      ORU.Order.OrderedDateTime = new DateTimeOffset(2019, 03, 15, 08, 45, 00, new TimeSpan(10, 0, 0));
-      ORU.Order.CollectionDateTime = new DateTimeOffset(2019, 03, 15, 10, 30, 00, new TimeSpan(10, 0, 0));
+      ORU.Order.OrderIdentifier = "0000003";
+      ORU.Order.OrderedDateTime = new DateTimeOffset(2019, 08, 15, 08, 45, 00, new TimeSpan(10, 0, 0));
+      ORU.Order.CollectionDateTime = new DateTimeOffset(2019, 08, 15, 10, 30, 00, new TimeSpan(10, 0, 0));
 
       ORU.Order.OrderingProvider = new Provider();
       ORU.Order.OrderingProvider.Family = "Millar";
@@ -66,8 +66,8 @@ namespace HIPSClient.Test
       ORU.RequestList = new List<PathologyRequest>();
       var Request = new PathologyRequest();
       ORU.RequestList.Add(Request);      
-      Request.ReportIdentifier = "ADHA.P19-00000002-FBP-0";
-      Request.ReportedDateTime = new DateTimeOffset(2019, 03, 15, 14, 15, 00, 00, new TimeSpan(10, 0, 0));
+      Request.ReportIdentifier = "ADHA.P19-00000004-FBP-0";
+      Request.ReportedDateTime = new DateTimeOffset(2019, 08, 15, 14, 15, 00, 00, new TimeSpan(10, 0, 0));
       Request.DepartmentCode = "HM";
       Request.ReportName = new UniversalServiceIdentifier()
       {
@@ -94,6 +94,7 @@ namespace HIPSClient.Test
 
       ORU.PDF = new PDFReport()
       {
+        //Filepath = @"C:\temp\HIPS\New Path DI Views\BigPDFTest.pdf",
         Filepath = @"C:\GitRepository\HL7V2Examples\Pathology\NEHTA AS4700.2 2012 Examples\Result Output Example 1\FBC NEHTA Pathology Report PDF.pdf",
         ResultStatus = ResultStatus.Final        
       };

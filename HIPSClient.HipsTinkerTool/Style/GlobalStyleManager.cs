@@ -36,12 +36,13 @@ namespace HIPSClient.HipsTinkerTool.Style
       Binding.UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged;
       Binding.NotifyOnValidationError = true;
       Binding.ValidatesOnDataErrors = true;
-      
+    
       DatePicker DatePicker = new DatePicker();
       DatePicker.VerticalContentAlignment = VerticalAlignment.Center;
       DatePicker.Margin = new Thickness(3);      
-      DatePicker.SetBinding(DatePicker.SelectedDateProperty, Binding);      
+      DatePicker.SetBinding(DatePicker.SelectedDateProperty, Binding);
       
+
       DockPanel.SetDock(DatePicker, Dock.Left);
 
       DockPanel Panel = new DockPanel();

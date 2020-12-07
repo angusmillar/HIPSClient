@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/ConsentService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:simpleType name="IhiRecordStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration is used to match the record status in the IhiRecordStatus table to code
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Verified">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI is a verified IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unverified">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI is an unverified IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Provisional">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI is a provisional IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI record status is unknown or not applicable.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IhiRecordStatus" nillable="true" type="tns:IhiRecordStatus" />
+  <xs:simpleType name="IhiStatus">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This is used to match the status in the IhiStatus table to code
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Active">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Active.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Deceased">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Deceased.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Retired">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Retired.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Expired">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Expired.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Resolved">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is Resolved. This status should never be stored for the current IHI of a patient, but will be stored in IHI history.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Unknown">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI status is unknown or not applicable (including when no IHI was found).
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicateIhi">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because another patient record in the same hospital had the same IHI number.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicatePatient">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because another patient record in the same hospital had demographic information identical to that used to obtain the IHI for this patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MergeConflict">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because it was merged with another patient record that had a different IHI number.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServiceUnavailable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">103</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The IHI or PCEHR lookup failed and will be retried by the background IHI cleanup service.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MedicareDvaChangeMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">104</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because the Medicare or DVA number was changed,
+            resulting in an IHI search that returned no IHI or returned a different IHI to that
+            which was assigned to the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DemographicMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">105</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            The patient has an unresolved alert because no IHI was found when the IHI assigned
+            to the patient was validated using the patient's name, sex and date of birth.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="IhiStatus" nillable="true" type="tns:IhiStatus" />
+  <xs:simpleType name="SexEnumerator">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            This enumeration represents a person's sex, and is used to match the Sex table to code.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NotStatedOrInadequatelyDescribed">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Not stated or inadequately described.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Male">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The male sex.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Female">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            The female sex.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IntersexOrIndeterminate">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Intersex or indeterminate.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="SexEnumerator" nillable="true" type="tns:SexEnumerator" />
+</xs:schema>

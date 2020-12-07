@@ -199,15 +199,154 @@ namespace HIPSClient.Test.Support
       ADT.HospitalEncounter = new HospitalEncounter()
       {
         PatientClass = PatientClassType.InPatient,
-        VisitNumber = "000005",
+        VisitNumber = "000004",
         Bed = "Bed",
         Room = "Room",
         Ward = "Ward",
-        AdmissionDate = new DateTime(2019, 03, 18),
-        DischargeDate = null
+        AdmissionDate = new DateTime(2019, 03, 15),
+        DischargeDate = new DateTime(2019, 03, 18),
       };
 
       return ADT;
     }
+
+    public ADT A01_GoldieMCINTYRE()
+    {
+      //New Pathology View Test Patient
+      var ADT = new ADT();
+      ADT.Patient = new Patient();
+      ADT.Patient.Family = "MCINTYRE";
+      ADT.Patient.Given = "Goldie";
+      ADT.Patient.Title = "Ms";
+      ADT.Patient.DateOfBirth = new DateTime(1959, 04, 25);
+      ADT.Patient.Gender = Gender.Female;
+
+      ADT.Patient.IndigenousStatus = new IndigenousStatus()
+      {
+        IndigenousStatusType = IndigenousStatusType.NotStatedInadequatelyDescribed
+      };
+
+      ADT.Patient.Address = new Address()
+      {
+        AddressLineOne = "46 Hiram Cir",
+        AddressLineTwo = "",
+        Suburb = "BOCOBRA",
+        PostCode = "2865",
+        State = "NSW",
+        Country = "AUS"
+      };
+
+      //ADT.Patient.HomeContact = new Contact()
+      //{
+      //  Value = "93235615"
+      //};
+
+      //ADT.Patient.WorkContact = new Contact()
+      //{
+      //  Value = "0414778341"
+      //};
+
+      ADT.Patient.IdentifierList = new List<PatientIdentifier>();
+
+      //MRN
+      ADT.Patient.IdentifierList.Add(new PatientIdentifier()
+      {
+        Value = "000000103",
+        Type = PatientIdentifierType.MedicalRecordNumber,
+        AssigningAuthority = Common.HIPS.HipsConfig.HospitalCode
+      });
+
+      //Medicare Number
+      ADT.Patient.IdentifierList.Add(new PatientIdentifier()
+      {
+        Value = "29532965711",
+        Type = PatientIdentifierType.MedicareNumber
+      });
+
+
+      ADT.HospitalEncounter = new HospitalEncounter()
+      {
+        PatientClass = PatientClassType.InPatient,
+        VisitNumber = "000006",
+        Bed = "Bed",
+        Room = "Room",
+        Ward = "Ward",
+        AdmissionDate = new DateTime(2019, 08, 08),
+        DischargeDate = null,
+      };
+
+      return ADT;
+    }
+
+    public ADT A01_Tori_OHALLORAN()
+    {
+      //New Pathology View Test Patient
+      var ADT = new ADT();
+      ADT.Patient = new Patient();
+      ADT.Patient.Family = "O'HALLORAN";
+      ADT.Patient.Given = "Tori";
+      ADT.Patient.Title = "Ms";
+      ADT.Patient.DateOfBirth = new DateTime(1976, 05, 01);
+      ADT.Patient.Gender = Gender.Female;
+
+      ADT.Patient.IndigenousStatus = new IndigenousStatus()
+      {
+        IndigenousStatusType = IndigenousStatusType.NotStatedInadequatelyDescribed
+      };
+
+      ADT.Patient.Address = new Address()
+      {
+        AddressLineOne = "63 High Cl",
+        AddressLineTwo = "",
+        Suburb = "BAYVIEW HEIGHTS",
+        PostCode = "4868",
+        State = "QLD",
+        Country = "AUS"
+      };
+
+      //ADT.Patient.HomeContact = new Contact()
+      //{
+      //  Value = "93235615"
+      //};
+
+      //ADT.Patient.WorkContact = new Contact()
+      //{
+      //  Value = "0414778341"
+      //};
+
+      ADT.Patient.IdentifierList = new List<PatientIdentifier>();
+
+      //MRN
+      ADT.Patient.IdentifierList.Add(new PatientIdentifier()
+      {
+        Value = "000000104",
+        Type = PatientIdentifierType.MedicalRecordNumber,
+        AssigningAuthority = Common.HIPS.HipsConfig.HospitalCode
+      });
+
+      //Medicare Number
+      ADT.Patient.IdentifierList.Add(new PatientIdentifier()
+      {
+        Value = "49511667911",
+        Type = PatientIdentifierType.MedicareNumber
+      });
+
+
+      ADT.HospitalEncounter = new HospitalEncounter()
+      {
+        PatientClass = PatientClassType.InPatient,
+        VisitNumber = "000007",
+        Bed = "Bed",
+        Room = "Room",
+        Ward = "Ward",
+        AdmissionDate = new DateTime(2019, 08, 08),
+        DischargeDate = null,
+      };
+
+      return ADT;
+    }
+
+
+
   }
 }

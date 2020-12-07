@@ -1,409 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:simpleType name="IhiRecordStatus">
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd10" namespace="http://nehta.hips/2014/03" />
+  <xs:complexType name="PatientParticipationStatus">
     <xs:annotation>
       <xs:appinfo />
       <xs:documentation>&lt;summary&gt;
-            This enumeration is used to match the record status in the IhiRecordStatus table to code
+            Patient Participation Status DTO.
             &lt;/summary&gt;</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Verified">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI is a verified IHI.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unverified">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI is an unverified IHI.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Provisional">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI is a provisional IHI.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unknown">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI record status is unknown or not applicable.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="IhiRecordStatus" nillable="true" type="tns:IhiRecordStatus" />
-  <xs:simpleType name="IhiStatus">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This is used to match the status in the IhiStatus table to code
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Active">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI status is Active.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Deceased">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI status is Deceased.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Retired">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI status is Retired.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Expired">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI status is Expired.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Resolved">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI status is Resolved. This status should never be stored for the current IHI of a patient, but will be stored in IHI history.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unknown">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI status is unknown or not applicable (including when no IHI was found).
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="DuplicateIhi">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The patient has an unresolved alert because another patient record in the same hospital had the same IHI number.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="DuplicatePatient">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The patient has an unresolved alert because another patient record in the same hospital had demographic information identical to that used to obtain the IHI for this patient.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="MergeConflict">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The patient has an unresolved alert because it was merged with another patient record that had a different IHI number.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="ServiceUnavailable">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">103</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The IHI or PCEHR lookup failed and will be retried by the background IHI cleanup service.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="MedicareDvaChangeMismatch">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">104</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The patient has an unresolved alert because the Medicare or DVA number was changed,
-            resulting in an IHI search that returned no IHI or returned a different IHI to that
-            which was assigned to the patient.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="DemographicMismatch">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">105</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The patient has an unresolved alert because no IHI was found when the IHI assigned
-            to the patient was validated using the patient's name, sex and date of birth.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="IhiStatus" nillable="true" type="tns:IhiStatus" />
-  <xs:simpleType name="SexEnumerator">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This enumeration represents a person's sex, and is used to match the Sex table to code.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NotStatedOrInadequatelyDescribed">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            Not stated or inadequately described.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Male">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The male sex.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Female">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The female sex.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="IntersexOrIndeterminate">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Intersex or indeterminate.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="SexEnumerator" nillable="true" type="tns:SexEnumerator" />
-  <xs:complexType name="ArrayOfQueueOperation">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="QueueOperation" type="tns:QueueOperation" />
+      <xs:element minOccurs="0" name="HospitalCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a code in the in the hospital code system that was specified in the service request,
+            which identifies the hospital that allocated the MRN.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Mrn" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a patient identifier unique within the hospital, typically allocated by the hospital’s PAS or PMI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" minOccurs="0" name="ParticipationStatus" type="q1:ParticipationStatus">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the participation status.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StatePatientId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a patient identifier unique within the state or territory and
+            typically allocated by the enterprise master patient index.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://nehta.hips/2014/03" minOccurs="0" name="ValidatedIhi" nillable="true" type="q2:ValidatedIhi">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets an Individual Healthcare Identifier (IHI) allocated by the national
+            healthcare identifier service, and the information required to
+            check the validity of the IHI.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfQueueOperation" nillable="true" type="tns:ArrayOfQueueOperation" />
-  <xs:simpleType name="QueueOperation">
+  <xs:element name="PatientParticipationStatus" nillable="true" type="tns:PatientParticipationStatus" />
+  <xs:complexType name="IsPcehrAdvertisedLocal">
     <xs:annotation>
       <xs:appinfo />
       <xs:documentation>&lt;summary&gt;
-            This is used to match the QueueOperation table to code.
+            Is PCEHR Advertised Local DTO.
             &lt;/summary&gt;</xs:documentation>
     </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="UploadOrSupersede">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The queued operation is to upload a document to a PCEHR, possibly superseding an older version of the same document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Remove">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The queued operation is to remove a document from a PCEHR.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="QueueOperation" nillable="true" type="tns:QueueOperation" />
-  <xs:complexType name="ArrayOfQueueStatus">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="QueueStatus" type="tns:QueueStatus" />
+      <xs:element xmlns:q3="http://nehta.hips/2014/03" minOccurs="0" name="AccessCodeRequired" type="q3:AccessCodeRequired">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the access code requirments for the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PcehrExists" nillable="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the participation status.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfQueueStatus" nillable="true" type="tns:ArrayOfQueueStatus" />
-  <xs:simpleType name="QueueStatus">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This is used to match the QueueStatus table to code.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Pending">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The queued operation is currently in progress or waiting to be processed.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Success">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The queued operation was successful. This status is not typically found
-            because the default behaviour is to remove queued items after successful
-            processing.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Failure">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">3</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The queued operation was not successful. The system administrator should
-            review and correct the reason for failure and resubmit the request.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="QueueStatus" nillable="true" type="tns:QueueStatus" />
-  <xs:simpleType name="AccessCodeRequired">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This is used to match the status in the AccessCodeRequired table primary key to code.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Unknown">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The access status is unknown.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="WithCode">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            Except in an emergency, the patient must provide his/her
-            Record Access Code for the healthcare provider organisation
-            to gain access to this PCEHR.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="WithoutCode">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            No code is required for the health provider organisation
-            to gain access to this PCEHR.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="AccessGranted">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The health provider organisation has already gained
-            access to this PCEHR.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="AccessCodeRequired" nillable="true" type="tns:AccessCodeRequired" />
-  <xs:simpleType name="RemovalReason">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This enum is used to match the removal reason id in the RemovalReason table to code.
-            The values of the IDs should also be kept in sync with the NEHTA enum
-            Nehta.VendorLibrary.PCEHR.RemoveDocument.removeDocumentReasonForRemoval.
-            Note: The NEHTA enum has an extra item "ElectToRemove", which is omitted from this
-            enum because that is defined for consumer use only.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Withdrawn">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The provider organisation withdraws the document from the PCEHR.
-            Withdrawn documents will be reinstated if a new version of the
-            document is uploaded.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="IncorrectIdentity">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The document is removed because it relates to the wrong consumer.
-            Documents removed with this reason cannot be reinstated by the
-            provider or the consumer.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="RemovalReason" nillable="true" type="tns:RemovalReason" />
+  <xs:element name="IsPcehrAdvertisedLocal" nillable="true" type="tns:IsPcehrAdvertisedLocal" />
 </xs:schema>

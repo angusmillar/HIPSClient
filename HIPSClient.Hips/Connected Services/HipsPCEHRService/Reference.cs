@@ -1014,6 +1014,12 @@ namespace HIPSClient.Hips.HipsPCEHRService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         HpiiWarningRaised = 26,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ResolvedHpii = 27,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        InvalidHpii = 28,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1866,64 +1872,73 @@ namespace HIPSClient.Hips.HipsPCEHRService {
         AustralianChildhoodImmunisationRegister = 7,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        MedicareDvaBenefitsReport = 8,
+        AustralianImmunisationRegister = 8,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        PrescriptionAndDispenseView = 9,
+        MedicareDvaBenefitsReport = 9,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        HealthCheckScheduleView = 10,
+        PrescriptionAndDispenseView = 10,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ObservationView = 11,
+        HealthCheckScheduleView = 11,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        MedicareOverview = 12,
+        ObservationView = 12,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        MedicareOverviewAll = 13,
+        MedicareOverview = 13,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        MedicareOverviewPast12Months = 14,
+        MedicareOverviewAll = 14,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ConsumerEnteredNotes = 15,
+        MedicareOverviewPast12Months = 15,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ConsumerEnteredHealthSummary = 16,
+        ConsumerEnteredNotes = 16,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        AdvanceCareDirectiveCustodianRecord = 17,
+        ConsumerEnteredHealthSummary = 17,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        PcehrPrescriptionRecord = 18,
+        AdvanceCareDirectiveCustodianRecord = 18,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        PcehrDispenseRecord = 19,
+        PcehrPrescriptionRecord = 19,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        DiagnosticImagingReport = 20,
+        PcehrDispenseRecord = 20,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        PathologyResultReport = 21,
+        DiagnosticImagingReport = 21,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        AdvanceCareInformation = 22,
+        PathologyResultReport = 22,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        HealthCheckAssessment = 23,
+        AdvanceCareInformation = 23,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ChildParentQuestionnaire = 24,
+        HealthCheckAssessment = 24,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ConsumerEnteredAchievements = 25,
+        ChildParentQuestionnaire = 25,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ConsumerEnteredMeasurements = 26,
+        ConsumerEnteredAchievements = 26,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        BirthDetails = 27,
+        ConsumerEnteredMeasurements = 27,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BirthDetails = 28,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MedicinesView = 29,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PharmacistSharedMedicinesList = 30,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -2634,707 +2649,6 @@ namespace HIPSClient.Hips.HipsPCEHRService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IndividualOperationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
-    [System.SerializableAttribute()]
-    internal partial class IndividualOperationStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ClinicalDocument ClinicalDocumentField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] DecodedPackageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue QueuedOperationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.HipsResponse ResponseField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ClinicalDocument ClinicalDocument {
-            get {
-                return this.ClinicalDocumentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ClinicalDocumentField, value) != true)) {
-                    this.ClinicalDocumentField = value;
-                    this.RaisePropertyChanged("ClinicalDocument");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal byte[] DecodedPackage {
-            get {
-                return this.DecodedPackageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DecodedPackageField, value) != true)) {
-                    this.DecodedPackageField = value;
-                    this.RaisePropertyChanged("DecodedPackage");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue QueuedOperation {
-            get {
-                return this.QueuedOperationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueuedOperationField, value) != true)) {
-                    this.QueuedOperationField = value;
-                    this.RaisePropertyChanged("QueuedOperation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.HipsResponse Response {
-            get {
-                return this.ResponseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseField, value) != true)) {
-                    this.ResponseField = value;
-                    this.RaisePropertyChanged("Response");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ClinicalDocument", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
-    [System.SerializableAttribute()]
-    internal partial class ClinicalDocument : HIPSClient.Hips.HipsPCEHRService.BaseSchema {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ClinicalDocumentIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ClinicalDocumentStatusIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DocumentTypeCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DocumentTypeDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int DocumentTypeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EpisodeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RemovalReasonDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int RemovalReasonIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> RemovedDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SourceSystemSetIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<int> ClinicalDocumentId {
-            get {
-                return this.ClinicalDocumentIdField;
-            }
-            set {
-                if ((this.ClinicalDocumentIdField.Equals(value) != true)) {
-                    this.ClinicalDocumentIdField = value;
-                    this.RaisePropertyChanged("ClinicalDocumentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int ClinicalDocumentStatusId {
-            get {
-                return this.ClinicalDocumentStatusIdField;
-            }
-            set {
-                if ((this.ClinicalDocumentStatusIdField.Equals(value) != true)) {
-                    this.ClinicalDocumentStatusIdField = value;
-                    this.RaisePropertyChanged("ClinicalDocumentStatusId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DocumentTypeCode {
-            get {
-                return this.DocumentTypeCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentTypeCodeField, value) != true)) {
-                    this.DocumentTypeCodeField = value;
-                    this.RaisePropertyChanged("DocumentTypeCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DocumentTypeDescription {
-            get {
-                return this.DocumentTypeDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentTypeDescriptionField, value) != true)) {
-                    this.DocumentTypeDescriptionField = value;
-                    this.RaisePropertyChanged("DocumentTypeDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int DocumentTypeId {
-            get {
-                return this.DocumentTypeIdField;
-            }
-            set {
-                if ((this.DocumentTypeIdField.Equals(value) != true)) {
-                    this.DocumentTypeIdField = value;
-                    this.RaisePropertyChanged("DocumentTypeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int EpisodeId {
-            get {
-                return this.EpisodeIdField;
-            }
-            set {
-                if ((this.EpisodeIdField.Equals(value) != true)) {
-                    this.EpisodeIdField = value;
-                    this.RaisePropertyChanged("EpisodeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string RemovalReasonDescription {
-            get {
-                return this.RemovalReasonDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RemovalReasonDescriptionField, value) != true)) {
-                    this.RemovalReasonDescriptionField = value;
-                    this.RaisePropertyChanged("RemovalReasonDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int RemovalReasonId {
-            get {
-                return this.RemovalReasonIdField;
-            }
-            set {
-                if ((this.RemovalReasonIdField.Equals(value) != true)) {
-                    this.RemovalReasonIdField = value;
-                    this.RaisePropertyChanged("RemovalReasonId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<System.DateTime> RemovedDate {
-            get {
-                return this.RemovedDateField;
-            }
-            set {
-                if ((this.RemovedDateField.Equals(value) != true)) {
-                    this.RemovedDateField = value;
-                    this.RaisePropertyChanged("RemovedDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string SourceSystemSetId {
-            get {
-                return this.SourceSystemSetIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SourceSystemSetIdField, value) != true)) {
-                    this.SourceSystemSetIdField = value;
-                    this.RaisePropertyChanged("SourceSystemSetId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PcehrMessageQueue", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
-    [System.SerializableAttribute()]
-    internal partial class PcehrMessageQueue : HIPSClient.Hips.HipsPCEHRService.BaseSchema {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DetailsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EpisodeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> PcehrMessageQueueIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QueueOperationIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QueueOperationNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QueueStatusDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QueueStatusIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string RequestField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] SerialisedObjectField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SourceSystemDocumentIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SourceSystemSetIdField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Details {
-            get {
-                return this.DetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DetailsField, value) != true)) {
-                    this.DetailsField = value;
-                    this.RaisePropertyChanged("Details");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int EpisodeId {
-            get {
-                return this.EpisodeIdField;
-            }
-            set {
-                if ((this.EpisodeIdField.Equals(value) != true)) {
-                    this.EpisodeIdField = value;
-                    this.RaisePropertyChanged("EpisodeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<int> PcehrMessageQueueId {
-            get {
-                return this.PcehrMessageQueueIdField;
-            }
-            set {
-                if ((this.PcehrMessageQueueIdField.Equals(value) != true)) {
-                    this.PcehrMessageQueueIdField = value;
-                    this.RaisePropertyChanged("PcehrMessageQueueId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int QueueOperationId {
-            get {
-                return this.QueueOperationIdField;
-            }
-            set {
-                if ((this.QueueOperationIdField.Equals(value) != true)) {
-                    this.QueueOperationIdField = value;
-                    this.RaisePropertyChanged("QueueOperationId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string QueueOperationName {
-            get {
-                return this.QueueOperationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueueOperationNameField, value) != true)) {
-                    this.QueueOperationNameField = value;
-                    this.RaisePropertyChanged("QueueOperationName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string QueueStatusDescription {
-            get {
-                return this.QueueStatusDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueueStatusDescriptionField, value) != true)) {
-                    this.QueueStatusDescriptionField = value;
-                    this.RaisePropertyChanged("QueueStatusDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int QueueStatusId {
-            get {
-                return this.QueueStatusIdField;
-            }
-            set {
-                if ((this.QueueStatusIdField.Equals(value) != true)) {
-                    this.QueueStatusIdField = value;
-                    this.RaisePropertyChanged("QueueStatusId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Request {
-            get {
-                return this.RequestField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RequestField, value) != true)) {
-                    this.RequestField = value;
-                    this.RaisePropertyChanged("Request");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Response {
-            get {
-                return this.ResponseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseField, value) != true)) {
-                    this.ResponseField = value;
-                    this.RaisePropertyChanged("Response");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal byte[] SerialisedObject {
-            get {
-                return this.SerialisedObjectField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SerialisedObjectField, value) != true)) {
-                    this.SerialisedObjectField = value;
-                    this.RaisePropertyChanged("SerialisedObject");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string SourceSystemDocumentId {
-            get {
-                return this.SourceSystemDocumentIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SourceSystemDocumentIdField, value) != true)) {
-                    this.SourceSystemDocumentIdField = value;
-                    this.RaisePropertyChanged("SourceSystemDocumentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string SourceSystemSetId {
-            get {
-                return this.SourceSystemSetIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SourceSystemSetIdField, value) != true)) {
-                    this.SourceSystemSetIdField = value;
-                    this.RaisePropertyChanged("SourceSystemSetId");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HipsObservableObject", Namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.BaseSchema))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument))]
-    internal partial class HipsObservableObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool IsDirtyField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal bool IsDirty {
-            get {
-                return this.IsDirtyField;
-            }
-            set {
-                if ((this.IsDirtyField.Equals(value) != true)) {
-                    this.IsDirtyField = value;
-                    this.RaisePropertyChanged("IsDirty");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseSchema", Namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument))]
-    internal partial class BaseSchema : HIPSClient.Hips.HipsPCEHRService.HipsObservableObject {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateCreatedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateModifiedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserCreatedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string UserModifiedField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime DateCreated {
-            get {
-                return this.DateCreatedField;
-            }
-            set {
-                if ((this.DateCreatedField.Equals(value) != true)) {
-                    this.DateCreatedField = value;
-                    this.RaisePropertyChanged("DateCreated");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime DateModified {
-            get {
-                return this.DateModifiedField;
-            }
-            set {
-                if ((this.DateModifiedField.Equals(value) != true)) {
-                    this.DateModifiedField = value;
-                    this.RaisePropertyChanged("DateModified");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<int> Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string UserCreated {
-            get {
-                return this.UserCreatedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserCreatedField, value) != true)) {
-                    this.UserCreatedField = value;
-                    this.RaisePropertyChanged("UserCreated");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string UserModified {
-            get {
-                return this.UserModifiedField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UserModifiedField, value) != true)) {
-                    this.UserModifiedField = value;
-                    this.RaisePropertyChanged("UserModified");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ClinicalDocumentVersion", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
-    [System.SerializableAttribute()]
-    internal partial class ClinicalDocumentVersion : HIPSClient.Hips.HipsPCEHRService.BaseSchema {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ClinicalDocumentIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> ClinicalDocumentVersionIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private byte[] PackageField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SourceSystemDocumentIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> SupersededDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> UploadedDateField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int ClinicalDocumentId {
-            get {
-                return this.ClinicalDocumentIdField;
-            }
-            set {
-                if ((this.ClinicalDocumentIdField.Equals(value) != true)) {
-                    this.ClinicalDocumentIdField = value;
-                    this.RaisePropertyChanged("ClinicalDocumentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<int> ClinicalDocumentVersionId {
-            get {
-                return this.ClinicalDocumentVersionIdField;
-            }
-            set {
-                if ((this.ClinicalDocumentVersionIdField.Equals(value) != true)) {
-                    this.ClinicalDocumentVersionIdField = value;
-                    this.RaisePropertyChanged("ClinicalDocumentVersionId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal byte[] Package {
-            get {
-                return this.PackageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PackageField, value) != true)) {
-                    this.PackageField = value;
-                    this.RaisePropertyChanged("Package");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string SourceSystemDocumentId {
-            get {
-                return this.SourceSystemDocumentIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SourceSystemDocumentIdField, value) != true)) {
-                    this.SourceSystemDocumentIdField = value;
-                    this.RaisePropertyChanged("SourceSystemDocumentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<System.DateTime> SupersededDate {
-            get {
-                return this.SupersededDateField;
-            }
-            set {
-                if ((this.SupersededDateField.Equals(value) != true)) {
-                    this.SupersededDateField = value;
-                    this.RaisePropertyChanged("SupersededDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<System.DateTime> UploadedDate {
-            get {
-                return this.UploadedDateField;
-            }
-            set {
-                if ((this.UploadedDateField.Equals(value) != true)) {
-                    this.UploadedDateField = value;
-                    this.RaisePropertyChanged("UploadedDate");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
     [System.SerializableAttribute()]
     internal partial class LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -3764,550 +3078,6 @@ namespace HIPSClient.Hips.HipsPCEHRService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         FailedRemove = 6,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OperationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
-    [System.SerializableAttribute()]
-    internal partial class OperationStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue[] QueuedOperationsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.HipsResponse ResponseField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion[] UploadedDocumentVersionsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ClinicalDocument[] UploadedDocumentsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue[] QueuedOperations {
-            get {
-                return this.QueuedOperationsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueuedOperationsField, value) != true)) {
-                    this.QueuedOperationsField = value;
-                    this.RaisePropertyChanged("QueuedOperations");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.HipsResponse Response {
-            get {
-                return this.ResponseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseField, value) != true)) {
-                    this.ResponseField = value;
-                    this.RaisePropertyChanged("Response");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion[] UploadedDocumentVersions {
-            get {
-                return this.UploadedDocumentVersionsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UploadedDocumentVersionsField, value) != true)) {
-                    this.UploadedDocumentVersionsField = value;
-                    this.RaisePropertyChanged("UploadedDocumentVersions");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ClinicalDocument[] UploadedDocuments {
-            get {
-                return this.UploadedDocumentsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.UploadedDocumentsField, value) != true)) {
-                    this.UploadedDocumentsField = value;
-                    this.RaisePropertyChanged("UploadedDocuments");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="QueueOperation", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators")]
-    internal enum QueueOperation : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        UploadOrSupersede = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Remove = 2,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="QueueStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators")]
-    internal enum QueueStatus : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Pending = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Success = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Failure = 3,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="QueuedOperationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
-    [System.SerializableAttribute()]
-    internal partial class QueuedOperationStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.MessageQueueItem[] QueuedOperationsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.HipsResponse ResponseField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.MessageQueueItem[] QueuedOperations {
-            get {
-                return this.QueuedOperationsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueuedOperationsField, value) != true)) {
-                    this.QueuedOperationsField = value;
-                    this.RaisePropertyChanged("QueuedOperations");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.HipsResponse Response {
-            get {
-                return this.ResponseField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseField, value) != true)) {
-                    this.ResponseField = value;
-                    this.RaisePropertyChanged("Response");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MessageQueueItem", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
-    [System.SerializableAttribute()]
-    internal partial class MessageQueueItem : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime AdmissionDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long CDAPackageSizeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DetailsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DocumentFormatCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DocumentFormatDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DocumentTypeCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DocumentTypeDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> DocumentTypeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int EpisodeIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int FacilityIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FacilityNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IHIField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PatientIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PcehrMessageQueueIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime QueueItemDateCreatedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QueueOperationIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QueueOperationNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int QueueStatusIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QueueStatusNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long RequestSizeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SourceSystemSetIdField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime AdmissionDateTime {
-            get {
-                return this.AdmissionDateTimeField;
-            }
-            set {
-                if ((this.AdmissionDateTimeField.Equals(value) != true)) {
-                    this.AdmissionDateTimeField = value;
-                    this.RaisePropertyChanged("AdmissionDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal long CDAPackageSize {
-            get {
-                return this.CDAPackageSizeField;
-            }
-            set {
-                if ((this.CDAPackageSizeField.Equals(value) != true)) {
-                    this.CDAPackageSizeField = value;
-                    this.RaisePropertyChanged("CDAPackageSize");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Details {
-            get {
-                return this.DetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DetailsField, value) != true)) {
-                    this.DetailsField = value;
-                    this.RaisePropertyChanged("Details");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DocumentFormatCode {
-            get {
-                return this.DocumentFormatCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentFormatCodeField, value) != true)) {
-                    this.DocumentFormatCodeField = value;
-                    this.RaisePropertyChanged("DocumentFormatCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DocumentFormatDescription {
-            get {
-                return this.DocumentFormatDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentFormatDescriptionField, value) != true)) {
-                    this.DocumentFormatDescriptionField = value;
-                    this.RaisePropertyChanged("DocumentFormatDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DocumentTypeCode {
-            get {
-                return this.DocumentTypeCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentTypeCodeField, value) != true)) {
-                    this.DocumentTypeCodeField = value;
-                    this.RaisePropertyChanged("DocumentTypeCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DocumentTypeDescription {
-            get {
-                return this.DocumentTypeDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentTypeDescriptionField, value) != true)) {
-                    this.DocumentTypeDescriptionField = value;
-                    this.RaisePropertyChanged("DocumentTypeDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<int> DocumentTypeId {
-            get {
-                return this.DocumentTypeIdField;
-            }
-            set {
-                if ((this.DocumentTypeIdField.Equals(value) != true)) {
-                    this.DocumentTypeIdField = value;
-                    this.RaisePropertyChanged("DocumentTypeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int EpisodeId {
-            get {
-                return this.EpisodeIdField;
-            }
-            set {
-                if ((this.EpisodeIdField.Equals(value) != true)) {
-                    this.EpisodeIdField = value;
-                    this.RaisePropertyChanged("EpisodeId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int FacilityId {
-            get {
-                return this.FacilityIdField;
-            }
-            set {
-                if ((this.FacilityIdField.Equals(value) != true)) {
-                    this.FacilityIdField = value;
-                    this.RaisePropertyChanged("FacilityId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string FacilityName {
-            get {
-                return this.FacilityNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FacilityNameField, value) != true)) {
-                    this.FacilityNameField = value;
-                    this.RaisePropertyChanged("FacilityName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string IHI {
-            get {
-                return this.IHIField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IHIField, value) != true)) {
-                    this.IHIField = value;
-                    this.RaisePropertyChanged("IHI");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int PatientId {
-            get {
-                return this.PatientIdField;
-            }
-            set {
-                if ((this.PatientIdField.Equals(value) != true)) {
-                    this.PatientIdField = value;
-                    this.RaisePropertyChanged("PatientId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int PcehrMessageQueueId {
-            get {
-                return this.PcehrMessageQueueIdField;
-            }
-            set {
-                if ((this.PcehrMessageQueueIdField.Equals(value) != true)) {
-                    this.PcehrMessageQueueIdField = value;
-                    this.RaisePropertyChanged("PcehrMessageQueueId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime QueueItemDateCreated {
-            get {
-                return this.QueueItemDateCreatedField;
-            }
-            set {
-                if ((this.QueueItemDateCreatedField.Equals(value) != true)) {
-                    this.QueueItemDateCreatedField = value;
-                    this.RaisePropertyChanged("QueueItemDateCreated");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int QueueOperationId {
-            get {
-                return this.QueueOperationIdField;
-            }
-            set {
-                if ((this.QueueOperationIdField.Equals(value) != true)) {
-                    this.QueueOperationIdField = value;
-                    this.RaisePropertyChanged("QueueOperationId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string QueueOperationName {
-            get {
-                return this.QueueOperationNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueueOperationNameField, value) != true)) {
-                    this.QueueOperationNameField = value;
-                    this.RaisePropertyChanged("QueueOperationName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal int QueueStatusId {
-            get {
-                return this.QueueStatusIdField;
-            }
-            set {
-                if ((this.QueueStatusIdField.Equals(value) != true)) {
-                    this.QueueStatusIdField = value;
-                    this.RaisePropertyChanged("QueueStatusId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string QueueStatusName {
-            get {
-                return this.QueueStatusNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QueueStatusNameField, value) != true)) {
-                    this.QueueStatusNameField = value;
-                    this.RaisePropertyChanged("QueueStatusName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal long RequestSize {
-            get {
-                return this.RequestSizeField;
-            }
-            set {
-                if ((this.RequestSizeField.Equals(value) != true)) {
-                    this.RequestSizeField = value;
-                    this.RaisePropertyChanged("RequestSize");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string SourceSystemSetId {
-            get {
-                return this.SourceSystemSetIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SourceSystemSetIdField, value) != true)) {
-                    this.SourceSystemSetIdField = value;
-                    this.RaisePropertyChanged("SourceSystemSetId");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -4906,6 +3676,7 @@ namespace HIPSClient.Hips.HipsPCEHRService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PatientParticipationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatusWithMedicareDva))]
     internal partial class PatientParticipationStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -5007,6 +3778,61 @@ namespace HIPSClient.Hips.HipsPCEHRService {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PatientParticipationStatusWithMedicareDva", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas")]
+    [System.SerializableAttribute()]
+    internal partial class PatientParticipationStatusWithMedicareDva : HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DvaNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MedicareIrnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MedicareNumberField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DvaNumber {
+            get {
+                return this.DvaNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DvaNumberField, value) != true)) {
+                    this.DvaNumberField = value;
+                    this.RaisePropertyChanged("DvaNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MedicareIrn {
+            get {
+                return this.MedicareIrnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MedicareIrnField, value) != true)) {
+                    this.MedicareIrnField = value;
+                    this.RaisePropertyChanged("MedicareIrn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MedicareNumber {
+            get {
+                return this.MedicareNumberField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MedicareNumberField, value) != true)) {
+                    this.MedicareNumberField = value;
+                    this.RaisePropertyChanged("MedicareNumber");
+                }
             }
         }
     }
@@ -5920,6 +4746,134 @@ namespace HIPSClient.Hips.HipsPCEHRService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Message", Namespace="http://nehta.hips/2014/03")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiStatus1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ForceRefreshOption1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipationStatus1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AttachmentType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IsPcehrAdvertisedLocal))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.BaseSchema))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HipsObservableObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.DateTimeOffset))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiRecordStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.SexEnumerator))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.RemovalReason))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueueLeaseState))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueueState))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueueOperation[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueueOperation))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueueState[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Mrn))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientMasterId))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.StatePatientId))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ValidatedIhi))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Demographic))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.RegisteredEnterprisePatient))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(System.Collections.Generic.Dictionary<string, string>))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentStatus[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClassCodes[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClassCodes))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HealthcareFacilityTypeCodes[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HealthcareFacilityTypeCodes))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PracticeSettingTypes[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PracticeSettingTypes))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.GainPcehrAccessResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.GainPcehrAccessStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ChangeHistoryViewResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentMetaDataItem[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentMetaDataItem))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentListResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentQuery))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Attachment[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Attachment))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentMetaData))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalDocumentStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewRequestBase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PrescriptionAndDispenseViewRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MedicareOverviewViewRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReportViewRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewResponseBase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DoesPcehrExistResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentListResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentMetaData[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentRequest))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedOperationQueryResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedOperationsQueryResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.UserDetails))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.UserRole))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HipsResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HipsResponseIndicator))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HospitalIdentifier))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ForceRefreshOption))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationResponse))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipationStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatusWithMedicareDva))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Mrn1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.StatePatientId1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientMasterId1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ValidatedIhi1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiRecordStatus1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Sex))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.RegisteredEnterprisePatient1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.UserBase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ProviderUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ResponsibleUser))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HospitalIdentifier1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ResponseStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Message[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageLevel))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.FaultBase))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HiServiceFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrServiceFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ItemNotFoundFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaHeaderMetadata))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipatingIndividual))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ModeOfSeparation))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Address))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AddressPurpose))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AustralianState))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationDetail))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationMedium))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationUsage))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.SourceDocumentStatus))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaAttachment[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaAttachment))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaDocumentDetails))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaDocument))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired1))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyTestReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyTestReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DiagnosticImagingReport[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DiagnosticImagingReport))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HealthRecordOverview))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.NameTypeDT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReportInformationDT))]
@@ -5971,132 +4925,6 @@ namespace HIPSClient.Hips.HipsPCEHRService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ContactDetailsDT[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ContactDetailsDT))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewMetaData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Mrn1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.StatePatientId1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientMasterId1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ValidatedIhi1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiRecordStatus1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Sex))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.RegisteredEnterprisePatient1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.UserBase))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalUser))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ProviderUser))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ResponsibleUser))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HospitalIdentifier1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ResponseStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Message[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageLevel))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.FaultBase))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HiServiceFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrServiceFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ItemNotFoundFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaHeaderMetadata))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipatingIndividual))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ModeOfSeparation))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Address))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AddressPurpose))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AustralianState))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationDetail))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationMedium))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationUsage))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.SourceDocumentStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaAttachment[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaAttachment))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaDocumentDetails))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.CdaDocument))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReport[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyTestReport[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyTestReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DiagnosticImagingReport[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DiagnosticImagingReport))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HealthRecordOverview))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiRecordStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.SexEnumerator))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueueOperation[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueueOperation))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueueStatus[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueueStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.RemovalReason))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Mrn))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientMasterId))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.StatePatientId))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ValidatedIhi))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Demographic))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.RegisteredEnterprisePatient))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(string[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentStatus[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClassCodes[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClassCodes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HealthcareFacilityTypeCodes[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HealthcareFacilityTypeCodes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PracticeSettingTypes[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PracticeSettingTypes))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.GainPcehrAccessResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.GainPcehrAccessStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ChangeHistoryViewResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentMetaDataItem[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentMetaDataItem))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentListResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentQuery))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Attachment[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.Attachment))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentMetaData))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalDocumentStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.OperationStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueueItem[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueueItem))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewRequestBase))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PrescriptionAndDispenseViewRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MedicareOverviewViewRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PathologyReportViewRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ViewResponseBase))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DoesPcehrExistResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentListResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentMetaData[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentRequest))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.DocumentResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.UserDetails))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.UserRole))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HipsResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HipsResponseIndicator))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HospitalIdentifier))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ForceRefreshOption))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.BaseSchema))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HipsObservableObject))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrMessageQueue[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationResponse))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipationStatus))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IsPcehrAdvertisedLocal))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.IhiStatus1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ForceRefreshOption1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipationStatus1))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.AttachmentType))]
     internal partial class Message : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
@@ -6200,6 +5028,3410 @@ namespace HIPSClient.Hips.HipsPCEHRService {
                 if ((object.ReferenceEquals(this.OriginField, value) != true)) {
                     this.OriginField = value;
                     this.RaisePropertyChanged("Origin");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClinicalDocument", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
+    [System.SerializableAttribute()]
+    internal partial class ClinicalDocument : HIPSClient.Hips.HipsPCEHRService.BaseSchema {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ClinicalDocumentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClinicalDocumentStatusIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentTypeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentTypeDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DocumentTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EpisodeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RemovalReasonDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int RemovalReasonIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> RemovedDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceSystemSetIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<int> ClinicalDocumentId {
+            get {
+                return this.ClinicalDocumentIdField;
+            }
+            set {
+                if ((this.ClinicalDocumentIdField.Equals(value) != true)) {
+                    this.ClinicalDocumentIdField = value;
+                    this.RaisePropertyChanged("ClinicalDocumentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int ClinicalDocumentStatusId {
+            get {
+                return this.ClinicalDocumentStatusIdField;
+            }
+            set {
+                if ((this.ClinicalDocumentStatusIdField.Equals(value) != true)) {
+                    this.ClinicalDocumentStatusIdField = value;
+                    this.RaisePropertyChanged("ClinicalDocumentStatusId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocumentTypeCode {
+            get {
+                return this.DocumentTypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentTypeCodeField, value) != true)) {
+                    this.DocumentTypeCodeField = value;
+                    this.RaisePropertyChanged("DocumentTypeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocumentTypeDescription {
+            get {
+                return this.DocumentTypeDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentTypeDescriptionField, value) != true)) {
+                    this.DocumentTypeDescriptionField = value;
+                    this.RaisePropertyChanged("DocumentTypeDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int DocumentTypeId {
+            get {
+                return this.DocumentTypeIdField;
+            }
+            set {
+                if ((this.DocumentTypeIdField.Equals(value) != true)) {
+                    this.DocumentTypeIdField = value;
+                    this.RaisePropertyChanged("DocumentTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int EpisodeId {
+            get {
+                return this.EpisodeIdField;
+            }
+            set {
+                if ((this.EpisodeIdField.Equals(value) != true)) {
+                    this.EpisodeIdField = value;
+                    this.RaisePropertyChanged("EpisodeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string RemovalReasonDescription {
+            get {
+                return this.RemovalReasonDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RemovalReasonDescriptionField, value) != true)) {
+                    this.RemovalReasonDescriptionField = value;
+                    this.RaisePropertyChanged("RemovalReasonDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int RemovalReasonId {
+            get {
+                return this.RemovalReasonIdField;
+            }
+            set {
+                if ((this.RemovalReasonIdField.Equals(value) != true)) {
+                    this.RemovalReasonIdField = value;
+                    this.RaisePropertyChanged("RemovalReasonId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTime> RemovedDate {
+            get {
+                return this.RemovedDateField;
+            }
+            set {
+                if ((this.RemovedDateField.Equals(value) != true)) {
+                    this.RemovedDateField = value;
+                    this.RaisePropertyChanged("RemovedDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SourceSystemSetId {
+            get {
+                return this.SourceSystemSetIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceSystemSetIdField, value) != true)) {
+                    this.SourceSystemSetIdField = value;
+                    this.RaisePropertyChanged("SourceSystemSetId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueuedPcehrOperation", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
+    [System.SerializableAttribute()]
+    internal partial class QueuedPcehrOperation : HIPSClient.Hips.HipsPCEHRService.MessageQueue {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime AdmissionDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long CDAPackageSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentFormatCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentFormatDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentTypeCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocumentTypeDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> DocumentTypeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int EpisodeIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int FacilityIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FacilityNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IhiField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageQueueLeaseStateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageQueueLeaseStateDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageQueueStateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageQueueStateDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PatientIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RequestField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private long RequestSizeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceSystemDocumentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceSystemSetIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> SystemEventLogIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemEventLogLevelCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemEventLogLevelDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SystemEventLogMessageField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime AdmissionDateTime {
+            get {
+                return this.AdmissionDateTimeField;
+            }
+            set {
+                if ((this.AdmissionDateTimeField.Equals(value) != true)) {
+                    this.AdmissionDateTimeField = value;
+                    this.RaisePropertyChanged("AdmissionDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal long CDAPackageSize {
+            get {
+                return this.CDAPackageSizeField;
+            }
+            set {
+                if ((this.CDAPackageSizeField.Equals(value) != true)) {
+                    this.CDAPackageSizeField = value;
+                    this.RaisePropertyChanged("CDAPackageSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocumentFormatCode {
+            get {
+                return this.DocumentFormatCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentFormatCodeField, value) != true)) {
+                    this.DocumentFormatCodeField = value;
+                    this.RaisePropertyChanged("DocumentFormatCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocumentFormatDescription {
+            get {
+                return this.DocumentFormatDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentFormatDescriptionField, value) != true)) {
+                    this.DocumentFormatDescriptionField = value;
+                    this.RaisePropertyChanged("DocumentFormatDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocumentTypeCode {
+            get {
+                return this.DocumentTypeCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentTypeCodeField, value) != true)) {
+                    this.DocumentTypeCodeField = value;
+                    this.RaisePropertyChanged("DocumentTypeCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocumentTypeDescription {
+            get {
+                return this.DocumentTypeDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentTypeDescriptionField, value) != true)) {
+                    this.DocumentTypeDescriptionField = value;
+                    this.RaisePropertyChanged("DocumentTypeDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<int> DocumentTypeId {
+            get {
+                return this.DocumentTypeIdField;
+            }
+            set {
+                if ((this.DocumentTypeIdField.Equals(value) != true)) {
+                    this.DocumentTypeIdField = value;
+                    this.RaisePropertyChanged("DocumentTypeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int EpisodeId {
+            get {
+                return this.EpisodeIdField;
+            }
+            set {
+                if ((this.EpisodeIdField.Equals(value) != true)) {
+                    this.EpisodeIdField = value;
+                    this.RaisePropertyChanged("EpisodeId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int FacilityId {
+            get {
+                return this.FacilityIdField;
+            }
+            set {
+                if ((this.FacilityIdField.Equals(value) != true)) {
+                    this.FacilityIdField = value;
+                    this.RaisePropertyChanged("FacilityId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string FacilityName {
+            get {
+                return this.FacilityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FacilityNameField, value) != true)) {
+                    this.FacilityNameField = value;
+                    this.RaisePropertyChanged("FacilityName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Ihi {
+            get {
+                return this.IhiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IhiField, value) != true)) {
+                    this.IhiField = value;
+                    this.RaisePropertyChanged("Ihi");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MessageQueueLeaseStateCode {
+            get {
+                return this.MessageQueueLeaseStateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageQueueLeaseStateCodeField, value) != true)) {
+                    this.MessageQueueLeaseStateCodeField = value;
+                    this.RaisePropertyChanged("MessageQueueLeaseStateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MessageQueueLeaseStateDescription {
+            get {
+                return this.MessageQueueLeaseStateDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageQueueLeaseStateDescriptionField, value) != true)) {
+                    this.MessageQueueLeaseStateDescriptionField = value;
+                    this.RaisePropertyChanged("MessageQueueLeaseStateDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MessageQueueStateCode {
+            get {
+                return this.MessageQueueStateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageQueueStateCodeField, value) != true)) {
+                    this.MessageQueueStateCodeField = value;
+                    this.RaisePropertyChanged("MessageQueueStateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MessageQueueStateDescription {
+            get {
+                return this.MessageQueueStateDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageQueueStateDescriptionField, value) != true)) {
+                    this.MessageQueueStateDescriptionField = value;
+                    this.RaisePropertyChanged("MessageQueueStateDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int PatientId {
+            get {
+                return this.PatientIdField;
+            }
+            set {
+                if ((this.PatientIdField.Equals(value) != true)) {
+                    this.PatientIdField = value;
+                    this.RaisePropertyChanged("PatientId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Request {
+            get {
+                return this.RequestField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RequestField, value) != true)) {
+                    this.RequestField = value;
+                    this.RaisePropertyChanged("Request");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal long RequestSize {
+            get {
+                return this.RequestSizeField;
+            }
+            set {
+                if ((this.RequestSizeField.Equals(value) != true)) {
+                    this.RequestSizeField = value;
+                    this.RaisePropertyChanged("RequestSize");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Response {
+            get {
+                return this.ResponseField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseField, value) != true)) {
+                    this.ResponseField = value;
+                    this.RaisePropertyChanged("Response");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SourceSystemDocumentId {
+            get {
+                return this.SourceSystemDocumentIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceSystemDocumentIdField, value) != true)) {
+                    this.SourceSystemDocumentIdField = value;
+                    this.RaisePropertyChanged("SourceSystemDocumentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SourceSystemSetId {
+            get {
+                return this.SourceSystemSetIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceSystemSetIdField, value) != true)) {
+                    this.SourceSystemSetIdField = value;
+                    this.RaisePropertyChanged("SourceSystemSetId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<long> SystemEventLogID {
+            get {
+                return this.SystemEventLogIDField;
+            }
+            set {
+                if ((this.SystemEventLogIDField.Equals(value) != true)) {
+                    this.SystemEventLogIDField = value;
+                    this.RaisePropertyChanged("SystemEventLogID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SystemEventLogLevelCode {
+            get {
+                return this.SystemEventLogLevelCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemEventLogLevelCodeField, value) != true)) {
+                    this.SystemEventLogLevelCodeField = value;
+                    this.RaisePropertyChanged("SystemEventLogLevelCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SystemEventLogLevelDescription {
+            get {
+                return this.SystemEventLogLevelDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemEventLogLevelDescriptionField, value) != true)) {
+                    this.SystemEventLogLevelDescriptionField = value;
+                    this.RaisePropertyChanged("SystemEventLogLevelDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SystemEventLogMessage {
+            get {
+                return this.SystemEventLogMessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SystemEventLogMessageField, value) != true)) {
+                    this.SystemEventLogMessageField = value;
+                    this.RaisePropertyChanged("SystemEventLogMessage");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageQueue", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation))]
+    internal partial class MessageQueue : HIPSClient.Hips.HipsPCEHRService.BaseSchema {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> BatchIdentifierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BatchOwnerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTimeOffset> BatchTimestampField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LeaseCountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTimeOffset> LeaseExpiryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.Guid> LeaseIdentifierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] MessageContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<long> MessageQueueIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.MessageQueueLeaseState MessageQueueLeaseStateIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.MessageQueueState MessageQueueStateIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageTypeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Collections.Generic.Dictionary<string, string> MetadataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OrderKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PartitionKeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string QueueNameField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.Guid> BatchIdentifier {
+            get {
+                return this.BatchIdentifierField;
+            }
+            set {
+                if ((this.BatchIdentifierField.Equals(value) != true)) {
+                    this.BatchIdentifierField = value;
+                    this.RaisePropertyChanged("BatchIdentifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string BatchOwner {
+            get {
+                return this.BatchOwnerField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BatchOwnerField, value) != true)) {
+                    this.BatchOwnerField = value;
+                    this.RaisePropertyChanged("BatchOwner");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTimeOffset> BatchTimestamp {
+            get {
+                return this.BatchTimestampField;
+            }
+            set {
+                if ((this.BatchTimestampField.Equals(value) != true)) {
+                    this.BatchTimestampField = value;
+                    this.RaisePropertyChanged("BatchTimestamp");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int LeaseCount {
+            get {
+                return this.LeaseCountField;
+            }
+            set {
+                if ((this.LeaseCountField.Equals(value) != true)) {
+                    this.LeaseCountField = value;
+                    this.RaisePropertyChanged("LeaseCount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTimeOffset> LeaseExpiry {
+            get {
+                return this.LeaseExpiryField;
+            }
+            set {
+                if ((this.LeaseExpiryField.Equals(value) != true)) {
+                    this.LeaseExpiryField = value;
+                    this.RaisePropertyChanged("LeaseExpiry");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.Guid> LeaseIdentifier {
+            get {
+                return this.LeaseIdentifierField;
+            }
+            set {
+                if ((this.LeaseIdentifierField.Equals(value) != true)) {
+                    this.LeaseIdentifierField = value;
+                    this.RaisePropertyChanged("LeaseIdentifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal byte[] MessageContent {
+            get {
+                return this.MessageContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageContentField, value) != true)) {
+                    this.MessageContentField = value;
+                    this.RaisePropertyChanged("MessageContent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<long> MessageQueueID {
+            get {
+                return this.MessageQueueIDField;
+            }
+            set {
+                if ((this.MessageQueueIDField.Equals(value) != true)) {
+                    this.MessageQueueIDField = value;
+                    this.RaisePropertyChanged("MessageQueueID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.MessageQueueLeaseState MessageQueueLeaseStateID {
+            get {
+                return this.MessageQueueLeaseStateIDField;
+            }
+            set {
+                if ((this.MessageQueueLeaseStateIDField.Equals(value) != true)) {
+                    this.MessageQueueLeaseStateIDField = value;
+                    this.RaisePropertyChanged("MessageQueueLeaseStateID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.MessageQueueState MessageQueueStateID {
+            get {
+                return this.MessageQueueStateIDField;
+            }
+            set {
+                if ((this.MessageQueueStateIDField.Equals(value) != true)) {
+                    this.MessageQueueStateIDField = value;
+                    this.RaisePropertyChanged("MessageQueueStateID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string MessageType {
+            get {
+                return this.MessageTypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageTypeField, value) != true)) {
+                    this.MessageTypeField = value;
+                    this.RaisePropertyChanged("MessageType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Collections.Generic.Dictionary<string, string> Metadata {
+            get {
+                return this.MetadataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MetadataField, value) != true)) {
+                    this.MetadataField = value;
+                    this.RaisePropertyChanged("Metadata");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string OrderKey {
+            get {
+                return this.OrderKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OrderKeyField, value) != true)) {
+                    this.OrderKeyField = value;
+                    this.RaisePropertyChanged("OrderKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string PartitionKey {
+            get {
+                return this.PartitionKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PartitionKeyField, value) != true)) {
+                    this.PartitionKeyField = value;
+                    this.RaisePropertyChanged("PartitionKey");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string QueueName {
+            get {
+                return this.QueueNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.QueueNameField, value) != true)) {
+                    this.QueueNameField = value;
+                    this.RaisePropertyChanged("QueueName");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ClinicalDocumentVersion", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas")]
+    [System.SerializableAttribute()]
+    internal partial class ClinicalDocumentVersion : HIPSClient.Hips.HipsPCEHRService.BaseSchema {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClinicalDocumentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> ClinicalDocumentVersionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] PackageField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SourceSystemDocumentIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> SupersededDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> UploadedDateField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int ClinicalDocumentId {
+            get {
+                return this.ClinicalDocumentIdField;
+            }
+            set {
+                if ((this.ClinicalDocumentIdField.Equals(value) != true)) {
+                    this.ClinicalDocumentIdField = value;
+                    this.RaisePropertyChanged("ClinicalDocumentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<int> ClinicalDocumentVersionId {
+            get {
+                return this.ClinicalDocumentVersionIdField;
+            }
+            set {
+                if ((this.ClinicalDocumentVersionIdField.Equals(value) != true)) {
+                    this.ClinicalDocumentVersionIdField = value;
+                    this.RaisePropertyChanged("ClinicalDocumentVersionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal byte[] Package {
+            get {
+                return this.PackageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PackageField, value) != true)) {
+                    this.PackageField = value;
+                    this.RaisePropertyChanged("Package");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string SourceSystemDocumentId {
+            get {
+                return this.SourceSystemDocumentIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SourceSystemDocumentIdField, value) != true)) {
+                    this.SourceSystemDocumentIdField = value;
+                    this.RaisePropertyChanged("SourceSystemDocumentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTime> SupersededDate {
+            get {
+                return this.SupersededDateField;
+            }
+            set {
+                if ((this.SupersededDateField.Equals(value) != true)) {
+                    this.SupersededDateField = value;
+                    this.RaisePropertyChanged("SupersededDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTime> UploadedDate {
+            get {
+                return this.UploadedDateField;
+            }
+            set {
+                if ((this.UploadedDateField.Equals(value) != true)) {
+                    this.UploadedDateField = value;
+                    this.RaisePropertyChanged("UploadedDate");
+                }
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ParticipationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common")]
+    internal enum ParticipationStatus1 : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NoValidIhi = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PcehrNotAdvertised = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PcehrAdvertised = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RequestedUpload = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AttachmentType", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common")]
+    internal enum AttachmentType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AttachedImageJpeg = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AttachedImagePng = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AttachedImageTiff = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AttachedImageGif = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AttachedDocumentPdf = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OrganisationalLogoPng = 6,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PatientParticipationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO")]
+    [System.SerializableAttribute()]
+    internal partial class PatientParticipationStatus1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HospitalCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MrnField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ParticipationStatus1 ParticipationStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatePatientIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ValidatedIhi1 ValidatedIhiField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string HospitalCode {
+            get {
+                return this.HospitalCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HospitalCodeField, value) != true)) {
+                    this.HospitalCodeField = value;
+                    this.RaisePropertyChanged("HospitalCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Mrn {
+            get {
+                return this.MrnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MrnField, value) != true)) {
+                    this.MrnField = value;
+                    this.RaisePropertyChanged("Mrn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ParticipationStatus1 ParticipationStatus {
+            get {
+                return this.ParticipationStatusField;
+            }
+            set {
+                if ((this.ParticipationStatusField.Equals(value) != true)) {
+                    this.ParticipationStatusField = value;
+                    this.RaisePropertyChanged("ParticipationStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string StatePatientId {
+            get {
+                return this.StatePatientIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatePatientIdField, value) != true)) {
+                    this.StatePatientIdField = value;
+                    this.RaisePropertyChanged("StatePatientId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ValidatedIhi1 ValidatedIhi {
+            get {
+                return this.ValidatedIhiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValidatedIhiField, value) != true)) {
+                    this.ValidatedIhiField = value;
+                    this.RaisePropertyChanged("ValidatedIhi");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="IsPcehrAdvertisedLocal", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO")]
+    [System.SerializableAttribute()]
+    internal partial class IsPcehrAdvertisedLocal : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired1 AccessCodeRequiredField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> PcehrExistsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired1 AccessCodeRequired {
+            get {
+                return this.AccessCodeRequiredField;
+            }
+            set {
+                if ((this.AccessCodeRequiredField.Equals(value) != true)) {
+                    this.AccessCodeRequiredField = value;
+                    this.RaisePropertyChanged("AccessCodeRequired");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<bool> PcehrExists {
+            get {
+                return this.PcehrExistsField;
+            }
+            set {
+                if ((this.PcehrExistsField.Equals(value) != true)) {
+                    this.PcehrExistsField = value;
+                    this.RaisePropertyChanged("PcehrExists");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseSchema", Namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument))]
+    internal partial class BaseSchema : HIPSClient.Hips.HipsPCEHRService.HipsObservableObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateCreatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateModifiedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserCreatedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UserModifiedField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime DateCreated {
+            get {
+                return this.DateCreatedField;
+            }
+            set {
+                if ((this.DateCreatedField.Equals(value) != true)) {
+                    this.DateCreatedField = value;
+                    this.RaisePropertyChanged("DateCreated");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime DateModified {
+            get {
+                return this.DateModifiedField;
+            }
+            set {
+                if ((this.DateModifiedField.Equals(value) != true)) {
+                    this.DateModifiedField = value;
+                    this.RaisePropertyChanged("DateModified");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<int> Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string UserCreated {
+            get {
+                return this.UserCreatedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserCreatedField, value) != true)) {
+                    this.UserCreatedField = value;
+                    this.RaisePropertyChanged("UserCreated");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string UserModified {
+            get {
+                return this.UserModifiedField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UserModifiedField, value) != true)) {
+                    this.UserModifiedField = value;
+                    this.RaisePropertyChanged("UserModified");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HipsObservableObject", Namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.BaseSchema))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.MessageQueue))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ClinicalDocument))]
+    internal partial class HipsObservableObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool IsDirtyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal bool IsDirty {
+            get {
+                return this.IsDirtyField;
+            }
+            set {
+                if ((this.IsDirtyField.Equals(value) != true)) {
+                    this.IsDirtyField = value;
+                    this.RaisePropertyChanged("IsDirty");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageQueueLeaseState", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators")]
+    internal enum MessageQueueLeaseState : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Inactive = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Active = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Retrying = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageQueueState", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators")]
+    internal enum MessageQueueState : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pending = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Success = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Failure = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueueOperation", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas.Enumerators")]
+    internal enum QueueOperation : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        UploadOrSupersede = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Remove = 2,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueuedOperationQueryResult", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
+    [System.SerializableAttribute()]
+    internal partial class QueuedOperationQueryResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ClinicalDocument ClinicalDocumentField;
+        
+        private byte[] DecodedPackageField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation QueuedOperationField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ClinicalDocument ClinicalDocument {
+            get {
+                return this.ClinicalDocumentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClinicalDocumentField, value) != true)) {
+                    this.ClinicalDocumentField = value;
+                    this.RaisePropertyChanged("ClinicalDocument");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal byte[] DecodedPackage {
+            get {
+                return this.DecodedPackageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DecodedPackageField, value) != true)) {
+                    this.DecodedPackageField = value;
+                    this.RaisePropertyChanged("DecodedPackage");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation QueuedOperation {
+            get {
+                return this.QueuedOperationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.QueuedOperationField, value) != true)) {
+                    this.QueuedOperationField = value;
+                    this.RaisePropertyChanged("QueuedOperation");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="QueuedOperationsQueryResult", Namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas")]
+    [System.SerializableAttribute()]
+    internal partial class QueuedOperationsQueryResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation[] QueuedOperationsField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion[] UploadedDocumentVersionsField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ClinicalDocument[] UploadedDocumentsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation[] QueuedOperations {
+            get {
+                return this.QueuedOperationsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.QueuedOperationsField, value) != true)) {
+                    this.QueuedOperationsField = value;
+                    this.RaisePropertyChanged("QueuedOperations");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ClinicalDocumentVersion[] UploadedDocumentVersions {
+            get {
+                return this.UploadedDocumentVersionsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UploadedDocumentVersionsField, value) != true)) {
+                    this.UploadedDocumentVersionsField = value;
+                    this.RaisePropertyChanged("UploadedDocumentVersions");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ClinicalDocument[] UploadedDocuments {
+            get {
+                return this.UploadedDocumentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UploadedDocumentsField, value) != true)) {
+                    this.UploadedDocumentsField = value;
+                    this.RaisePropertyChanged("UploadedDocuments");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MessageLevel", Namespace="http://nehta.hips/2014/03")]
+    internal enum MessageLevel : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Information = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Warning = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Error = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InvalidRequestFault", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class InvalidRequestFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.Message[] MessagesField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.Message[] Messages {
+            get {
+                return this.MessagesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessagesField, value) != true)) {
+                    this.MessagesField = value;
+                    this.RaisePropertyChanged("Messages");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="FaultBase", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HiServiceFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrServiceFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ItemNotFoundFault))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault))]
+    internal partial class FaultBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FaultIdentifierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MessageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string FaultIdentifier {
+            get {
+                return this.FaultIdentifierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FaultIdentifierField, value) != true)) {
+                    this.FaultIdentifierField = value;
+                    this.RaisePropertyChanged("FaultIdentifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Message {
+            get {
+                return this.MessageField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
+                    this.MessageField = value;
+                    this.RaisePropertyChanged("Message");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceOperationFault", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class ServiceOperationFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Code {
+            get {
+                return this.CodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
+                    this.CodeField = value;
+                    this.RaisePropertyChanged("Code");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Details {
+            get {
+                return this.DetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetailsField, value) != true)) {
+                    this.DetailsField = value;
+                    this.RaisePropertyChanged("Details");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InvalidUserFault", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class InvalidUserFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HiServiceFault", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class HiServiceFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseCodeDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseCodeDetailsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ResponseCode {
+            get {
+                return this.ResponseCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseCodeField, value) != true)) {
+                    this.ResponseCodeField = value;
+                    this.RaisePropertyChanged("ResponseCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ResponseCodeDescription {
+            get {
+                return this.ResponseCodeDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseCodeDescriptionField, value) != true)) {
+                    this.ResponseCodeDescriptionField = value;
+                    this.RaisePropertyChanged("ResponseCodeDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ResponseCodeDetails {
+            get {
+                return this.ResponseCodeDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseCodeDetailsField, value) != true)) {
+                    this.ResponseCodeDetailsField = value;
+                    this.RaisePropertyChanged("ResponseCodeDetails");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PcehrServiceFault", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class PcehrServiceFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseCodeDescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResponseCodeDetailsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ResponseCode {
+            get {
+                return this.ResponseCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseCodeField, value) != true)) {
+                    this.ResponseCodeField = value;
+                    this.RaisePropertyChanged("ResponseCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ResponseCodeDescription {
+            get {
+                return this.ResponseCodeDescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseCodeDescriptionField, value) != true)) {
+                    this.ResponseCodeDescriptionField = value;
+                    this.RaisePropertyChanged("ResponseCodeDescription");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ResponseCodeDetails {
+            get {
+                return this.ResponseCodeDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponseCodeDetailsField, value) != true)) {
+                    this.ResponseCodeDetailsField = value;
+                    this.RaisePropertyChanged("ResponseCodeDetails");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ItemNotFoundFault", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class ItemNotFoundFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdentifierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string QualifierField;
+        
+        private string TypeField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Identifier {
+            get {
+                return this.IdentifierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdentifierField, value) != true)) {
+                    this.IdentifierField = value;
+                    this.RaisePropertyChanged("Identifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Qualifier {
+            get {
+                return this.QualifierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.QualifierField, value) != true)) {
+                    this.QualifierField = value;
+                    this.RaisePropertyChanged("Qualifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CdaHeaderMetadata", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class CdaHeaderMetadata : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private System.DateTime AdmissionDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DischargeDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DischargeDateTimeField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider DocumentAuthorField;
+        
+        private System.DateTime DocumentCreationDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider LegalAuthenticatorField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ModeOfSeparation ModeOfSeparationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.Address PatientAddressField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationDetail PatientContactDetailsField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider ResponsibleHealthProfessionalField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.SourceDocumentStatus SourceDocumentStatusField;
+        
+        private string SpecialtyField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal System.DateTime AdmissionDateTime {
+            get {
+                return this.AdmissionDateTimeField;
+            }
+            set {
+                if ((this.AdmissionDateTimeField.Equals(value) != true)) {
+                    this.AdmissionDateTimeField = value;
+                    this.RaisePropertyChanged("AdmissionDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTime> DischargeDate {
+            get {
+                return this.DischargeDateField;
+            }
+            set {
+                if ((this.DischargeDateField.Equals(value) != true)) {
+                    this.DischargeDateField = value;
+                    this.RaisePropertyChanged("DischargeDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.Nullable<System.DateTime> DischargeDateTime {
+            get {
+                return this.DischargeDateTimeField;
+            }
+            set {
+                if ((this.DischargeDateTimeField.Equals(value) != true)) {
+                    this.DischargeDateTimeField = value;
+                    this.RaisePropertyChanged("DischargeDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider DocumentAuthor {
+            get {
+                return this.DocumentAuthorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentAuthorField, value) != true)) {
+                    this.DocumentAuthorField = value;
+                    this.RaisePropertyChanged("DocumentAuthor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal System.DateTime DocumentCreationDateTime {
+            get {
+                return this.DocumentCreationDateTimeField;
+            }
+            set {
+                if ((this.DocumentCreationDateTimeField.Equals(value) != true)) {
+                    this.DocumentCreationDateTimeField = value;
+                    this.RaisePropertyChanged("DocumentCreationDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider LegalAuthenticator {
+            get {
+                return this.LegalAuthenticatorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LegalAuthenticatorField, value) != true)) {
+                    this.LegalAuthenticatorField = value;
+                    this.RaisePropertyChanged("LegalAuthenticator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ModeOfSeparation ModeOfSeparation {
+            get {
+                return this.ModeOfSeparationField;
+            }
+            set {
+                if ((this.ModeOfSeparationField.Equals(value) != true)) {
+                    this.ModeOfSeparationField = value;
+                    this.RaisePropertyChanged("ModeOfSeparation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.Address PatientAddress {
+            get {
+                return this.PatientAddressField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PatientAddressField, value) != true)) {
+                    this.PatientAddressField = value;
+                    this.RaisePropertyChanged("PatientAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationDetail PatientContactDetails {
+            get {
+                return this.PatientContactDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PatientContactDetailsField, value) != true)) {
+                    this.PatientContactDetailsField = value;
+                    this.RaisePropertyChanged("PatientContactDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider ResponsibleHealthProfessional {
+            get {
+                return this.ResponsibleHealthProfessionalField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResponsibleHealthProfessionalField, value) != true)) {
+                    this.ResponsibleHealthProfessionalField = value;
+                    this.RaisePropertyChanged("ResponsibleHealthProfessional");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.SourceDocumentStatus SourceDocumentStatus {
+            get {
+                return this.SourceDocumentStatusField;
+            }
+            set {
+                if ((this.SourceDocumentStatusField.Equals(value) != true)) {
+                    this.SourceDocumentStatusField = value;
+                    this.RaisePropertyChanged("SourceDocumentStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string Specialty {
+            get {
+                return this.SpecialtyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SpecialtyField, value) != true)) {
+                    this.SpecialtyField = value;
+                    this.RaisePropertyChanged("Specialty");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ParticipatingProvider", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class ParticipatingProvider : HIPSClient.Hips.HipsPCEHRService.ParticipatingIndividual {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmployerHpioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EmployerNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string HpiiField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string EmployerHpio {
+            get {
+                return this.EmployerHpioField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmployerHpioField, value) != true)) {
+                    this.EmployerHpioField = value;
+                    this.RaisePropertyChanged("EmployerHpio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string EmployerName {
+            get {
+                return this.EmployerNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EmployerNameField, value) != true)) {
+                    this.EmployerNameField = value;
+                    this.RaisePropertyChanged("EmployerName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Hpii {
+            get {
+                return this.HpiiField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.HpiiField, value) != true)) {
+                    this.HpiiField = value;
+                    this.RaisePropertyChanged("Hpii");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ParticipatingIndividual", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider))]
+    internal partial class ParticipatingIndividual : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string FamilyNameField;
+        
+        private string GivenNamesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LocalIdentifierField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string SuffixField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string FamilyName {
+            get {
+                return this.FamilyNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FamilyNameField, value) != true)) {
+                    this.FamilyNameField = value;
+                    this.RaisePropertyChanged("FamilyName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string GivenNames {
+            get {
+                return this.GivenNamesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.GivenNamesField, value) != true)) {
+                    this.GivenNamesField = value;
+                    this.RaisePropertyChanged("GivenNames");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string LocalIdentifier {
+            get {
+                return this.LocalIdentifierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocalIdentifierField, value) != true)) {
+                    this.LocalIdentifierField = value;
+                    this.RaisePropertyChanged("LocalIdentifier");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Suffix {
+            get {
+                return this.SuffixField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SuffixField, value) != true)) {
+                    this.SuffixField = value;
+                    this.RaisePropertyChanged("Suffix");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ModeOfSeparation", Namespace="http://nehta.hips/2014/03")]
+    internal enum ModeOfSeparation : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AcuteHospital = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AgedCareService = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PsychiatricCare = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        OtherHealthService = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AdministrativeDischarge = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SelfDischarge = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AdministrativeFromLeave = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Deceased = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Home = 9,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string AddressLine1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string AddressLine2Field;
+        
+        private HIPSClient.Hips.HipsPCEHRService.AddressPurpose AddressPurposeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.AustralianState AustralianStateField;
+        
+        private string CountryNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string InternationalStateCodeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlaceNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PostcodeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string AddressLine1 {
+            get {
+                return this.AddressLine1Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressLine1Field, value) != true)) {
+                    this.AddressLine1Field = value;
+                    this.RaisePropertyChanged("AddressLine1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string AddressLine2 {
+            get {
+                return this.AddressLine2Field;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AddressLine2Field, value) != true)) {
+                    this.AddressLine2Field = value;
+                    this.RaisePropertyChanged("AddressLine2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.AddressPurpose AddressPurpose {
+            get {
+                return this.AddressPurposeField;
+            }
+            set {
+                if ((this.AddressPurposeField.Equals(value) != true)) {
+                    this.AddressPurposeField = value;
+                    this.RaisePropertyChanged("AddressPurpose");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.AustralianState AustralianState {
+            get {
+                return this.AustralianStateField;
+            }
+            set {
+                if ((this.AustralianStateField.Equals(value) != true)) {
+                    this.AustralianStateField = value;
+                    this.RaisePropertyChanged("AustralianState");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string CountryName {
+            get {
+                return this.CountryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
+                    this.CountryNameField = value;
+                    this.RaisePropertyChanged("CountryName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string InternationalStateCode {
+            get {
+                return this.InternationalStateCodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.InternationalStateCodeField, value) != true)) {
+                    this.InternationalStateCodeField = value;
+                    this.RaisePropertyChanged("InternationalStateCode");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string PlaceName {
+            get {
+                return this.PlaceNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlaceNameField, value) != true)) {
+                    this.PlaceNameField = value;
+                    this.RaisePropertyChanged("PlaceName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Postcode {
+            get {
+                return this.PostcodeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PostcodeField, value) != true)) {
+                    this.PostcodeField = value;
+                    this.RaisePropertyChanged("Postcode");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AddressPurpose", Namespace="http://nehta.hips/2014/03")]
+    internal enum AddressPurpose : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Business = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Mailing = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Temporary = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Residential = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unknown = 9,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AustralianState", Namespace="http://nehta.hips/2014/03")]
+    internal enum AustralianState : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NSW = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        VIC = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        QLD = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SA = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        WA = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TAS = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NT = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ACT = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        U = 9,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ElectronicCommunicationDetail", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class ElectronicCommunicationDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string DetailField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationMedium MediumField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationUsage UsageField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string Detail {
+            get {
+                return this.DetailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DetailField, value) != true)) {
+                    this.DetailField = value;
+                    this.RaisePropertyChanged("Detail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationMedium Medium {
+            get {
+                return this.MediumField;
+            }
+            set {
+                if ((this.MediumField.Equals(value) != true)) {
+                    this.MediumField = value;
+                    this.RaisePropertyChanged("Medium");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationUsage Usage {
+            get {
+                return this.UsageField;
+            }
+            set {
+                if ((this.UsageField.Equals(value) != true)) {
+                    this.UsageField = value;
+                    this.RaisePropertyChanged("Usage");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ElectronicCommunicationMedium", Namespace="http://nehta.hips/2014/03")]
+    internal enum ElectronicCommunicationMedium : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FixedTelephone = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Mobile = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Fax = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Pager = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Email = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        URL = 6,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ElectronicCommunicationUsage", Namespace="http://nehta.hips/2014/03")]
+    internal enum ElectronicCommunicationUsage : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Business = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Personal = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Both = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SourceDocumentStatus", Namespace="http://nehta.hips/2014/03")]
+    internal enum SourceDocumentStatus : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        None = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Interim = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Final = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Withdrawn = 3,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CdaAttachment", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class CdaAttachment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.AttachmentType AttachmentTypeField;
+        
+        private string CaptionField;
+        
+        private byte[] ContentField;
+        
+        private string FileNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.AttachmentType AttachmentType {
+            get {
+                return this.AttachmentTypeField;
+            }
+            set {
+                if ((this.AttachmentTypeField.Equals(value) != true)) {
+                    this.AttachmentTypeField = value;
+                    this.RaisePropertyChanged("AttachmentType");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string Caption {
+            get {
+                return this.CaptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CaptionField, value) != true)) {
+                    this.CaptionField = value;
+                    this.RaisePropertyChanged("Caption");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal byte[] Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string FileName {
+            get {
+                return this.FileNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
+                    this.FileNameField = value;
+                    this.RaisePropertyChanged("FileName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CdaDocumentDetails", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class CdaDocumentDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.CdaDocument DocumentField;
+        
+        private string DocumentIdField;
+        
+        private string DocumentSetIdField;
+        
+        private string MrnField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifierField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.CdaDocument Document {
+            get {
+                return this.DocumentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentField, value) != true)) {
+                    this.DocumentField = value;
+                    this.RaisePropertyChanged("Document");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string DocumentId {
+            get {
+                return this.DocumentIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentIdField, value) != true)) {
+                    this.DocumentIdField = value;
+                    this.RaisePropertyChanged("DocumentId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string DocumentSetId {
+            get {
+                return this.DocumentSetIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocumentSetIdField, value) != true)) {
+                    this.DocumentSetIdField = value;
+                    this.RaisePropertyChanged("DocumentSetId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal string Mrn {
+            get {
+                return this.MrnField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MrnField, value) != true)) {
+                    this.MrnField = value;
+                    this.RaisePropertyChanged("Mrn");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifier {
+            get {
+                return this.PatientIdentifierField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PatientIdentifierField, value) != true)) {
+                    this.PatientIdentifierField = value;
+                    this.RaisePropertyChanged("PatientIdentifier");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CdaDocument", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class CdaDocument : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private HIPSClient.Hips.HipsPCEHRService.CdaAttachment[] AttachmentsField;
+        
+        private byte[] ContentField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal HIPSClient.Hips.HipsPCEHRService.CdaAttachment[] Attachments {
+            get {
+                return this.AttachmentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AttachmentsField, value) != true)) {
+                    this.AttachmentsField = value;
+                    this.RaisePropertyChanged("Attachments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
+        internal byte[] Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AccessCodeRequired", Namespace="http://nehta.hips/2014/03")]
+    internal enum AccessCodeRequired1 : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unknown = -1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        WithCode = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        WithoutCode = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        AccessGranted = 2,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PathologyReport", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class PathologyReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateAvailableToConsumerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.PathologyReportInformationDT ReportInformationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ReportingPathologistInformationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT TestRequesterInformationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.PathologyTestReport[] TestResultsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthor {
+            get {
+                return this.ClinicalDocumentAuthorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClinicalDocumentAuthorField, value) != true)) {
+                    this.ClinicalDocumentAuthorField = value;
+                    this.RaisePropertyChanged("ClinicalDocumentAuthor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime DateAvailableToConsumer {
+            get {
+                return this.DateAvailableToConsumerField;
+            }
+            set {
+                if ((this.DateAvailableToConsumerField.Equals(value) != true)) {
+                    this.DateAvailableToConsumerField = value;
+                    this.RaisePropertyChanged("DateAvailableToConsumer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.PathologyReportInformationDT ReportInformation {
+            get {
+                return this.ReportInformationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportInformationField, value) != true)) {
+                    this.ReportInformationField = value;
+                    this.RaisePropertyChanged("ReportInformation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ReportingPathologistInformation {
+            get {
+                return this.ReportingPathologistInformationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportingPathologistInformationField, value) != true)) {
+                    this.ReportingPathologistInformationField = value;
+                    this.RaisePropertyChanged("ReportingPathologistInformation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT TestRequesterInformation {
+            get {
+                return this.TestRequesterInformationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TestRequesterInformationField, value) != true)) {
+                    this.TestRequesterInformationField = value;
+                    this.RaisePropertyChanged("TestRequesterInformation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.PathologyTestReport[] TestResults {
+            get {
+                return this.TestResultsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TestResultsField, value) != true)) {
+                    this.TestResultsField = value;
+                    this.RaisePropertyChanged("TestResults");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PathologyTestReport", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class PathologyTestReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.CodedType PathologyDisciplineField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime SpecimenCollectionDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.CodedType TestResultNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatus {
+            get {
+                return this.OverallTestResultStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OverallTestResultStatusField, value) != true)) {
+                    this.OverallTestResultStatusField = value;
+                    this.RaisePropertyChanged("OverallTestResultStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.CodedType PathologyDiscipline {
+            get {
+                return this.PathologyDisciplineField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PathologyDisciplineField, value) != true)) {
+                    this.PathologyDisciplineField = value;
+                    this.RaisePropertyChanged("PathologyDiscipline");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime SpecimenCollectionDate {
+            get {
+                return this.SpecimenCollectionDateField;
+            }
+            set {
+                if ((this.SpecimenCollectionDateField.Equals(value) != true)) {
+                    this.SpecimenCollectionDateField = value;
+                    this.RaisePropertyChanged("SpecimenCollectionDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.CodedType TestResultName {
+            get {
+                return this.TestResultNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TestResultNameField, value) != true)) {
+                    this.TestResultNameField = value;
+                    this.RaisePropertyChanged("TestResultName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="DiagnosticImagingReport", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class DiagnosticImagingReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DateAvailableToConsumerField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult[] ImagingExaminationResultField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT ImagingRequesterInformationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.DiagnosticReportInformationDT ReportInformationField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthor {
+            get {
+                return this.ClinicalDocumentAuthorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClinicalDocumentAuthorField, value) != true)) {
+                    this.ClinicalDocumentAuthorField = value;
+                    this.RaisePropertyChanged("ClinicalDocumentAuthor");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime DateAvailableToConsumer {
+            get {
+                return this.DateAvailableToConsumerField;
+            }
+            set {
+                if ((this.DateAvailableToConsumerField.Equals(value) != true)) {
+                    this.DateAvailableToConsumerField = value;
+                    this.RaisePropertyChanged("DateAvailableToConsumer");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult[] ImagingExaminationResult {
+            get {
+                return this.ImagingExaminationResultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImagingExaminationResultField, value) != true)) {
+                    this.ImagingExaminationResultField = value;
+                    this.RaisePropertyChanged("ImagingExaminationResult");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT ImagingRequesterInformation {
+            get {
+                return this.ImagingRequesterInformationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImagingRequesterInformationField, value) != true)) {
+                    this.ImagingRequesterInformationField = value;
+                    this.RaisePropertyChanged("ImagingRequesterInformation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.DiagnosticReportInformationDT ReportInformation {
+            get {
+                return this.ReportInformationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReportInformationField, value) != true)) {
+                    this.ReportInformationField = value;
+                    this.RaisePropertyChanged("ReportInformation");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ImagingExaminationResult", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class ImagingExaminationResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.AnatomicalSiteDetails[] AnatomicalSiteDetailsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.CodedType ExaminationResultNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageLocationInformationField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ImagingServiceDateTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.CodedType ModalityField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.AnatomicalSiteDetails[] AnatomicalSiteDetails {
+            get {
+                return this.AnatomicalSiteDetailsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AnatomicalSiteDetailsField, value) != true)) {
+                    this.AnatomicalSiteDetailsField = value;
+                    this.RaisePropertyChanged("AnatomicalSiteDetails");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.CodedType ExaminationResultName {
+            get {
+                return this.ExaminationResultNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ExaminationResultNameField, value) != true)) {
+                    this.ExaminationResultNameField = value;
+                    this.RaisePropertyChanged("ExaminationResultName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ImageLocationInformation {
+            get {
+                return this.ImageLocationInformationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageLocationInformationField, value) != true)) {
+                    this.ImageLocationInformationField = value;
+                    this.RaisePropertyChanged("ImageLocationInformation");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal System.DateTime ImagingServiceDateTime {
+            get {
+                return this.ImagingServiceDateTimeField;
+            }
+            set {
+                if ((this.ImagingServiceDateTimeField.Equals(value) != true)) {
+                    this.ImagingServiceDateTimeField = value;
+                    this.RaisePropertyChanged("ImagingServiceDateTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.CodedType Modality {
+            get {
+                return this.ModalityField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ModalityField, value) != true)) {
+                    this.ModalityField = value;
+                    this.RaisePropertyChanged("Modality");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatus {
+            get {
+                return this.OverallTestResultStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OverallTestResultStatusField, value) != true)) {
+                    this.OverallTestResultStatusField = value;
+                    this.RaisePropertyChanged("OverallTestResultStatus");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="HealthRecordOverview", Namespace="http://nehta.hips/2014/03")]
+    [System.SerializableAttribute()]
+    internal partial class HealthRecordOverview : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.NewDocuments NewDocumentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.Link[] OtherLinksField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.RecentDocuments RecentDocumentsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.SharedHealthSummary SharedHealthSummaryField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private HIPSClient.Hips.HipsPCEHRService.ViewMetaData ViewMetaDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.NewDocuments NewDocuments {
+            get {
+                return this.NewDocumentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NewDocumentsField, value) != true)) {
+                    this.NewDocumentsField = value;
+                    this.RaisePropertyChanged("NewDocuments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.Link[] OtherLinks {
+            get {
+                return this.OtherLinksField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OtherLinksField, value) != true)) {
+                    this.OtherLinksField = value;
+                    this.RaisePropertyChanged("OtherLinks");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.RecentDocuments RecentDocuments {
+            get {
+                return this.RecentDocumentsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RecentDocumentsField, value) != true)) {
+                    this.RecentDocumentsField = value;
+                    this.RaisePropertyChanged("RecentDocuments");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.SharedHealthSummary SharedHealthSummary {
+            get {
+                return this.SharedHealthSummaryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SharedHealthSummaryField, value) != true)) {
+                    this.SharedHealthSummaryField = value;
+                    this.RaisePropertyChanged("SharedHealthSummary");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal HIPSClient.Hips.HipsPCEHRService.ViewMetaData ViewMetaData {
+            get {
+                return this.ViewMetaDataField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ViewMetaDataField, value) != true)) {
+                    this.ViewMetaDataField = value;
+                    this.RaisePropertyChanged("ViewMetaData");
                 }
             }
         }
@@ -9764,2141 +11996,6 @@ namespace HIPSClient.Hips.HipsPCEHRService {
         }
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="MessageLevel", Namespace="http://nehta.hips/2014/03")]
-    internal enum MessageLevel : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Information = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Warning = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Error = 3,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="InvalidRequestFault", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class InvalidRequestFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.Message[] MessagesField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.Message[] Messages {
-            get {
-                return this.MessagesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessagesField, value) != true)) {
-                    this.MessagesField = value;
-                    this.RaisePropertyChanged("Messages");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FaultBase", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.HiServiceFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.PcehrServiceFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ItemNotFoundFault))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault))]
-    internal partial class FaultBase : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FaultIdentifierField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MessageField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string FaultIdentifier {
-            get {
-                return this.FaultIdentifierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FaultIdentifierField, value) != true)) {
-                    this.FaultIdentifierField = value;
-                    this.RaisePropertyChanged("FaultIdentifier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Message {
-            get {
-                return this.MessageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
-                    this.MessageField = value;
-                    this.RaisePropertyChanged("Message");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceOperationFault", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class ServiceOperationFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DetailsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TypeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Code {
-            get {
-                return this.CodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
-                    this.CodeField = value;
-                    this.RaisePropertyChanged("Code");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Description {
-            get {
-                return this.DescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
-                    this.DescriptionField = value;
-                    this.RaisePropertyChanged("Description");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Details {
-            get {
-                return this.DetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DetailsField, value) != true)) {
-                    this.DetailsField = value;
-                    this.RaisePropertyChanged("Details");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="InvalidUserFault", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class InvalidUserFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HiServiceFault", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class HiServiceFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseCodeDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseCodeDetailsField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ResponseCode {
-            get {
-                return this.ResponseCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseCodeField, value) != true)) {
-                    this.ResponseCodeField = value;
-                    this.RaisePropertyChanged("ResponseCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ResponseCodeDescription {
-            get {
-                return this.ResponseCodeDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseCodeDescriptionField, value) != true)) {
-                    this.ResponseCodeDescriptionField = value;
-                    this.RaisePropertyChanged("ResponseCodeDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ResponseCodeDetails {
-            get {
-                return this.ResponseCodeDetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseCodeDetailsField, value) != true)) {
-                    this.ResponseCodeDetailsField = value;
-                    this.RaisePropertyChanged("ResponseCodeDetails");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PcehrServiceFault", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class PcehrServiceFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseCodeDescriptionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResponseCodeDetailsField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ResponseCode {
-            get {
-                return this.ResponseCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseCodeField, value) != true)) {
-                    this.ResponseCodeField = value;
-                    this.RaisePropertyChanged("ResponseCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ResponseCodeDescription {
-            get {
-                return this.ResponseCodeDescriptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseCodeDescriptionField, value) != true)) {
-                    this.ResponseCodeDescriptionField = value;
-                    this.RaisePropertyChanged("ResponseCodeDescription");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ResponseCodeDetails {
-            get {
-                return this.ResponseCodeDetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponseCodeDetailsField, value) != true)) {
-                    this.ResponseCodeDetailsField = value;
-                    this.RaisePropertyChanged("ResponseCodeDetails");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ItemNotFoundFault", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class ItemNotFoundFault : HIPSClient.Hips.HipsPCEHRService.FaultBase {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string IdentifierField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string QualifierField;
-        
-        private string TypeField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Identifier {
-            get {
-                return this.IdentifierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.IdentifierField, value) != true)) {
-                    this.IdentifierField = value;
-                    this.RaisePropertyChanged("Identifier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Qualifier {
-            get {
-                return this.QualifierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.QualifierField, value) != true)) {
-                    this.QualifierField = value;
-                    this.RaisePropertyChanged("Qualifier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string Type {
-            get {
-                return this.TypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
-                    this.TypeField = value;
-                    this.RaisePropertyChanged("Type");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CdaHeaderMetadata", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class CdaHeaderMetadata : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private System.DateTime AdmissionDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> DischargeDateTimeField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider DocumentAuthorField;
-        
-        private System.DateTime DocumentCreationDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider LegalAuthenticatorField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.ModeOfSeparation ModeOfSeparationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.Address PatientAddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationDetail PatientContactDetailsField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider ResponsibleHealthProfessionalField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.SourceDocumentStatus SourceDocumentStatusField;
-        
-        private string SpecialtyField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal System.DateTime AdmissionDateTime {
-            get {
-                return this.AdmissionDateTimeField;
-            }
-            set {
-                if ((this.AdmissionDateTimeField.Equals(value) != true)) {
-                    this.AdmissionDateTimeField = value;
-                    this.RaisePropertyChanged("AdmissionDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<System.DateTime> DischargeDateTime {
-            get {
-                return this.DischargeDateTimeField;
-            }
-            set {
-                if ((this.DischargeDateTimeField.Equals(value) != true)) {
-                    this.DischargeDateTimeField = value;
-                    this.RaisePropertyChanged("DischargeDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider DocumentAuthor {
-            get {
-                return this.DocumentAuthorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentAuthorField, value) != true)) {
-                    this.DocumentAuthorField = value;
-                    this.RaisePropertyChanged("DocumentAuthor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal System.DateTime DocumentCreationDateTime {
-            get {
-                return this.DocumentCreationDateTimeField;
-            }
-            set {
-                if ((this.DocumentCreationDateTimeField.Equals(value) != true)) {
-                    this.DocumentCreationDateTimeField = value;
-                    this.RaisePropertyChanged("DocumentCreationDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider LegalAuthenticator {
-            get {
-                return this.LegalAuthenticatorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LegalAuthenticatorField, value) != true)) {
-                    this.LegalAuthenticatorField = value;
-                    this.RaisePropertyChanged("LegalAuthenticator");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.ModeOfSeparation ModeOfSeparation {
-            get {
-                return this.ModeOfSeparationField;
-            }
-            set {
-                if ((this.ModeOfSeparationField.Equals(value) != true)) {
-                    this.ModeOfSeparationField = value;
-                    this.RaisePropertyChanged("ModeOfSeparation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.Address PatientAddress {
-            get {
-                return this.PatientAddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PatientAddressField, value) != true)) {
-                    this.PatientAddressField = value;
-                    this.RaisePropertyChanged("PatientAddress");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationDetail PatientContactDetails {
-            get {
-                return this.PatientContactDetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PatientContactDetailsField, value) != true)) {
-                    this.PatientContactDetailsField = value;
-                    this.RaisePropertyChanged("PatientContactDetails");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider ResponsibleHealthProfessional {
-            get {
-                return this.ResponsibleHealthProfessionalField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ResponsibleHealthProfessionalField, value) != true)) {
-                    this.ResponsibleHealthProfessionalField = value;
-                    this.RaisePropertyChanged("ResponsibleHealthProfessional");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.SourceDocumentStatus SourceDocumentStatus {
-            get {
-                return this.SourceDocumentStatusField;
-            }
-            set {
-                if ((this.SourceDocumentStatusField.Equals(value) != true)) {
-                    this.SourceDocumentStatusField = value;
-                    this.RaisePropertyChanged("SourceDocumentStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string Specialty {
-            get {
-                return this.SpecialtyField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SpecialtyField, value) != true)) {
-                    this.SpecialtyField = value;
-                    this.RaisePropertyChanged("Specialty");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ParticipatingProvider", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class ParticipatingProvider : HIPSClient.Hips.HipsPCEHRService.ParticipatingIndividual {
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmployerHpioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EmployerNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HpiiField;
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string EmployerHpio {
-            get {
-                return this.EmployerHpioField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmployerHpioField, value) != true)) {
-                    this.EmployerHpioField = value;
-                    this.RaisePropertyChanged("EmployerHpio");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string EmployerName {
-            get {
-                return this.EmployerNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EmployerNameField, value) != true)) {
-                    this.EmployerNameField = value;
-                    this.RaisePropertyChanged("EmployerName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Hpii {
-            get {
-                return this.HpiiField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HpiiField, value) != true)) {
-                    this.HpiiField = value;
-                    this.RaisePropertyChanged("Hpii");
-                }
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ParticipatingIndividual", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ParticipatingProvider))]
-    internal partial class ParticipatingIndividual : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string FamilyNameField;
-        
-        private string GivenNamesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string LocalIdentifierField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string SuffixField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string TitleField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string FamilyName {
-            get {
-                return this.FamilyNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FamilyNameField, value) != true)) {
-                    this.FamilyNameField = value;
-                    this.RaisePropertyChanged("FamilyName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string GivenNames {
-            get {
-                return this.GivenNamesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.GivenNamesField, value) != true)) {
-                    this.GivenNamesField = value;
-                    this.RaisePropertyChanged("GivenNames");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string LocalIdentifier {
-            get {
-                return this.LocalIdentifierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.LocalIdentifierField, value) != true)) {
-                    this.LocalIdentifierField = value;
-                    this.RaisePropertyChanged("LocalIdentifier");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Suffix {
-            get {
-                return this.SuffixField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SuffixField, value) != true)) {
-                    this.SuffixField = value;
-                    this.RaisePropertyChanged("Suffix");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Title {
-            get {
-                return this.TitleField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
-                    this.TitleField = value;
-                    this.RaisePropertyChanged("Title");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ModeOfSeparation", Namespace="http://nehta.hips/2014/03")]
-    internal enum ModeOfSeparation : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AcuteHospital = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AgedCareService = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PsychiatricCare = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        OtherHealthService = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AdministrativeDischarge = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SelfDischarge = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AdministrativeFromLeave = 7,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Deceased = 8,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Home = 9,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Address", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class Address : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string AddressLine1Field;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressLine2Field;
-        
-        private HIPSClient.Hips.HipsPCEHRService.AddressPurpose AddressPurposeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.AustralianState AustralianStateField;
-        
-        private string CountryNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string InternationalStateCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PlaceNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string PostcodeField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string AddressLine1 {
-            get {
-                return this.AddressLine1Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressLine1Field, value) != true)) {
-                    this.AddressLine1Field = value;
-                    this.RaisePropertyChanged("AddressLine1");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string AddressLine2 {
-            get {
-                return this.AddressLine2Field;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressLine2Field, value) != true)) {
-                    this.AddressLine2Field = value;
-                    this.RaisePropertyChanged("AddressLine2");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.AddressPurpose AddressPurpose {
-            get {
-                return this.AddressPurposeField;
-            }
-            set {
-                if ((this.AddressPurposeField.Equals(value) != true)) {
-                    this.AddressPurposeField = value;
-                    this.RaisePropertyChanged("AddressPurpose");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.AustralianState AustralianState {
-            get {
-                return this.AustralianStateField;
-            }
-            set {
-                if ((this.AustralianStateField.Equals(value) != true)) {
-                    this.AustralianStateField = value;
-                    this.RaisePropertyChanged("AustralianState");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string CountryName {
-            get {
-                return this.CountryNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CountryNameField, value) != true)) {
-                    this.CountryNameField = value;
-                    this.RaisePropertyChanged("CountryName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string InternationalStateCode {
-            get {
-                return this.InternationalStateCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.InternationalStateCodeField, value) != true)) {
-                    this.InternationalStateCodeField = value;
-                    this.RaisePropertyChanged("InternationalStateCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string PlaceName {
-            get {
-                return this.PlaceNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PlaceNameField, value) != true)) {
-                    this.PlaceNameField = value;
-                    this.RaisePropertyChanged("PlaceName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Postcode {
-            get {
-                return this.PostcodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PostcodeField, value) != true)) {
-                    this.PostcodeField = value;
-                    this.RaisePropertyChanged("Postcode");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AddressPurpose", Namespace="http://nehta.hips/2014/03")]
-    internal enum AddressPurpose : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Business = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Mailing = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Temporary = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Residential = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Unknown = 9,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AustralianState", Namespace="http://nehta.hips/2014/03")]
-    internal enum AustralianState : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NSW = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        VIC = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        QLD = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SA = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        WA = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        TAS = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NT = 7,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ACT = 8,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        U = 9,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ElectronicCommunicationDetail", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class ElectronicCommunicationDetail : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string DetailField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationMedium MediumField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationUsage UsageField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string Detail {
-            get {
-                return this.DetailField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DetailField, value) != true)) {
-                    this.DetailField = value;
-                    this.RaisePropertyChanged("Detail");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationMedium Medium {
-            get {
-                return this.MediumField;
-            }
-            set {
-                if ((this.MediumField.Equals(value) != true)) {
-                    this.MediumField = value;
-                    this.RaisePropertyChanged("Medium");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ElectronicCommunicationUsage Usage {
-            get {
-                return this.UsageField;
-            }
-            set {
-                if ((this.UsageField.Equals(value) != true)) {
-                    this.UsageField = value;
-                    this.RaisePropertyChanged("Usage");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ElectronicCommunicationMedium", Namespace="http://nehta.hips/2014/03")]
-    internal enum ElectronicCommunicationMedium : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        FixedTelephone = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Mobile = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Fax = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Pager = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Email = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        URL = 6,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ElectronicCommunicationUsage", Namespace="http://nehta.hips/2014/03")]
-    internal enum ElectronicCommunicationUsage : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Business = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Personal = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Both = 3,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="SourceDocumentStatus", Namespace="http://nehta.hips/2014/03")]
-    internal enum SourceDocumentStatus : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Interim = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Final = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Withdrawn = 3,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CdaAttachment", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class CdaAttachment : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.AttachmentType AttachmentTypeField;
-        
-        private string CaptionField;
-        
-        private byte[] ContentField;
-        
-        private string FileNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.AttachmentType AttachmentType {
-            get {
-                return this.AttachmentTypeField;
-            }
-            set {
-                if ((this.AttachmentTypeField.Equals(value) != true)) {
-                    this.AttachmentTypeField = value;
-                    this.RaisePropertyChanged("AttachmentType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string Caption {
-            get {
-                return this.CaptionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CaptionField, value) != true)) {
-                    this.CaptionField = value;
-                    this.RaisePropertyChanged("Caption");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal byte[] Content {
-            get {
-                return this.ContentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
-                    this.ContentField = value;
-                    this.RaisePropertyChanged("Content");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string FileName {
-            get {
-                return this.FileNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FileNameField, value) != true)) {
-                    this.FileNameField = value;
-                    this.RaisePropertyChanged("FileName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CdaDocumentDetails", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class CdaDocumentDetails : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.CdaDocument DocumentField;
-        
-        private string DocumentIdField;
-        
-        private string DocumentSetIdField;
-        
-        private string MrnField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifierField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.CdaDocument Document {
-            get {
-                return this.DocumentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentField, value) != true)) {
-                    this.DocumentField = value;
-                    this.RaisePropertyChanged("Document");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string DocumentId {
-            get {
-                return this.DocumentIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentIdField, value) != true)) {
-                    this.DocumentIdField = value;
-                    this.RaisePropertyChanged("DocumentId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string DocumentSetId {
-            get {
-                return this.DocumentSetIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DocumentSetIdField, value) != true)) {
-                    this.DocumentSetIdField = value;
-                    this.RaisePropertyChanged("DocumentSetId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal string Mrn {
-            get {
-                return this.MrnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MrnField, value) != true)) {
-                    this.MrnField = value;
-                    this.RaisePropertyChanged("Mrn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifier {
-            get {
-                return this.PatientIdentifierField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PatientIdentifierField, value) != true)) {
-                    this.PatientIdentifierField = value;
-                    this.RaisePropertyChanged("PatientIdentifier");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CdaDocument", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class CdaDocument : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private HIPSClient.Hips.HipsPCEHRService.CdaAttachment[] AttachmentsField;
-        
-        private byte[] ContentField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal HIPSClient.Hips.HipsPCEHRService.CdaAttachment[] Attachments {
-            get {
-                return this.AttachmentsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AttachmentsField, value) != true)) {
-                    this.AttachmentsField = value;
-                    this.RaisePropertyChanged("Attachments");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true)]
-        internal byte[] Content {
-            get {
-                return this.ContentField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
-                    this.ContentField = value;
-                    this.RaisePropertyChanged("Content");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AccessCodeRequired", Namespace="http://nehta.hips/2014/03")]
-    internal enum AccessCodeRequired1 : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Unknown = -1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        WithCode = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        WithoutCode = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AccessGranted = 2,
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PathologyReport", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class PathologyReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateAvailableToConsumerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.PathologyReportInformationDT ReportInformationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ReportingPathologistInformationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT TestRequesterInformationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.PathologyTestReport[] TestResultsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthor {
-            get {
-                return this.ClinicalDocumentAuthorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ClinicalDocumentAuthorField, value) != true)) {
-                    this.ClinicalDocumentAuthorField = value;
-                    this.RaisePropertyChanged("ClinicalDocumentAuthor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime DateAvailableToConsumer {
-            get {
-                return this.DateAvailableToConsumerField;
-            }
-            set {
-                if ((this.DateAvailableToConsumerField.Equals(value) != true)) {
-                    this.DateAvailableToConsumerField = value;
-                    this.RaisePropertyChanged("DateAvailableToConsumer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.PathologyReportInformationDT ReportInformation {
-            get {
-                return this.ReportInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReportInformationField, value) != true)) {
-                    this.ReportInformationField = value;
-                    this.RaisePropertyChanged("ReportInformation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ReportingPathologistInformation {
-            get {
-                return this.ReportingPathologistInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReportingPathologistInformationField, value) != true)) {
-                    this.ReportingPathologistInformationField = value;
-                    this.RaisePropertyChanged("ReportingPathologistInformation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT TestRequesterInformation {
-            get {
-                return this.TestRequesterInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TestRequesterInformationField, value) != true)) {
-                    this.TestRequesterInformationField = value;
-                    this.RaisePropertyChanged("TestRequesterInformation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.PathologyTestReport[] TestResults {
-            get {
-                return this.TestResultsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TestResultsField, value) != true)) {
-                    this.TestResultsField = value;
-                    this.RaisePropertyChanged("TestResults");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PathologyTestReport", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class PathologyTestReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.CodedType PathologyDisciplineField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime SpecimenCollectionDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.CodedType TestResultNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatus {
-            get {
-                return this.OverallTestResultStatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OverallTestResultStatusField, value) != true)) {
-                    this.OverallTestResultStatusField = value;
-                    this.RaisePropertyChanged("OverallTestResultStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.CodedType PathologyDiscipline {
-            get {
-                return this.PathologyDisciplineField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.PathologyDisciplineField, value) != true)) {
-                    this.PathologyDisciplineField = value;
-                    this.RaisePropertyChanged("PathologyDiscipline");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime SpecimenCollectionDate {
-            get {
-                return this.SpecimenCollectionDateField;
-            }
-            set {
-                if ((this.SpecimenCollectionDateField.Equals(value) != true)) {
-                    this.SpecimenCollectionDateField = value;
-                    this.RaisePropertyChanged("SpecimenCollectionDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.CodedType TestResultName {
-            get {
-                return this.TestResultNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.TestResultNameField, value) != true)) {
-                    this.TestResultNameField = value;
-                    this.RaisePropertyChanged("TestResultName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="DiagnosticImagingReport", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class DiagnosticImagingReport : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime DateAvailableToConsumerField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult[] ImagingExaminationResultField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT ImagingRequesterInformationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.DiagnosticReportInformationDT ReportInformationField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ProviderInformationDT ClinicalDocumentAuthor {
-            get {
-                return this.ClinicalDocumentAuthorField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ClinicalDocumentAuthorField, value) != true)) {
-                    this.ClinicalDocumentAuthorField = value;
-                    this.RaisePropertyChanged("ClinicalDocumentAuthor");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime DateAvailableToConsumer {
-            get {
-                return this.DateAvailableToConsumerField;
-            }
-            set {
-                if ((this.DateAvailableToConsumerField.Equals(value) != true)) {
-                    this.DateAvailableToConsumerField = value;
-                    this.RaisePropertyChanged("DateAvailableToConsumer");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ImagingExaminationResult[] ImagingExaminationResult {
-            get {
-                return this.ImagingExaminationResultField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ImagingExaminationResultField, value) != true)) {
-                    this.ImagingExaminationResultField = value;
-                    this.RaisePropertyChanged("ImagingExaminationResult");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.RequesterInformationDT ImagingRequesterInformation {
-            get {
-                return this.ImagingRequesterInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ImagingRequesterInformationField, value) != true)) {
-                    this.ImagingRequesterInformationField = value;
-                    this.RaisePropertyChanged("ImagingRequesterInformation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.DiagnosticReportInformationDT ReportInformation {
-            get {
-                return this.ReportInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ReportInformationField, value) != true)) {
-                    this.ReportInformationField = value;
-                    this.RaisePropertyChanged("ReportInformation");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ImagingExaminationResult", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class ImagingExaminationResult : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.AnatomicalSiteDetails[] AnatomicalSiteDetailsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.CodedType ExaminationResultNameField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ImageLocationInformationField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ImagingServiceDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.CodedType ModalityField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatusField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.AnatomicalSiteDetails[] AnatomicalSiteDetails {
-            get {
-                return this.AnatomicalSiteDetailsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AnatomicalSiteDetailsField, value) != true)) {
-                    this.AnatomicalSiteDetailsField = value;
-                    this.RaisePropertyChanged("AnatomicalSiteDetails");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.CodedType ExaminationResultName {
-            get {
-                return this.ExaminationResultNameField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ExaminationResultNameField, value) != true)) {
-                    this.ExaminationResultNameField = value;
-                    this.RaisePropertyChanged("ExaminationResultName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string ImageLocationInformation {
-            get {
-                return this.ImageLocationInformationField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ImageLocationInformationField, value) != true)) {
-                    this.ImageLocationInformationField = value;
-                    this.RaisePropertyChanged("ImageLocationInformation");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.DateTime ImagingServiceDateTime {
-            get {
-                return this.ImagingServiceDateTimeField;
-            }
-            set {
-                if ((this.ImagingServiceDateTimeField.Equals(value) != true)) {
-                    this.ImagingServiceDateTimeField = value;
-                    this.RaisePropertyChanged("ImagingServiceDateTime");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.CodedType Modality {
-            get {
-                return this.ModalityField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ModalityField, value) != true)) {
-                    this.ModalityField = value;
-                    this.RaisePropertyChanged("Modality");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.CodedType OverallTestResultStatus {
-            get {
-                return this.OverallTestResultStatusField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OverallTestResultStatusField, value) != true)) {
-                    this.OverallTestResultStatusField = value;
-                    this.RaisePropertyChanged("OverallTestResultStatus");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="HealthRecordOverview", Namespace="http://nehta.hips/2014/03")]
-    [System.SerializableAttribute()]
-    internal partial class HealthRecordOverview : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.NewDocuments NewDocumentsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.Link[] OtherLinksField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.RecentDocuments RecentDocumentsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.SharedHealthSummary SharedHealthSummaryField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ViewMetaData ViewMetaDataField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.NewDocuments NewDocuments {
-            get {
-                return this.NewDocumentsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.NewDocumentsField, value) != true)) {
-                    this.NewDocumentsField = value;
-                    this.RaisePropertyChanged("NewDocuments");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.Link[] OtherLinks {
-            get {
-                return this.OtherLinksField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.OtherLinksField, value) != true)) {
-                    this.OtherLinksField = value;
-                    this.RaisePropertyChanged("OtherLinks");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.RecentDocuments RecentDocuments {
-            get {
-                return this.RecentDocumentsField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.RecentDocumentsField, value) != true)) {
-                    this.RecentDocumentsField = value;
-                    this.RaisePropertyChanged("RecentDocuments");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.SharedHealthSummary SharedHealthSummary {
-            get {
-                return this.SharedHealthSummaryField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.SharedHealthSummaryField, value) != true)) {
-                    this.SharedHealthSummaryField = value;
-                    this.RaisePropertyChanged("SharedHealthSummary");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ViewMetaData ViewMetaData {
-            get {
-                return this.ViewMetaDataField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ViewMetaDataField, value) != true)) {
-                    this.ViewMetaDataField = value;
-                    this.RaisePropertyChanged("ViewMetaData");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PatientParticipationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO")]
-    [System.SerializableAttribute()]
-    internal partial class PatientParticipationStatus1 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string HospitalCodeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MrnField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ParticipationStatus1 ParticipationStatusField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StatePatientIdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.ValidatedIhi1 ValidatedIhiField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string HospitalCode {
-            get {
-                return this.HospitalCodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.HospitalCodeField, value) != true)) {
-                    this.HospitalCodeField = value;
-                    this.RaisePropertyChanged("HospitalCode");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Mrn {
-            get {
-                return this.MrnField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MrnField, value) != true)) {
-                    this.MrnField = value;
-                    this.RaisePropertyChanged("Mrn");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ParticipationStatus1 ParticipationStatus {
-            get {
-                return this.ParticipationStatusField;
-            }
-            set {
-                if ((this.ParticipationStatusField.Equals(value) != true)) {
-                    this.ParticipationStatusField = value;
-                    this.RaisePropertyChanged("ParticipationStatus");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string StatePatientId {
-            get {
-                return this.StatePatientIdField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StatePatientIdField, value) != true)) {
-                    this.StatePatientIdField = value;
-                    this.RaisePropertyChanged("StatePatientId");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.ValidatedIhi1 ValidatedIhi {
-            get {
-                return this.ValidatedIhiField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ValidatedIhiField, value) != true)) {
-                    this.ValidatedIhiField = value;
-                    this.RaisePropertyChanged("ValidatedIhi");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="IsPcehrAdvertisedLocal", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO")]
-    [System.SerializableAttribute()]
-    internal partial class IsPcehrAdvertisedLocal : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired1 AccessCodeRequiredField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<bool> PcehrExistsField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal HIPSClient.Hips.HipsPCEHRService.AccessCodeRequired1 AccessCodeRequired {
-            get {
-                return this.AccessCodeRequiredField;
-            }
-            set {
-                if ((this.AccessCodeRequiredField.Equals(value) != true)) {
-                    this.AccessCodeRequiredField = value;
-                    this.RaisePropertyChanged("AccessCodeRequired");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<bool> PcehrExists {
-            get {
-                return this.PcehrExistsField;
-            }
-            set {
-                if ((this.PcehrExistsField.Equals(value) != true)) {
-                    this.PcehrExistsField = value;
-                    this.RaisePropertyChanged("PcehrExists");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ParticipationStatus", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common")]
-    internal enum ParticipationStatus1 : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NoValidIhi = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PcehrNotAdvertised = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PcehrAdvertised = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        RequestedUpload = 3,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AttachmentType", Namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common")]
-    internal enum AttachmentType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        None = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AttachedImageJpeg = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AttachedImagePng = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AttachedImageTiff = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AttachedImageGif = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        AttachedDocumentPdf = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        OrganisationalLogoPng = 6,
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://schemas.HIPS/Services/2012/01", ConfigurationName="HipsPCEHRService.IPCEHRService")]
     internal interface IPCEHRService {
@@ -11975,14 +12072,6 @@ namespace HIPSClient.Hips.HipsPCEHRService {
             "esResponse")]
         System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.DocumentListResponse> GetDocumentListActiveFilterDatesAsync(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user, System.Nullable<System.DateTime> creationTimeStart, System.Nullable<System.DateTime> creationTimeEnd, System.Nullable<System.DateTime> serviceTimeStart, System.Nullable<System.DateTime> serviceTimeEnd);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatus", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatusRe" +
-            "sponse")]
-        HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus GetIndividualOperationStatus(int pcehrMessageQueueId, HIPSClient.Hips.HipsPCEHRService.UserDetails user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatus", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatusRe" +
-            "sponse")]
-        System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus> GetIndividualOperationStatusAsync(int pcehrMessageQueueId, HIPSClient.Hips.HipsPCEHRService.UserDetails user);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocument", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocumentRespon" +
             "se")]
         HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l GetLocalUploadedDocument(HIPSClient.Hips.HipsPCEHRService.UserDetails user, string sourceSystemSetId, string sourceSystemDocumentId, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier);
@@ -11990,20 +12079,6 @@ namespace HIPSClient.Hips.HipsPCEHRService {
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocument", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocumentRespon" +
             "se")]
         System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l> GetLocalUploadedDocumentAsync(HIPSClient.Hips.HipsPCEHRService.UserDetails user, string sourceSystemSetId, string sourceSystemDocumentId, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatus", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatusResponse")]
-        HIPSClient.Hips.HipsPCEHRService.OperationStatus GetOperationStatus(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, System.DateTime admissionDate, HIPSClient.Hips.HipsPCEHRService.UserDetails user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatus", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatusResponse")]
-        System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.OperationStatus> GetOperationStatusAsync(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, System.DateTime admissionDate, HIPSClient.Hips.HipsPCEHRService.UserDetails user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationList", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationListResponse" +
-            "")]
-        HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus GetQueuedOperationList(System.DateTime dateTimeFrom, System.DateTime dateTimeTo, HIPSClient.Hips.HipsPCEHRService.QueueOperation[] queueOperation, HIPSClient.Hips.HipsPCEHRService.QueueStatus[] queueStatus, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase[] patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationList", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationListResponse" +
-            "")]
-        System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus> GetQueuedOperationListAsync(System.DateTime dateTimeFrom, System.DateTime dateTimeTo, HIPSClient.Hips.HipsPCEHRService.QueueOperation[] queueOperation, HIPSClient.Hips.HipsPCEHRService.QueueStatus[] queueStatus, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase[] patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetView", ReplyAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetViewResponse")]
         HIPSClient.Hips.HipsPCEHRService.ViewResponse GetView(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user, HIPSClient.Hips.HipsPCEHRService.ViewRequestBase request);
@@ -12161,36 +12236,12 @@ namespace HIPSClient.Hips.HipsPCEHRService {
             return base.Channel.GetDocumentListActiveFilterDatesAsync(patientIdentifier, user, creationTimeStart, creationTimeEnd, serviceTimeStart, serviceTimeEnd);
         }
         
-        public HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus GetIndividualOperationStatus(int pcehrMessageQueueId, HIPSClient.Hips.HipsPCEHRService.UserDetails user) {
-            return base.Channel.GetIndividualOperationStatus(pcehrMessageQueueId, user);
-        }
-        
-        public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus> GetIndividualOperationStatusAsync(int pcehrMessageQueueId, HIPSClient.Hips.HipsPCEHRService.UserDetails user) {
-            return base.Channel.GetIndividualOperationStatusAsync(pcehrMessageQueueId, user);
-        }
-        
         public HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l GetLocalUploadedDocument(HIPSClient.Hips.HipsPCEHRService.UserDetails user, string sourceSystemSetId, string sourceSystemDocumentId, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier) {
             return base.Channel.GetLocalUploadedDocument(user, sourceSystemSetId, sourceSystemDocumentId, patientIdentifier);
         }
         
         public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.LocalClinicalDocumentResponseOfPatientIdentifierBasea_PcM515l> GetLocalUploadedDocumentAsync(HIPSClient.Hips.HipsPCEHRService.UserDetails user, string sourceSystemSetId, string sourceSystemDocumentId, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier) {
             return base.Channel.GetLocalUploadedDocumentAsync(user, sourceSystemSetId, sourceSystemDocumentId, patientIdentifier);
-        }
-        
-        public HIPSClient.Hips.HipsPCEHRService.OperationStatus GetOperationStatus(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, System.DateTime admissionDate, HIPSClient.Hips.HipsPCEHRService.UserDetails user) {
-            return base.Channel.GetOperationStatus(patientIdentifier, admissionDate, user);
-        }
-        
-        public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.OperationStatus> GetOperationStatusAsync(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, System.DateTime admissionDate, HIPSClient.Hips.HipsPCEHRService.UserDetails user) {
-            return base.Channel.GetOperationStatusAsync(patientIdentifier, admissionDate, user);
-        }
-        
-        public HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus GetQueuedOperationList(System.DateTime dateTimeFrom, System.DateTime dateTimeTo, HIPSClient.Hips.HipsPCEHRService.QueueOperation[] queueOperation, HIPSClient.Hips.HipsPCEHRService.QueueStatus[] queueStatus, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase[] patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user) {
-            return base.Channel.GetQueuedOperationList(dateTimeFrom, dateTimeTo, queueOperation, queueStatus, patientIdentifier, user);
-        }
-        
-        public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus> GetQueuedOperationListAsync(System.DateTime dateTimeFrom, System.DateTime dateTimeTo, HIPSClient.Hips.HipsPCEHRService.QueueOperation[] queueOperation, HIPSClient.Hips.HipsPCEHRService.QueueStatus[] queueStatus, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase[] patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user) {
-            return base.Channel.GetQueuedOperationListAsync(dateTimeFrom, dateTimeTo, queueOperation, queueStatus, patientIdentifier, user);
         }
         
         public HIPSClient.Hips.HipsPCEHRService.ViewResponse GetView(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user, HIPSClient.Hips.HipsPCEHRService.ViewRequestBase request) {
@@ -12247,6 +12298,292 @@ namespace HIPSClient.Hips.HipsPCEHRService {
         
         public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.HipsResponse> UploadOrSupersedeDocumentAsync(byte[] cdaDocument, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase patientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserDetails user, HIPSClient.Hips.HipsPCEHRService.Attachment[] attachments, System.DateTime admissionDate, string documentFormatCode) {
             return base.Channel.UploadOrSupersedeDocumentAsync(cdaDocument, patientIdentifier, user, attachments, admissionDate, documentFormatCode);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://nehta.hips/2018/05/pcehr", ConfigurationName="HipsPCEHRService.IPcehrServiceV3")]
+    internal interface IPcehrServiceV3 {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperation", ReplyAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationInvalidRequestF" +
+            "aultFault", Name="InvalidRequestFault", Namespace="http://nehta.hips/2014/03")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationServiceOperatio" +
+            "nFaultFault", Name="ServiceOperationFault", Namespace="http://nehta.hips/2014/03")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationInvalidUserFaul" +
+            "tFault", Name="InvalidUserFault", Namespace="http://nehta.hips/2014/03")]
+        HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationResponse GetQueuedOperation(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationRequest request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperation", ReplyAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationResponse")]
+        System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationResponse> GetQueuedOperationAsync(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperations", ReplyAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationsInvalidRequest" +
+            "FaultFault", Name="InvalidRequestFault", Namespace="http://nehta.hips/2014/03")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationsServiceOperati" +
+            "onFaultFault", Name="ServiceOperationFault", Namespace="http://nehta.hips/2014/03")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationsInvalidUserFau" +
+            "ltFault", Name="InvalidUserFault", Namespace="http://nehta.hips/2014/03")]
+        HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsResponse GetQueuedOperations(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsRequest request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperations", ReplyAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperationsResponse")]
+        System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsResponse> GetQueuedOperationsAsync(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperations", ReplyAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperationsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidRequestFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperationsInvalidRequ" +
+            "estFaultFault", Name="InvalidRequestFault", Namespace="http://nehta.hips/2014/03")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.ServiceOperationFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperationsServiceOper" +
+            "ationFaultFault", Name="ServiceOperationFault", Namespace="http://nehta.hips/2014/03")]
+        [System.ServiceModel.FaultContractAttribute(typeof(HIPSClient.Hips.HipsPCEHRService.InvalidUserFault), Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperationsInvalidUser" +
+            "FaultFault", Name="InvalidUserFault", Namespace="http://nehta.hips/2014/03")]
+        HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsResponse SearchQueuedOperations(HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsRequest request);
+        
+        // CODEGEN: Generating message contract since the operation has multiple return values.
+        [System.ServiceModel.OperationContractAttribute(Action="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperations", ReplyAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperationsResponse")]
+        System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsResponse> SearchQueuedOperationsAsync(HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetQueuedOperationRequest", WrapperNamespace="http://nehta.hips/2018/05/pcehr", IsWrapped=true)]
+    internal partial class GetQueuedOperationRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=0)]
+        public string MessageIdentifier;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=1)]
+        public HIPSClient.Hips.HipsPCEHRService.UserBase User;
+        
+        public GetQueuedOperationRequest() {
+        }
+        
+        public GetQueuedOperationRequest(string MessageIdentifier, HIPSClient.Hips.HipsPCEHRService.UserBase User) {
+            this.MessageIdentifier = MessageIdentifier;
+            this.User = User;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetQueuedOperationResponse", WrapperNamespace="http://nehta.hips/2018/05/pcehr", IsWrapped=true)]
+    internal partial class GetQueuedOperationResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=0)]
+        public HIPSClient.Hips.HipsPCEHRService.ResponseStatus Status;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=1)]
+        public HIPSClient.Hips.HipsPCEHRService.Message[] Messages;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=2)]
+        public HIPSClient.Hips.HipsPCEHRService.QueuedOperationQueryResult Data;
+        
+        public GetQueuedOperationResponse() {
+        }
+        
+        public GetQueuedOperationResponse(HIPSClient.Hips.HipsPCEHRService.ResponseStatus Status, HIPSClient.Hips.HipsPCEHRService.Message[] Messages, HIPSClient.Hips.HipsPCEHRService.QueuedOperationQueryResult Data) {
+            this.Status = Status;
+            this.Messages = Messages;
+            this.Data = Data;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetQueuedOperationsRequest", WrapperNamespace="http://nehta.hips/2018/05/pcehr", IsWrapped=true)]
+    internal partial class GetQueuedOperationsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=0)]
+        public HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifier;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=1)]
+        public HIPSClient.Hips.HipsPCEHRService.UserBase User;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=2)]
+        public System.DateTime AdmissionDate;
+        
+        public GetQueuedOperationsRequest() {
+        }
+        
+        public GetQueuedOperationsRequest(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserBase User, System.DateTime AdmissionDate) {
+            this.PatientIdentifier = PatientIdentifier;
+            this.User = User;
+            this.AdmissionDate = AdmissionDate;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetQueuedOperationsResponse", WrapperNamespace="http://nehta.hips/2018/05/pcehr", IsWrapped=true)]
+    internal partial class GetQueuedOperationsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=0)]
+        public HIPSClient.Hips.HipsPCEHRService.ResponseStatus Status;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=1)]
+        public HIPSClient.Hips.HipsPCEHRService.Message[] Messages;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=2)]
+        public HIPSClient.Hips.HipsPCEHRService.QueuedOperationsQueryResult Data;
+        
+        public GetQueuedOperationsResponse() {
+        }
+        
+        public GetQueuedOperationsResponse(HIPSClient.Hips.HipsPCEHRService.ResponseStatus Status, HIPSClient.Hips.HipsPCEHRService.Message[] Messages, HIPSClient.Hips.HipsPCEHRService.QueuedOperationsQueryResult Data) {
+            this.Status = Status;
+            this.Messages = Messages;
+            this.Data = Data;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SearchQueuedOperationsRequest", WrapperNamespace="http://nehta.hips/2018/05/pcehr", IsWrapped=true)]
+    internal partial class SearchQueuedOperationsRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=0)]
+        public System.DateTime DateTimeFrom;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=1)]
+        public HIPSClient.Hips.HipsPCEHRService.UserBase User;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=2)]
+        public System.DateTime DateTimeTo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=3)]
+        public HIPSClient.Hips.HipsPCEHRService.QueueOperation[] QueueOperations;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=4)]
+        public HIPSClient.Hips.HipsPCEHRService.MessageQueueState[] QueueStates;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=5)]
+        public HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1[] PatientIdentifiers;
+        
+        public SearchQueuedOperationsRequest() {
+        }
+        
+        public SearchQueuedOperationsRequest(System.DateTime DateTimeFrom, HIPSClient.Hips.HipsPCEHRService.UserBase User, System.DateTime DateTimeTo, HIPSClient.Hips.HipsPCEHRService.QueueOperation[] QueueOperations, HIPSClient.Hips.HipsPCEHRService.MessageQueueState[] QueueStates, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1[] PatientIdentifiers) {
+            this.DateTimeFrom = DateTimeFrom;
+            this.User = User;
+            this.DateTimeTo = DateTimeTo;
+            this.QueueOperations = QueueOperations;
+            this.QueueStates = QueueStates;
+            this.PatientIdentifiers = PatientIdentifiers;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="SearchQueuedOperationsResponse", WrapperNamespace="http://nehta.hips/2018/05/pcehr", IsWrapped=true)]
+    internal partial class SearchQueuedOperationsResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=0)]
+        public HIPSClient.Hips.HipsPCEHRService.ResponseStatus Status;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=1)]
+        public HIPSClient.Hips.HipsPCEHRService.Message[] Messages;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://nehta.hips/2018/05/pcehr", Order=2)]
+        public HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation[] Data;
+        
+        public SearchQueuedOperationsResponse() {
+        }
+        
+        public SearchQueuedOperationsResponse(HIPSClient.Hips.HipsPCEHRService.ResponseStatus Status, HIPSClient.Hips.HipsPCEHRService.Message[] Messages, HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation[] Data) {
+            this.Status = Status;
+            this.Messages = Messages;
+            this.Data = Data;
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    internal interface IPcehrServiceV3Channel : HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    internal partial class PcehrServiceV3Client : System.ServiceModel.ClientBase<HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3>, HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3 {
+        
+        public PcehrServiceV3Client() {
+        }
+        
+        public PcehrServiceV3Client(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public PcehrServiceV3Client(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PcehrServiceV3Client(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public PcehrServiceV3Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationResponse HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3.GetQueuedOperation(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationRequest request) {
+            return base.Channel.GetQueuedOperation(request);
+        }
+        
+        public HIPSClient.Hips.HipsPCEHRService.ResponseStatus GetQueuedOperation(string MessageIdentifier, HIPSClient.Hips.HipsPCEHRService.UserBase User, out HIPSClient.Hips.HipsPCEHRService.Message[] Messages, out HIPSClient.Hips.HipsPCEHRService.QueuedOperationQueryResult Data) {
+            HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationRequest inValue = new HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationRequest();
+            inValue.MessageIdentifier = MessageIdentifier;
+            inValue.User = User;
+            HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationResponse retVal = ((HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3)(this)).GetQueuedOperation(inValue);
+            Messages = retVal.Messages;
+            Data = retVal.Data;
+            return retVal.Status;
+        }
+        
+        public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationResponse> GetQueuedOperationAsync(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationRequest request) {
+            return base.Channel.GetQueuedOperationAsync(request);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsResponse HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3.GetQueuedOperations(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsRequest request) {
+            return base.Channel.GetQueuedOperations(request);
+        }
+        
+        public HIPSClient.Hips.HipsPCEHRService.ResponseStatus GetQueuedOperations(HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1 PatientIdentifier, HIPSClient.Hips.HipsPCEHRService.UserBase User, System.DateTime AdmissionDate, out HIPSClient.Hips.HipsPCEHRService.Message[] Messages, out HIPSClient.Hips.HipsPCEHRService.QueuedOperationsQueryResult Data) {
+            HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsRequest inValue = new HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsRequest();
+            inValue.PatientIdentifier = PatientIdentifier;
+            inValue.User = User;
+            inValue.AdmissionDate = AdmissionDate;
+            HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsResponse retVal = ((HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3)(this)).GetQueuedOperations(inValue);
+            Messages = retVal.Messages;
+            Data = retVal.Data;
+            return retVal.Status;
+        }
+        
+        public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsResponse> GetQueuedOperationsAsync(HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsRequest request) {
+            return base.Channel.GetQueuedOperationsAsync(request);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsResponse HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3.SearchQueuedOperations(HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsRequest request) {
+            return base.Channel.SearchQueuedOperations(request);
+        }
+        
+        public HIPSClient.Hips.HipsPCEHRService.ResponseStatus SearchQueuedOperations(System.DateTime DateTimeFrom, HIPSClient.Hips.HipsPCEHRService.UserBase User, System.DateTime DateTimeTo, HIPSClient.Hips.HipsPCEHRService.QueueOperation[] QueueOperations, HIPSClient.Hips.HipsPCEHRService.MessageQueueState[] QueueStates, HIPSClient.Hips.HipsPCEHRService.PatientIdentifierBase1[] PatientIdentifiers, out HIPSClient.Hips.HipsPCEHRService.Message[] Messages, out HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation[] Data) {
+            HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsRequest inValue = new HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsRequest();
+            inValue.DateTimeFrom = DateTimeFrom;
+            inValue.User = User;
+            inValue.DateTimeTo = DateTimeTo;
+            inValue.QueueOperations = QueueOperations;
+            inValue.QueueStates = QueueStates;
+            inValue.PatientIdentifiers = PatientIdentifiers;
+            HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsResponse retVal = ((HIPSClient.Hips.HipsPCEHRService.IPcehrServiceV3)(this)).SearchQueuedOperations(inValue);
+            Messages = retVal.Messages;
+            Data = retVal.Data;
+            return retVal.Status;
+        }
+        
+        public System.Threading.Tasks.Task<HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsResponse> SearchQueuedOperationsAsync(HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsRequest request) {
+            return base.Channel.SearchQueuedOperationsAsync(request);
         }
     }
     

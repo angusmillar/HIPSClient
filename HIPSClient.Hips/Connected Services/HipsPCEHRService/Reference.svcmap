@@ -22,25 +22,28 @@
     <MetadataSource Address="http://localhost:52500/PCEHRService/?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3cfd785e-5acf-49bd-8496-1d3fd54c4b5d" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd11" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="1c0c3fcc-2732-4f4f-9812-0bb783be1a2e" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd15" />
-    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="dbdb041d-60d9-4d96-a192-5515aaabce27" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl=wsdl0" />
-    <MetadataFile FileName="PCEHRService.wsdl" MetadataType="Wsdl" ID="12919f65-12d7-4605-8d62-58821323e529" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="e3aa28a6-e456-451e-9410-0251387f33f7" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd12" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="818400b4-01b4-447e-9995-b3c5740098fa" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd3" />
-    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="0b1e6fcc-7352-4cca-8b61-910e556ebb96" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd2" />
-    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="a4f04efc-dd57-4b6d-87e9-470cd54cc8b0" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd1" />
-    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="411cf439-0a54-4672-8d88-cb4085965d12" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd0" />
-    <MetadataFile FileName="item7.xsd" MetadataType="Schema" ID="150ca9da-ddff-4a40-95d2-6a1f873d76c6" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd7" />
-    <MetadataFile FileName="item8.xsd" MetadataType="Schema" ID="f73a941e-3c1b-4ad8-8e4d-e1d2aaa7150f" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd6" />
-    <MetadataFile FileName="item9.xsd" MetadataType="Schema" ID="b90966a7-1ad8-4bbb-a034-248821dbdc73" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd5" />
-    <MetadataFile FileName="item10.xsd" MetadataType="Schema" ID="445db875-ba04-401f-9848-00b68523ea4b" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd4" />
-    <MetadataFile FileName="item11.xsd" MetadataType="Schema" ID="9c77a97f-ec0a-4b97-ab49-7d26ebfbd798" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd9" />
-    <MetadataFile FileName="item12.xsd" MetadataType="Schema" ID="bfa31c35-af69-41a9-a3db-4d66c4c44952" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd8" />
-    <MetadataFile FileName="item13.xsd" MetadataType="Schema" ID="7d5aec79-bc66-4f81-b63e-1fd5d5c8dd71" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd10" />
-    <MetadataFile FileName="item14.xsd" MetadataType="Schema" ID="569902dc-2787-4048-9910-3c7faab8ee93" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd14" />
-    <MetadataFile FileName="item1.wsdl" MetadataType="Wsdl" ID="e75dd80f-bf23-45b8-b591-dad391da366a" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl=wsdl1" />
-    <MetadataFile FileName="item15.xsd" MetadataType="Schema" ID="84722a9e-eb0c-4111-8eeb-0a5c0e0e6d93" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd13" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="3f6cc111-2705-4249-a0cf-9f57fcf44646" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd9" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="04549a60-55ac-45f0-8921-f4764e2e0f67" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd15" />
+    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="2d743cab-03c1-4aef-b326-846d95c2e296" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl=wsdl0" />
+    <MetadataFile FileName="PCEHRService.wsdl" MetadataType="Wsdl" ID="bda9b2c1-bcbb-4dc9-a288-e9009dc9f284" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="9f6b1ba0-b5e9-4489-8d11-0b3f535a2f80" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd11" />
+    <MetadataFile FileName="item1.wsdl" MetadataType="Wsdl" ID="4a901131-27fa-4339-ab62-526ef05ac0a3" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl=wsdl2" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="99a21b54-8358-4094-b445-6b11dcc938bb" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd12" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="70f1fd0a-1f6f-4db8-ac8c-4c4ca8163770" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd16" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="158ebb1a-dcfb-4051-9144-6c28c07b3f67" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd17" />
+    <MetadataFile FileName="item6.xsd" MetadataType="Schema" ID="1d4a97df-186b-4896-8e4d-e7d60911df06" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd3" />
+    <MetadataFile FileName="item7.xsd" MetadataType="Schema" ID="84dc5129-2f1a-432c-be51-de1d0122d402" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd2" />
+    <MetadataFile FileName="item8.xsd" MetadataType="Schema" ID="fe9a2165-68d9-466b-b9f9-dea62b8f6d6d" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd1" />
+    <MetadataFile FileName="item9.xsd" MetadataType="Schema" ID="399b014e-c6c4-4c2b-83ff-f85f2c8ff737" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd0" />
+    <MetadataFile FileName="item10.xsd" MetadataType="Schema" ID="7f736264-50c6-4df1-83a3-e71161aab3ec" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd7" />
+    <MetadataFile FileName="item11.xsd" MetadataType="Schema" ID="5230a7a1-5d88-4f22-b53d-f9aa21ce0569" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd6" />
+    <MetadataFile FileName="item12.xsd" MetadataType="Schema" ID="7b20ccef-8a02-445d-805d-ff82bdff0437" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd5" />
+    <MetadataFile FileName="item13.xsd" MetadataType="Schema" ID="06c3a5c3-cd00-4e9e-aa81-4b4eb1906548" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd4" />
+    <MetadataFile FileName="item2.wsdl" MetadataType="Wsdl" ID="0775ff5b-9d1f-46ad-b62d-99768faaae6f" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?wsdl=wsdl1" />
+    <MetadataFile FileName="item14.xsd" MetadataType="Schema" ID="07e6de12-c96d-47cd-80b8-bfa3c2bf869b" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd8" />
+    <MetadataFile FileName="item15.xsd" MetadataType="Schema" ID="1794c55c-44b5-4f5c-9880-1320e121a5ab" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd10" />
+    <MetadataFile FileName="item16.xsd" MetadataType="Schema" ID="dd91290e-4d73-4b65-a242-19822efb520e" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd14" />
+    <MetadataFile FileName="item17.xsd" MetadataType="Schema" ID="e510cfd8-b32c-4e74-a78e-8582403ffb2b" SourceId="1" SourceUrl="http://localhost:52500/PCEHRService/?xsd=xsd13" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -212,7 +212,7 @@ namespace HIPSClient.Hips.Model
         PV1.Field(44).Convert.DateTime.SetDateTimeOffset(new DateTimeOffset(HospitalEncounter.AdmissionDate.Value, new TimeSpan(10, 0, 0)), false, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.Date);
       //Discharge Date
       if (HospitalEncounter.DischargeDate.HasValue)
-        PV1.Field(44).Convert.DateTime.SetDateTimeOffset(new DateTimeOffset(HospitalEncounter.DischargeDate.Value, new TimeSpan(10, 0, 0)), false, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.Date);
+        PV1.Field(45).Convert.DateTime.SetDateTimeOffset(new DateTimeOffset(HospitalEncounter.DischargeDate.Value, new TimeSpan(10, 0, 0)), false, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.Date);
 
       return PV1;
     } 

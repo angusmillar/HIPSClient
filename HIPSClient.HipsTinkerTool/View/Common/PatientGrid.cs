@@ -47,7 +47,7 @@ namespace HIPSClient.HipsTinkerTool.View.Common
         PatientNameEditWindow.Owner = Window.GetWindow(this);
         PatientNameEditWindow.ShowDialog();
       });
-      
+            
       DockPanel Gender = GlobalStyleManager.GetValueComboBoxEnumDockPanel("Sex", ColOneLabelWidth, "Patient.GenderFormatted", PatientVM.GenderEnumDictionary.Select(x => x.Key).ToList());
       Grid.SetColumn(Gender, 0);
       Grid.SetColumnSpan(Gender, 3);

@@ -12,7 +12,7 @@ namespace HIPSClient.Hips.PCEHRService
   {
     public IsPcehrAdvertisedResponse IsPcehrAdvertised(IsPcehrAdvertisedRequest Request)
     {
-      var Response = new IsPcehrAdvertisedResponse();                             
+      var Response = new IsPcehrAdvertisedResponse();      
       string MethodAddress = "PCEHRService/HIPS.Service.PCEHRService";     
       WSHttpBinding Binding = new WSHttpBinding(SecurityMode.None);
       Uri EndpointUri = new Uri(Common.HIPS.HipsConfig.CoreApplicationBaseEndpoint, MethodAddress);
@@ -24,24 +24,31 @@ namespace HIPSClient.Hips.PCEHRService
           
           ValidatedIhi id = new ValidatedIhi();
           
-          id.DateOfBirth = new DateTime(1957, 02, 14);
-          id.FamilyName = "ENGLISH";
-          id.GivenName = "CLINTON";
+          id.DateOfBirth = new DateTime(1984, 04, 04);
+          id.FamilyName = "Goldmen";
+          id.GivenName = "Wallace";
           id.HospitalCode = "ANGPATH";
           id.HospitalCodeSystem = "pasFacCd";
           id.Sex = HipsPCEHRService.SexEnumerator.Male;
-          id.Ihi = "8003608333512671";
-          id.IhiRecordStatus = IhiRecordStatus.Unknown;
-          id.IhiStatus = IhiStatus.Unknown;
-          id.IhiLastValidated = new DateTime(2019, 04, 01, 08, 00, 00);
+          id.Ihi = "8003608000094961";
+          id.IhiRecordStatus = IhiRecordStatus.Verified;
+          id.IhiStatus = IhiStatus.Active;
+          id.IhiLastValidated = new DateTime(2019, 01, 06, 11, 00, 00);
 
           UserDetails User = new UserDetails();
           User.Role = UserRole.AuthorisedEmployee;
 
+          HospitalIdentifier HospitalId = new HospitalIdentifier();
+          HospitalId.HospitalCode = id.HospitalCode;
+          HospitalId.HospitalCodeSystem = id.HospitalCodeSystem;
+
+
           //HipsPathologyImagingService.Message[] Messages;
           //var ClientResponse = client.UploadOrSupersedeDocument()
-          var ClientResponse = client.IsPcehrAdvertised(id, new DateTime(1957, 02, 14), User);
-            //throw new NotImplementedException();
+          //var ClientResponse = client.IsPcehrAdvertised(id, new DateTime(1957, 02, 14), User);
+          
+          var ClientResponse = client.RefreshPatientParticipationStatus(User, id, HospitalId, ForceRefreshOption.WhenNotAdvertised);
+          //throw new NotImplementedException();
           return Response;
           
         }

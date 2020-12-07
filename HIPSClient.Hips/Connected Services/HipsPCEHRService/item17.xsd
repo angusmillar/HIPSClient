@@ -1,0 +1,1837 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ProviderInformationDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Provider Information DT
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HealthcareProviderName" nillable="true" type="tns:NameTypeDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The healthcare provider’s name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HealthcareProviderOrganisationIdentifier" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            HPI-O
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HealthcareProviderOrganisationName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The healthcare provider’s organisation name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="healthcareProviderIdentifier" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The healthcare provider’s unique identifier
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="healthcareProviderRole" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The healthcare provider’s role
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProviderInformationDT" nillable="true" type="tns:ProviderInformationDT" />
+  <xs:complexType name="NameTypeDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Family Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GivenName" nillable="true" type="q1:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Given Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NameSuffix" nillable="true" type="q2:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Name Suffice
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NameTitle" nillable="true" type="q3:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Title
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Usage" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Usage
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NameTypeDT" nillable="true" type="tns:NameTypeDT" />
+  <xs:complexType name="PathologyReportInformationDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Pathology Report Information DT
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CDAeffectiveTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            CDA Effective Time
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateTimeAuthorisation" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Date Time Authorisation
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateTimeReportAuthored" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Date Time Report Authored
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentID" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Document Id
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentLink" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Document Link
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PathologistLocalReportId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Pathologist Local Report Id
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReportName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Report Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReportStatus" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Report Status
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PathologyReportInformationDT" nillable="true" type="tns:PathologyReportInformationDT" />
+  <xs:complexType name="CodedType">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Mapped on CodedType found in "PCEHR View Service Technical Service Specification v1.7 (NEHTA-2138:2015)"
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Code
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CodeSystem" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Code System
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CodeSystemName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Code System Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CodeSystemVersion" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Code System Version
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Display Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OriginalText" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Original Text
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CodedType" nillable="true" type="tns:CodedType" />
+  <xs:complexType name="RequesterInformationDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Requester Information DT
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTimeRequested" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Date Time Requested - The Date and Time that the request was made. (Note: Time may not always be available.)
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ProviderIdentifier" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Provider Identifier - The Requesting Healthcare Provider’s Identifier
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ProviderName" nillable="true" type="tns:NameTypeDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Provider Name - The Requesting Healthcare Provider’s Name.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ProviderOrganisationIdentifier" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Provider Organisation Identifier - The Requesting Organisation’s HPI-O
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ProviderOrganisationName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Provider Organisation Name - The Requesting Organisation’s Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="TestRequestId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Test Request Id - The Test Request Identifier
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RequesterInformationDT" nillable="true" type="tns:RequesterInformationDT" />
+  <xs:complexType name="IndividualProfile">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Individual Profile
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IhiNumber" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            IHI Number
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="IndigenousStatus" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            IndigenousStatus
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Individual" nillable="true" type="tns:IndividualTypeSupp">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Indivisual
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="VeteranAndAdfStatus" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Veteran and ADF Status
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualProfile" nillable="true" type="tns:IndividualProfile" />
+  <xs:complexType name="IndividualTypeSupp">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Individual Type Supp
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateOfBirth" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The individual’s date of birth
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="tns:NameTypeSupp">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Individual’s name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Sex" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Sex
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IndividualTypeSupp" nillable="true" type="tns:IndividualTypeSupp" />
+  <xs:complexType name="NameTypeSupp">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConditionalUse" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Conditional Use
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ConditionalUseSpecified" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Conditional Use Specified
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="FamilyName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Family Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GivenName" nillable="true" type="q4:ArrayOfstring">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Given Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="NameSuffix" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Name Suffix
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="NameSuffixSpecified" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Name Suffix Specified
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="NameTitle" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Name Title
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="NameTitleSpecified" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Name Title Specified
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Preferred" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Preferred
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PreferredSpecified" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Preferred Specified
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Usage" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Usage
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UsageSpecified" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            UsageSpecified
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NameTypeSupp" nillable="true" type="tns:NameTypeSupp" />
+  <xs:complexType name="ArrayOfAnatomicalSiteDetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnatomicalSiteDetails" nillable="true" type="tns:AnatomicalSiteDetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnatomicalSiteDetails" nillable="true" type="tns:ArrayOfAnatomicalSiteDetails" />
+  <xs:complexType name="AnatomicalSiteDetails">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Holds the Anatomical site details
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnatomicalLocation" nillable="true" type="tns:ArrayOfAnatomicalLocation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Location
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AnatomicalRegion" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Region
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnatomicalSiteDetails" nillable="true" type="tns:AnatomicalSiteDetails" />
+  <xs:complexType name="ArrayOfAnatomicalLocation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AnatomicalLocation" nillable="true" type="tns:AnatomicalLocation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAnatomicalLocation" nillable="true" type="tns:ArrayOfAnatomicalLocation" />
+  <xs:complexType name="AnatomicalLocation">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            The anatomical location details
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AnatomicalLocationName" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Name of the Anatomical Location
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Laterality" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Laterality
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AnatomicalLocation" nillable="true" type="tns:AnatomicalLocation" />
+  <xs:complexType name="DiagnosticReportInformationDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DiagnosticReportInformationDT
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccessionNumber" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Accession Number
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CDAeffectiveTime" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            CDA Effective Time
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateTimeAuthorisation" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Date Time Authorisation
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateTimeReportAuthored" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Date Time Report Authored
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Document Id
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentLink" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Document Link
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReportDescription" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Report Description
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ReportStatus" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Report Status
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DiagnosticReportInformationDT" nillable="true" type="tns:DiagnosticReportInformationDT" />
+  <xs:complexType name="NewDocuments">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="document" nillable="true" type="tns:ArrayOfDocumentDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="informationAvailable" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NewDocuments" nillable="true" type="tns:NewDocuments" />
+  <xs:complexType name="ArrayOfDocumentDT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentDT" nillable="true" type="tns:DocumentDT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentDT" nillable="true" type="tns:ArrayOfDocumentDT" />
+  <xs:complexType name="DocumentDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Mapped on documentDT found in "PCEHR View Service Technical Service Specification v1.7 (NEHTA-2138:2015)"
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClinicalSynopsis" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Clinical Synopsis from Event Summaries.
+            Note: This field is a String.Each character should be
+            rendered ‘as is’. No formatting or HTML characters is
+            permitted in this field.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentAuthorOrganisationIdentifier" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Organisation’s HPI-O.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentAuthorOrganisationName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Organisation Name. 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentAuthorPersonIdentifier" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The identifier of the Person Author.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentAuthorPersonName" nillable="true" type="tns:NameTypeDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Name of the Person Author
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentAuthorRole" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Role of the Author
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentLink" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            A PCEHR document link format to the document
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentTypeCode" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Type Code of the Document
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentTypeName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            The Type Name of the Document.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="EffectiveDateTime" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Effective DateTime
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentDT" nillable="true" type="tns:DocumentDT" />
+  <xs:complexType name="ArrayOfLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Link" nillable="true" type="tns:Link" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLink" nillable="true" type="tns:ArrayOfLink" />
+  <xs:complexType name="Link">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for a link from the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InformationAvailable" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a value indicating whether any information is available in the provided link.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LinkName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the link name. The following link names are supported:
+                -MedicareOverview
+                -DiagnosticImagingView
+                -PathologyIndexView
+                -HealthCheckAssessmentView
+                -PrescriptionAndDispenseView
+                -PersonalHealthSummary
+                -AdvanceCareDirective
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LinkTarget" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the link to the View or Document. If the link is to a Document (Personal Health Summary, Advance Care Document Custodian)
+            this will be in the My Health Record document link format. If the link is a view, then this link target 
+            is the name of the view (as provided in LinkName).
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LinkTitle" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the link title. The following link titles are supported:
+                -MedicareOverview
+                -DiagnosticImagingView
+                -PathologyIndexView
+                -HealthCheckAssessmentView
+                -PrescriptionAndDispenseView
+                -PersonalHealthSummary
+                -AdvanceCareDirective
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="LinkType" type="tns:LinkType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the link type. Links may refer to either a document or view.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Link" nillable="true" type="tns:Link" />
+  <xs:simpleType name="LinkType">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Document">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="View">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="LinkType" nillable="true" type="tns:LinkType" />
+  <xs:complexType name="RecentDocuments">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for the list of recent documents in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Document" nillable="true" type="tns:ArrayOfDocumentDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the list of documents.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="InformationAvailable" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a value indicating whether there is information available.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="RecentDocuments" nillable="true" type="tns:RecentDocuments" />
+  <xs:complexType name="SharedHealthSummary">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for information from the Shared Health Summary in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InformationAvailable" type="xs:boolean">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a value indicating whether there is information available.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="SharedHealthSummaryAtomicData" nillable="true" type="tns:SharedHealthSummaryAtomicData">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the shared health summary atomic data.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SharedHealthSummary" nillable="true" type="tns:SharedHealthSummary" />
+  <xs:complexType name="SharedHealthSummaryAtomicData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Shared Health Summary
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdvReactionsList" nillable="true" type="tns:AdverseReactionsList">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Adverse Reaction List
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="CdaDocumentTitle" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - CDA Document Title
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DocumentDate" type="xs:dateTime">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Document Date
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Entitlements" nillable="true" type="tns:ArrayOfEntitlement">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Entitlements
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImmunisationList" nillable="true" type="tns:ImmunisationList">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Immunisation List
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MedHistoryList" nillable="true" type="tns:MedicalHistoryList">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MedicinesList" nillable="true" type="tns:MedicinesList">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Medicines List
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorAddress" nillable="true" type="tns:AddressTypeDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Author Address
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorContactDetails" nillable="true" type="tns:ArrayOfContactDetailsDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Author Contact Details
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorDesignation" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Author ID 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorName" nillable="true" type="tns:NameTypeDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Author Name 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorOrgAddress" nillable="true" type="tns:AddressTypeDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorOrgContactDetails" nillable="true" type="tns:ArrayOfContactDetailsDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Author Organisation Contact Details 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorOrgId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorOrgName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ShsAuthorQualifications" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Shared Health Summary Atomic Data - Author Contact Details
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SharedHealthSummaryAtomicData" nillable="true" type="tns:SharedHealthSummaryAtomicData" />
+  <xs:complexType name="AdverseReactionsList">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for the list of adverse reactions in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdverseReactions" nillable="true" type="tns:ArrayOfAdverseReaction">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the list of adverse reactions.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="InformationAvailable" nillable="true" type="tns:InformationAvailableDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets a value indicating whether information is available for this component.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdverseReactionsList" nillable="true" type="tns:AdverseReactionsList" />
+  <xs:complexType name="ArrayOfAdverseReaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AdverseReaction" nillable="true" type="tns:AdverseReaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAdverseReaction" nillable="true" type="tns:ArrayOfAdverseReaction" />
+  <xs:complexType name="AdverseReaction">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for an adverse reaction in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdverseReactionCause" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Adverse Reaction Cause
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AdverseReactionManifestation" nillable="true" type="tns:ArrayOfCodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Adverse Reaction Manifestation
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="AdverseReactionType" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Adverse Reaction Type 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AdverseReaction" nillable="true" type="tns:AdverseReaction" />
+  <xs:complexType name="ArrayOfCodedType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CodedType" nillable="true" type="tns:CodedType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCodedType" nillable="true" type="tns:ArrayOfCodedType" />
+  <xs:complexType name="InformationAvailableDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Adds two attributes to the CodedType.element. To indicate whether the contents of the 
+            element is information or an exclusion statement.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:CodedType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Flavor" type="tns:InformationAvailableDTFlavor">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="FlavorSpecified" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            Stating whether the CodedType is relating to “other” 
+            (in the context of Medicines List, Adverse Reaction List, Medical History List, Immunisations List) 
+            or “Problem or “Procedure” in context of Medical History List.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element minOccurs="0" name="Value" type="xs:boolean">
+            <xs:annotation>
+              <xs:appinfo />
+              <xs:documentation>&lt;summary&gt;
+            If returned as true, the element 
+            will contain information. If returned a false, 
+            then the element will contain an exclusion statement.
+            &lt;/summary&gt;</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InformationAvailableDT" nillable="true" type="tns:InformationAvailableDT" />
+  <xs:simpleType name="InformationAvailableDTFlavor">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Other">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Problem">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Procedure">
+        <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="InformationAvailableDTFlavor" nillable="true" type="tns:InformationAvailableDTFlavor" />
+  <xs:complexType name="ArrayOfEntitlement">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Entitlement" nillable="true" type="tns:Entitlement" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEntitlement" nillable="true" type="tns:ArrayOfEntitlement" />
+  <xs:complexType name="Entitlement">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for Entitlement
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntitlementEffectiveTime" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Entitlement Effective Time
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="EntitlementNumberId" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Entitlement Number ID.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="EntitlementType" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Entitlement Type
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Entitlement" nillable="true" type="tns:Entitlement" />
+  <xs:complexType name="TimeStampDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            In most cases, only some of the time fields will be populated, depending on whether the 
+            time being represented is a single specific time, or a time range.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Centre" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the centre of the range.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="High" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the high end of the range.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Low" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the low end of the range.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the value of the timestamp, if it is not a range.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Width" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the width of the range.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeStampDT" nillable="true" type="tns:TimeStampDT" />
+  <xs:complexType name="ImmunisationList">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for the list of immunisations in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Immunisation" nillable="true" type="tns:ArrayOfImmunisation">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the list of immunisations.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="InformationAvailable" nillable="true" type="tns:InformationAvailableDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets information about whether there is information available.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ImmunisationList" nillable="true" type="tns:ImmunisationList" />
+  <xs:complexType name="ArrayOfImmunisation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Immunisation" nillable="true" type="tns:Immunisation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfImmunisation" nillable="true" type="tns:ArrayOfImmunisation" />
+  <xs:complexType name="Immunisation">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for Immunisation
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ImmunisationDate" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Immunisation Date
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImmunisationSequenceNumber" type="xs:int">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Immunisation Sequence Number
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ImmunisationTitle" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Immunisation Title
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Immunisation" nillable="true" type="tns:Immunisation" />
+  <xs:complexType name="MedicalHistoryList">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for the medical history section of the Health Record Overview including
+            lists of problems and diagnoses, procedures, other medical history and a 
+            list of information about whether each section has information available.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InformationAvailable" nillable="true" type="tns:ArrayOfInformationAvailableDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the list of information about whether each section has information available.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="OtherMedicalHistory" nillable="true" type="tns:ArrayOfOtherMedicalHistory">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Other Medical History List
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="ProblemAndDiagnosis" nillable="true" type="tns:ArrayOfProblemAndDiagnosis">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Problem And Diagnosis List
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Procedure" nillable="true" type="tns:ArrayOfProcedure">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Procedure List
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MedicalHistoryList" nillable="true" type="tns:MedicalHistoryList" />
+  <xs:complexType name="ArrayOfInformationAvailableDT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InformationAvailableDT" nillable="true" type="tns:InformationAvailableDT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInformationAvailableDT" nillable="true" type="tns:ArrayOfInformationAvailableDT" />
+  <xs:complexType name="ArrayOfOtherMedicalHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OtherMedicalHistory" nillable="true" type="tns:OtherMedicalHistory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOtherMedicalHistory" nillable="true" type="tns:ArrayOfOtherMedicalHistory" />
+  <xs:complexType name="OtherMedicalHistory">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for an item in the list of Other Medical History in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the comment for the item in the Other Medical History section.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateOfOnset" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date of Onset
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateOfResolution" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date of Resolution/Remission
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the title for the item in the Other Medical History section.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OtherMedicalHistory" nillable="true" type="tns:OtherMedicalHistory" />
+  <xs:complexType name="ArrayOfProblemAndDiagnosis">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProblemAndDiagnosis" nillable="true" type="tns:ProblemAndDiagnosis" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProblemAndDiagnosis" nillable="true" type="tns:ArrayOfProblemAndDiagnosis" />
+  <xs:complexType name="ProblemAndDiagnosis">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for an item in the list of Problems And Diagnoses in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Problem and Diagnosis Comment
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateOfOnset" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date of Onset
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateOfResolution" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date of Resolution/Remission
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Problem and Diagnosis Identification
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProblemAndDiagnosis" nillable="true" type="tns:ProblemAndDiagnosis" />
+  <xs:complexType name="ArrayOfProcedure">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Procedure" nillable="true" type="tns:Procedure" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProcedure" nillable="true" type="tns:ArrayOfProcedure" />
+  <xs:complexType name="Procedure">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for an item in the list of Procedures in the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the comment.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateOfOnset" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date of Onset
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DateOfResolution" nillable="true" type="tns:TimeStampDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Date of Resolution/Remission
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Title" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the title for the item.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Procedure" nillable="true" type="tns:Procedure" />
+  <xs:complexType name="MedicinesList">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for the Medicines section of the Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InformationAvailable" nillable="true" type="tns:InformationAvailableDT">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets information about whether there is information available in this section.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Medicine" nillable="true" type="tns:ArrayOfMedicine">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the list of medicines.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MedicinesList" nillable="true" type="tns:MedicinesList" />
+  <xs:complexType name="ArrayOfMedicine">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Medicine" nillable="true" type="tns:Medicine" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMedicine" nillable="true" type="tns:ArrayOfMedicine" />
+  <xs:complexType name="Medicine">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            DTO for Medicine information in Health Record Overview.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MedicineDescriptions" nillable="true" type="tns:ArrayOfMedicineDescription">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Medicine Descriptions
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MedicineDose" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Medicine Dose
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="MedicineTitle" nillable="true" type="tns:CodedType">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the Medicine Title
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Medicine" nillable="true" type="tns:Medicine" />
+  <xs:complexType name="ArrayOfMedicineDescription">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MedicineDescription" nillable="true" type="tns:MedicineDescription" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMedicineDescription" nillable="true" type="tns:ArrayOfMedicineDescription" />
+  <xs:complexType name="MedicineDescription">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Medicine Description
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Comment" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the comment.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Indication" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Gets or sets the indication.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MedicineDescription" nillable="true" type="tns:MedicineDescription" />
+  <xs:complexType name="AddressTypeDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+             Mapped on AddressTypeDT found in "PCEHR View Service Technical Service Specification v1.7 (NEHTA-2138:2015)"
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdditionalLocator" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Additional Locator
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Adresss City
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Country
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="DeliveryAddressLine" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Delivery Address Line
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Direction" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Direction
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="HouseNumber" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            House Number
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="PostalCode" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Adresss Postal Code
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Adresss State
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StreetAddressLine" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Street Address Line
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="StreetNameType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Street Name Type
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UnitID" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Unit ID
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="UnitType" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Unit Type
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Usage" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Usage
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="streetName" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            street Name
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressTypeDT" nillable="true" type="tns:AddressTypeDT" />
+  <xs:complexType name="ArrayOfContactDetailsDT">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ContactDetailsDT" nillable="true" type="tns:ContactDetailsDT" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContactDetailsDT" nillable="true" type="tns:ArrayOfContactDetailsDT" />
+  <xs:complexType name="ContactDetailsDT">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Contact Details
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Use" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Workplace, Home, Primary Home, Vacation Home, Answering Service, Emergency Contact, Mobile Contact, Pager
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Communication Details URI The prefix of the URI indicates the type of contact detail, such as 
+            ‘tel’ being a telephone number. 
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ContactDetailsDT" nillable="true" type="tns:ContactDetailsDT" />
+  <xs:complexType name="ViewMetaData">
+    <xs:annotation>
+      <xs:appinfo />
+      <xs:documentation>&lt;summary&gt;
+            Metadata returned in a view of the My Health Record.
+            &lt;/summary&gt;</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IndividualProfile" nillable="true" type="tns:IndividualProfile">
+        <xs:annotation>
+          <xs:appinfo />
+          <xs:documentation>&lt;summary&gt;
+            Individual Profile
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ViewMetaData" nillable="true" type="tns:ViewMetaData" />
+</xs:schema>

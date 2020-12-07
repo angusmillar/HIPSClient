@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://schemas.HIPS/Services/2012/01" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:i1="http://nehta.hips/2014/03/pcehr" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PCEHRService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="http://schemas.HIPS/Services/2012/01" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:i1="http://nehta.hips/2014/03/pcehr" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:i2="http://nehta.hips/2018/05/pcehr" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PCEHRService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsp:Policy wsu:Id="NetTcpBinding_IPCEHRService_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -72,8 +72,45 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IPcehrServiceV3_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <msf:WindowsTransportSecurity xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+                  <msf:ProtectionLevel>EncryptAndSign</msf:ProtectionLevel>
+                </msf:WindowsTransportSecurity>
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="WSHttpBinding_IPcehrServiceV3_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:import namespace="http://schemas.HIPS/Services/2012/01" location="http://localhost:52500/PCEHRService/?wsdl=wsdl0" />
   <wsdl:import namespace="http://nehta.hips/2014/03/pcehr" location="http://localhost:52500/PCEHRService/?wsdl=wsdl1" />
+  <wsdl:import namespace="http://nehta.hips/2018/05/pcehr" location="http://localhost:52500/PCEHRService/?wsdl=wsdl2" />
   <wsdl:types />
   <wsdl:binding name="NetTcpBinding_IPCEHRService" type="i0:IPCEHRService">
     <wsp:PolicyReference URI="#NetTcpBinding_IPCEHRService_policy" />
@@ -168,35 +205,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIndividualOperationStatus">
-      <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatus" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetLocalUploadedDocument">
       <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocument" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetOperationStatus">
-      <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatus" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetQueuedOperationList">
-      <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -361,35 +371,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetIndividualOperationStatus">
-      <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatus" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetLocalUploadedDocument">
       <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocument" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetOperationStatus">
-      <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatus" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetQueuedOperationList">
-      <soap12:operation soapAction="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationList" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -775,6 +758,122 @@
       </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IPcehrServiceV3" type="i2:IPcehrServiceV3">
+    <wsp:PolicyReference URI="#NetTcpBinding_IPcehrServiceV3_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="GetQueuedOperation">
+      <soap12:operation soapAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperation" style="document" />
+      <wsdl:input name="GetQueuedOperationRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQueuedOperationResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequestFaultFault">
+        <soap12:fault use="literal" name="InvalidRequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServiceOperationFaultFault">
+        <soap12:fault use="literal" name="ServiceOperationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUserFaultFault">
+        <soap12:fault use="literal" name="InvalidUserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueuedOperations">
+      <soap12:operation soapAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperations" style="document" />
+      <wsdl:input name="GetQueuedOperationsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQueuedOperationsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequestFaultFault">
+        <soap12:fault use="literal" name="InvalidRequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServiceOperationFaultFault">
+        <soap12:fault use="literal" name="ServiceOperationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUserFaultFault">
+        <soap12:fault use="literal" name="InvalidUserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchQueuedOperations">
+      <soap12:operation soapAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperations" style="document" />
+      <wsdl:input name="SearchQueuedOperationsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SearchQueuedOperationsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequestFaultFault">
+        <soap12:fault use="literal" name="InvalidRequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServiceOperationFaultFault">
+        <soap12:fault use="literal" name="ServiceOperationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUserFaultFault">
+        <soap12:fault use="literal" name="InvalidUserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WSHttpBinding_IPcehrServiceV3" type="i2:IPcehrServiceV3">
+    <wsp:PolicyReference URI="#WSHttpBinding_IPcehrServiceV3_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetQueuedOperation">
+      <soap12:operation soapAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperation" style="document" />
+      <wsdl:input name="GetQueuedOperationRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQueuedOperationResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequestFaultFault">
+        <soap12:fault use="literal" name="InvalidRequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServiceOperationFaultFault">
+        <soap12:fault use="literal" name="ServiceOperationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUserFaultFault">
+        <soap12:fault use="literal" name="InvalidUserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetQueuedOperations">
+      <soap12:operation soapAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/GetQueuedOperations" style="document" />
+      <wsdl:input name="GetQueuedOperationsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetQueuedOperationsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequestFaultFault">
+        <soap12:fault use="literal" name="InvalidRequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServiceOperationFaultFault">
+        <soap12:fault use="literal" name="ServiceOperationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUserFaultFault">
+        <soap12:fault use="literal" name="InvalidUserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SearchQueuedOperations">
+      <soap12:operation soapAction="http://nehta.hips/2018/05/pcehr/IPcehrServiceV3/SearchQueuedOperations" style="document" />
+      <wsdl:input name="SearchQueuedOperationsRequest">
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="SearchQueuedOperationsResponse">
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="InvalidRequestFaultFault">
+        <soap12:fault use="literal" name="InvalidRequestFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="ServiceOperationFaultFault">
+        <soap12:fault use="literal" name="ServiceOperationFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="InvalidUserFaultFault">
+        <soap12:fault use="literal" name="InvalidUserFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="PCEHRService">
     <wsdl:port name="NetTcpBinding_IPCEHRService" binding="tns:NetTcpBinding_IPCEHRService">
       <soap12:address location="net.tcp://localhost:52000/HIPS.Service.PCEHRService" />
@@ -804,6 +903,21 @@
       <soap12:address location="http://localhost:52500/PCEHRService/HIPS.Service.PCEHRServiceV2" />
       <wsa10:EndpointReference>
         <wsa10:Address>http://localhost:52500/PCEHRService/HIPS.Service.PCEHRServiceV2</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IPcehrServiceV3" binding="tns:NetTcpBinding_IPcehrServiceV3">
+      <soap12:address location="net.tcp://localhost:52000/HIPS.Service.PCEHRServiceV3" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:52000/HIPS.Service.PCEHRServiceV3</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Upn>Angus.Millar@digitalhealth.gov.au</Upn>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="WSHttpBinding_IPcehrServiceV3" binding="tns:WSHttpBinding_IPcehrServiceV3">
+      <soap12:address location="http://localhost:52500/PCEHRService/HIPS.Service.PCEHRServiceV3" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://localhost:52500/PCEHRService/HIPS.Service.PCEHRServiceV3</wsa10:Address>
       </wsa10:EndpointReference>
     </wsdl:port>
   </wsdl:service>

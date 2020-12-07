@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e65d8464-b19c-4848-9c08-a89233bd10da" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:52500/ConsentService/?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="ebf17fff-13da-43af-8b2a-8fec073a8903" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?xsd=xsd0" />
+    <MetadataFile FileName="item.wsdl" MetadataType="Wsdl" ID="c268473a-1f1c-4d6a-87c5-efeb7b96f477" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?wsdl=wsdl0" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="be389e90-2362-4ba8-ac6f-926799562d8e" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="c97562b2-85fa-4fd8-9332-e5c697a4002a" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?xsd=xsd4" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="86f1bf2d-c28a-47d1-827c-24a3df21c2a3" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?xsd=xsd2" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="f0618d82-1dd3-430d-b11b-707c7bef663e" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?xsd=xsd3" />
+    <MetadataFile FileName="ConsentService.wsdl" MetadataType="Wsdl" ID="72608d6d-4270-4a64-814f-38d54fe94c50" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?wsdl" />
+    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="8d6dc973-b246-467d-b59e-29f2a3321c44" SourceId="1" SourceUrl="http://localhost:52500/ConsentService/?xsd=xsd5" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

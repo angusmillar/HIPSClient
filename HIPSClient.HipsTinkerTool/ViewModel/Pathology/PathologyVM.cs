@@ -45,6 +45,44 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
     public PathologyVM()
     {
       Oru = new ORU();
+      PatientIdentifierList = new ObservableCollection<PatientIdentifierItemVM>();
+      
+
+      Patient = new PatientVM()
+      {
+        PatientName = new NameVM(),
+        PatientDateOfBirth = DateTime.Now,
+        GenderFormatted = HIPSClient.Hips.Model.Gender.Unknown.GetUIDisplay(),
+        Address = new AddressVM(),        
+        IndigenousStatus = IndigenousStatusType.NotStatedInadequatelyDescribed.GetUIDisplay()
+      };
+
+      Order = new OrderVM()
+      {        
+        RequestedDateTime = new DateTimeVM()
+        {
+          Date = System.DateTime.Now,
+          TimeFormatted = "08:00 AM",
+          TimeZoneFormatted = "-1000"
+        },
+        CollectionDateTime = new DateTimeVM()
+        {
+          Date = System.DateTime.Now,
+          TimeFormatted = "08:10 PM",
+          TimeZoneFormatted = "+1200"
+        },
+        ProviderName = new NameVM(),
+        IsMyHealthRecordDisclosed = false
+      };
+
+      PathologyRequestList = new ObservableCollection<PathologyReportItemVM>();
+      AuthorName = new NameVM();
+      //PdfFilePath = @"C:\GitRepository\HL7V2Examples\Pathology\NEHTA AS4700.2 2012 Examples\Result Output Example 1\FBC NEHTA Pathology Report PDF.pdf";
+    }
+
+    public void Initalise()
+    {
+      Oru = new ORU();
 
       PatientIdentifierList = new ObservableCollection<PatientIdentifierItemVM>()
       {
@@ -157,9 +195,9 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
               TimeFormatted = "10:30 AM",
               TimeZoneFormatted = "+1000",
               IsTimeOptional = true
-               
 
-           },          
+
+           },
            ReportStatus = "Final"
         },
         new PathologyReportItemVM()
@@ -170,7 +208,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
            LocalSystemCode = "ADHA",
            SnomedCode = "87654321",
            SnomedPreferredTerm = "Infectious Mononucleosis",
-           DepartmentCode = "HM",          
+           DepartmentCode = "HM",
            ReportedDateTime = new DateTimeVM()
            {
               Date = new System.DateTime(2019, 01, 12),
@@ -179,7 +217,7 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
               IsTimeOptional = true
            },
            ReportStatus = "Corrected"
-        },         
+        },
       };
       AuthorName = new NameVM()
       {
@@ -205,31 +243,31 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
     }
 
     public string GetHL7Message()
-    { 
-      
-      Oru.Patient = new Patient();
-      Oru.Patient.Family = Patient.PatientName.Family;
-      Oru.Patient.Given = Patient.PatientName.Given;
-      Oru.Patient.Title = Patient.PatientName.Title;
-      Oru.Patient.DateOfBirth = Patient.PatientDateOfBirth.Value;
-      Oru.Patient.Gender = Patient._Gender;
-      Oru.Patient.HomeContact = new Contact() { Value = Patient.HomePhone };
-      Oru.Patient.WorkContact = new Contact() { Value = Patient.WorkPhone };
+    {
+
+      this.Oru.Patient = new Patient();
+      Oru.Patient.Family = this.Patient.PatientName.Family;
+      Oru.Patient.Given = this.Patient.PatientName.Given;
+      Oru.Patient.Title = this.Patient.PatientName.Title;
+      Oru.Patient.DateOfBirth = this.Patient.PatientDateOfBirth.Value;
+      Oru.Patient.Gender = this.Patient._Gender;
+      Oru.Patient.HomeContact = new Contact() { Value = this.Patient.HomePhone };
+      Oru.Patient.WorkContact = new Contact() { Value = this.Patient.WorkPhone };
       Oru.Patient.Address = new Address()
       {
-        AddressLineOne = Patient.Address.AddressLineOne,
-        AddressLineTwo = Patient.Address.AddressLineTwo,
-        Suburb = Patient.Address.Suburb,
-        PostCode = Patient.Address.PostCode,
-        State = Patient.Address.State,
-        Country = Patient.Address.Country
+        AddressLineOne = this.Patient.Address.AddressLineOne,
+        AddressLineTwo = this.Patient.Address.AddressLineTwo,
+        Suburb = this.Patient.Address.Suburb,
+        PostCode = this.Patient.Address.PostCode,
+        State = this.Patient.Address.State,
+        Country = this.Patient.Address.Country
       };
       Oru.Patient.IndigenousStatus = new IndigenousStatus()
       {
-        IndigenousStatusType = Patient._IndigenousStatus
+        IndigenousStatusType = this.Patient._IndigenousStatus
       };
       Oru.Patient.IdentifierList = new System.Collections.Generic.List<PatientIdentifier>();
-      foreach(var item in PatientIdentifierList)
+      foreach(var item in this.PatientIdentifierList)
       {
         Oru.Patient.IdentifierList.Add(new PatientIdentifier()
         {
@@ -241,28 +279,28 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
       Oru.HospitalEncounter = new HospitalEncounter() { PatientClass = PatientClassType.OutPatient };
       Oru.Order = new PathologyOrder()
       {
-        CollectionDateTime = Order.CollectionDateTime.FinalDateTimeOffSet,
-        OrderedDateTime = Order.RequestedDateTime.FinalDateTimeOffSet,
-        IsMyHealthRecordDisclosed = Order.IsMyHealthRecordDisclosed,
-        OrderIdentifier = Order.OrderNumber,
+        CollectionDateTime = this.Order.CollectionDateTime.FinalDateTimeOffSet,
+        OrderedDateTime = this.Order.RequestedDateTime.FinalDateTimeOffSet,
+        IsMyHealthRecordDisclosed = this.Order.IsMyHealthRecordDisclosed,
+        OrderIdentifier = this.Order.OrderNumber,
         OrderingProvider = new Provider()
         {
-          Family = Order.ProviderName.Family,
-          Given = Order.ProviderName.Given,
-          Title = Order.ProviderName.Title
+          Family = this.Order.ProviderName.Family,
+          Given = this.Order.ProviderName.Given,
+          Title = this.Order.ProviderName.Title
         }
       };
       Oru.RequestList = new System.Collections.Generic.List<PathologyRequest>();
-      foreach(var Item in PathologyRequestList)
+      foreach(var Item in this.PathologyRequestList)
       {
         Oru.RequestList.Add(new PathologyRequest()
         {
           DepartmentCode = Item.DepartmentCode,
           DocumentAuthor = new Provider()
           {
-            Family = AuthorName.Family,
-            Given = AuthorName.Given,
-            Title = AuthorName.Title
+            Family = this.AuthorName.Family,
+            Given = this.AuthorName.Given,
+            Title = this.AuthorName.Title
           },
           ReportedDateTime = Item.ReportedDateTime.FinalDateTimeOffSet,
           ReportIdentifier = Item.ReportIdentifier,
@@ -277,11 +315,13 @@ namespace HIPSClient.HipsTinkerTool.ViewModel.Pathology
           ReportStatus = Item._ReportStatus
         });         
       }
-      Oru.PDF = new PDFReport()
-      {
-        Filepath = @"C:\GitRepository\HL7V2Examples\Pathology\NEHTA AS4700.2 2012 Examples\Result Output Example 1\FBC NEHTA Pathology Report PDF.pdf"
-      };
-
+      if (!string.IsNullOrEmpty(this.PdfFilePath))
+        {
+        Oru.PDF = new PDFReport()
+        {
+          Filepath = this.PdfFilePath
+        };
+      }
       return Oru.GetPathologyORUMessage();
     }
 

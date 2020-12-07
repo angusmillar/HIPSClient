@@ -10,9 +10,7 @@
       <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd5" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrSchemas" />
       <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/Nehta.VendorLibrary.PCEHR" />
       <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd7" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HIPS.PcehrDataStore.Schemas" />
-      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd9" namespace="http://schemas.datacontract.org/2004/07/HIPS.Base.Schemas" />
-      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd10" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
+      <xsd:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/HIPS.ConsentSchemas" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPCEHRService_GainAccessEmergency_InputMessage">
@@ -75,29 +73,11 @@
   <wsdl:message name="IPCEHRService_GetDocumentListActiveFilterDates_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetDocumentListActiveFilterDatesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPCEHRService_GetIndividualOperationStatus_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetIndividualOperationStatus" />
-  </wsdl:message>
-  <wsdl:message name="IPCEHRService_GetIndividualOperationStatus_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetIndividualOperationStatusResponse" />
-  </wsdl:message>
   <wsdl:message name="IPCEHRService_GetLocalUploadedDocument_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLocalUploadedDocument" />
   </wsdl:message>
   <wsdl:message name="IPCEHRService_GetLocalUploadedDocument_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLocalUploadedDocumentResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPCEHRService_GetOperationStatus_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetOperationStatus" />
-  </wsdl:message>
-  <wsdl:message name="IPCEHRService_GetOperationStatus_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetOperationStatusResponse" />
-  </wsdl:message>
-  <wsdl:message name="IPCEHRService_GetQueuedOperationList_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetQueuedOperationList" />
-  </wsdl:message>
-  <wsdl:message name="IPCEHRService_GetQueuedOperationList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetQueuedOperationListResponse" />
   </wsdl:message>
   <wsdl:message name="IPCEHRService_GetView_InputMessage">
     <wsdl:part name="parameters" element="tns:GetView" />
@@ -270,16 +250,6 @@
       <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListActiveFilterDates" message="tns:IPCEHRService_GetDocumentListActiveFilterDates_InputMessage" />
       <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetDocumentListActiveFilterDatesResponse" message="tns:IPCEHRService_GetDocumentListActiveFilterDates_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetIndividualOperationStatus">
-      <wsdl:documentation>&lt;summary&gt;
-            Gets the status of a single pcehr queue operation for the specified PcehrMessageQueueId.
-            &lt;/summary&gt;
-            &lt;param name="pcehrMessageQueueId"&gt;Identifier of an item in the PCEHR Message Queue.&lt;/param&gt;
-            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
-            &lt;returns&gt;List of queued operations and indicator of success or failure.&lt;/returns&gt;</wsdl:documentation>
-      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatus" message="tns:IPCEHRService_GetIndividualOperationStatus_InputMessage" />
-      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetIndividualOperationStatusResponse" message="tns:IPCEHRService_GetIndividualOperationStatus_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetLocalUploadedDocument">
       <wsdl:documentation>&lt;summary&gt;
             Get a document uploaded for a specific patient in a defined hospital
@@ -293,31 +263,6 @@
             &lt;/returns&gt;</wsdl:documentation>
       <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocument" message="tns:IPCEHRService_GetLocalUploadedDocument_InputMessage" />
       <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetLocalUploadedDocumentResponse" message="tns:IPCEHRService_GetLocalUploadedDocument_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetOperationStatus">
-      <wsdl:documentation>&lt;summary&gt;
-            Gets the status of all operations for the specified patient and episode.
-            &lt;/summary&gt;
-            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
-            &lt;param name="admissionDate"&gt;The episode admission date and time.&lt;/param&gt;
-            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
-            &lt;returns&gt;List of queued operations and indicator of success or failure.&lt;/returns&gt;</wsdl:documentation>
-      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatus" message="tns:IPCEHRService_GetOperationStatus_InputMessage" />
-      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetOperationStatusResponse" message="tns:IPCEHRService_GetOperationStatus_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetQueuedOperationList">
-      <wsdl:documentation>&lt;summary&gt;
-            Gets a List of queued Operations
-            &lt;/summary&gt;
-            &lt;param name="dateTimeFrom"&gt;The date time from.&lt;/param&gt;
-            &lt;param name="dateTimeTo"&gt;The date time to.&lt;/param&gt;
-            &lt;param name="queueOperation"&gt;The queue operation.&lt;/param&gt;
-            &lt;param name="queueStatus"&gt;The queue status.&lt;/param&gt;
-            &lt;param name="patientIdentifier"&gt;Patient identifier (Hospital-level MRN, State Patient ID, Validated IHI or PCEHR Data Store PatientMasterId)&lt;/param&gt;
-            &lt;param name="user"&gt;The health provider individual, interactive user or authorised employee responsible for this action.&lt;/param&gt;
-            &lt;returns&gt;List of queued operations and indicator of success or failure.&lt;/returns&gt;</wsdl:documentation>
-      <wsdl:input wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationList" message="tns:IPCEHRService_GetQueuedOperationList_InputMessage" />
-      <wsdl:output wsaw:Action="http://schemas.HIPS/Services/2012/01/IPCEHRService/GetQueuedOperationListResponse" message="tns:IPCEHRService_GetQueuedOperationList_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetView">
       <wsdl:documentation>&lt;summary&gt;

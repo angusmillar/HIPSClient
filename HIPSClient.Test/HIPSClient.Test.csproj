@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Support\GenerateADT.cs" />
+    <Compile Include="Test_ConsentCheck.cs" />
     <Compile Include="Test_IsPCEHRAdvertised.cs" />
     <Compile Include="Test_ADT.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

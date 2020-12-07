@@ -26,8 +26,9 @@ namespace HIPSClient.Hips.Model
       {
         oHL7.Add(CreateORCSegment(this.Order, Request));
         oHL7.Add(CreateOBRSegment(this.Order, Request));
-      }
-      oHL7.Add(CreateOBXSegment(this.PDF));
+      } 
+      if (this.PDF != null)
+        oHL7.Add(CreateOBXSegment(this.PDF));
       return oHL7.AsStringRaw;    
     }
 
@@ -116,7 +117,7 @@ namespace HIPSClient.Hips.Model
       oOBR.Field(25).AsString = Request.ReportStatus.GetLiteral();
 
       //Ordered DateTime      
-      oOBR.Field(27).Component(4).Convert.DateTime.SetDateTimeOffset(Order.OrderedDateTime, true, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.DateHourMin);
+      oOBR.Field(27).Component(4).Convert.DateTime.SetDateTimeOffset(Order.OrderedDateTime, true, PeterPiper.Hl7.V2.Support.Tools.DateTimeSupportTools.DateTimePrecision.Date);
 
 
       //Author Reporting Pathologists

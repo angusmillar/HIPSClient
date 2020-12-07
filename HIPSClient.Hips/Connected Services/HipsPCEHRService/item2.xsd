@@ -1,1487 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://nehta.hips/2014/03" elementFormDefault="qualified" targetNamespace="http://nehta.hips/2014/03" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" />
-  <xs:complexType name="PatientIdentifierBase">
+  <xs:simpleType name="IhiStatus">
     <xs:annotation>
       <xs:appinfo />
       <xs:documentation>&lt;summary&gt;
-            Abstract base class for identifying a patient.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" name="AlternateOrganisationName" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the alternate organisation name. -- OPTIONAL
-            As defined in "PCEHR R12 Implementation Guide", the accessing organisation
-            may choose to disclose a different organisation name on the PCEHR Audit Log
-            by populating the alternateOrganisationName in the PCEHR header.
-            &lt;/summary&gt;
-            &lt;value&gt;
-            The alternate organisation name.
-            &lt;/value&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HospitalCode" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the hospital code. This code, qualified by the hospital code system,
-            is used to determine:
-            a) Which hospital allocated the MRN, if the Mrn subclass is used.
-            b) Which hospital the episode occurred in, for consent, upload and remove calls.
-            c) Which authorised employee is identified, if the user.Role is AuthorisedEmployee.
-            d) Which health provider organisation (HPI-O) is making the calls to HI Service and PCEHR B2B Gateway.
-            &lt;/summary&gt;
-            &lt;value&gt;
-            A code identifying the hospital in which this patient received health care.
-            &lt;/value&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HospitalCodeSystem" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the hospital code system.
-            This is necessary because different systems may use different codes to identify the
-            same hospital. For example, "NOA" or "NHS" for Noarlunga Health Service, where
-            "NOA" is the LAB Facility Code and "NHS" is the PAS Facility Code.
-            &lt;/summary&gt;
-            &lt;value&gt;
-            A code identifying the system under which the hospital code was allocated.
-            &lt;/value&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PatientIdentifierBase" nillable="true" type="tns:PatientIdentifierBase" />
-  <xs:complexType name="Mrn">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element name="Value" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the value of the MRN.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="Mrn" nillable="true" type="tns:Mrn" />
-  <xs:complexType name="StatePatientId">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element name="Value" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the value of the enterprise ID.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="StatePatientId" nillable="true" type="tns:StatePatientId" />
-  <xs:complexType name="PatientMasterId">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="HospitalId" nillable="true" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the value of the Hospital ID. If supplied, this overrides the HospitalCode.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Value" type="xs:int">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the value of the Patient Master ID.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PatientMasterId" nillable="true" type="tns:PatientMasterId" />
-  <xs:complexType name="ValidatedIhi">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element name="DateOfBirth" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the date of birth of the patient. This date of birth
-            must have been used in a successful IHI search in the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="FamilyName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the family name of the patient. This family name must
-            have been used in a successful IHI search in the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GivenNames" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the given names of the patient. There may be multiple
-            given names separated by spaces. One of them must be the given name
-            that was used in a successful IHI search in the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Ihi" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the IHI.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="IhiLastValidated" type="xs:dateTime">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the date and time when the IHI was last validated using
-            a search of the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="IhiRecordStatus" type="tns:IhiRecordStatus">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the IHI record status.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" name="IhiStatus" type="q1:IhiStatus">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the IHI status.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Sex" type="tns:Sex">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the sex of the patient. This sex must have been used
-            in a successful IHI search in the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ValidatedIhi" nillable="true" type="tns:ValidatedIhi" />
-  <xs:simpleType name="IhiRecordStatus">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents an IHI record status.
+            Represents an IHI status. Some values are defined by the national HI Service.
+            Others are defined by HIPS to represent various unresolved alert conditions.
+            See the documentation for each member for details.
             &lt;/summary&gt;</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="None">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            No value has been supplied. Where a value for IhiRecordStatus is required, this
+            No value has been supplied. Where a value for IhiStatus is required, this
             represents an invalid invocation of the web service.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Verified">
+      <xs:enumeration value="Active">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents verified record status.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unverified">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents unverified record status.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Provisional">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents provisional record status.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Unknown">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents unknown record status. This status is assigned to patients whose IHI
-            has not yet been obtained.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="IhiRecordStatus" nillable="true" type="tns:IhiRecordStatus" />
-  <xs:simpleType name="Sex">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the sex of a person. The valid codes are defined by AS 5017-2006
-            in table "Health Care Client Identifier Sex".
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            No value has been supplied. Where a value for Sex is required, this
-            represents an invalid invocation of the web service. If the IHI
-            search was successful with the Sex not stated, send the value
-            "NotStatedOrInadequatelyDescribed".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Male">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents male. Mapped to CDA code "M".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Female">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents female. Mapped to CDA code "F".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="IntersexOrIndeterminate">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents intersex or indeterminate. Mapped to CDA code "I".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="NotStatedOrInadequatelyDescribed">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents not stated or inadequately described. Mapped to CDA code "N".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="Sex" nillable="true" type="tns:Sex" />
-  <xs:complexType name="RegisteredEnterprisePatient">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:PatientIdentifierBase">
-        <xs:sequence>
-          <xs:element name="Mrn" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets a facility-level ID for the patient.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="StatePatientId" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets an enterprise-level ID for the patient.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="RegisteredEnterprisePatient" nillable="true" type="tns:RegisteredEnterprisePatient" />
-  <xs:complexType name="UserBase">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Abstract base class for identifying an end-user.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence />
-  </xs:complexType>
-  <xs:element name="UserBase" nillable="true" type="tns:UserBase" />
-  <xs:complexType name="LocalUser">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:UserBase">
-        <xs:sequence>
-          <xs:element name="Domain" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the name of the directory domain of the user within the local directory.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="FamilyName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the family name of the user.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GivenNames" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the given name(s) of the user.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Login" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the name of the login (account) of the user within the local directory.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="LocalUser" nillable="true" type="tns:LocalUser" />
-  <xs:complexType name="ProviderUser">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:UserBase">
-        <xs:sequence>
-          <xs:element name="FamilyName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the family name of the user.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="GivenNames" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the given name(s) of the user.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="HpiI" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the health provider identifier - individual identifying the provider user.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ProviderUser" nillable="true" type="tns:ProviderUser" />
-  <xs:complexType name="ResponsibleUser">
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:UserBase">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ResponsibleUser" nillable="true" type="tns:ResponsibleUser" />
-  <xs:complexType name="HospitalIdentifier">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            This DTO is used to identify a hospital / facility.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="HospitalCode" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a code that identifies a hospital facility, within the code system specified in the HospitalCodeSystem property.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HospitalCodeSystem" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a code that identifies the code system in which the HospitalCode is defined.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="HospitalIdentifier" nillable="true" type="tns:HospitalIdentifier" />
-  <xs:simpleType name="ResponseStatus">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the outcome of a service operation.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            No status has been defined.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="OK">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The service operation was successful.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Warning">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The service operation may have been successful, with associated warning messages.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ResponseStatus" nillable="true" type="tns:ResponseStatus" />
-  <xs:complexType name="ArrayOfMessage">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Message" nillable="true" type="tns:Message" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfMessage" nillable="true" type="tns:ArrayOfMessage" />
-  <xs:complexType name="Message">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents a generic message, generally to provide additional contextual
-            information, such as assisting with how a response message is interpreted.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the code associated with the message.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Data" nillable="true" type="xs:anyType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets any additional data associated with the message.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Description" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a detailed description of the message content.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Level" type="tns:MessageLevel">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the level associated with the message.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Messages" nillable="true" type="tns:ArrayOfMessage">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the set of messages associated with the message.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Origin" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a string identifying the origin of the message, such as "HIPS" or "PCEHR".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Message" nillable="true" type="tns:Message" />
-  <xs:simpleType name="MessageLevel">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the level of a message returned by a service operation.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            No level has been defined.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Information">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The message contains information.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Warning">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The message contains a warning.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Error">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            The message contains an error description.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="MessageLevel" nillable="true" type="tns:MessageLevel" />
-  <xs:complexType name="InvalidRequestFault">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents a failure within the conditions defined to validate the request to the service operation.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:FaultBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Messages" nillable="true" type="tns:ArrayOfMessage">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the set of messages associated with the fault.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="InvalidRequestFault" nillable="true" type="tns:InvalidRequestFault" />
-  <xs:complexType name="FaultBase">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FaultIdentifier" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a unique value that can be used to correlate the fault between the provider and the consumer.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the description of the fault.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="FaultBase" nillable="true" type="tns:FaultBase" />
-  <xs:complexType name="ServiceOperationFault">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents a general failure within the service operation.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:FaultBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the fault code. This corresponds to the HipsResponse.ResponseCode property on V1 services.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the fault description. This corresponds to the HipsResponse.ResponseCodeDescription property on V1 services.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Details" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the fault details. This corresponds to the HipsResponse.ResponseCodeDetails property on V1 services.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the fault type. This corresponds to the HipsResponse.Status property on V1 services.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ServiceOperationFault" nillable="true" type="tns:ServiceOperationFault" />
-  <xs:complexType name="InvalidUserFault">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents an invalid user object being supplied.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:FaultBase">
-        <xs:sequence />
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="InvalidUserFault" nillable="true" type="tns:InvalidUserFault" />
-  <xs:complexType name="HiServiceFault">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents an error returned by the HI Service.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:FaultBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ResponseCode" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the HI Service response code.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ResponseCodeDescription" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the HI Service response code description.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ResponseCodeDetails" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the HI Service response code details.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="HiServiceFault" nillable="true" type="tns:HiServiceFault" />
-  <xs:complexType name="PcehrServiceFault">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents an error returned by the PCEHR System.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:FaultBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="ResponseCode" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the PCEHR System response code.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ResponseCodeDescription" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the PCEHR System response code description.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="ResponseCodeDetails" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the PCEHR System response code details.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="PcehrServiceFault" nillable="true" type="tns:PcehrServiceFault" />
-  <xs:complexType name="ItemNotFoundFault">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents a fault when a specified item is not found in the HIPS database.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:FaultBase">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="Identifier" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the identifier value, if any, that was specified by the caller and was not able to locate the item.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Qualifier" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the qualifier, if any, that was specified by the caller and was not able to locate the item.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Type" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets a code representing the type of item that was not found.
-            Known examples are "Hospital", "Patient", "Episode" or "Address".
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ItemNotFoundFault" nillable="true" type="tns:ItemNotFoundFault" />
-  <xs:complexType name="CdaHeaderMetadata">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            CDA Header Metadata DTO. This object contains the metadata that is
-            required to be used within a generated CDA Document, such as the CDA
-            Header and other data within the CDA Document that is not gathered
-            from HL7 messages passed into HIPS from the DatabaseLoader.
-            Some data may be available from an HL7 feed, however it may not be
-            sent to HIPS before it is actually required when generating the CDA
-            document and thus this information is also
-            required in this metadata.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="AdmissionDateTime" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the admission date and time. This is when the patient visit started.
-            This date and time should match an existing episode supplied in the HL7 feed.
-            If there is no matching episode, and the patient identifier is a ValidatedIhi,
-            an episode stub will be created. If there is no matching episode, and the patient
-            identifier is a different type, an error will be returned.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="DischargeDateTime" nillable="true" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the discharge date and time. This is when the patient visit ended or is planned to end.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="DocumentAuthor" nillable="true" type="tns:ParticipatingProvider">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets an &lt;see cref="N:HIPS.ServiceContracts.Common.DTO.ParticipatingIndividual" /&gt; object that represents
-            the person who is the 'Author' for the document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="DocumentCreationDateTime" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the document creation date and time. This should be the
-            date and time when this version of the document was completed, not
-            when work on it started.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="LegalAuthenticator" nillable="true" type="tns:ParticipatingProvider">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets an &lt;see cref="N:HIPS.ServiceContracts.Common.DTO.ParticipatingIndividual" /&gt; object that represents
-            the person who is the 'Legal Authenticator' for the document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ModeOfSeparation" type="tns:ModeOfSeparation">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a code that represents the status of the patient at the time of discharge and the place to which the person was or will be released.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="PatientAddress" nillable="true" type="tns:Address">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the address of the patient. An address is mandatory for the CDA document. If this data member is not supplied, the address must have been supplied in the HL7 feed.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="PatientContactDetails" nillable="true" type="tns:ElectronicCommunicationDetail">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the contact details of the patient. Contact details
-            are not mandatory for the CDA document. If this data member is
-            not supplied, the contact details supplied in the HL7 feed may be used.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ResponsibleHealthProfessional" nillable="true" type="tns:ParticipatingProvider">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets an &lt;see cref="N:HIPS.ServiceContracts.Common.DTO.ParticipatingIndividual" /&gt; object that represents
-            the person who is the 'Responsible Health Professional at Time of
-            Discharge' for the document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="SourceDocumentStatus" type="tns:SourceDocumentStatus">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the status of this version of the document, which may
-            be either Interim (draft), Final (complete) or Withdrawn (recalled
-            by the authoring organisation).
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Specialty" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the clinical specialty or hospital department in which the patient was treated before discharge.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CdaHeaderMetadata" nillable="true" type="tns:CdaHeaderMetadata" />
-  <xs:complexType name="ParticipatingProvider">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Participating Provider DTO. This object contains information that identifies the
-            person who is the 'Author', 'Legal Authenticator' and/or 'Responsible Health
-            Professional at time of discharge' for the document.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:complexContent mixed="false">
-      <xs:extension base="tns:ParticipatingIndividual">
-        <xs:sequence>
-          <xs:element minOccurs="0" name="EmployerHpio" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the HPI-O of the organisation that employs the participant.
-            If the employer HPI-O is specified then the employer name must also.
-            If neither are specified, the HPI-O and name of the hospital will be used.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="EmployerName" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the name of the organisation that employs the participant.
-            If the employer HPI-O is specified then the employer name must also.
-            If neither are specified, the HPI-O and name of the hospital will be used.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element minOccurs="0" name="Hpii" nillable="true" type="xs:string">
-            <xs:annotation>
-              <xs:appinfo />
-              <xs:documentation>&lt;summary&gt;
-            Gets or sets the validated HPI-I of the participating provider. For
-            the document author and responsible health professional, this is
-            conditionally mandatory with the Local Identifier as at least one
-            must be specified. If both are specified then the HPI-I will take
-            precedence over the Local Identifier.
-            &lt;/summary&gt;</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:element name="ParticipatingProvider" nillable="true" type="tns:ParticipatingProvider" />
-  <xs:complexType name="ParticipatingIndividual">
-    <xs:sequence>
-      <xs:element name="FamilyName" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the family name of the participating individual.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="GivenNames" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the given names of the participating individual. If
-            there are multiple given names, they should be separated by spaces.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="LocalIdentifier" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the unique local identifier of the participating
-            individual. The local identifier must be unique within the
-            authoring organisation (HPI-O). For the document author and
-            responsible health professional, this is conditionally mandatory
-            with the HPI-I as at least one must be specified.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Suffix" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the name suffix of the participating individual.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the name title of the participating individual.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ParticipatingIndividual" nillable="true" type="tns:ParticipatingIndividual" />
-  <xs:simpleType name="ModeOfSeparation">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the status of the patient at the time of discharge and the
-            place to which the person was or will be released. The valid codes
-            are defined in AIHW 270094 titled "Episode of admitted patient care-
-            separation mode, code N". Shorter, more user friendly display names
-            were developed by NEHTA.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            No value has been supplied. This represents an invalid invocation of the web service.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="AcuteHospital">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a discharge or transfer to an acute hospital.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="AgedCareService">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a discharge or transfer to a residential aged care service, unless this is the usual place of residence.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="PsychiatricCare">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a discharge or transfer to a psychiatric hospital.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="OtherHealthService">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a discharge or transfer to other health care accommodation (includes mothercraft hospitals)
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="AdministrativeDischarge">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a statistical discharge - type change.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="SelfDischarge">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents that the patient left against medical advice or was discharged at own risk.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="AdministrativeFromLeave">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a statistical discharge from leave.
+            Represents active status as defined by the HI Service.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Deceased">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents that the patient died.
+            Represents deceased status as defined by the HI Service.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Home">
+      <xs:enumeration value="Retired">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents that the patient was discharged to his/her usual residence, own accommodation or a welfare institution (includes prisons, hostels and group homes providing primarily welfare services).
+            Represents retired status as defined by the HI Service.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ModeOfSeparation" nillable="true" type="tns:ModeOfSeparation" />
-  <xs:complexType name="Address">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Address DTO. This object represents a physical address, which may be a
-            street address or a postal address, and may be an Australian address or
-            an international address.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="AddressLine1" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the first line of the unstructured address.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="AddressLine2" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the second line of the unstructured address, if there is more
-            than one line. This should not include the line that has the suburb, state,
-            postcode or country, as those must be provided in separate elements.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="AddressPurpose" type="tns:AddressPurpose">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the address purpose. The valid codes are defined in
-            AS 5017-2006 in the table "Health Care Client Identifier Address Purpose".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="AustralianState" type="tns:AustralianState">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the Australian state. The valid codes are defined in AS 5017-2006
-            in the table "Australian State/Territory Identifier - Postal".
-            This is mandatory for an Australian address, and must not be provided for an
-            international address.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="CountryName" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the country name. This is mandatory.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="InternationalStateCode" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the international state code. This is optional for an international
-            address, and must not be provided for an Australian address.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="PlaceName" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the suburb, town or locality.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Postcode" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the postcode. This is mandatory for an Australian address, and
-            optional for an international address.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Address" nillable="true" type="tns:Address" />
-  <xs:simpleType name="AddressPurpose">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the purpose of an address. The valid codes are defined in AS 5017-2006
-            in the table "Health Care Client Identifier Address Purpose", and the mappings to
-            CDA in NEHTA eDischarge Summary CDA Implementation Guide v3.4.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
+      <xs:enumeration value="Expired">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            No value has been supplied. This represents an invalid invocation of the web service.
-            If the address purpose has not been stated, service invokers should send "Unknown".
+            Represents expired status as defined by the HI Service.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Business">
+      <xs:enumeration value="Resolved">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents a business, workplace or office address. Maps to CDA address use code "WP".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Mailing">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a mailing or postal address, used to send mail. Maps to CDA address use code "PST".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Temporary">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a temporary address, which may be good for visit or mailing. Maps to CDA address use code "TMP".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Residential">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a residential or home address. Maps to CDA address use code "H".
+            Represents resolved status as defined by the HI Service. The current
+            IHI for a patient should never have this status, but it can be
+            recorded for historical IHI assignments.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="Unknown">
         <xs:annotation>
+          <xs:documentation>&lt;summary&gt;
+            Represents unknown status. This status is assigned to patients whose IHI
+            has not yet been obtained, or when an IHI of record status Unverified or
+            Provisional was found.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicateIhi">
+        <xs:annotation>
           <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
           </xs:appinfo>
           <xs:documentation>&lt;summary&gt;
-            Represents an address whose purpose has not been stated, is unknown or inadequately
-            described. In this case the CDA document will simply omit the Address Use Code.
+            Represents an unresolved alert due to obtaining an IHI when the same
+            IHI is assigned to another patient record from the same hospital. The
+            administrator must determine whether the two records represent the
+            same person, if so then merge the two records, if not then report a
+            potential replica to Medicare Australia.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DuplicatePatient">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">101</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to obtaining an IHI using the same
+            demographic details that are assigned to another patient record from
+            the same hospital. The administrator must determine whether the two
+            records represent the same person, if so then merge the two records,
+            if not then report a potential replica to Medicare Australia.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MergeConflict">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">102</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to merging two patient records that have
+            different IHI numbers. The administrator must choose the correct IHI to
+            resolve this alert.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ServiceUnavailable">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">103</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents a patient whose IHI could not be obtained or validated because of
+            an error while connecting to the HI Service. The IHI search will be repeated
+            by the background process until it is successful.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MedicareDvaChangeMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">104</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to changing the Medicare card number or
+            DVA file number of the patient, if the patient already had an IHI assigned,
+            and a search using the new Medicare or DVA number found no IHI or found a
+            different IHI to the one that was assigned to the patient.
+            &lt;/summary&gt;</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="DemographicMismatch">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">105</EnumerationValue>
+          </xs:appinfo>
+          <xs:documentation>&lt;summary&gt;
+            Represents an unresolved alert due to changing the date of birth of the patient,
+            if the patient already had an IHI assigned, and a search using the current IHI
+            with the new date of birth found no IHI.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="AddressPurpose" nillable="true" type="tns:AddressPurpose" />
-  <xs:simpleType name="AustralianState">
+  <xs:element name="IhiStatus" nillable="true" type="tns:IhiStatus" />
+  <xs:simpleType name="ForceRefreshOption">
     <xs:annotation>
       <xs:appinfo />
       <xs:documentation>&lt;summary&gt;
-            Represents an Australian state or territory. The valid codes are defined in AS 5017-2006
-            in the table "Australian State/Territory Identifier - Postal", and the mappings to
-            CDA are defined in NEHTA "eDischarge Summary CDA Implementation Guide v3.4" to use the
-            same codes.
+            This is used to specify the conditions when the PCEHR
+            advertised status should be refreshed.
             &lt;/summary&gt;</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="None">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            No value has been supplied. This represents a valid invocation of the web service
-            for an international address. For an Australian address, if the state or territory
-            is unknown, service invokers should send "U".
+            Indicates that a value has not been specified
+            providing this value will cause a validation error.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="NSW">
+      <xs:enumeration value="Never">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents New South Wales.
+            Indicates that there is no need to refresh the PCEHR
+            advertised status and the previously stored information will be returned.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="VIC">
+      <xs:enumeration value="WhenNotAdvertised">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents Victoria.
+            Indicates that the PCEHR advertised status should be refreshed
+            if there is no previously stored information that indicates the patient has a PCEHR.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="QLD">
+      <xs:enumeration value="Always">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents Queensland.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="SA">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents South Australia.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="WA">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents Western Australia.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="TAS">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents Tasmania.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="NT">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents Northern Territory.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="ACT">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents Australian Capital Territory.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="U">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents an Australian address whose state or territory is unknown.
+            Indicates that the PCEHR advertised status should always be refreshed.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="AustralianState" nillable="true" type="tns:AustralianState" />
-  <xs:complexType name="ElectronicCommunicationDetail">
+  <xs:element name="ForceRefreshOption" nillable="true" type="tns:ForceRefreshOption" />
+  <xs:simpleType name="ParticipationStatus">
     <xs:annotation>
       <xs:appinfo />
       <xs:documentation>&lt;summary&gt;
-            Electronic Communication Detail DTO. This object represents a telephone number,
-            mobile number, fax number, pager number, email address or internet address.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="Detail" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the value of the number or address.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Medium" type="tns:ElectronicCommunicationMedium">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the communication medium.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Usage" type="tns:ElectronicCommunicationUsage">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the usage of the communication method.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ElectronicCommunicationDetail" nillable="true" type="tns:ElectronicCommunicationDetail" />
-  <xs:simpleType name="ElectronicCommunicationMedium">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the medium of an electronic communication detail. The valid
-            codes are defined in AS 5017-2006 in the table "Health Care Client
-            Electronic Communication Medium", and the mappings to HL7v3 (CDA) URL
-            schemes in NEHTA "eDischarge Summary CDA Implementation Guide v3.4".
+            Represents the PCEHR participation status of a patient.
             &lt;/summary&gt;</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
+      <xs:enumeration value="NoValidIhi">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            No value has been supplied. This represents an invalid invocation of the web service.
+            HIPS was not able to obtain or validate the IHI for this patient. HIPS will not be able to
+            upload the discharge summary for this patient until this situation is resolved.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="FixedTelephone">
+      <xs:enumeration value="PcehrNotAdvertised">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents a fixed telephone. Maps to URL scheme "tel".
+            This patient may not have registered for PCEHR, or may have chosen to hide the existence of
+            his/her PCEHR. The clinical system should not send the discharge summary, unless the patient
+            explicitly requests the provider to do so.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Mobile">
+      <xs:enumeration value="PcehrAdvertised">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents a mobile telephone. Maps to URL scheme "tel" with use code "MC".
+            This patient has chosen to advertise the existence of his/her PCEHR, or the health provider
+            organisation has already gained access to the PCEHR, so the clinical system should send the
+            discharge summary.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Fax">
+      <xs:enumeration value="RequestedUpload">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents a facsimile machine. Maps to URL scheme "fax".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Pager">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a pager. Maps to URL scheme "tel" with use code "PG".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Email">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents email. Maps to URL scheme "mailto".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="URL">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a URL. The URL scheme of the URL in the Detail element is used without mapping.
+            This patient disclosed the existence of his/her PCEHR to the health provider organisation, and
+            thereby requested the upload of his/her discharge summary for all hospitals that are part of
+            this health provider organisation, so the clinical system should send the discharge summary,
+            regardless of whether the PCEHR is advertised.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="ElectronicCommunicationMedium" nillable="true" type="tns:ElectronicCommunicationMedium" />
-  <xs:simpleType name="ElectronicCommunicationUsage">
+  <xs:element name="ParticipationStatus" nillable="true" type="tns:ParticipationStatus" />
+  <xs:simpleType name="AttachmentType">
     <xs:annotation>
       <xs:appinfo />
       <xs:documentation>&lt;summary&gt;
-            Represents the usage of an electronic communication detail. The valid
-            codes are defined in AS 5017-2006 in the table "Health Care Client
-            Electronic Communication Usage Code", and the mappings to HL7v3 (CDA)
-            Telecommunication Address Use (TAU) codes in NEHTA "eDischarge Summary
-            CDA Implementation Guide v3.4".
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="None">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            No value has been supplied. This represents a valid invocation of the web service because the usage code is optional.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Business">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a communication address for business use. Maps to TAU code "WP".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Personal">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a communication address for personal use. Maps to TAU code "H".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="Both">
-        <xs:annotation>
-          <xs:documentation>&lt;summary&gt;
-            Represents a  communication address for both business and personal use. Maps to TAU code "WP H".
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ElectronicCommunicationUsage" nillable="true" type="tns:ElectronicCommunicationUsage" />
-  <xs:simpleType name="SourceDocumentStatus">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the status of this version of the document as communicated
-            by the source system. The valid codes are defined by NCTIS titled
-            "Admin Codes - Document Status".
+            Represents the file type and semantics of an attachment.
             &lt;/summary&gt;</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string">
@@ -1492,508 +250,57 @@
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Interim">
+      <xs:enumeration value="AttachedImageJpeg">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents an interim or draft version of the document. Interim versions are not normally
-            uploaded to the PCEHR system.
+            Represents an additional JPEG image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a JPEG image.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Final">
+      <xs:enumeration value="AttachedImagePng">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents a final version of the document. This may be the first final version or an amendment.
+            Represents an additional PNG image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a PNG image.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="Withdrawn">
+      <xs:enumeration value="AttachedImageTiff">
         <xs:annotation>
           <xs:documentation>&lt;summary&gt;
-            Represents a notification that the document has been withdrawn by the authoring organisation.
-            Withdrawn versions are intended for delivery to point-to-point (P2P) recipients of the document
-            and are not normally uploaded to the PCEHR system. Instead the document can be removed from the
-            PCEHR system with a separate web service invocation.
+            Represents an additional TIFF image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a TIFF image.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="SourceDocumentStatus" nillable="true" type="tns:SourceDocumentStatus" />
-  <xs:complexType name="ArrayOfCdaAttachment">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="CdaAttachment" nillable="true" type="tns:CdaAttachment" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCdaAttachment" nillable="true" type="tns:ArrayOfCdaAttachment" />
-  <xs:complexType name="CdaAttachment">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            CDA Attachment DTO.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" name="AttachmentType" type="q2:AttachmentType">
+      <xs:enumeration value="AttachedImageGif">
         <xs:annotation>
-          <xs:appinfo />
           <xs:documentation>&lt;summary&gt;
-            Gets or sets the type of attachment, including whether it is the
-            organisational logo or an additional attached image or document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Caption" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the caption that will appear on the link to this file
-            within the CDA document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Content" nillable="true" type="xs:base64Binary">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the binary content of the attachment.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="FileName" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the file name of the attachment.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CdaAttachment" nillable="true" type="tns:CdaAttachment" />
-  <xs:complexType name="CdaDocumentDetails">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            CDA Document Details DTO. This object represents details about a
-            clinical document that has been created by HIPS.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="Document" nillable="true" type="tns:CdaDocument">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the CDA document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="DocumentId" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the document identifier used when creating the CDA document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="DocumentSetId" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the document set identifier used when creating the CDA document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Mrn" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the MRN number of the patient at the hospital that is
-            specified in the patient identifier. If the MRN was auto-generated
-            by HIPS then that value (which is based on a GUID) will be returned,
-            otherwise it will be the MRN that was passed in the HL7 message to
-            the Database Loader.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="PatientIdentifier" nillable="true" type="tns:PatientIdentifierBase">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets a patient identifier of the same type that was specified in the request.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CdaDocumentDetails" nillable="true" type="tns:CdaDocumentDetails" />
-  <xs:complexType name="CdaDocument">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            CDA Document DTO.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="Attachments" nillable="true" type="tns:ArrayOfCdaAttachment">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the list of attachments.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="Content" nillable="true" type="xs:base64Binary">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the binary content of the document.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CdaDocument" nillable="true" type="tns:CdaDocument" />
-  <xs:simpleType name="AccessCodeRequired">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Represents the access status of a patients PCEHR
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="Unknown">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The access status is unknown.
+            Represents an additional GIF image attached to the document. This image will be shown
+            in the CDA body under the main document. This file must be a GIF image.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="WithCode">
+      <xs:enumeration value="AttachedDocumentPdf">
         <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">0</EnumerationValue>
-          </xs:appinfo>
           <xs:documentation>&lt;summary&gt;
-            Except in an emergency, the patient must provide his/her
-            Record Access Code for the healthcare provider organisation
-            to gain access to this PCEHR.
+            Represents an additional linked document. This will be linked from the body of the
+            CDA document. This file must be a PDF document.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
-      <xs:enumeration value="WithoutCode">
+      <xs:enumeration value="OrganisationalLogoPng">
         <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">1</EnumerationValue>
-          </xs:appinfo>
           <xs:documentation>&lt;summary&gt;
-            No code is required for the health provider organisation
-            to gain access to this PCEHR.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="AccessGranted">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">2</EnumerationValue>
-          </xs:appinfo>
-          <xs:documentation>&lt;summary&gt;
-            The health provider organisation has already gained
-            access to this PCEHR.
+            Represents the organisational logo that will appear in the header of the CDA document.
+            This file must be a PNG image. If no attachment is supplied with this type, and there
+            is a logo in the database Hospital table, then HIPS will include the logo from the
+            database.
             &lt;/summary&gt;</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="AccessCodeRequired" nillable="true" type="tns:AccessCodeRequired" />
-  <xs:complexType name="ArrayOfPathologyReport">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PathologyReport" nillable="true" type="tns:PathologyReport" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPathologyReport" nillable="true" type="tns:ArrayOfPathologyReport" />
-  <xs:complexType name="PathologyReport">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Pathology Report DTO.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ClinicalDocumentAuthor" nillable="true" type="q3:ProviderInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the document author's details.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="DateAvailableToConsumer" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the date the report is available to the consumer.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ReportInformation" nillable="true" type="q4:PathologyReportInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the report information.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ReportingPathologistInformation" nillable="true" type="q5:ProviderInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the Reporting Pathologist Information 
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="TestRequesterInformation" nillable="true" type="q6:RequesterInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets tThe requester's details.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="TestResults" nillable="true" type="tns:ArrayOfPathologyTestReport">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the list of test results.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PathologyReport" nillable="true" type="tns:PathologyReport" />
-  <xs:complexType name="ArrayOfPathologyTestReport">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="PathologyTestReport" nillable="true" type="tns:PathologyTestReport" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfPathologyTestReport" nillable="true" type="tns:ArrayOfPathologyTestReport" />
-  <xs:complexType name="PathologyTestReport">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            DTO for information about a Pathology Test Report in the Pathology Report View.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="OverallTestResultStatus" nillable="true" type="q7:CodedType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the Overall Test Status.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="PathologyDiscipline" nillable="true" type="q8:CodedType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the Pathology Discipline.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="SpecimenCollectionDate" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the date the specimen was collected.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="TestResultName" nillable="true" type="q9:CodedType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the name of the test result.
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="PathologyTestReport" nillable="true" type="tns:PathologyTestReport" />
-  <xs:complexType name="ArrayOfDiagnosticImagingReport">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="DiagnosticImagingReport" nillable="true" type="tns:DiagnosticImagingReport" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfDiagnosticImagingReport" nillable="true" type="tns:ArrayOfDiagnosticImagingReport" />
-  <xs:complexType name="DiagnosticImagingReport">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Diagnostic Imaging Report DTO.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ClinicalDocumentAuthor" nillable="true" type="q10:ProviderInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Clinical Document Author
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="DateAvailableToConsumer" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Date the Image became avaliable to Consumers
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="ImagingExaminationResult" nillable="true" type="tns:ArrayOfImagingExaminationResult">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Test results
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ImagingRequesterInformation" nillable="true" type="q11:RequesterInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Imaging Requester Information
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ReportInformation" nillable="true" type="q12:DiagnosticReportInformationDT">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Diagnostic Report Information DT
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="DiagnosticImagingReport" nillable="true" type="tns:DiagnosticImagingReport" />
-  <xs:complexType name="ArrayOfImagingExaminationResult">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="ImagingExaminationResult" nillable="true" type="tns:ImagingExaminationResult" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfImagingExaminationResult" nillable="true" type="tns:ArrayOfImagingExaminationResult" />
-  <xs:complexType name="ImagingExaminationResult">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Imaging Examination details DTO.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="AnatomicalSiteDetails" nillable="true" type="q13:ArrayOfAnatomicalSiteDetails">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the list of Anatomical Site Details 
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ExaminationResultName" nillable="true" type="q14:CodedType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the Eaxmination Name
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="ImageLocationInformation" nillable="true" type="xs:string">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            get or sets the Image Location Information
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="ImagingServiceDateTime" type="xs:dateTime">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Gets or sets the service date
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="Modality" nillable="true" type="q15:CodedType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            get or sets the Modality
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="OverallTestResultStatus" nillable="true" type="q16:CodedType">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            get or sets the Overall Test Result Status
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ImagingExaminationResult" nillable="true" type="tns:ImagingExaminationResult" />
-  <xs:complexType name="HealthRecordOverview">
-    <xs:annotation>
-      <xs:appinfo />
-      <xs:documentation>&lt;summary&gt;
-            Patient Episode DTO.
-            &lt;/summary&gt;</xs:documentation>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="NewDocuments" nillable="true" type="q17:NewDocuments">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            The date the report is avaliable to the consumer
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="OtherLinks" nillable="true" type="q18:ArrayOfLink">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Other Links
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="RecentDocuments" nillable="true" type="q19:RecentDocuments">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            The date the report is avaliable to the consumer
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="SharedHealthSummary" nillable="true" type="q20:SharedHealthSummary">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            Shared Health Summary
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" minOccurs="0" name="ViewMetaData" nillable="true" type="q21:ViewMetaData">
-        <xs:annotation>
-          <xs:appinfo />
-          <xs:documentation>&lt;summary&gt;
-            View Meta Data
-            &lt;/summary&gt;</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="HealthRecordOverview" nillable="true" type="tns:HealthRecordOverview" />
+  <xs:element name="AttachmentType" nillable="true" type="tns:AttachmentType" />
 </xs:schema>

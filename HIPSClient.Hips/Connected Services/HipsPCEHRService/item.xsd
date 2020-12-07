@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://nehta.hips/2014/03/pcehr" elementFormDefault="qualified" targetNamespace="http://nehta.hips/2014/03/pcehr" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd12" namespace="http://nehta.hips/2014/03" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd14" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" />
-  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd15" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd10" namespace="http://nehta.hips/2014/03" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd11" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd12" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO" />
+  <xs:import schemaLocation="http://localhost:52500/PCEHRService/?xsd=xsd13" namespace="http://schemas.datacontract.org/2004/07/HIPS.ServiceContracts.Common.DTO.Views" />
   <xs:element name="RefreshPatientParticipationStatusRequest">
     <xs:complexType>
       <xs:sequence>

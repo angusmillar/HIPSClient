@@ -48,6 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\HipsConsentService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\HipsDatabaseLoaderService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -63,6 +68,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ConsentService\CheckConsentRequest.cs" />
+    <Compile Include="ConsentService\CheckConsentResponse.cs" />
+    <Compile Include="ConsentService\ConsentServiceClient.cs" />
     <Compile Include="DatabaseLoader\DatabaseLoaderClient.cs" />
     <Compile Include="DatabaseLoader\DatabaseLoaderRequest.cs" />
     <Compile Include="DatabaseLoader\DatabaseLoaderResponse.cs" />
@@ -92,6 +100,35 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\HipsConsentService\ConsentService.wsdl" />
+    <None Include="Connected Services\HipsConsentService\HIPSClient.Hips.HipsConsentService.EpisodeConsentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsConsentService\HIPSClient.Hips.HipsConsentService.HipsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsConsentService\HIPSClient.Hips.HipsConsentService.PatientParticipationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsConsentService\item.wsdl" />
+    <None Include="Connected Services\HipsConsentService\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsConsentService\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsConsentService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsConsentService\item3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsConsentService\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsConsentService\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\HipsDatabaseLoaderService\DatabaseLoaderService.wsdl" />
     <None Include="Connected Services\HipsDatabaseLoaderService\item.wsdl" />
     <None Include="Connected Services\HipsDatabaseLoaderService\item.xsd">
@@ -156,13 +193,16 @@
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GetPathologyReportViewResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.GetQueuedOperationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.HealthRecordOverview.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.HipsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.IndividualOperationStatus.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.IndividualProfile.datasource">
@@ -183,9 +223,6 @@
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.Message.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.OperationStatus.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.PathologyReport.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -195,13 +232,22 @@
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.PatientParticipationStatus1.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.QueuedOperationStatus.datasource">
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.QueuedOperationQueryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.QueuedOperationsQueryResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.QueuedPcehrOperation.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.RefreshPatientParticipationStatusResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.ResponseStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.SearchQueuedOperationsResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\HipsPCEHRService\HIPSClient.Hips.HipsPCEHRService.UploadDischargeSummaryLevel1AResponse.datasource">
@@ -236,6 +282,13 @@
     <None Include="Connected Services\HipsPCEHRService\item15.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\HipsPCEHRService\item16.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item17.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\HipsPCEHRService\item2.wsdl" />
     <None Include="Connected Services\HipsPCEHRService\item2.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -267,6 +320,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\HipsConsentService\" />
     <WCFMetadataStorage Include="Connected Services\HipsDatabaseLoaderService\" />
     <WCFMetadataStorage Include="Connected Services\HipsPathologyImagingService\" />
     <WCFMetadataStorage Include="Connected Services\HipsPCEHRService\" />
@@ -309,6 +363,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\HipsPCEHRService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\HipsConsentService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\HipsConsentService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\HipsConsentService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
